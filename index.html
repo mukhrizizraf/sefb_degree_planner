@@ -56,7 +56,7 @@ body{
   --cat-G:#ef4444;--cat-G-bg:linear-gradient(135deg,#fecaca 0%,#fca5a5 100%);
   --cat-H:#06b6d4;--cat-H-bg:linear-gradient(135deg,#cffafe 0%,#a5f3fc 100%);
 }
-body[data-theme="dark"]{
+body.dark-mode{
   --bg:#0a0a0c;
   --bg-grad:linear-gradient(180deg,rgba(10,10,12,.75) 0%,rgba(21,21,26,.85) 100%);
   --panel:rgba(20,20,24,.85);
@@ -83,6 +83,114 @@ body[data-theme="dark"]{
   --cat-H-bg:linear-gradient(135deg,rgba(6,182,212,.15) 0%,rgba(6,182,212,.25) 100%);
 }
 
+/* ============================================================================
+   COLOR THEME PALETTES (VS Code-style)
+   Each theme picks a base mode (.dark-mode / .light-mode), then overrides
+   brand & accent colors via CSS custom properties.
+============================================================================ */
+
+/* Theme: Solarized Light  · base #fdf6e3 */
+body[data-theme="solarized-light"]{
+  --bg:#fdf6e3;
+  --bg-grad:linear-gradient(180deg,#fdf6e3 0%,#eee8d5 100%);
+  --ink:#586e75;--ink-soft:#657b83;--muted:#93a1a1;
+  --panel:#fdf6e3;--panel-solid:rgba(253,246,227,.96);
+  --panel-border:#eee8d5;--line:#eee8d5;--line-strong:#93a1a1;
+  --brand:#b58900;--brand-soft:#cb9c00;
+  --brand-grad:linear-gradient(135deg,#b58900 0%,#cb4b16 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(181,137,0,.10),rgba(203,75,22,.06));
+}
+
+/* Theme: Solarized Dark · base #002b36 */
+body[data-theme="solarized-dark"]{
+  --bg:#002b36;
+  --bg-grad:linear-gradient(180deg,#002b36 0%,#073642 100%);
+  --ink:#eee8d5;--ink-soft:#93a1a1;--muted:#839496;
+  --panel:rgba(7,54,66,.85);--panel-solid:rgba(7,54,66,.96);
+  --panel-border:rgba(147,161,161,.20);--line:rgba(147,161,161,.18);
+  --line-strong:rgba(147,161,161,.30);
+  --brand:#b58900;--brand-soft:#d4a000;
+  --brand-grad:linear-gradient(135deg,#b58900,#cb4b16);
+  --brand-grad-soft:linear-gradient(135deg,rgba(181,137,0,.18),rgba(203,75,22,.10));
+}
+
+/* Theme: Dracula · base #282a36 */
+body[data-theme="dracula"]{
+  --bg:#282a36;
+  --bg-grad:linear-gradient(180deg,#282a36 0%,#1e1f29 100%);
+  --ink:#f8f8f2;--ink-soft:#e5e5ec;--muted:#6272a4;
+  --panel:rgba(40,42,54,.85);--panel-solid:rgba(40,42,54,.96);
+  --panel-border:rgba(98,114,164,.30);--line:rgba(98,114,164,.20);
+  --line-strong:rgba(98,114,164,.40);
+  --brand:#bd93f9;--brand-soft:#d6bcfa;
+  --brand-grad:linear-gradient(135deg,#bd93f9 0%,#ff79c6 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(189,147,249,.18),rgba(255,121,198,.10));
+}
+
+/* Theme: Monokai · base #272822 */
+body[data-theme="monokai"]{
+  --bg:#272822;
+  --bg-grad:linear-gradient(180deg,#272822 0%,#1e1f1a 100%);
+  --ink:#f8f8f2;--ink-soft:#e6e6dc;--muted:#75715e;
+  --panel:rgba(39,40,34,.85);--panel-solid:rgba(39,40,34,.96);
+  --panel-border:rgba(117,113,94,.30);--line:rgba(117,113,94,.20);
+  --line-strong:rgba(117,113,94,.45);
+  --brand:#a6e22e;--brand-soft:#c4f038;
+  --brand-grad:linear-gradient(135deg,#a6e22e 0%,#fd971f 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(166,226,46,.16),rgba(253,151,31,.08));
+}
+
+/* Theme: Abyss · base #000c18 (deep blue) */
+body[data-theme="abyss"]{
+  --bg:#000c18;
+  --bg-grad:linear-gradient(180deg,#000c18 0%,#011627 100%);
+  --ink:#cfd8dc;--ink-soft:#b0bec5;--muted:#637777;
+  --panel:rgba(1,22,39,.85);--panel-solid:rgba(1,22,39,.96);
+  --panel-border:rgba(99,119,119,.25);--line:rgba(99,119,119,.18);
+  --line-strong:rgba(99,119,119,.40);
+  --brand:#00bfff;--brand-soft:#33ccff;
+  --brand-grad:linear-gradient(135deg,#00bfff 0%,#0e7490 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(0,191,255,.18),rgba(14,116,144,.10));
+}
+
+/* Theme: Nord · base #2e3440 (cool slate) */
+body[data-theme="nord"]{
+  --bg:#2e3440;
+  --bg-grad:linear-gradient(180deg,#2e3440 0%,#3b4252 100%);
+  --ink:#eceff4;--ink-soft:#d8dee9;--muted:#81a1c1;
+  --panel:rgba(46,52,64,.85);--panel-solid:rgba(46,52,64,.96);
+  --panel-border:rgba(129,161,193,.25);--line:rgba(129,161,193,.18);
+  --line-strong:rgba(129,161,193,.40);
+  --brand:#88c0d0;--brand-soft:#8fbcbb;
+  --brand-grad:linear-gradient(135deg,#88c0d0 0%,#5e81ac 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(136,192,208,.18),rgba(94,129,172,.10));
+}
+
+/* Theme: GitHub Light · base #ffffff (clean tech) */
+body[data-theme="github-light"]{
+  --bg:#ffffff;
+  --bg-grad:linear-gradient(180deg,#ffffff 0%,#f6f8fa 100%);
+  --ink:#24292f;--ink-soft:#57606a;--muted:#6e7781;
+  --panel:#ffffff;--panel-solid:rgba(255,255,255,.96);
+  --panel-border:#d0d7de;--line:#d8dee4;--line-strong:#afb8c1;
+  --brand:#0969da;--brand-soft:#218bff;
+  --brand-grad:linear-gradient(135deg,#0969da 0%,#8250df 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(9,105,218,.10),rgba(130,80,223,.06));
+}
+
+/* Theme: High Contrast · pure black/white for accessibility */
+body[data-theme="high-contrast"]{
+  --bg:#000000;
+  --bg-grad:linear-gradient(180deg,#000000 0%,#0a0a0a 100%);
+  --ink:#ffffff;--ink-soft:#f4f4f5;--muted:#a1a1aa;
+  --panel:#000000;--panel-solid:rgba(0,0,0,.98);
+  --panel-border:#ffffff;--line:rgba(255,255,255,.40);
+  --line-strong:rgba(255,255,255,.80);
+  --brand:#ffff00;--brand-soft:#ffff66;
+  --brand-grad:linear-gradient(135deg,#ffff00 0%,#ff8c00 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(255,255,0,.20),rgba(255,140,0,.10));
+}
+
 body{
   background:var(--bg-grad);background-attachment:fixed;background-size:200% 200%;animation:bgShift 25s ease infinite;
   position:relative;
@@ -95,7 +203,7 @@ body::after{
   opacity:.22;
   filter:saturate(.65);
 }
-body[data-theme="dark"]::after{opacity:.14;filter:saturate(.5) brightness(.55)}
+body.dark-mode::after{opacity:.14;filter:saturate(.5) brightness(.55)}
 /* Dot pattern overlay */
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
@@ -103,7 +211,7 @@ body::before{
   background-size:24px 24px;mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
   -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
-body[data-theme="dark"]::before{background-image:radial-gradient(circle at 1px 1px, rgba(251,146,60,.14) 1px, transparent 0)}
+body.dark-mode::before{background-image:radial-gradient(circle at 1px 1px, rgba(251,146,60,.14) 1px, transparent 0)}
 @keyframes bgShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
 button,input,select,textarea{font:inherit;color:inherit}
@@ -189,6 +297,43 @@ a:hover{text-decoration:underline}
 .icon-btn.primary{background:linear-gradient(135deg,#f97316,#dc2626);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(249,115,22,.4)}
 .icon-btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(249,115,22,.55);filter:brightness(1.1);color:#fff}
 
+/* Theme picker dropdown */
+.theme-picker{position:relative;display:inline-block}
+.theme-menu{
+  position:fixed;
+  min-width:240px;max-height:420px;overflow-y:auto;
+  background:var(--panel-solid);border:1px solid var(--panel-border);
+  border-radius:12px;box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04) inset;
+  padding:6px;z-index:9999;display:none;
+  backdrop-filter:blur(14px);
+  color:var(--ink);
+}
+.theme-menu.open{display:block;animation:fadeIn .15s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.theme-menu-hdr{
+  font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px 6px;color:var(--muted);
+}
+.theme-menu-section{
+  font-size:9.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;
+  padding:8px 12px 4px;color:var(--muted);opacity:.7;
+  border-top:1px dashed var(--line);margin-top:4px;
+}
+.theme-menu-section:first-of-type{border-top:0;margin-top:0}
+.theme-opt{
+  display:flex;align-items:center;gap:10px;width:100%;
+  padding:8px 12px;background:transparent;border:none;
+  font-size:12.5px;font-weight:600;color:var(--ink);
+  cursor:pointer;border-radius:8px;text-align:left;transition:all .14s;
+}
+.theme-opt:hover{background:var(--brand-grad-soft);color:var(--brand)}
+.theme-opt.active{background:var(--brand-grad-soft);color:var(--brand);font-weight:800}
+.theme-opt.active::after{content:"✓";margin-left:auto;font-weight:900}
+.theme-opt .sw{
+  display:inline-block;width:16px;height:16px;border-radius:5px;flex-shrink:0;
+  box-shadow:0 1px 3px rgba(0,0,0,.3);
+}
+
 /* ============================================================================
    LAYOUT — CONTAINER
 ============================================================================ */
@@ -201,7 +346,7 @@ a:hover{text-decoration:underline}
   border-radius:14px;padding:14px 16px;margin-bottom:18px;
   display:flex;gap:14px;align-items:center;flex-wrap:wrap;
 }
-body[data-theme="dark"] .toolbar{box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+body.dark-mode .toolbar{box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
 .toolbar label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .field{display:flex;flex-direction:column;gap:3px;min-width:0}
 .field select,.field input{
@@ -209,7 +354,7 @@ body[data-theme="dark"] .toolbar{box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
   padding:9px 14px;border-radius:10px;font-size:13px;font-weight:600;
   transition:all .2s;cursor:pointer;min-width:200px;color:var(--ink);
 }
-body[data-theme="dark"] .field select,body[data-theme="dark"] .field input{background:#0f0f12;border-color:rgba(255,255,255,.08)}
+body.dark-mode .field select,body.dark-mode .field input{background:#0f0f12;border-color:rgba(255,255,255,.08)}
 .field select:hover,.field input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(249,115,22,.15)}
 .btn{
   display:inline-flex;align-items:center;gap:7px;
@@ -246,8 +391,8 @@ body[data-theme="dark"] .field select,body[data-theme="dark"] .field input{backg
   position:relative;
   transition:border-color .25s;
 }
-body[data-theme="dark"] .panel{border-color:rgba(255,255,255,.06);box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
-body[data-theme="light"] .panel{box-shadow:0 1px 3px rgba(15,23,42,.04)}
+body.dark-mode .panel{border-color:rgba(255,255,255,.06);box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+body.light-mode .panel{box-shadow:0 1px 3px rgba(15,23,42,.04)}
 .panel h2{
   font-size:13px;font-weight:700;color:var(--muted);
   letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;
@@ -273,7 +418,7 @@ body[data-theme="light"] .panel{box-shadow:0 1px 3px rgba(15,23,42,.04)}
   display:flex;flex-direction:column;
   overflow:hidden;
 }
-body[data-theme="dark"] .sem-card{background:#0f0f12;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+body.dark-mode .sem-card{background:#0f0f12;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
 .sem-card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:2px;
   background:var(--brand-grad);
@@ -281,9 +426,15 @@ body[data-theme="dark"] .sem-card{background:#0f0f12;box-shadow:0 1px 0 rgba(255
 }
 .sem-card:hover{border-color:rgba(251,146,60,.40);transform:translateY(-2px)}
 .sem-card:hover::before{opacity:1}
-body[data-theme="dark"] .sem-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(251,146,60,.2)}
+body.dark-mode .sem-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(251,146,60,.2)}
 .sem-card.drop-target{border:2px dashed var(--brand);background:var(--brand-grad-soft);transform:scale(1.02)}
 .sem-card.short-sem{background:repeating-linear-gradient(45deg,var(--panel-solid),var(--panel-solid) 10px,rgba(249,115,22,.03) 10px,rgba(249,115,22,.03) 20px)}
+.sem-card.extra-sem{border-color:rgba(59,130,246,.45);background:repeating-linear-gradient(135deg,var(--panel-solid),var(--panel-solid) 8px,rgba(59,130,246,.04) 8px,rgba(59,130,246,.04) 16px)}
+.sem-card.extra-sem .num{background:linear-gradient(135deg,#3b82f6,#06b6d4);box-shadow:0 4px 12px rgba(59,130,246,.35)}
+body.dark-mode .sem-card.extra-sem{background:repeating-linear-gradient(135deg,#0f0f12,#0f0f12 8px,rgba(59,130,246,.07) 8px,rgba(59,130,246,.07) 16px)}
+.sem-parity{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.sem-extra-ctrl{grid-column:1/-1;display:flex;justify-content:center;gap:10px;padding:10px;margin-top:6px}
+.sem-extra-ctrl .btn{font-size:11.5px;padding:6px 14px}
 
 .sem-head{
   display:flex;justify-content:space-between;align-items:center;
@@ -346,7 +497,7 @@ body[data-theme="dark"] .sem-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.4), 0
   background:rgba(15,23,42,.06);padding:2px 6px;border-radius:5px;letter-spacing:.02em;
   min-width:78px;text-align:center;
 }
-body[data-theme="dark"] .course .code{background:rgba(255,255,255,.08);color:#fff}
+body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fff}
 .course .name{display:flex;flex-direction:column;min-width:0}
 .course .name .en{font-weight:600;color:var(--ink);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .course .name .ms{font-size:10px;color:var(--muted);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -420,7 +571,7 @@ body[data-theme="dark"] .course .code{background:rgba(255,255,255,.08);color:#ff
 .gauge{position:relative;width:280px;height:165px}
 .gauge svg{width:100%;height:100%;overflow:visible}
 .gauge .gauge-track{fill:none;stroke:rgba(15,23,42,.08);stroke-width:18;stroke-linecap:round}
-body[data-theme="dark"] .gauge .gauge-track{stroke:rgba(255,255,255,.10)}
+body.dark-mode .gauge .gauge-track{stroke:rgba(255,255,255,.10)}
 .gauge .gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 4px 12px rgba(249,115,22,.4))}
 .gauge .gauge-label{
   position:absolute;left:0;right:0;top:52%;text-align:center;
@@ -449,7 +600,7 @@ body[data-theme="dark"] .gauge .gauge-track{stroke:rgba(255,255,255,.10)}
   text-align:left;position:relative;overflow:hidden;
   transition:all .25s;
 }
-body[data-theme="dark"] .stat-card{background:#0f0f12;border-color:rgba(255,255,255,.06)}
+body.dark-mode .stat-card{background:#0f0f12;border-color:rgba(255,255,255,.06)}
 .stat-card::after{
   content:"";position:absolute;top:0;right:0;width:60px;height:60px;
   background:radial-gradient(circle at top right,rgba(251,146,60,.25),transparent 70%);
@@ -466,7 +617,7 @@ body[data-theme="dark"] .stat-card{background:#0f0f12;border-color:rgba(255,255,
 
 /* Tabs */
 .tabs{display:flex;gap:2px;margin-bottom:12px;background:rgba(15,23,42,.04);padding:3px;border-radius:10px}
-body[data-theme="dark"] .tabs{background:rgba(255,255,255,.05)}
+body.dark-mode .tabs{background:rgba(255,255,255,.05)}
 .tab{
   flex:1;text-align:center;padding:7px 10px;border-radius:8px;
   font-size:11.5px;font-weight:600;color:var(--muted);
@@ -474,7 +625,7 @@ body[data-theme="dark"] .tabs{background:rgba(255,255,255,.05)}
 }
 .tab:hover{color:var(--ink)}
 .tab.active{background:var(--panel-solid);color:var(--brand);box-shadow:var(--shadow-sm)}
-body[data-theme="dark"] .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.30) inset}
+body.dark-mode .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.30) inset}
 .tab-content{display:none;animation:fadeIn .25s}
 .tab-content.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
@@ -488,7 +639,7 @@ body[data-theme="dark"] .tab.active{background:rgba(251,146,60,.10);color:#fdba7
   grid-column:1/-1;height:7px;background:rgba(15,23,42,.06);border-radius:4px;overflow:hidden;
   position:relative;
 }
-body[data-theme="dark"] .progress-bar{background:rgba(255,255,255,.06)}
+body.dark-mode .progress-bar{background:rgba(255,255,255,.06)}
 .progress-bar > div{
   height:100%;border-radius:4px;
   background:linear-gradient(90deg,#f97316,#fbbf24);transition:width .8s cubic-bezier(.4,0,.2,1);
@@ -516,7 +667,7 @@ body[data-theme="dark"] .progress-bar{background:rgba(255,255,255,.06)}
 /* Legend */
 .legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px;font-size:10.5px}
 .legend-row{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;background:rgba(15,23,42,.03)}
-body[data-theme="dark"] .legend-row{background:rgba(255,255,255,.04)}
+body.dark-mode .legend-row{background:rgba(255,255,255,.04)}
 .legend-row .sw{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 .legend-row .lab{font-weight:500;color:var(--ink-soft);font-size:10px}
 
@@ -738,96 +889,96 @@ body[data-theme="dark"] .legend-row{background:rgba(255,255,255,.04)}
   font-variant-numeric:tabular-nums;
 }
 .calc-prior input:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
-body[data-theme="dark"] .calc-prior{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
-body[data-theme="dark"] .calc-card{background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(255,255,255,.01))}
-body[data-theme="dark"] .calc-card.cgpa{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(255,255,255,.01))}
-body[data-theme="dark"] .calc-row .cr-wrap input,
-body[data-theme="dark"] .calc-row select,
-body[data-theme="dark"] .calc-prior input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
-body[data-theme="dark"] .calc-result{background:#15151a;border-color:rgba(251,146,60,.20)}
-body[data-theme="dark"] .calc-card.cgpa .calc-result{border-color:rgba(34,197,94,.20)}
-body[data-theme="dark"] .calc-card h3{color:#fafafa}
+body.dark-mode .calc-prior{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+body.dark-mode .calc-card{background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(255,255,255,.01))}
+body.dark-mode .calc-card.cgpa{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(255,255,255,.01))}
+body.dark-mode .calc-row .cr-wrap input,
+body.dark-mode .calc-row select,
+body.dark-mode .calc-prior input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
+body.dark-mode .calc-result{background:#15151a;border-color:rgba(251,146,60,.20)}
+body.dark-mode .calc-card.cgpa .calc-result{border-color:rgba(34,197,94,.20)}
+body.dark-mode .calc-card h3{color:#fafafa}
 
 /* ============================================================================
    DARK MODE — explicit overrides for high contrast (orange brand)
 ============================================================================ */
-body[data-theme="dark"] select,
-body[data-theme="dark"] input,
-body[data-theme="dark"] textarea{
+body.dark-mode select,
+body.dark-mode input,
+body.dark-mode textarea{
   background:#15151a;color:#fafafa;border-color:rgba(255,255,255,.12)
 }
-body[data-theme="dark"] select option{
+body.dark-mode select option{
   background:#18181d;color:#fafafa;padding:6px
 }
-body[data-theme="dark"] select option:hover,
-body[data-theme="dark"] select option:checked{
+body.dark-mode select option:hover,
+body.dark-mode select option:checked{
   background:#ea580c;color:#fff
 }
-body[data-theme="dark"] .course{
+body.dark-mode .course{
   background:#1a1a1f;color:#fafafa;border-color:rgba(255,255,255,.08)
 }
-body[data-theme="dark"] .course[data-cat="A"]{background:linear-gradient(135deg,rgba(234,179,8,.18) 0%,rgba(234,179,8,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="B"]{background:linear-gradient(135deg,rgba(16,185,129,.18) 0%,rgba(16,185,129,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="C"]{background:linear-gradient(135deg,rgba(59,130,246,.20) 0%,rgba(59,130,246,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="D"]{background:linear-gradient(135deg,rgba(236,72,153,.18) 0%,rgba(236,72,153,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="E"]{background:linear-gradient(135deg,rgba(168,85,247,.18) 0%,rgba(168,85,247,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="F"]{background:linear-gradient(135deg,rgba(249,115,22,.18) 0%,rgba(249,115,22,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="G"]{background:linear-gradient(135deg,rgba(239,68,68,.18) 0%,rgba(239,68,68,.10) 100%)}
-body[data-theme="dark"] .course[data-cat="H"]{background:linear-gradient(135deg,rgba(6,182,212,.18) 0%,rgba(6,182,212,.10) 100%)}
-body[data-theme="dark"] .course .name .en{color:#fafafa}
-body[data-theme="dark"] .course .name .ms{color:#a1a1aa}
-body[data-theme="dark"] .course .code{background:rgba(255,255,255,.08);color:#fafafa}
-body[data-theme="dark"] .course .cr{background:rgba(251,146,60,.18);color:#fdba74}
-body[data-theme="dark"] .course .grade-select{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.12)}
-body[data-theme="dark"] .add-row select{background:rgba(255,255,255,.03);color:#fafafa;border-color:rgba(255,255,255,.10)}
-body[data-theme="dark"] .add-row select:hover{background:rgba(249,115,22,.12)}
-body[data-theme="dark"] .sem-title{color:#fafafa}
-body[data-theme="dark"] .stat-card .v{
+body.dark-mode .course[data-cat="A"]{background:linear-gradient(135deg,rgba(234,179,8,.18) 0%,rgba(234,179,8,.10) 100%)}
+body.dark-mode .course[data-cat="B"]{background:linear-gradient(135deg,rgba(16,185,129,.18) 0%,rgba(16,185,129,.10) 100%)}
+body.dark-mode .course[data-cat="C"]{background:linear-gradient(135deg,rgba(59,130,246,.20) 0%,rgba(59,130,246,.10) 100%)}
+body.dark-mode .course[data-cat="D"]{background:linear-gradient(135deg,rgba(236,72,153,.18) 0%,rgba(236,72,153,.10) 100%)}
+body.dark-mode .course[data-cat="E"]{background:linear-gradient(135deg,rgba(168,85,247,.18) 0%,rgba(168,85,247,.10) 100%)}
+body.dark-mode .course[data-cat="F"]{background:linear-gradient(135deg,rgba(249,115,22,.18) 0%,rgba(249,115,22,.10) 100%)}
+body.dark-mode .course[data-cat="G"]{background:linear-gradient(135deg,rgba(239,68,68,.18) 0%,rgba(239,68,68,.10) 100%)}
+body.dark-mode .course[data-cat="H"]{background:linear-gradient(135deg,rgba(6,182,212,.18) 0%,rgba(6,182,212,.10) 100%)}
+body.dark-mode .course .name .en{color:#fafafa}
+body.dark-mode .course .name .ms{color:#a1a1aa}
+body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fafafa}
+body.dark-mode .course .cr{background:rgba(251,146,60,.18);color:#fdba74}
+body.dark-mode .course .grade-select{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.12)}
+body.dark-mode .add-row select{background:rgba(255,255,255,.03);color:#fafafa;border-color:rgba(255,255,255,.10)}
+body.dark-mode .add-row select:hover{background:rgba(249,115,22,.12)}
+body.dark-mode .sem-title{color:#fafafa}
+body.dark-mode .stat-card .v{
   background:linear-gradient(135deg,#fbbf24,#fb923c);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-body[data-theme="dark"] .gauge-label{
+body.dark-mode .gauge-label{
   background:linear-gradient(135deg,#fbbf24 0%,#f97316 50%,#dc2626 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-body[data-theme="dark"] .gauge .gauge-cap{color:#a1a1aa}
-body[data-theme="dark"] .gauge .tick{color:#71717a}
-body[data-theme="dark"] .panel h2{color:#a1a1aa}
-body[data-theme="dark"] .progress-item .label{color:#e5e5e8}
-body[data-theme="dark"] .progress-item .v{color:#a1a1aa}
-body[data-theme="dark"] .gpa-table th{color:#a1a1aa}
-body[data-theme="dark"] .gpa-table td{color:#e5e5e8;border-color:rgba(255,255,255,.06)}
-body[data-theme="dark"] .gpa-table .gpa{color:#fdba74}
-body[data-theme="dark"] .legend-row .lab{color:#d4d4d8}
-body[data-theme="dark"] .toolbar label{color:#a1a1aa}
-body[data-theme="dark"] .toolbar .meta{color:#a1a1aa}
-body[data-theme="dark"] .field select,
-body[data-theme="dark"] .search-wrap input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
-body[data-theme="dark"] .search-results{background:#18181d;border-color:rgba(255,255,255,.08)}
-body[data-theme="dark"] .search-results .item{color:#fafafa;border-bottom-color:rgba(255,255,255,.04)}
-body[data-theme="dark"] .search-results .item:hover{background:rgba(249,115,22,.18)}
-body[data-theme="dark"] .modal{background:#18181d;color:#fafafa;border:1px solid rgba(255,255,255,.06)}
-body[data-theme="dark"] .modal h3{color:#fafafa}
-body[data-theme="dark"] .modal p,body[data-theme="dark"] .modal li{color:#d4d4d8}
-body[data-theme="dark"] .modal .close{background:rgba(255,255,255,.06);color:#a1a1aa}
-body[data-theme="dark"] .modal strong{color:#fff}
-body[data-theme="dark"] .modal .grade-table th{background:rgba(249,115,22,.18);color:#fdba74}
-body[data-theme="dark"] .modal .grade-table td{color:#d4d4d8;border-bottom-color:rgba(255,255,255,.06)}
-body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04);color:#d4d4d8}
-body[data-theme="dark"] .audit-item.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
-body[data-theme="dark"] .audit-item.bad{background:rgba(239,68,68,.14);color:#fca5a5}
-body[data-theme="dark"] .alert.warn{background:rgba(245,158,11,.14);color:#fcd34d}
-body[data-theme="dark"] .alert.bad{background:rgba(239,68,68,.14);color:#fca5a5}
-body[data-theme="dark"] .alert.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
-body[data-theme="dark"] .tab{color:#a1a1aa}
-body[data-theme="dark"] .tab:hover{color:#fafafa}
-body[data-theme="dark"] .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.20) inset}
-body[data-theme="dark"] .foot{color:#71717a}
-body[data-theme="dark"] .btn.ghost{color:#d4d4d8;border-color:rgba(255,255,255,.12)}
-body[data-theme="dark"] .btn.ghost:hover{background:rgba(249,115,22,.14);color:#fdba74;border-color:#f97316}
-body[data-theme="dark"] .toolbar{background:#15151a;border-color:rgba(255,255,255,.06)}
-body[data-theme="dark"] .graph-wrap{background:#0f0f12;border-color:rgba(255,255,255,.06)}
-body[data-theme="dark"] .graph-legend,body[data-theme="dark"] .graph-info{background:rgba(15,15,18,.85);border-color:rgba(255,255,255,.08);color:#d4d4d8}
+body.dark-mode .gauge .gauge-cap{color:#a1a1aa}
+body.dark-mode .gauge .tick{color:#71717a}
+body.dark-mode .panel h2{color:#a1a1aa}
+body.dark-mode .progress-item .label{color:#e5e5e8}
+body.dark-mode .progress-item .v{color:#a1a1aa}
+body.dark-mode .gpa-table th{color:#a1a1aa}
+body.dark-mode .gpa-table td{color:#e5e5e8;border-color:rgba(255,255,255,.06)}
+body.dark-mode .gpa-table .gpa{color:#fdba74}
+body.dark-mode .legend-row .lab{color:#d4d4d8}
+body.dark-mode .toolbar label{color:#a1a1aa}
+body.dark-mode .toolbar .meta{color:#a1a1aa}
+body.dark-mode .field select,
+body.dark-mode .search-wrap input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
+body.dark-mode .search-results{background:#18181d;border-color:rgba(255,255,255,.08)}
+body.dark-mode .search-results .item{color:#fafafa;border-bottom-color:rgba(255,255,255,.04)}
+body.dark-mode .search-results .item:hover{background:rgba(249,115,22,.18)}
+body.dark-mode .modal{background:#18181d;color:#fafafa;border:1px solid rgba(255,255,255,.06)}
+body.dark-mode .modal h3{color:#fafafa}
+body.dark-mode .modal p,body.dark-mode .modal li{color:#d4d4d8}
+body.dark-mode .modal .close{background:rgba(255,255,255,.06);color:#a1a1aa}
+body.dark-mode .modal strong{color:#fff}
+body.dark-mode .modal .grade-table th{background:rgba(249,115,22,.18);color:#fdba74}
+body.dark-mode .modal .grade-table td{color:#d4d4d8;border-bottom-color:rgba(255,255,255,.06)}
+body.dark-mode .audit-item{background:rgba(255,255,255,.04);color:#d4d4d8}
+body.dark-mode .audit-item.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
+body.dark-mode .audit-item.bad{background:rgba(239,68,68,.14);color:#fca5a5}
+body.dark-mode .alert.warn{background:rgba(245,158,11,.14);color:#fcd34d}
+body.dark-mode .alert.bad{background:rgba(239,68,68,.14);color:#fca5a5}
+body.dark-mode .alert.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
+body.dark-mode .tab{color:#a1a1aa}
+body.dark-mode .tab:hover{color:#fafafa}
+body.dark-mode .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.20) inset}
+body.dark-mode .foot{color:#71717a}
+body.dark-mode .btn.ghost{color:#d4d4d8;border-color:rgba(255,255,255,.12)}
+body.dark-mode .btn.ghost:hover{background:rgba(249,115,22,.14);color:#fdba74;border-color:#f97316}
+body.dark-mode .toolbar{background:#15151a;border-color:rgba(255,255,255,.06)}
+body.dark-mode .graph-wrap{background:#0f0f12;border-color:rgba(255,255,255,.06)}
+body.dark-mode .graph-legend,body.dark-mode .graph-info{background:rgba(15,15,18,.85);border-color:rgba(255,255,255,.08);color:#d4d4d8}
 
 /* Audit checklist */
 .audit-item{
@@ -836,7 +987,7 @@ body[data-theme="dark"] .graph-legend,body[data-theme="dark"] .graph-info{backgr
   font-size:12px;font-weight:500;margin-bottom:5px;
   transition:all .25s;
 }
-body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
+body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
 .audit-item.ok{background:rgba(16,185,129,.1);color:var(--ok)}
 .audit-item.bad{background:rgba(239,68,68,.08);color:var(--bad)}
 .audit-item .ico{font-size:14px;font-weight:800}
@@ -895,7 +1046,7 @@ body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
 }
 </style>
 </head>
-<body data-theme="dark">
+<body class="dark-mode" data-theme="dark">
 
 <header class="hero">
   <div class="hero-deco">
@@ -928,7 +1079,27 @@ body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
         </div>
       </div>
       <div class="hero-actions">
-        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">☀️ Light Mode</button>
+        <div class="theme-picker">
+          <button class="icon-btn" onclick="toggleThemeMenu()" id="themeBtn" title="Pick a color theme">
+            🎨 <span id="themeBtnLabel">Theme Selector</span>
+          </button>
+          <div class="theme-menu" id="themeMenu" role="menu">
+            <div class="theme-menu-hdr">Color Theme</div>
+            <div class="theme-menu-section">Light</div>
+            <button class="theme-opt" data-theme-set="light"><span class="sw" style="background:#fff;border:1px solid #ddd"></span>Light Default</button>
+            <button class="theme-opt" data-theme-set="solarized-light"><span class="sw" style="background:#fdf6e3;border:1px solid #b58900"></span>Solarized Light</button>
+            <button class="theme-opt" data-theme-set="github-light"><span class="sw" style="background:#fff;border:1px solid #0969da"></span>GitHub Light</button>
+            <div class="theme-menu-section">Dark</div>
+            <button class="theme-opt" data-theme-set="dark"><span class="sw" style="background:#0a0a0c;border:1px solid #fb923c"></span>Dark Default</button>
+            <button class="theme-opt" data-theme-set="solarized-dark"><span class="sw" style="background:#002b36;border:1px solid #b58900"></span>Solarized Dark</button>
+            <button class="theme-opt" data-theme-set="dracula"><span class="sw" style="background:#282a36;border:1px solid #bd93f9"></span>Dracula</button>
+            <button class="theme-opt" data-theme-set="monokai"><span class="sw" style="background:#272822;border:1px solid #a6e22e"></span>Monokai</button>
+            <button class="theme-opt" data-theme-set="abyss"><span class="sw" style="background:#000c18;border:1px solid #00bfff"></span>Abyss</button>
+            <button class="theme-opt" data-theme-set="nord"><span class="sw" style="background:#2e3440;border:1px solid #88c0d0"></span>Nord</button>
+            <div class="theme-menu-section">Accessibility</div>
+            <button class="theme-opt" data-theme-set="high-contrast"><span class="sw" style="background:#000;border:2px solid #ffff00"></span>High Contrast</button>
+          </div>
+        </div>
         <button class="icon-btn" onclick="showHelp()">❓ Help</button>
         <button class="icon-btn primary" onclick="window.print()">🖨️ Print Plan</button>
       </div>
@@ -946,6 +1117,25 @@ body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
     <div class="field" id="trackField">
       <label>Specialization</label>
       <select id="trackSelect"></select>
+    </div>
+    <div class="field" id="pathField" title="English language pathway determined by MUET / IELTS / CEFR band">
+      <label>English Pathway</label>
+      <select id="pathSelect">
+        <option value="L1">Path 1 · 9 cr (MUET 1.0–2.5)</option>
+        <option value="L2" selected>Path 2 · 6 cr (MUET 3.0–3.5)</option>
+        <option value="L3">Path 3 · 6 cr + ESP (MUET 4.0–4.5)</option>
+        <option value="EX">Exempted (MUET 5.0+)</option>
+      </select>
+    </div>
+    <div class="field" id="langField" title="Foreign language sequence — pick ONE language family. Chinese students and Chinese-medium school students must choose a non-Mandarin language. International students must choose a non-native language.">
+      <label>Foreign Language</label>
+      <select id="langSelect">
+        <option value="MAN">Mandarin (Bahasa Mandarin)</option>
+        <option value="ARA">Arabic (Bahasa Arab)</option>
+        <option value="JPN">Japanese (Bahasa Jepun)</option>
+        <option value="FRA">French (Bahasa Perancis)</option>
+        <option value="KOR">Korean (Bahasa Korea)</option>
+      </select>
     </div>
     <div class="search-wrap">
       <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:3px">Search Course</label>
@@ -1020,7 +1210,7 @@ body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
             <thead><tr><th>Sem</th><th>Cr</th><th>GPA</th><th>CGPA</th></tr></thead>
             <tbody id="gpaTable"></tbody>
           </table>
-          <p style="font-size:10.5px;color:var(--muted);margin-top:10px;line-height:1.5">⭐ Dean's List = semester GPA ≥ 3.50 · Per UUM rule (c), grades below C require retake.</p>
+          <p style="font-size:10.5px;color:var(--muted);margin-top:10px;line-height:1.5">⭐ Dean's List = semester GPA ≥ 3.67 · Per UUM rule (c), grades below C require retake.</p>
 
           <!-- GPA Calculator (single semester) -->
           <div class="calc-card">
@@ -1139,7 +1329,6 @@ const GRADES = [
   {g:"C-",p:1.67,s:"Fail-Retake"},{g:"D+",p:1.33,s:"Fail-Retake"},
   {g:"D",p:1.00,s:"Fail-Retake"},{g:"F",p:0.00,s:"Fail-Retake"}
 ];
-const RETAKE_GRADES = new Set(["C-","D+","D","F"]);
 
 /* ============================================================================
    PROGRAMS DATA — all 5 SEFB programs with correct credits/components
@@ -1176,9 +1365,14 @@ PROGRAMS.BFIN = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B */
-    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
-    {code:"MPB3123",ms:"Malaysia English",en:"Malaysia English",cr:3,cat:"B",pre:[]},
+    /* B — English Core: pathway-aware (per LAMPIRAN A: Path 1 = 9cr, Path 2 = 6cr, Path 3 = 6cr+ESP) */
+    {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],pathway:"L1"},
+    {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],pathway:"L1L2"},
+    {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],pathway:"L1L2L3"},
+    {code:"SBLEK3023",ms:"English for Small Group Communication",en:"English for Small Group Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C */
     {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
@@ -1196,23 +1390,25 @@ PROGRAMS.BFIN = {
     {code:"BPMNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
     {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
     {code:"GLULK2013",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
-    /* D — Investment Mgmt */
-    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Financial Services Marketing",cr:3,cat:"D",track:"INV",pre:[]},
+    /* D — Specialization (per handbook: INV-only, WLT-only, and SHARED courses) */
+    /* D · Investment Management-only */
     {code:"BWFNK3033",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
     {code:"BWFNK3043",ms:"Gelagat Kewangan",en:"Behavioral Finance",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
     {code:"BWFNK3053",ms:"Sekuriti Pendapatan Tetap",en:"Fixed Income Securities",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
     {code:"BWFNK3063",ms:"Derivatif & Pengurusan Risiko",en:"Derivatives & Risk Mgmt",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
-    {code:"BWFFK3053",ms:"Pemodelan Kewangan",en:"Financial Modelling",cr:3,cat:"D",track:"INV",pre:["BWFFK3013"]},
-    {code:"BWFFK3103",ms:"Kewangan Perniagaan Kecil",en:"Small Business Finance",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
-    {code:"BWFFK3193",ms:"Seminar Kewangan",en:"Seminar in Finance",cr:3,cat:"D",track:"INV",pre:[],minCr:90},
-    {code:"BKATK2013",ms:"Pengantar Pecukaian",en:"Introduction to Taxation",cr:3,cat:"D",track:"INV",pre:["BKAFK1023"]},
     {code:"BWFFK3083",ms:"Modal Teroka",en:"Venture Capital",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
-    /* D — Wealth Mgmt */
+    /* D · Wealth Management-only */
     {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"D",track:"WLT",pre:[]},
     {code:"BWRRK3103",ms:"Perancangan Estet",en:"Estate Planning",cr:3,cat:"D",track:"WLT",pre:["BWFFK2033"]},
     {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"D",track:"WLT",pre:["BWFFK2043","BWRRK1013"]},
     {code:"BWRRK3113",ms:"Perancangan Persaraan",en:"Retirement Planning",cr:3,cat:"D",track:"WLT",pre:["BWFFK2033"]},
     {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"D",track:"WLT",pre:["BWRRK1013"]},
+    /* D · SHARED between INV & WLT (no track restriction) */
+    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Marketing of Financial Services",cr:3,cat:"D",pre:[]},
+    {code:"BWFFK3053",ms:"Pemodelan Kewangan",en:"Financial Modelling",cr:3,cat:"D",pre:["BWFFK3013"]},
+    {code:"BWFFK3103",ms:"Kewangan Perniagaan Kecil",en:"Small Business Finance",cr:3,cat:"D",pre:["BWFFK2043"]},
+    {code:"BWFFK3193",ms:"Seminar Kewangan",en:"Seminar in Finance",cr:3,cat:"D",pre:[],minCr:90},
+    {code:"BKATK2013",ms:"Prinsip Pecukaian",en:"Principles of Taxation",cr:3,cat:"D",pre:["BKAFK1023"]},
     /* E */
     {code:"BWFEK3013",ms:"Pengurusan Hartanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
     {code:"BWFFK3023",ms:"Pengurusan Kredit",en:"Credit Management",cr:3,cat:"E",pre:["BWFFK2033"]},
@@ -1230,23 +1426,23 @@ PROGRAMS.BFIN = {
   ],
   recommended:{
     INV:{
-      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2113","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","BWBBK3053","MPU1022","MPU1042","MPB3123","VKKK1021"],
+      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2013","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","BWBBK3053","MPU1022","MPU1042","MPB3013","VKKK1021"],
       3:["BWFFK2043","BWFFK3033","BWFNK3033","BWFNK3043","BWBBK2013","MPU1052"],
       4:["BWFFK2053","BWFFK3013","BWFFK3043","BWFNK3053","BWFFK3023","MPU1062"],
       5:["BWFFK3073","BWFFK3113","BWFNK3013","BWFNK3063","BWFFK3063"],
       6:["BPMNK3143","BWFFK3053","BWFFK3103","BKATK2013","BWBBK3033"],
-      7:["BPMNK3023","BWFFK3083","BWFFK3193","FREE3013"],
+      7:["BPMNK3023","BWFFK3083","BWFFK3193","FREE3013","SQQSK2013"],
       8:["BWFXK4968"]
     },
     WLT:{
-      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2113","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","BWRRK1013","MPU1022","MPU1042","MPB3123","VKKK1021"],
-      3:["BWFFK2043","BWFFK3033","BWRRK3103","BWBBK2013","MPU1052"],
+      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2013","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","BWRRK1013","MPU1022","MPU1042","MPB3013","VKKK1021"],
+      3:["BWFFK2043","BWFFK3033","BWRRK3103","BWBBK3053","BWBBK2013","MPU1052"],
       4:["BWFFK2053","BWFFK3013","BWFFK3043","BWRRK3113","BWFFK3023","MPU1062"],
       5:["BWFFK3073","BWFFK3113","BWFNK3013","BWRRK3143","BWFFK3063"],
-      6:["BPMNK3143","BWRRK3133","BWFFK3103","BKATK2013"],
-      7:["BPMNK3023","BWFFK3193","BWBBK3033","BWFFK3053","FREE3013"],
+      6:["BPMNK3143","BWRRK3133","BWFFK3103","BKATK2013","BWBBK3033"],
+      7:["BPMNK3023","BWFFK3193","BWFFK3053","SQQSK2013","FREE3013"],
       8:["BWFXK4968"]
     }
   }
@@ -1283,9 +1479,14 @@ PROGRAMS.BBANK = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B */
-    {code:"MPB2013",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
-    {code:"MPB3013",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* B — English Core: pathway-aware */
+    {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],pathway:"L1"},
+    {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],pathway:"L1L2"},
+    {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],pathway:"L1L2L3"},
+    {code:"SBLEK3023",ms:"English for Small Group Communication",en:"English for Small Group Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C — Program Core (66 cr) */
     {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
@@ -1358,36 +1559,36 @@ PROGRAMS.BBANK = {
       2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
       3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
       4:["BWFNK3013","BWFFK3033","GLULK3023","BWFFK2053","BWFFK3013","BWFFK3043"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWFNK3033","BWFFK3053","VKKK1021"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWFNK3103","FREE3013"],
-      7:["BWBXK4956"]
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWFNK3033","BWFFK3053","BWBBK3033E"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWFNK3103","BWBBK3043","BWBBK3073"],
+      7:["BWBXK4956","FREE3013","VKKK1021"]
     },
     PR:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
       2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BWRRK1013"],
       3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
       4:["BWFNK3013","BWFFK3033","GLULK3023","BWRRK3033","BWRRK3043","BWRRK3123"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWRRK3133","BWRRK3143","VKKK1021"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWRRK3063","FREE3013"],
-      7:["BWBXK4956"]
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWRRK3133","BWRRK3143","BWBBK3033E"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
+      7:["BWBXK4956","FREE3013","VKKK1021"]
     },
     MP:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
-      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","SQQMK1034"],
-      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","SQQMK1063","VKKK1011"],
-      4:["BWFNK3013","BWFFK3033","GLULK3023","SQQMK1073","SQITK1013"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","SQITK3053","SQITK3063","VKKK1021"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","SQITK3083","FREE3013"],
-      7:["BWBXK4956"]
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","SQQMK1063"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","SQITK1013","VKKK1011"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","SQQMK1073","SQITK3053"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","SQITK3063","SQITK3083","BWBBK3033E"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
+      7:["BWBXK4956","FREE3013","VKKK1021"]
     },
     PM:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
       2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BIMEK1013"],
       3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BIMCK1043","VKKK1011"],
       4:["BWFNK3013","BWFFK3033","GLULK3023","BIMCK2033","BIMCK2083","BIMEK3023"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BIMCK3063","BIMEK3123","VKKK1021"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","FREE3013"],
-      7:["BWBXK4956"]
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BIMCK3063","BIMEK3123","BWBBK3033E"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
+      7:["BWBXK4956","FREE3013","VKKK1021"]
     }
   }
 };
@@ -1402,7 +1603,7 @@ PROGRAMS.BECONS = {
     {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
     {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
     {l:"C",ms:"Teras Program",en:"Program Core",req:57},
-    {l:"D",ms:"Keperluan Bahasa",en:"Language Requirement (Mandarin)",req:9},
+    {l:"D",ms:"Keperluan Bahasa Asing",en:"Foreign Language Requirement",req:9},
     {l:"E",ms:"Elektif Ekonomi",en:"Economics Elective",req:12},
     {l:"F",ms:"Elektif Bidang",en:"Field Elective",req:18},
     {l:"G",ms:"Elektif Bebas",en:"Free Elective",req:3},
@@ -1419,51 +1620,70 @@ PROGRAMS.BECONS = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B */
-    {code:"MPB_ENG1",ms:"Teras Bahasa Inggeris I",en:"English Core I",cr:3,cat:"B",pre:[]},
-    {code:"MPB_ENG2",ms:"Teras Bahasa Inggeris II",en:"English Core II",cr:3,cat:"B",pre:[]},
+    /* B — English Core: pathway-dependent (see Language pathway selector) */
+    {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],offer:"both",pathway:"L1"},
+    {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],offer:"both",pathway:"L1L2"},
+    {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],offer:"both",pathway:"L1L2L3"},
+    {code:"SBLEK3023",ms:"English for Small Group Communication",en:"English for Small Group Communication",cr:3,cat:"B",pre:["MPB3013"],offer:"both",pathway:"ESP"},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],offer:"both",pathway:"ESP"},
+    {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],offer:"both",pathway:"ESP"},
+    {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],offer:"both",pathway:"ESP"},
     /* C */
-    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
-    {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
-    {code:"BEEBK2023",ms:"Makroekonomi",en:"Macroeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
-    {code:"BEEBK3013",ms:"Mikroekonomi Pertengahan",en:"Intermediate Microeconomics",cr:3,cat:"C",pre:["BEEBK2013"]},
-    {code:"BEEBK3023",ms:"Makroekonomi Pertengahan",en:"Intermediate Macroeconomics",cr:3,cat:"C",pre:["BEEBK2023"]},
-    {code:"BEEDK1013",ms:"Ekonomi Malaysia",en:"Malaysian Economy",cr:3,cat:"C",pre:[]},
-    {code:"BEEQK1013",ms:"Pengantar Matematik Ekonomi",en:"Intro to Mathematical Economics",cr:3,cat:"C",pre:[]},
-    {code:"BEEQK1023",ms:"Pengantar Statistik Ekonomi",en:"Intro to Statistics for Economics",cr:3,cat:"C",pre:[]},
-    {code:"BEEQK2013",ms:"Ekonomi Matematik",en:"Mathematical Economics",cr:3,cat:"C",pre:["BEEQK1013"]},
-    {code:"BEEQK2023",ms:"Ekonometrik Asas",en:"Basic Econometrics",cr:3,cat:"C",pre:["BEEQK1023"]},
-    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEESK3033",ms:"Sejarah Pemikiran Ekonomi",en:"History of Economic Thought",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEESK3053",ms:"Isu-Isu Ekonomi Semasa",en:"Current Economic Issues",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BKANK1013",ms:"Asas Perakaunan",en:"Foundations of Accounting",cr:3,cat:"C",pre:[]},
-    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
-    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[],minCr:70},
-    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:["MPB_ENG2"]},
-    {code:"BEEZK3996",ms:"Projek Ilmiah",en:"Academic Project",cr:6,cat:"C",pre:["BEERK3043"],minCr:90},
-    /* D — Mandarin */
-    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin I",cr:3,cat:"D",pre:[]},
-    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin II",cr:3,cat:"D",pre:["SBLFK1053"]},
-    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin III",cr:3,cat:"D",pre:["SBLFK2053"]},
-    /* E — Economics Electives (pick 4) */
-    {code:"BEEDK2013",ms:"Ekonomi Pembangunan",en:"Development Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEEDK3023",ms:"Perancangan Ekonomi",en:"Economic Planning",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEDK3043",ms:"Penilaian Projek",en:"Project Appraisal",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEEK3073",ms:"Ekonomi Alam Sekitar",en:"Environmental Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEEEK3103",ms:"Analisis Ekonomi Pelancongan",en:"Tourism Economics Analysis",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEEIK2053",ms:"Ekonomi Buruh",en:"Labor Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEEIK3053",ms:"Organisasi Industri",en:"Industrial Organization",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEMK2033",ms:"Teori & Institusi Wang",en:"Theory & Monetary Institutions",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEEMK3043",ms:"Ekonomi Kewangan",en:"Financial Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEMK3053",ms:"Teori Pelaburan",en:"Investment Theory",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEPK3013",ms:"Pembiayaan Awam",en:"Public Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEPK3083",ms:"Ekonomi Kesihatan",en:"Health Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEEQK3013",ms:"Ekonometrik",en:"Econometrics",cr:3,cat:"E",pre:["BEEQK2023"]},
-    {code:"BEESK3093",ms:"Pemikiran & Sistem Ekonomi Islam",en:"Islamic Economic Thought & Systems",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEETK2013",ms:"Ekonomi Antarabangsa",en:"International Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
-    {code:"BEETK3013",ms:"Perdagangan Antarabangsa",en:"International Trade",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEETK3023",ms:"Pembiayaan Antarabangsa",en:"International Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
-    {code:"BEETK3033",ms:"Pelaburan Antarabangsa",en:"International Investment",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"],offer:"both"},
+    {code:"BEEBK2023",ms:"Makroekonomi",en:"Macroeconomics",cr:3,cat:"C",pre:["BEEBK1013"],offer:"both"},
+    {code:"BEEBK3013",ms:"Mikroekonomi Pertengahan",en:"Intermediate Microeconomics",cr:3,cat:"C",pre:["BEEBK2013"],offer:"both"},
+    {code:"BEEBK3023",ms:"Makroekonomi Pertengahan",en:"Intermediate Macroeconomics",cr:3,cat:"C",pre:["BEEBK2023"],offer:"both"},
+    {code:"BEEDK1013",ms:"Ekonomi Malaysia",en:"Malaysian Economy",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BEEQK1013",ms:"Pengantar Matematik Ekonomi",en:"Introduction to Mathematical Economics",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BEEQK1023",ms:"Pengantar Statistik Ekonomi",en:"Introduction to Statistical Economics",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BEEQK2013",ms:"Ekonomi Matematik",en:"Mathematical Economics",cr:3,cat:"C",pre:["BEEQK1013"],offer:"both"},
+    {code:"BEEQK2023",ms:"Ekonometrik Asas",en:"Basic Econometrics",cr:3,cat:"C",pre:["BEEQK1023"],offer:"both"},
+    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methods",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"],offer:"both"},
+    {code:"BEESK3033",ms:"Sejarah Pemikiran Ekonomi",en:"History of Economic Thoughts",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"],offer:"both"},
+    {code:"BEESK3053",ms:"Isu-Isu Ekonomi Semasa",en:"Current Issues in Economics",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"],offer:"both"},
+    {code:"BKANK1013",ms:"Perakaunan Asas",en:"Basic Accounting",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BPMNK1013",ms:"Prinsip Pengurusan",en:"Principles of Management",cr:3,cat:"C",pre:[],offer:"both"},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[],minCr:70,offer:"both"},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:["MPB3013"],offer:"both"},
+    {code:"BEEZK3996",ms:"Projek Ilmiah",en:"Academic Project",cr:6,cat:"C",pre:["BEERK3043"],minCr:90,offer:"both"},
+    /* D — Foreign Language (3 sequential courses, students choose ONE language).
+       Chinese students / Chinese-medium school students must choose a non-Mandarin language. */
+    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin Language I",cr:3,cat:"D",pre:[],offer:"both",lang:"MAN"},
+    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin Language II",cr:3,cat:"D",pre:["SBLFK1053"],offer:"both",lang:"MAN"},
+    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin Language III",cr:3,cat:"D",pre:["SBLFK2053"],offer:"both",lang:"MAN"},
+    {code:"SBLFK1023",ms:"Bahasa Arab I",en:"Arabic Language I",cr:3,cat:"D",pre:[],offer:"both",lang:"ARA"},
+    {code:"SBLFK2023",ms:"Bahasa Arab II",en:"Arabic Language II",cr:3,cat:"D",pre:["SBLFK1023"],offer:"both",lang:"ARA"},
+    {code:"SBLFK3023",ms:"Bahasa Arab III",en:"Arabic Language III",cr:3,cat:"D",pre:["SBLFK2023"],offer:"both",lang:"ARA"},
+    {code:"SBLFK1033",ms:"Bahasa Jepun I",en:"Japanese Language I",cr:3,cat:"D",pre:[],offer:"both",lang:"JPN"},
+    {code:"SBLFK2033",ms:"Bahasa Jepun II",en:"Japanese Language II",cr:3,cat:"D",pre:["SBLFK1033"],offer:"both",lang:"JPN"},
+    {code:"SBLFK3033",ms:"Bahasa Jepun III",en:"Japanese Language III",cr:3,cat:"D",pre:["SBLFK2033"],offer:"both",lang:"JPN"},
+    {code:"SBLFK1043",ms:"Bahasa Perancis I",en:"French Language I",cr:3,cat:"D",pre:[],offer:"both",lang:"FRA"},
+    {code:"SBLFK2043",ms:"Bahasa Perancis II",en:"French Language II",cr:3,cat:"D",pre:["SBLFK1043"],offer:"both",lang:"FRA"},
+    {code:"SBLFK3043",ms:"Bahasa Perancis III",en:"French Language III",cr:3,cat:"D",pre:["SBLFK2043"],offer:"both",lang:"FRA"},
+    {code:"SBLFK1063",ms:"Bahasa Korea I",en:"Korean Language I",cr:3,cat:"D",pre:[],offer:"both",lang:"KOR"},
+    {code:"SBLFK2063",ms:"Bahasa Korea II",en:"Korean Language II",cr:3,cat:"D",pre:["SBLFK1063"],offer:"both",lang:"KOR"},
+    {code:"SBLFK3063",ms:"Bahasa Korea III",en:"Korean Language III",cr:3,cat:"D",pre:["SBLFK2063"],offer:"both",lang:"KOR"},
+    /* E — Economics Electives (pick 4) — semester offerings per academic guide */
+    {code:"BEEDK2013",ms:"Ekonomi Pembangunan",en:"Development Economics",cr:3,cat:"E",pre:["BEEBK1013"],offer:"odd"},
+    {code:"BEEDK3023",ms:"Perancangan Ekonomi",en:"Economic Planning",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEEDK3043",ms:"Penilaian Projek",en:"Project Appraisal",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEEEK3073",ms:"Ekonomi Alam Sekitar",en:"Environmental Economics",cr:3,cat:"E",pre:["BEEBK1013"],offer:"odd"},
+    {code:"BEEEK3103",ms:"Analisis Ekonomi Pelancongan",en:"Economic Analysis of Tourism",cr:3,cat:"E",pre:["BEEBK1013"],offer:"even"},
+    {code:"BEEIK2053",ms:"Ekonomi Buruh",en:"Labour Economics",cr:3,cat:"E",pre:["BEEBK1013"],offer:"odd"},
+    {code:"BEEIK3053",ms:"Organisasi Industri",en:"Industrial Organization",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEEIK3063",ms:"Pengawalan Industri",en:"Industrial Regulation",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
+    {code:"BEEMK2033",ms:"Teori & Institusi Wang",en:"Monetary Theory and Institutions",cr:3,cat:"E",pre:["BEEBK1013"],offer:"even"},
+    {code:"BEEMK3043",ms:"Ekonomi Monetari",en:"Monetary Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEEMK3053",ms:"Teori Pelaburan",en:"Investment Theory",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
+    {code:"BEEPK3013",ms:"Kewangan Awam",en:"Public Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEEPK3083",ms:"Ekonomi Kesihatan",en:"Health Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
+    {code:"BEEQK3013",ms:"Ekonometrik",en:"Econometrics",cr:3,cat:"E",pre:["BEEQK2023"],offer:"both"},
+    {code:"BEESK3093",ms:"Sistem & Pemikiran Ekonomi Islam",en:"Islamic Economic System and Thoughts",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
+    {code:"BEETK2013",ms:"Ekonomi Antarabangsa",en:"International Economics",cr:3,cat:"E",pre:["BEEBK1013"],offer:"odd"},
+    {code:"BEETK3013",ms:"Perdagangan Antarabangsa",en:"International Trade",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
+    {code:"BEETK3023",ms:"Kewangan Antarabangsa",en:"International Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
+    {code:"BEETK3033",ms:"Pelaburan Antarabangsa",en:"International Investments",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
     /* F — Field Electives (Sample from major tracks) */
     {code:"BWBBK1013",ms:"Asas Perbankan",en:"Fundamentals of Banking",cr:3,cat:"F",pre:[]},
     {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"F",pre:[]},
@@ -1485,12 +1705,12 @@ PROGRAMS.BECONS = {
   ],
   recommended:{
     "":{
-      1:["BEEBK1013","BEEQK1013","BEEDK1013","MPB_ENG1","BPMNK1013","BKANK1013","VKKK1011"],
-      2:["BEEQK1023","BEEBK2013","BEEQK2013","MPB_ENG2","SBLFK1053","MPU1012","MPU1022","VKKK1021"],
-      3:["BEEBK2023","BEEQK2023","SBLEK3063","SBLFK2053","MPU1042"],
-      4:["BEEBK3013","BEESK3033","SBLFK3053","MPU1052"],
-      5:["BEEBK3023","BEERK3043","BPMNK3123","MPU1062"],
-      6:["BEESK3053","BEEZK3996","FREE3013"],
+      1:["BEEBK1013","BEEQK1013","BEEDK1013","MPB2013","BPMNK1013","BKANK1013","VKKK1011"],
+      2:["BEEQK1023","BEEBK2013","BEEQK2013","MPB3013","SBLFK1053","MPU1012","MPU1022","VKKK1021"],
+      3:["BEEBK2023","BEEQK2023","SBLEK3063","SBLFK2053","MPU1042","BWFFK2033","BEEDK2013"],
+      4:["BEEBK3013","BEESK3033","SBLFK3053","MPU1052","BEEMK2033","BPMHK2013","GMGAK2013"],
+      5:["BEEBK3023","BEERK3043","BPMNK3123","MPU1062","BEEEK3073","GMGAK2023","BWBBK1013"],
+      6:["BEESK3053","BEEZK3996","FREE3013","BEEPK3013","BPMMK1013"],
       7:["BEEXK4948"]
     }
   }
@@ -1522,9 +1742,14 @@ PROGRAMS.BRMI = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B */
-    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
-    {code:"MPB3113",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* B — English Core: pathway-aware */
+    {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],pathway:"L1"},
+    {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],pathway:"L1L2"},
+    {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],pathway:"L1L2L3"},
+    {code:"SBLEK3023",ms:"English for Small Group Communication",en:"English for Small Group Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C — Program Core (63 cr) */
     {code:"BKAFK1023",ms:"Pengantar Perakaunan Kewangan",en:"Introduction to Financial Accounting",cr:3,cat:"C",pre:[]},
     {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"C",pre:[]},
@@ -1567,12 +1792,12 @@ PROGRAMS.BRMI = {
   ],
   recommended:{
     "":{
-      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2113","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3113","VKKK1021"],
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013","VKKK1021"],
       3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BWRRK2033"],
       4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRRK2043","BWRRK3013","GLULK2023"],
-      5:["BWRRK3133","BWRRK3163","BWRRK3023","BWRRK3053","BWRRK3073","BWRRK3103R"],
-      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWFNK3033R","FREE3013"],
+      5:["BWRRK3133","BWRRK3163","BWRRK3023","BWRRK3053","BWRRK3073","BWFNK3043R"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWFNK3033R","BWFEK3013R","FREE3013"],
       7:["BWRXK4976"]
     }
   }
@@ -1588,7 +1813,7 @@ PROGRAMS.BAGRO = {
     {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
     {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
     {l:"C",ms:"Teras Program",en:"Program Core",req:87},
-    {l:"D",ms:"Keperluan Bahasa",en:"Language Requirement (Mandarin)",req:9},
+    {l:"D",ms:"Keperluan Bahasa Asing",en:"Foreign Language Requirement",req:9},
     {l:"E",ms:"Elektif Bebas",en:"Free Elective",req:3},
     {l:"F",ms:"Latihan Industri",en:"Industrial Training",req:8}
   ],
@@ -1603,9 +1828,10 @@ PROGRAMS.BAGRO = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B */
-    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
-    {code:"MPB3123",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* B — English Core: pathway-aware (BAGRO's ESP options live in Program Core C: SBLEK3033, SBLEK3063) */
+    {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],pathway:"L1"},
+    {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],pathway:"L1L2"},
+    {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],pathway:"L1L2L3"},
     /* C — Program Core (selected) */
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
@@ -1636,10 +1862,22 @@ PROGRAMS.BAGRO = {
     {code:"GLULK3043",ms:"Undang-Undang Perniagaan Tani",en:"Agribusiness Law",cr:3,cat:"C",pre:[]},
     {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"C",pre:[]},
     {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:[]},
-    /* D */
-    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin I",cr:3,cat:"D",pre:[]},
-    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin II",cr:3,cat:"D",pre:["SBLFK1053"]},
-    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin III",cr:3,cat:"D",pre:["SBLFK2053"]},
+    /* D — Foreign Language: 3 sequential courses, pick ONE language */
+    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin Language I",cr:3,cat:"D",pre:[],lang:"MAN"},
+    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin Language II",cr:3,cat:"D",pre:["SBLFK1053"],lang:"MAN"},
+    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin Language III",cr:3,cat:"D",pre:["SBLFK2053"],lang:"MAN"},
+    {code:"SBLFK1023",ms:"Bahasa Arab I",en:"Arabic Language I",cr:3,cat:"D",pre:[],lang:"ARA"},
+    {code:"SBLFK2023",ms:"Bahasa Arab II",en:"Arabic Language II",cr:3,cat:"D",pre:["SBLFK1023"],lang:"ARA"},
+    {code:"SBLFK3023",ms:"Bahasa Arab III",en:"Arabic Language III",cr:3,cat:"D",pre:["SBLFK2023"],lang:"ARA"},
+    {code:"SBLFK1033",ms:"Bahasa Jepun I",en:"Japanese Language I",cr:3,cat:"D",pre:[],lang:"JPN"},
+    {code:"SBLFK2033",ms:"Bahasa Jepun II",en:"Japanese Language II",cr:3,cat:"D",pre:["SBLFK1033"],lang:"JPN"},
+    {code:"SBLFK3033",ms:"Bahasa Jepun III",en:"Japanese Language III",cr:3,cat:"D",pre:["SBLFK2033"],lang:"JPN"},
+    {code:"SBLFK1043",ms:"Bahasa Perancis I",en:"French Language I",cr:3,cat:"D",pre:[],lang:"FRA"},
+    {code:"SBLFK2043",ms:"Bahasa Perancis II",en:"French Language II",cr:3,cat:"D",pre:["SBLFK1043"],lang:"FRA"},
+    {code:"SBLFK3043",ms:"Bahasa Perancis III",en:"French Language III",cr:3,cat:"D",pre:["SBLFK2043"],lang:"FRA"},
+    {code:"SBLFK1063",ms:"Bahasa Korea I",en:"Korean Language I",cr:3,cat:"D",pre:[],lang:"KOR"},
+    {code:"SBLFK2063",ms:"Bahasa Korea II",en:"Korean Language II",cr:3,cat:"D",pre:["SBLFK1063"],lang:"KOR"},
+    {code:"SBLFK3063",ms:"Bahasa Korea III",en:"Korean Language III",cr:3,cat:"D",pre:["SBLFK2063"],lang:"KOR"},
     /* E */
     {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"E",pre:[],ph:true},
     /* F */
@@ -1647,8 +1885,8 @@ PROGRAMS.BAGRO = {
   ],
   recommended:{
     "":{
-      1:["MPU1042","MPB2113","BETAK1013","BEEBK1013","BKANK1013","BPMNK1013","SQQSK1013"],
-      2:["MPU1012","MPB3123","BETAK1023","BEEBK2013","BWFFK1013","SQQMK1023","SBLFK1053"],
+      1:["MPU1042","MPB2013","BETAK1013","BEEBK1013","BKANK1013","BPMNK1013","SQQSK1013"],
+      2:["MPU1012","MPB3013","BETAK1023","BEEBK2013","BWFFK1013","SQQMK1023","SBLFK1053"],
       3:["MPU1062","BETAK2023","BETAK2053","BEEBK2023","SBLFK2053","FREE3013","VKKK1011"],
       4:["BETAK2013","BETAK2043","BEEAK3033","BEEAK3153","BEEAK3133","SBLFK3053","VKKK1021"],
       5:["MPU1052","BETAK2033","BEEAK3163","BEEAK3123","BJTNK2033","BPMNK3123","SBLEK3033"],
@@ -1662,24 +1900,62 @@ PROGRAMS.BAGRO = {
    STATE & PERSISTENCE
 ============================================================================ */
 const STORAGE_KEY = "sefb_planner_v2";
-const MIN_CR = 12, MAX_CR = 18;
-const DEANS_LIST = 3.50;
+const MIN_CR = 12, MAX_CR = 20;
+const DEANS_LIST = 3.67;
+const PASS_THRESHOLD = 2.00;
+const FAIL_GRADES = new Set(["C-","D+","D","F"]);
 
 let state = {
   programId:"BFIN", trackId:"INV",
-  plan:{}, theme:"dark"
+  plan:{}, theme:"dark",
+  pathId:"L2",         /* English pathway: L1 / L2 / L3 / EX */
+  langId:"MAN",        /* Foreign language family: MAN / ARA / JPN / FRA / KOR */
+  extraSems:0          /* Extra semesters added by student (Hiccup 5) */
 };
 
-function emptyPlan(){ const p={}; const n=PROGRAMS[state.programId]?.semCount||8; for(let i=1;i<=n;i++) p[i]=[]; return p; }
+function totalSems(){ const p=PROGRAMS[state.programId]; return (p?.semCount||8) + (state.extraSems||0); }
+function emptyPlan(){ const p={}; const n=totalSems(); for(let i=1;i<=n;i++) p[i]=[]; return p; }
 function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 function loadState(){
   try{
     const r=localStorage.getItem(STORAGE_KEY);
-    if(r){ const s=JSON.parse(r); if(s&&s.programId&&s.plan){ state=s; }}
+    if(r){ const s=JSON.parse(r); if(s&&s.programId&&s.plan){ state=Object.assign(state,s); }}
   }catch(e){}
   if(!state.plan||!Object.keys(state.plan).length) state.plan=emptyPlan();
   if(!state.theme) state.theme="dark";
-  document.body.dataset.theme = state.theme;
+  if(!state.pathId) state.pathId="L2";
+  if(!state.langId) state.langId="MAN";
+  if(typeof state.extraSems!=="number") state.extraSems=0;
+  applyTheme(state.theme);
+}
+
+/* ============================================================================
+   THEMES (VS Code-style palettes)
+   Each entry: {label, mode} where mode = "dark" | "light"
+   `mode` decides which base text/panel styles apply (.dark-mode vs .light-mode)
+============================================================================ */
+const THEMES = {
+  "light":          {label:"Light Default",   mode:"light"},
+  "dark":           {label:"Dark Default",    mode:"dark"},
+  "solarized-light":{label:"Solarized Light", mode:"light"},
+  "solarized-dark": {label:"Solarized Dark",  mode:"dark"},
+  "dracula":        {label:"Dracula",         mode:"dark"},
+  "monokai":        {label:"Monokai",         mode:"dark"},
+  "abyss":          {label:"Abyss",           mode:"dark"},
+  "nord":           {label:"Nord",            mode:"dark"},
+  "github-light":   {label:"GitHub Light",    mode:"light"},
+  "high-contrast":  {label:"High Contrast",   mode:"dark"}
+};
+function applyTheme(name){
+  const t = THEMES[name] || THEMES["dark"];
+  document.body.dataset.theme = name;
+  document.body.classList.toggle("dark-mode",  t.mode==="dark");
+  document.body.classList.toggle("light-mode", t.mode==="light");
+  /* Button label stays as "Theme Selector"; current theme is shown via the ✓ in the menu */
+  /* Highlight active option in the dropdown */
+  document.querySelectorAll(".theme-opt").forEach(b=>{
+    b.classList.toggle("active", b.dataset.themeSet===name);
+  });
 }
 
 /* ============================================================================
@@ -1693,14 +1969,40 @@ function isPrereqsMet(code, semester){
   const c=getCourse(code); if(!c) return {ok:true,missing:[]};
   const missing=[];
   for(const pre of (c.pre||[])){
-    let found=false;
-    for(let s=1;s<semester;s++){ if((state.plan[s]||[]).some(it=>it.code===pre)){ found=true; break; }}
-    if(!found) missing.push(pre);
+    let foundItem=null, foundSem=null;
+    for(let s=1;s<semester;s++){
+      const it=(state.plan[s]||[]).find(x=>x.code===pre);
+      if(it){ foundItem=it; foundSem=s; break; }
+    }
+    if(!foundItem){ missing.push(pre); continue; }
+    /* UUM rule: prerequisite must be PASSED (grade C or better).
+       If the prerequisite has been graded AND the grade is in the fail set, it's locked. */
+    if(foundItem.grade && FAIL_GRADES.has(foundItem.grade)){
+      missing.push(`${pre} (failed: ${foundItem.grade})`);
+    }
   }
   if(c.minCr){ const have=creditsBefore(semester); if(have<c.minCr) missing.push(`${c.minCr}cr min (have ${have})`); }
   if(c.all){ const have=creditsBefore(semester); const p=PROGRAMS[state.programId]; if(have<p.total-c.cr) missing.push(`finish other courses first`);}
+  /* Hiccup 3: semester offering constraint (odd / even / both). */
+  if(c.offer && c.offer!=="both"){
+    const isOdd = semester % 2 === 1;
+    const wantOdd = c.offer==="odd";
+    if(isOdd!==wantOdd) missing.push(`offered ${c.offer} semesters only`);
+  }
   return {ok:missing.length===0, missing};
 }
+
+/* Returns the set of English-pathway course codes a student SHOULD take given their MUET band.
+   L1 → MPB1013, MPB2013, MPB3013 (9 cr)
+   L2 → MPB2013, MPB3013 (6 cr)
+   L3 → MPB3013 + any ONE ESP (6 cr)
+   EX → exempted (none) */
+const PATHWAY_COURSES = {
+  L1: new Set(["MPB1013","MPB2013","MPB3013"]),
+  L2: new Set(["MPB2013","MPB3013"]),
+  L3: new Set(["MPB3013","SBLEK3023","SBLEK3033","SBLEK3043","SBLEK3053"]),
+  EX: new Set([])
+};
 
 function availableFor(s){
   const p=PROGRAMS[state.programId];
@@ -1708,6 +2010,12 @@ function availableFor(s){
   return p.courses.filter(c=>{
     if(placed.has(c.code)) return false;
     if(c.cat==="D" && c.track && state.trackId && c.track!==state.trackId) return false;
+    /* English pathway: only show B-category courses that belong to the chosen pathway */
+    if(c.cat==="B" && c.pathway){
+      if(!PATHWAY_COURSES[state.pathId].has(c.code)) return false;
+    }
+    /* Foreign language: only show courses matching the chosen language family */
+    if(c.lang && c.lang!==state.langId) return false;
     return true;
   });
 }
@@ -1719,7 +2027,7 @@ function gp(g){ const x=GRADES.find(y=>y.g===g); return x?x.p:null; }
 function computeGPA(){
   let cumP=0, cumC=0;
   const per=[];
-  const n=PROGRAMS[state.programId].semCount;
+  const n=totalSems();
   for(let s=1;s<=n;s++){
     let sp=0, sc=0;
     for(const it of (state.plan[s]||[])){
@@ -1765,20 +2073,67 @@ function renderTrackSelect(){
   sel.onchange=()=>{ state.trackId=sel.value; saveState(); renderAll(); };
 }
 
+function renderPathSelect(){
+  const sel=$("pathSelect"); const wrap=$("pathField");
+  const p=PROGRAMS[state.programId];
+  /* Show only if program actually uses the English-pathway B courses (currently BECONS) */
+  const hasPathwayCourses = p.courses.some(c=>c.cat==="B" && c.pathway);
+  if(!hasPathwayCourses){ wrap.style.display="none"; return; }
+  wrap.style.display="";
+  sel.value = state.pathId || "L2";
+  sel.onchange = ()=>{
+    state.pathId = sel.value;
+    /* Strip any placed B-pathway courses no longer eligible for this path */
+    const allowed = PATHWAY_COURSES[state.pathId];
+    for(const k of Object.keys(state.plan)){
+      state.plan[k] = state.plan[k].filter(it=>{
+        const c = getCourse(it.code);
+        if(c && c.cat==="B" && c.pathway && !allowed.has(c.code)) return false;
+        return true;
+      });
+    }
+    saveState(); renderAll();
+  };
+}
+
+function renderLangSelect(){
+  const sel=$("langSelect"); const wrap=$("langField");
+  const p=PROGRAMS[state.programId];
+  const hasLangCourses = p.courses.some(c=>c.lang);
+  if(!hasLangCourses){ wrap.style.display="none"; return; }
+  wrap.style.display="";
+  sel.value = state.langId || "MAN";
+  sel.onchange = ()=>{
+    state.langId = sel.value;
+    /* Drop placed foreign-language courses not in the chosen family */
+    for(const k of Object.keys(state.plan)){
+      state.plan[k] = state.plan[k].filter(it=>{
+        const c = getCourse(it.code);
+        if(c && c.lang && c.lang!==state.langId) return false;
+        return true;
+      });
+    }
+    saveState(); renderAll();
+  };
+}
+
 function renderSemesters(){
   const p=PROGRAMS[state.programId];
   const c=$("semesters"); c.innerHTML="";
-  for(let s=1;s<=p.semCount;s++){
+  const n = totalSems();
+  for(let s=1;s<=n;s++){
     const items=state.plan[s]||[];
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
     let cls=""; if(cr===0) cls=""; else if(cr<MIN_CR) cls="warn"; else if(cr>MAX_CR) cls="bad"; else cls="ok";
     const isShort=p.shortSems&&p.shortSems.includes(s);
+    const isExtra=s>p.semCount;
     const card=document.createElement("div");
-    card.className="sem-card"+(isShort?" short-sem":"");
+    card.className="sem-card"+(isShort?" short-sem":"")+(isExtra?" extra-sem":"");
     card.dataset.sem=s;
+    const parity = s%2===1 ? "Odd" : "Even";
     card.innerHTML=`
       <div class="sem-head">
-        <div class="sem-title"><span class="num">${s}</span>${isShort?"Short Sem":"Semester "+s}</div>
+        <div class="sem-title"><span class="num">${s}</span>${isExtra?"Extension "+s:(isShort?"Short Sem":"Semester "+s)} <span class="sem-parity">· ${parity}</span></div>
         <div class="sem-credits ${cls}">${cr} cr</div>
       </div>
       <div class="sem-courses"></div>
@@ -1817,10 +2172,25 @@ function renderSemesters(){
       const pr=isPrereqsMet(cc.code,s);
       const o=document.createElement("option");
       o.value=cc.code;
-      o.textContent=`${pr.ok?"":"🔒 "}${cc.code} · ${cc.en} (${cc.cr}cr)`;
+      let lockHint = "";
+      if(!pr.ok){
+        if(pr.missing.some(m=>m.includes("offered odd"))) lockHint = "🚫 ODD only · ";
+        else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 EVEN only · ";
+        else if(pr.missing.some(m=>m.includes("failed"))) lockHint = "❌ Prereq failed · ";
+        else lockHint = "🔒 ";
+      }
+      o.textContent=`${lockHint}${cc.code} · ${cc.en} (${cc.cr}cr)`;
       addSel.appendChild(o);
     });
   }
+  /* Add Semester controls (Hiccup 5) — only visible after at least the standard semesters */
+  const ctrl=document.createElement("div");
+  ctrl.className="sem-extra-ctrl";
+  ctrl.innerHTML = `
+    <button class="btn ghost" onclick="addExtraSemester()" title="Add an extension semester for students extending their study">＋ Add Semester</button>
+    ${(state.extraSems||0)>0 ? `<button class="btn ghost danger" onclick="removeExtraSemester()" title="Remove last extension semester">− Remove Extension</button>` : ""}
+  `;
+  c.appendChild(ctrl);
   attachDragHandlers();
 }
 
@@ -1971,7 +2341,7 @@ function renderAlerts(){
   const a=$("alerts");
   const issues=[];
   const p=PROGRAMS[state.programId];
-  for(let s=1;s<=p.semCount;s++){
+  for(let s=1;s<=totalSems();s++){
     const items=state.plan[s]||[];
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
     if(cr>0 && cr<MIN_CR && !(p.shortSems||[]).includes(s))
@@ -1981,7 +2351,7 @@ function renderAlerts(){
     for(const it of items){
       const pr=isPrereqsMet(it.code,s);
       if(!pr.ok) issues.push({lvl:"bad",msg:`${it.code} (Sem ${s}): missing ${pr.missing.join(", ")}`});
-      if(it.grade && RETAKE_GRADES.has(it.grade)) issues.push({lvl:"warn",msg:`${it.code} (Sem ${s}): ${it.grade} — retake required (UUM rule c)`});
+      if(it.grade && FAIL_GRADES.has(it.grade)) issues.push({lvl:"warn",msg:`${it.code} (Sem ${s}): ${it.grade} — retake required (UUM rule c)`});
     }
   }
   a.innerHTML = issues.slice(0,5).map(i=>`<div class="alert ${i.lvl==='bad'?'bad':'warn'}"><span class="icon">${i.lvl==='bad'?'⛔':'⚠️'}</span>${i.msg}</div>`).join("");
@@ -2015,7 +2385,7 @@ function exportTxt(){
     if(t) txt += `Specialization: ${t.en} (${t.ms})\n`;
   }
   txt += `Credits planned: ${total} / ${p.total}\nProjected CGPA: ${cgpa.toFixed(2)}\n\n`;
-  for(let s=1;s<=p.semCount;s++){
+  for(let s=1;s<=totalSems();s++){
     const items=state.plan[s]||[]; if(!items.length) continue;
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
     const isShort=p.shortSems&&p.shortSems.includes(s);
@@ -2033,11 +2403,45 @@ function exportTxt(){
   URL.revokeObjectURL(url);
 }
 
-function toggleTheme(){
-  state.theme = state.theme==="light"?"dark":"light";
-  document.body.dataset.theme=state.theme;
-  $("themeBtn").innerHTML = state.theme==="light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+function toggleThemeMenu(){
+  const menu=$("themeMenu"); const btn=$("themeBtn");
+  if(!menu||!btn) return;
+  if(menu.classList.contains("open")){
+    menu.classList.remove("open");
+    return;
+  }
+  /* Position fixed: anchor below-right of the theme button so it escapes
+     any overflow:hidden ancestors (.hero clips absolute children otherwise). */
+  const r = btn.getBoundingClientRect();
+  const menuWidth = 240;
+  let left = r.right - menuWidth;
+  if(left < 8) left = 8;                                  /* clamp left */
+  if(left + menuWidth > window.innerWidth - 8)
+    left = window.innerWidth - menuWidth - 8;             /* clamp right */
+  menu.style.top  = (r.bottom + 6) + "px";
+  menu.style.left = left + "px";
+  menu.classList.add("open");
+}
+function setTheme(name){
+  if(!THEMES[name]) return;
+  state.theme = name;
+  applyTheme(name);
   saveState();
+  const menu=$("themeMenu"); if(menu) menu.classList.remove("open");
+}
+/* Wire dropdown buttons, outside-click, scroll & resize close handlers */
+function initThemePicker(){
+  document.querySelectorAll(".theme-opt").forEach(b=>{
+    b.onclick = ()=> setTheme(b.dataset.themeSet);
+  });
+  const closeMenu = ()=>{ const m=$("themeMenu"); if(m) m.classList.remove("open"); };
+  document.addEventListener("click",e=>{
+    if(!e.target.closest(".theme-picker") && !e.target.closest(".theme-menu")){
+      closeMenu();
+    }
+  });
+  window.addEventListener("scroll", closeMenu, {passive:true});
+  window.addEventListener("resize", closeMenu);
 }
 
 /* ============================================================================
@@ -2067,7 +2471,7 @@ function quickAdd(code){
   /* add to first semester where prereqs are met & under max credits */
   const p=PROGRAMS[state.programId];
   const c=getCourse(code); if(!c) return;
-  for(let s=1;s<=p.semCount;s++){
+  for(let s=1;s<=totalSems();s++){
     const items=state.plan[s]||[];
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
     if(cr+c.cr>MAX_CR) continue;
@@ -2120,7 +2524,7 @@ function showHelp(){
     </table>
     <p style="font-size:11.5px;color:var(--muted)">Rule (c): grades C-, D+, D, F → must retake. M/TM (audit), TD (withdraw) → not counted in CGPA. X (barred) → cannot be redeemed.</p>
     <h3 style="font-size:14px;margin-top:14px">⭐ Dean's List</h3>
-    <p>Achieving a semester GPA of 3.50 or higher places you on the Dean's List.</p>
+    <p>Achieving a semester GPA of 3.67 or higher places you on the Dean's List (UUM rule).</p>
   `);
 }
 
@@ -2325,9 +2729,9 @@ function renderBadges(totalCr, target, cgpa, perSem){
   if(totalCr>=60) badges.push({c:"green",t:"⛰️ Halfway There"});
   if(totalCr>=target*0.9) badges.push({c:"purple",t:"🎯 Nearly There"});
   if(totalCr>=target) badges.push({c:"gold",t:"🏆 Full Credits"});
-  if(cgpa>=3.5) badges.push({c:"gold",t:"⭐ Dean's List"});
-  if(cgpa>=3.0 && cgpa<3.5) badges.push({c:"purple",t:"💎 Strong Standing"});
-  const deansCount = perSem.filter(r=>r.gpa!==null && r.gpa>=3.5).length;
+  if(cgpa>=DEANS_LIST) badges.push({c:"gold",t:"⭐ Dean's List"});
+  if(cgpa>=3.0 && cgpa<DEANS_LIST) badges.push({c:"purple",t:"💎 Strong Standing"});
+  const deansCount = perSem.filter(r=>r.gpa!==null && r.gpa>=DEANS_LIST).length;
   if(deansCount>=2) badges.push({c:"gold",t:`✨ ${deansCount}× Dean's List`});
   if(perSem.filter(r=>r.cr>0).length>=4) badges.push({c:"",t:"📚 Steady Planner"});
   wrap.innerHTML = badges.map(b=>`<span class="achievement ${b.c}">${b.t}</span>`).join("");
@@ -2446,13 +2850,35 @@ function cgpaCalcReset(){
 function renderAll(){
   renderProgramSelect();
   renderTrackSelect();
+  renderPathSelect();
+  renderLangSelect();
   renderSemesters();
   renderSummary();
   renderGraph();
 }
 
+/* Hiccup 5: Add Semester — extend the planner with an extra semester for students
+   who don't finish in the standard sequence. */
+function addExtraSemester(){
+  state.extraSems = (state.extraSems||0) + 1;
+  const newIdx = totalSems();
+  state.plan[newIdx] = state.plan[newIdx] || [];
+  saveState(); renderAll();
+}
+function removeExtraSemester(){
+  const n = totalSems();
+  if((state.extraSems||0) <= 0) return;
+  if((state.plan[n]||[]).length){
+    if(!confirm(`Semester ${n} contains ${state.plan[n].length} course(s). Remove anyway?`)) return;
+  }
+  delete state.plan[n];
+  state.extraSems--;
+  saveState(); renderAll();
+}
+
 loadState();
-$("themeBtn").innerHTML = state.theme==="light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+initThemePicker();
+applyTheme(state.theme);
 initParticles();
 renderAll();
 gpaCalcRender();
