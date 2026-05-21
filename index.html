@@ -224,10 +224,10 @@ a:hover{text-decoration:underline}
 .hero{
   position:relative;color:#fff;padding:32px 32px 38px;
   background:
-    linear-gradient(180deg,rgba(10,10,12,.18) 0%,rgba(10,10,12,.55) 70%,rgba(10,10,12,.78) 100%),
-    url("images/sefb%20building.jpg");
+    linear-gradient(180deg,rgba(10,10,12,.82) 0%,rgba(10,10,12,.72) 45%,rgba(10,10,12,.60) 100%),
+    url("images/ilovesefb2.png");
   background-size:cover,cover;
-  background-position:center,center 30%;
+  background-position:center,center bottom;
   background-repeat:no-repeat;
   box-shadow:inset 0 -1px 0 rgba(255,255,255,.06), 0 24px 48px rgba(0,0,0,.5);
   overflow:hidden;
@@ -266,8 +266,9 @@ a:hover{text-decoration:underline}
 .hero-brand-fallback .l3{font-size:10.5px;color:#fdba74;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
 
 .hero h1{
-  font-size:36px;font-weight:900;letter-spacing:-.035em;margin-bottom:10px;
-  line-height:1.05;
+  font-family:'Trebuchet MS','Lucida Sans Unicode','Verdana','Tahoma',system-ui,sans-serif;
+  font-size:clamp(22px,2.8vw,34px);font-weight:900;font-style:italic;
+  letter-spacing:-.015em;margin-bottom:10px;line-height:1.05;
 }
 .hero h1 .title-grad{
   background:linear-gradient(135deg,#fff 0%,#fed7aa 55%,#fb923c 100%);
@@ -277,15 +278,45 @@ a:hover{text-decoration:underline}
   font-size:13.5px;opacity:.85;font-weight:500;letter-spacing:.01em;line-height:1.55;
   max-width:660px;color:#d1d5db;
 }
-.hero .pills{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.hero .pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .hero .pill{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 15px;border-radius:10px;font-size:12.5px;font-weight:700;
   background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);letter-spacing:.04em;
-  color:#fff;
+  border:1px solid rgba(255,255,255,.10);letter-spacing:.02em;
+  color:#fff;cursor:pointer;
+  transition:all .2s cubic-bezier(.4,1.6,.5,1);
+  font-family:inherit;
+}
+.hero .pill:hover{
+  background:rgba(251,146,60,.20);border-color:rgba(251,146,60,.50);
+  color:#fdba74;transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(249,115,22,.25);
 }
 .hero .pill.accent{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.30);color:#fdba74}
+.hero .pill.accent:hover{background:rgba(251,146,60,.30);border-color:rgba(251,146,60,.60)}
+
+/* Hero footer stats strip — live counters at the bottom of the hero */
+.hero-stats{
+  margin-top:18px;padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.10);
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-size:11.5px;font-weight:600;letter-spacing:.04em;
+  color:#cbd5e1;text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+.hero-stats .hs-item{display:inline-flex;align-items:center;gap:6px}
+.hero-stats .hs-item strong{color:#fff;font-weight:800;letter-spacing:0}
+.hero-stats .hs-sep{opacity:.30;font-weight:400;user-select:none}
+.hero-stats .hs-dot{
+  width:8px;height:8px;border-radius:50%;background:#22c55e;
+  box-shadow:0 0 0 3px rgba(34,197,94,.20);
+  animation:hsDotPulse 2s ease-in-out infinite;
+}
+@keyframes hsDotPulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.22)}
+  50%{box-shadow:0 0 0 6px rgba(34,197,94,.04)}
+}
+
 .hero-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .icon-btn{
   display:inline-flex;align-items:center;gap:6px;
@@ -468,7 +499,7 @@ body.dark-mode .sem-card.extra-sem{background:repeating-linear-gradient(135deg,#
   padding:8px 10px;border-radius:9px;
   background:var(--panel-solid);
   border:1px solid var(--line);
-  border-left-width:4px;
+  border-left-width:6px;
   font-size:12px;
   cursor:grab;
   transition:all .2s;
@@ -536,6 +567,12 @@ body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fff}
 }
 .add-row select:hover{border-color:var(--brand);background:var(--brand-grad-soft)}
 .add-row select:focus{outline:none;border-color:var(--brand);border-style:solid}
+.add-row select optgroup{
+  font-weight:800;color:var(--brand);font-style:normal;
+  background:var(--panel-solid);
+  padding:4px 0;letter-spacing:.04em;text-transform:uppercase;font-size:11px;
+}
+.add-row select option{font-weight:400;color:var(--ink);padding:2px 0;text-transform:none;font-size:12.5px}
 .add-row .add-btn{
   flex:0 0 auto;flex-shrink:0;
   padding:7px 14px;font-size:11px;font-weight:800;
@@ -564,27 +601,69 @@ body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fff}
 ============================================================================ */
 .gauge-wrap{display:flex;justify-content:center;margin:8px 0 18px;position:relative}
 .gauge-wrap::before{
-  content:"";position:absolute;width:240px;height:120px;
-  background:radial-gradient(ellipse at center,rgba(249,115,22,.25),transparent 70%);
-  top:30px;filter:blur(20px);z-index:-1;
+  content:"";position:absolute;width:280px;height:140px;
+  background:radial-gradient(ellipse at center,rgba(249,115,22,.35),transparent 70%);
+  top:20px;filter:blur(28px);z-index:-1;
+  animation:gaugeGlow 4s ease-in-out infinite;
 }
-.gauge{position:relative;width:280px;height:165px}
+@keyframes gaugeGlow{
+  0%,100%{opacity:.6;transform:scale(.95)}
+  50%{opacity:1;transform:scale(1.05)}
+}
+.gauge{position:relative;width:280px;height:170px}
 .gauge svg{width:100%;height:100%;overflow:visible}
 .gauge .gauge-track{fill:none;stroke:rgba(15,23,42,.08);stroke-width:18;stroke-linecap:round}
 body.dark-mode .gauge .gauge-track{stroke:rgba(255,255,255,.10)}
-.gauge .gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 4px 12px rgba(249,115,22,.4))}
+.gauge .gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.4,1.6,.5,1);filter:drop-shadow(0 4px 16px rgba(249,115,22,.55))}
+.gauge.deans .gauge-fill{filter:drop-shadow(0 0 12px rgba(34,197,94,.7)) drop-shadow(0 0 28px rgba(251,191,36,.5))}
+
+/* Animated needle */
+#gaugeNeedle line{stroke-width:3;filter:drop-shadow(0 2px 6px rgba(249,115,22,.55))}
+#gaugeNeedle circle:first-of-type{filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))}
+
+/* Sparkles — visible at Dean's List */
+.gauge-sparkles{opacity:0;transition:opacity .6s}
+.gauge.deans .gauge-sparkles{opacity:1}
+.gauge-sparkles .sparkle{
+  font-size:14px;fill:#fbbf24;text-anchor:middle;
+  transform-origin:center;transform-box:fill-box;
+  animation:sparkleFloat 2.4s ease-in-out infinite;
+}
+.gauge-sparkles .sparkle.s1{animation-delay:0s;fill:#fbbf24}
+.gauge-sparkles .sparkle.s2{animation-delay:.4s;fill:#f59e0b}
+.gauge-sparkles .sparkle.s3{animation-delay:.8s;fill:#fcd34d}
+.gauge-sparkles .sparkle.s4{animation-delay:1.2s;fill:#fde68a}
+.gauge-sparkles .sparkle.s5{animation-delay:.2s;font-size:18px}
+@keyframes sparkleFloat{
+  0%,100%{opacity:.2;transform:translateY(0) scale(.7) rotate(0deg)}
+  50%{opacity:1;transform:translateY(-6px) scale(1.2) rotate(180deg)}
+}
+
 .gauge .gauge-label{
   position:absolute;left:0;right:0;top:52%;text-align:center;
-  font-size:54px;font-weight:900;letter-spacing:-.05em;line-height:1;
+  font-size:58px;font-weight:900;letter-spacing:-.05em;line-height:1;
   background:linear-gradient(135deg,#fbbf24 0%,#f97316 50%,#dc2626 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 2px 8px rgba(249,115,22,.35));
+  transition:transform .25s cubic-bezier(.4,1.6,.5,1), filter .35s;
+}
+.gauge.deans .gauge-label{
+  background:linear-gradient(135deg,#fde68a 0%,#fbbf24 30%,#f59e0b 60%,#22c55e 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 14px rgba(251,191,36,.6)) drop-shadow(0 0 24px rgba(34,197,94,.4));
+  animation:labelShimmer 2.5s ease-in-out infinite;
+}
+@keyframes labelShimmer{
+  0%,100%{filter:drop-shadow(0 0 14px rgba(251,191,36,.6)) drop-shadow(0 0 24px rgba(34,197,94,.4))}
+  50%{filter:drop-shadow(0 0 22px rgba(251,191,36,.9)) drop-shadow(0 0 34px rgba(34,197,94,.6))}
 }
 .gauge .gauge-cap{
   position:absolute;left:0;right:0;bottom:0;text-align:center;
   font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;
 }
+.gauge.deans .gauge-cap{color:#fbbf24}
 .gauge .ticks{position:absolute;inset:0;pointer-events:none}
-.gauge .tick{position:absolute;font-size:9px;color:var(--muted);font-weight:600}
+.gauge .tick{position:absolute;font-size:9.5px;color:var(--muted);font-weight:700}
 .gauge .tick.t0{bottom:8px;left:6px}
 .gauge .tick.t1{top:6px;left:18%}
 .gauge .tick.t2{top:-4px;left:48%;transform:translateX(-50%)}
@@ -665,11 +744,31 @@ body.dark-mode .progress-bar{background:rgba(255,255,255,.06)}
 .gpa-table .deans::before{content:"⭐";position:absolute;left:4px;top:50%;transform:translateY(-50%);font-size:10px}
 
 /* Legend */
-.legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px;font-size:10.5px}
-.legend-row{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;background:rgba(15,23,42,.03)}
-body.dark-mode .legend-row{background:rgba(255,255,255,.04)}
-.legend-row .sw{width:10px;height:10px;border-radius:3px;flex-shrink:0}
-.legend-row .lab{font-weight:500;color:var(--ink-soft);font-size:10px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.legend-row{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:10px;
+  /* background + border-left are applied inline so each card matches its cat colour */
+  cursor:pointer;
+  transition:all .2s cubic-bezier(.4,1.6,.5,1);
+  position:relative;
+}
+.legend-row:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.15) saturate(1.2);
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+.legend-row::after{
+  content:"›";position:absolute;right:10px;
+  font-size:18px;font-weight:800;color:var(--muted);
+  opacity:0;transition:all .2s;
+}
+.legend-row:hover::after{opacity:1;color:var(--brand);transform:translateX(2px)}
+/* dark mode keeps the same inline cat-coloured background — no override needed */
+.legend-row .sw{width:14px;height:14px;border-radius:5px;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.legend-row .lab{font-weight:700;color:var(--ink-soft);font-size:12px;letter-spacing:.01em;transition:color .2s}
+.legend-row .cnt{font-size:10px;color:var(--muted);font-weight:600;margin-left:auto;margin-right:18px}
+.legend-row:hover .cnt{color:var(--brand)}
 
 /* Footer */
 .foot{text-align:center;padding:20px;color:var(--muted);font-size:11px;line-height:1.6}
@@ -685,10 +784,104 @@ body.dark-mode .legend-row{background:rgba(255,255,255,.04)}
 .modal-bg.active{display:flex}
 .modal{
   background:var(--panel-solid);border-radius:18px;padding:24px;
-  max-width:620px;width:100%;max-height:85vh;overflow-y:auto;
+  max-width:820px;width:100%;max-height:85vh;overflow-y:auto;
   box-shadow:var(--shadow-lg);
   animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
 }
+
+/* Category detail modal styles */
+.cat-hero{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 18px;border-radius:14px;margin-bottom:14px;
+}
+.cat-hero-letter{
+  flex-shrink:0;width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;font-weight:900;color:#fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+.cat-hero-body{flex:1;min-width:0}
+.cat-hero-title{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.cat-hero-ms{font-size:12.5px;color:var(--muted);font-weight:500;margin-top:2px}
+.cat-hero-prog{text-align:right;flex-shrink:0;min-width:130px}
+.cat-hero-prog-num{font-size:14px;font-weight:800;color:var(--ink)}
+.cat-hero-prog-num strong{color:var(--brand);font-size:18px}
+.cat-hero-prog-bar{width:100%;height:6px;background:rgba(15,23,42,.08);border-radius:3px;overflow:hidden;margin:5px 0 3px}
+.cat-hero-prog-bar > div{height:100%;border-radius:3px;transition:width .6s}
+body.dark-mode .cat-hero-prog-bar{background:rgba(255,255,255,.10)}
+.cat-hero-prog-pct{font-size:10.5px;color:var(--muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+
+.cat-desc{
+  font-size:13px;line-height:1.65;color:var(--ink-soft);
+  padding:12px 14px;background:rgba(15,23,42,.03);border-radius:10px;
+  margin:0 0 12px;
+}
+body.dark-mode .cat-desc{background:rgba(255,255,255,.04)}
+
+.cat-list-hdr{
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brand);margin:14px 0 8px;
+}
+.cat-table-wrap{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cat-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.cat-table th{
+  background:var(--brand-grad-soft);color:var(--brand);
+  text-align:left;padding:9px 12px;font-size:10.5px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.cat-table td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+.cat-table tr:hover td{background:rgba(249,115,22,.04)}
+.cat-code{
+  font-family:'JetBrains Mono','Menlo','Consolas',monospace;
+  font-size:11px;font-weight:700;color:var(--ink);
+  background:rgba(15,23,42,.06);padding:2px 7px;border-radius:5px;
+}
+body.dark-mode .cat-code{background:rgba(255,255,255,.08);color:#fafafa}
+.cat-name-en{font-weight:700;color:var(--ink);font-size:13px}
+.cat-name-ms{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:1px}
+.cat-meta{font-size:10.5px;color:var(--muted);margin-top:3px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cat-cr{font-weight:800;color:var(--brand);white-space:nowrap;text-align:right}
+.cat-status{
+  display:inline-block;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;
+  white-space:nowrap;letter-spacing:.02em;
+}
+.cat-status.ok{background:rgba(34,197,94,.18);color:#16a34a}
+.cat-status.bad{background:rgba(239,68,68,.18);color:#dc2626}
+.cat-status.pending{background:rgba(148,163,184,.18);color:var(--muted)}
+body.dark-mode .cat-status.ok{background:rgba(34,197,94,.22);color:#6ee7b7}
+body.dark-mode .cat-status.bad{background:rgba(239,68,68,.22);color:#fca5a5}
+.cat-tag{
+  display:inline-block;font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:4px;
+  background:rgba(15,23,42,.08);color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;
+}
+.cat-tag.offer{background:rgba(249,115,22,.18);color:#ea580c}
+body.dark-mode .cat-tag{background:rgba(255,255,255,.08);color:#d4d4d8}
+body.dark-mode .cat-tag.offer{background:rgba(251,146,60,.22);color:#fdba74}
+
+/* Programs overview cards */
+.prog-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:8px}
+.prog-card{
+  padding:14px 16px;border-radius:12px;background:rgba(15,23,42,.03);
+  cursor:pointer;transition:all .25s cubic-bezier(.4,1.6,.5,1);
+}
+.prog-card:hover{
+  background:rgba(249,115,22,.06);transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.10);
+}
+body.dark-mode .prog-card{background:rgba(255,255,255,.04)}
+body.dark-mode .prog-card:hover{background:rgba(249,115,22,.10)}
+.prog-card-hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.prog-card-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.prog-card-title{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.prog-card-ms{font-size:11.5px;color:var(--muted);margin-top:1px}
+.prog-card-stats{display:flex;gap:14px;font-size:11px;color:var(--ink-soft);margin-bottom:6px}
+.prog-card-stats strong{color:var(--brand);font-size:13px}
+.prog-card-intro{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin:6px 0}
+.prog-card-cta{font-size:11px;font-weight:700;color:var(--brand);text-align:right;letter-spacing:.04em}
 @keyframes popIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 .modal h3{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
 .modal .close{
@@ -917,14 +1110,14 @@ body.dark-mode select option:checked{
 body.dark-mode .course{
   background:#1a1a1f;color:#fafafa;border-color:rgba(255,255,255,.08)
 }
-body.dark-mode .course[data-cat="A"]{background:linear-gradient(135deg,rgba(234,179,8,.18) 0%,rgba(234,179,8,.10) 100%)}
-body.dark-mode .course[data-cat="B"]{background:linear-gradient(135deg,rgba(16,185,129,.18) 0%,rgba(16,185,129,.10) 100%)}
-body.dark-mode .course[data-cat="C"]{background:linear-gradient(135deg,rgba(59,130,246,.20) 0%,rgba(59,130,246,.10) 100%)}
-body.dark-mode .course[data-cat="D"]{background:linear-gradient(135deg,rgba(236,72,153,.18) 0%,rgba(236,72,153,.10) 100%)}
-body.dark-mode .course[data-cat="E"]{background:linear-gradient(135deg,rgba(168,85,247,.18) 0%,rgba(168,85,247,.10) 100%)}
-body.dark-mode .course[data-cat="F"]{background:linear-gradient(135deg,rgba(249,115,22,.18) 0%,rgba(249,115,22,.10) 100%)}
-body.dark-mode .course[data-cat="G"]{background:linear-gradient(135deg,rgba(239,68,68,.18) 0%,rgba(239,68,68,.10) 100%)}
-body.dark-mode .course[data-cat="H"]{background:linear-gradient(135deg,rgba(6,182,212,.18) 0%,rgba(6,182,212,.10) 100%)}
+body.dark-mode .course[data-cat="A"]{background:linear-gradient(135deg,rgba(234,179,8,.32) 0%,rgba(234,179,8,.16) 100%)}
+body.dark-mode .course[data-cat="B"]{background:linear-gradient(135deg,rgba(16,185,129,.32) 0%,rgba(16,185,129,.16) 100%)}
+body.dark-mode .course[data-cat="C"]{background:linear-gradient(135deg,rgba(59,130,246,.34) 0%,rgba(59,130,246,.18) 100%)}
+body.dark-mode .course[data-cat="D"]{background:linear-gradient(135deg,rgba(236,72,153,.32) 0%,rgba(236,72,153,.16) 100%)}
+body.dark-mode .course[data-cat="E"]{background:linear-gradient(135deg,rgba(168,85,247,.32) 0%,rgba(168,85,247,.16) 100%)}
+body.dark-mode .course[data-cat="F"]{background:linear-gradient(135deg,rgba(249,115,22,.34) 0%,rgba(249,115,22,.18) 100%)}
+body.dark-mode .course[data-cat="G"]{background:linear-gradient(135deg,rgba(239,68,68,.32) 0%,rgba(239,68,68,.16) 100%)}
+body.dark-mode .course[data-cat="H"]{background:linear-gradient(135deg,rgba(6,182,212,.34) 0%,rgba(6,182,212,.18) 100%)}
 body.dark-mode .course .name .en{color:#fafafa}
 body.dark-mode .course .name .ms{color:#a1a1aa}
 body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fafafa}
@@ -1068,14 +1261,14 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     </div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
       <div>
-        <h1><span class="title-grad">Degree Planner</span></h1>
+        <h1><span class="title-grad">Undergraduate Degree Planning Simulator</span></h1>
         <div class="tag">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
         <div class="pills">
-          <span class="pill accent">● Live</span>
-          <span class="pill">5 Programs</span>
-          <span class="pill">100+ Courses</span>
-          <span class="pill">Prereq Engine</span>
-          <span class="pill">Graduation Audit</span>
+          <button class="pill accent" onclick="showLiveStatus()" title="See live status & last-saved time">● Live</button>
+          <button class="pill" onclick="showProgramsOverview()" title="Open Programs Overview">5 Programs</button>
+          <button class="pill" onclick="showAllCourses()" title="Browse all courses in this program">100+ Courses</button>
+          <button class="pill" onclick="showPrereqEngineInfo()" title="How prerequisite locking works">Prereq Engine</button>
+          <button class="pill" onclick="jumpToAuditTab()" title="Jump to Graduation Audit tab">Graduation Audit</button>
         </div>
       </div>
       <div class="hero-actions">
@@ -1100,9 +1293,21 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
             <button class="theme-opt" data-theme-set="high-contrast"><span class="sw" style="background:#000;border:2px solid #ffff00"></span>High Contrast</button>
           </div>
         </div>
+        <button class="icon-btn" onclick="showAboutDashboard()">ℹ️ About</button>
         <button class="icon-btn" onclick="showHelp()">❓ Help</button>
         <button class="icon-btn primary" onclick="window.print()">🖨️ Print Plan</button>
       </div>
+    </div>
+    <div class="hero-stats" id="heroStats">
+      <span class="hs-item"><span class="hs-dot"></span>Auto-saved</span>
+      <span class="hs-sep">·</span>
+      <span class="hs-item"><strong id="hsCredits">0 / 0</strong>&nbsp;credits planned</span>
+      <span class="hs-sep">·</span>
+      <span class="hs-item"><strong id="hsSems">0</strong>&nbsp;semesters</span>
+      <span class="hs-sep">·</span>
+      <span class="hs-item">Session&nbsp;<strong>A252</strong></span>
+      <span class="hs-sep">·</span>
+      <span class="hs-item">Last edit&nbsp;<strong id="hsLastEdit">just now</strong></span>
     </div>
   </div>
 </header>
@@ -1146,7 +1351,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     <button class="btn primary-green" onclick="loadRecommended()">📋 Load Recommended Plan</button>
     <button class="btn ghost" onclick="exportTxt()">📄 Export</button>
     <button class="btn ghost danger" onclick="resetPlan()">↺ Reset</button>
-    <span class="meta"><span class="dot"></span>Auto-saved</span>
   </div>
 
   <div class="layout">
@@ -1174,8 +1378,28 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
                   <stop offset="1" stop-color="#22c55e"/>
                 </linearGradient>
               </defs>
+              <defs>
+                <filter id="gauge-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
               <path class="gauge-track" d="M 20 110 A 80 80 0 0 1 180 110" stroke="rgba(15,23,42,.08)"/>
-              <path id="gaugeFill" class="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" stroke="url(#gauge-grad)" stroke-dasharray="251" stroke-dashoffset="251"/>
+              <path id="gaugeFill" class="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" stroke="url(#gauge-grad)" stroke-dasharray="251" stroke-dashoffset="251" filter="url(#gauge-glow)"/>
+              <!-- Animated needle -->
+              <g id="gaugeNeedle" style="transform-origin:100px 110px;transition:transform 1.2s cubic-bezier(.4,1.6,.5,1)">
+                <line x1="100" y1="110" x2="100" y2="40" stroke="url(#gauge-grad)" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="100" cy="110" r="7" fill="var(--panel-solid)" stroke="url(#gauge-grad)" stroke-width="3"/>
+                <circle cx="100" cy="110" r="2.5" fill="url(#gauge-grad)"/>
+              </g>
+              <!-- Sparkles (visible only for Dean's List) -->
+              <g id="gaugeSparkles" class="gauge-sparkles">
+                <text x="30"  y="50" class="sparkle s1">✦</text>
+                <text x="170" y="50" class="sparkle s2">✧</text>
+                <text x="60"  y="25" class="sparkle s3">✦</text>
+                <text x="140" y="25" class="sparkle s4">✧</text>
+                <text x="100" y="15" class="sparkle s5">⭐</text>
+              </g>
             </svg>
             <div class="ticks">
               <span class="tick t0">0.00</span>
@@ -1186,6 +1410,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
             </div>
             <div class="gauge-label" id="cgpaLabel">0.00</div>
             <div class="gauge-cap">Projected CGPA</div>
+            <!-- Pulsing background orbs -->
           </div>
         </div>
         <div class="stats-row">
@@ -1355,7 +1580,7 @@ PROGRAMS.BFIN = {
     {id:"INV",en:"Investment Management",ms:"Pengurusan Pelaburan"},
     {id:"WLT",en:"Wealth Management",ms:"Pengurusan Kekayaan"}
   ],
-  shortSems:[],
+  shortSems:[8],
   courses:[
     /* A */
     {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
@@ -1610,7 +1835,7 @@ PROGRAMS.BECONS = {
     {l:"H",ms:"Latihan Industri",en:"Industrial Training",req:8}
   ],
   tracks:[],
-  shortSems:[],
+  shortSems:[7],
   courses:[
     /* A */
     {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
@@ -1818,7 +2043,7 @@ PROGRAMS.BAGRO = {
     {l:"F",ms:"Latihan Industri",en:"Industrial Training",req:8}
   ],
   tracks:[],
-  shortSems:[],
+  shortSems:[7],
   courses:[
     /* A */
     {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
@@ -1915,7 +2140,37 @@ let state = {
 
 function totalSems(){ const p=PROGRAMS[state.programId]; return (p?.semCount||8) + (state.extraSems||0); }
 function emptyPlan(){ const p={}; const n=totalSems(); for(let i=1;i<=n;i++) p[i]=[]; return p; }
-function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function saveState(){
+  state.lastSaved = Date.now();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  renderHeroStats();
+}
+function relativeTime(ts){
+  if(!ts) return "never";
+  const diff = Math.floor((Date.now() - ts)/1000);
+  if(diff < 5)      return "just now";
+  if(diff < 60)     return diff + "s ago";
+  if(diff < 3600)   return Math.floor(diff/60)  + " min ago";
+  if(diff < 86400)  return Math.floor(diff/3600)+ " hr ago";
+  return Math.floor(diff/86400) + " days ago";
+}
+function renderHeroStats(){
+  const credEl = document.getElementById("hsCredits");
+  const semsEl = document.getElementById("hsSems");
+  const lastEl = document.getElementById("hsLastEdit");
+  if(!credEl) return;
+  const p = PROGRAMS[state.programId];
+  let totalCr = 0;
+  for(const sem in state.plan){
+    for(const it of (state.plan[sem]||[])){
+      const c = getCourse(it.code);
+      if(c) totalCr += c.cr;
+    }
+  }
+  credEl.textContent = `${totalCr} / ${p ? p.total : 0}`;
+  semsEl.textContent = totalSems();
+  lastEl.textContent = relativeTime(state.lastSaved);
+}
 function loadState(){
   try{
     const r=localStorage.getItem(STORAGE_KEY);
@@ -1926,6 +2181,7 @@ function loadState(){
   if(!state.pathId) state.pathId="L2";
   if(!state.langId) state.langId="MAN";
   if(typeof state.extraSems!=="number") state.extraSems=0;
+  if(!state.lastSaved) state.lastSaved=Date.now();
   applyTheme(state.theme);
 }
 
@@ -1968,7 +2224,16 @@ function creditsBefore(s){ let t=0; for(let i=1;i<s;i++) for(const it of (state.
 function isPrereqsMet(code, semester){
   const c=getCourse(code); if(!c) return {ok:true,missing:[]};
   const missing=[];
+  const pathwayAllowed = PATHWAY_COURSES[state.pathId] || new Set();
   for(const pre of (c.pre||[])){
+    /* Pathway-aware exemption (Hiccup 1 follow-up):
+       If the prereq is a B-cat pathway course that the student's chosen English path
+       does NOT require, assume it was satisfied before entry (per their MUET band)
+       and skip the check. */
+    const preCourse = getCourse(pre);
+    if(preCourse && preCourse.cat==="B" && preCourse.pathway && !pathwayAllowed.has(pre)){
+      continue;
+    }
     let foundItem=null, foundSem=null;
     for(let s=1;s<semester;s++){
       const it=(state.plan[s]||[]).find(x=>x.code===pre);
@@ -2009,13 +2274,12 @@ function availableFor(s){
   const placed=new Set(); Object.values(state.plan).forEach(a=>a.forEach(it=>placed.add(it.code)));
   return p.courses.filter(c=>{
     if(placed.has(c.code)) return false;
+    /* Specialization track is still strict — a student is in only ONE track */
     if(c.cat==="D" && c.track && state.trackId && c.track!==state.trackId) return false;
-    /* English pathway: only show B-category courses that belong to the chosen pathway */
-    if(c.cat==="B" && c.pathway){
-      if(!PATHWAY_COURSES[state.pathId].has(c.code)) return false;
-    }
-    /* Foreign language: only show courses matching the chosen language family */
-    if(c.lang && c.lang!==state.langId) return false;
+    /* English pathway & foreign-language family are GUIDES, not strict filters:
+       all required courses (English MPB/SBLEK, all 5 foreign languages) appear in the
+       dropdown so students can browse and pick. The Pathway/Language selectors
+       still drive the audit and the recommended plan. */
     return true;
   });
 }
@@ -2076,22 +2340,15 @@ function renderTrackSelect(){
 function renderPathSelect(){
   const sel=$("pathSelect"); const wrap=$("pathField");
   const p=PROGRAMS[state.programId];
-  /* Show only if program actually uses the English-pathway B courses (currently BECONS) */
+  /* Show only if program actually uses the English-pathway B courses */
   const hasPathwayCourses = p.courses.some(c=>c.cat==="B" && c.pathway);
   if(!hasPathwayCourses){ wrap.style.display="none"; return; }
   wrap.style.display="";
   sel.value = state.pathId || "L2";
   sel.onchange = ()=>{
     state.pathId = sel.value;
-    /* Strip any placed B-pathway courses no longer eligible for this path */
-    const allowed = PATHWAY_COURSES[state.pathId];
-    for(const k of Object.keys(state.plan)){
-      state.plan[k] = state.plan[k].filter(it=>{
-        const c = getCourse(it.code);
-        if(c && c.cat==="B" && c.pathway && !allowed.has(c.code)) return false;
-        return true;
-      });
-    }
+    /* No longer strips placed courses — student keeps full control of their plan.
+       The pathway selection drives prereq exemptions and recommended plan only. */
     saveState(); renderAll();
   };
 }
@@ -2105,14 +2362,7 @@ function renderLangSelect(){
   sel.value = state.langId || "MAN";
   sel.onchange = ()=>{
     state.langId = sel.value;
-    /* Drop placed foreign-language courses not in the chosen family */
-    for(const k of Object.keys(state.plan)){
-      state.plan[k] = state.plan[k].filter(it=>{
-        const c = getCourse(it.code);
-        if(c && c.lang && c.lang!==state.langId) return false;
-        return true;
-      });
-    }
+    /* No longer strips placed courses — student keeps full control. */
     saveState(); renderAll();
   };
 }
@@ -2168,19 +2418,53 @@ function renderSemesters(){
     });
     c.appendChild(card);
     const addSel=card.querySelector(`#addSel-${s}`);
-    availableFor(s).sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>{
-      const pr=isPrereqsMet(cc.code,s);
-      const o=document.createElement("option");
-      o.value=cc.code;
-      let lockHint = "";
-      if(!pr.ok){
-        if(pr.missing.some(m=>m.includes("offered odd"))) lockHint = "🚫 ODD only · ";
-        else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 EVEN only · ";
-        else if(pr.missing.some(m=>m.includes("failed"))) lockHint = "❌ Prereq failed · ";
-        else lockHint = "🔒 ";
+    /* Show EVERY course in the program, grouped by category letter (A–H):
+        - already placed in some semester → "✓ Sem X · CODE · Name" (disabled, greyed out)
+        - locked (prereq / sem-offering / failed prereq) → 🔒 / 🚫 / ❌ prefix
+        - eligible → plain text, selectable
+       Specialization-track filter still applies (a BFIN-INV student can't see WLT-only D-cat courses). */
+    const placementMap = {};
+    Object.entries(state.plan).forEach(([k, items])=>{
+      items.forEach(it=>{ placementMap[it.code] = +k; });
+    });
+    const byCat = {};
+    p.courses.forEach(cc=>{
+      if(cc.cat==="D" && cc.track && state.trackId && cc.track!==state.trackId) return;
+      (byCat[cc.cat] = byCat[cc.cat] || []).push(cc);
+    });
+    p.components.forEach(comp=>{
+      const grp = document.createElement("optgroup");
+      grp.label = `${comp.l}. ${comp.en}`;
+      const list = byCat[comp.l] || [];
+      if(!list.length){
+        const o = document.createElement("option");
+        o.disabled = true;
+        o.textContent = `   (no courses available)`;
+        grp.appendChild(o);
+      } else {
+        list.sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>{
+          const placedSem = placementMap[cc.code];
+          const o = document.createElement("option");
+          if(placedSem != null){
+            /* Already in the plan — disabled so it can't be added twice */
+            o.disabled = true;
+            o.textContent = `✓ Sem ${placedSem} · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+          } else {
+            const pr = isPrereqsMet(cc.code, s);
+            o.value = cc.code;
+            let lockHint = "";
+            if(!pr.ok){
+              if(pr.missing.some(m=>m.includes("offered odd")))      lockHint = "🚫 ODD only · ";
+              else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 EVEN only · ";
+              else if(pr.missing.some(m=>m.includes("failed")))       lockHint = "❌ Prereq failed · ";
+              else                                                     lockHint = "🔒 ";
+            }
+            o.textContent = `${lockHint}${cc.code} · ${cc.en} (${cc.cr}cr)`;
+          }
+          grp.appendChild(o);
+        });
       }
-      o.textContent=`${lockHint}${cc.code} · ${cc.en} (${cc.cr}cr)`;
-      addSel.appendChild(o);
+      addSel.appendChild(grp);
     });
   }
   /* Add Semester controls (Hiccup 5) — only visible after at least the standard semesters */
@@ -2256,6 +2540,16 @@ function renderSummary(){
   const ratio=Math.min(1,Math.max(0,cgpa/4));
   const dash=251;
   $("gaugeFill").setAttribute("stroke-dashoffset", String(dash*(1-ratio)));
+  /* Rotate the needle: arc spans -90° (CGPA 0) to +90° (CGPA 4).
+     Each unit of CGPA = 45° of rotation. */
+  const needle = $("gaugeNeedle");
+  if(needle){
+    const angle = -90 + (ratio * 180);
+    needle.style.transform = `rotate(${angle}deg)`;
+  }
+  /* Toggle .deans class on the gauge container for Dean's List flair (shimmer + sparkles + green halo) */
+  const gaugeEl = document.querySelector(".gauge");
+  if(gaugeEl) gaugeEl.classList.toggle("deans", cgpa >= DEANS_LIST);
   animateNumber($("cgpaLabel"), cgpa, 2, 700);
   $("cgpaBadge").textContent = cgpa >= DEANS_LIST ? "Dean's List ⭐" : cgpa >= 2.00 ? "On track" : cgpa>0 ? "Below 2.00" : "—";
 
@@ -2281,11 +2575,19 @@ function renderSummary(){
       </div>`;
   });
 
-  /* Legend */
+  /* Legend (clickable cards → opens category detail modal).
+     Each card gets a coloured left border + matching swatch so it visually
+     mirrors the course cards in the planner on the left. */
   const colors={A:"#eab308",B:"#10b981",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
   const leg=$("legend"); leg.innerHTML="";
   p.components.forEach(comp=>{
-    leg.innerHTML+=`<div class="legend-row"><div class="sw" style="background:${colors[comp.l]}"></div><span class="lab">${comp.l}. ${comp.en}</span></div>`;
+    const courseCount = p.courses.filter(c=>c.cat===comp.l).length;
+    const col = colors[comp.l];
+    leg.innerHTML+=`<div class="legend-row" data-cat="${comp.l}" onclick="showCategoryDetail('${comp.l}')" title="Click to see all ${comp.en} courses" style="border-left:5px solid ${col};background:linear-gradient(135deg,${col}26 0%,${col}10 100%)">
+      <div class="sw" style="background:${col}"></div>
+      <span class="lab">${comp.l}. ${comp.en}</span>
+      <span class="cnt">${courseCount}</span>
+    </div>`;
   });
 
   /* GPA per semester with sparkline header */
@@ -2507,6 +2809,457 @@ document.querySelectorAll(".tab").forEach(t=>{
 ============================================================================ */
 function openModal(title,html){ $("modalTitle").innerHTML=title+'<button class="close" onclick="closeModal()">&times;</button>'; $("modalBody").innerHTML=html; $("modal").classList.add("active"); }
 function closeModal(){ $("modal").classList.remove("active"); }
+
+/* ============================================================================
+   CATEGORY DETAIL MODAL — opens when student clicks a legend card.
+   Shows description, credit target/progress, and a full course list for that
+   category with current placement status + prereq + offer.
+============================================================================ */
+const CATEGORY_DESCRIPTIONS = {
+  "University Core": "Compulsory UUM-wide courses (MPU & VKKK series) covering philosophy, ethics, civilizations, Malaysian studies, entrepreneurship, integrity, and co-curriculum. Required of every undergraduate regardless of program.",
+  "English Core": "English language courses determined by your MUET / IELTS / CEFR band. Choose your pathway in the toolbar: Path 1 (MPB1013 + MPB2013 + MPB3013, 9cr), Path 2 (MPB2013 + MPB3013, 6cr), Path 3 (MPB3013 + 1 ESP, 6cr), or Exempted (MUET 5.0+).",
+  "Program Core": "The heart of your degree — discipline-specific courses every student in this program must complete. Includes capstone courses (Research Methodology, Academic Project, Seminar) that unlock after a credit-hour threshold.",
+  "Specialization": "Your chosen specialization track. Pick one specialization (e.g. Investment Management vs Wealth Management for BFin) and complete all its required courses to graduate within that focus.",
+  "Field Elective": "Choose ONE field and complete 6 courses within it. Available fields vary by program (Bank Management, Finance, HR, Marketing, Muamalat Administration, Public Management).",
+  "Foreign Language Requirement": "Three sequential courses in one foreign language: Mandarin, Arabic, Japanese, French, or Korean. NOTE: Chinese students and Chinese-medium school students MUST choose a non-Mandarin language. International students must choose a non-native language.",
+  "Economics Elective": "Choose 4 courses (12 cr) from the Economics Programme's elective pool. Each course is offered in a specific semester — odd (1st sem) or even (2nd sem) — check the offer badge before placement.",
+  "Program Elective": "Optional courses within the program. Choose enough to fulfil the credit requirement; selections give you flexibility to specialize beyond the core.",
+  "Free Elective": "ONE course (3 cr) from any other UUM school. Constraints: (i) you must meet its prerequisites, (ii) University/English/Foreign-Language Core cannot count as Free Elective, (iii) equivalent courses (e.g. GMGFK1013 ≡ BEEBK1013) are blocked.",
+  "Industrial Training": "Final-semester practical placement (~4 months). Unlocks only after you've completed nearly all other program courses. Treated as a single block taking the entire semester."
+};
+
+function showCategoryDetail(letter){
+  const p = PROGRAMS[state.programId];
+  const comp = p.components.find(c=>c.l===letter);
+  if(!comp) return;
+  const colors = {A:"#eab308",B:"#10b981",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
+  const color = colors[letter] || "#888";
+
+  /* Build placement map (code → sem #) */
+  const placementMap = {};
+  Object.entries(state.plan).forEach(([k, items])=>{
+    items.forEach(it=>{ placementMap[it.code] = +k; });
+  });
+
+  /* Courses in this category */
+  let courses = p.courses.filter(c=>c.cat===letter);
+  /* For D-cat, only show track-relevant + chosen-language */
+  courses = courses.filter(c=>{
+    if(c.cat==="D" && c.track && state.trackId && c.track!==state.trackId) return false;
+    return true;
+  });
+
+  /* Credit progress */
+  let done = 0;
+  courses.forEach(c=>{ if(placementMap[c.code]!=null) done += c.cr; });
+  const reqPct = Math.min(100, (done/comp.req)*100);
+
+  /* Description */
+  const desc = CATEGORY_DESCRIPTIONS[comp.en] || "Component of the program structure.";
+
+  /* Course list rows */
+  const rows = courses.sort((a,b)=>a.code.localeCompare(b.code)).map(c=>{
+    const placedSem = placementMap[c.code];
+    const isPlaced = placedSem!=null;
+    const placedItem = isPlaced ? (state.plan[placedSem]||[]).find(x=>x.code===c.code) : null;
+    const grade = placedItem?.grade || "";
+    const failed = grade && FAIL_GRADES.has(grade);
+
+    let statusBadge = "";
+    if(isPlaced){
+      const cls = failed ? "bad" : "ok";
+      statusBadge = `<span class="cat-status ${cls}">Sem ${placedSem}${grade ? ' · '+grade : ''}</span>`;
+    } else {
+      statusBadge = `<span class="cat-status pending">— not placed</span>`;
+    }
+
+    const offerBadge = c.offer && c.offer!=="both" ? `<span class="cat-tag offer">${c.offer.toUpperCase()} sems only</span>` : "";
+    const minCrBadge = c.minCr ? `<span class="cat-tag">min ${c.minCr} cr</span>` : "";
+    const prereqStr = (c.pre||[]).length ? `Prereq: ${c.pre.join(", ")}` : "No prereq";
+
+    return `
+      <tr>
+        <td><code class="cat-code">${c.code}</code></td>
+        <td>
+          <div class="cat-name-en">${c.en}</div>
+          <div class="cat-name-ms">${c.ms}</div>
+          <div class="cat-meta">${prereqStr} ${offerBadge} ${minCrBadge}</div>
+        </td>
+        <td class="cat-cr">${c.cr} cr</td>
+        <td>${statusBadge}</td>
+      </tr>
+    `;
+  }).join("");
+
+  const html = `
+    <div class="cat-hero" style="background:linear-gradient(135deg,${color}22,transparent);border-left:4px solid ${color}">
+      <div class="cat-hero-letter" style="background:${color}">${letter}</div>
+      <div class="cat-hero-body">
+        <div class="cat-hero-title">${comp.en}</div>
+        <div class="cat-hero-ms">${comp.ms}</div>
+      </div>
+      <div class="cat-hero-prog">
+        <div class="cat-hero-prog-num"><strong>${done}</strong> / ${comp.req} cr</div>
+        <div class="cat-hero-prog-bar"><div style="width:${reqPct}%;background:${color}"></div></div>
+        <div class="cat-hero-prog-pct">${reqPct.toFixed(0)}% complete</div>
+      </div>
+    </div>
+    <p class="cat-desc">${desc}</p>
+    <div class="cat-list-hdr">${courses.length} course${courses.length===1?'':'s'} in this category</div>
+    <div class="cat-table-wrap">
+      <table class="cat-table">
+        <thead><tr><th>Code</th><th>Course</th><th>Cr</th><th>Status</th></tr></thead>
+        <tbody>${rows || '<tr><td colspan="4" style="text-align:center;padding:24px;color:var(--muted)">No courses in this category.</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+  openModal(`${letter}. ${comp.en}`, html);
+}
+
+/* ============================================================================
+   PROGRAM DESCRIPTIONS — sourced from the official A252 English handbooks.
+   Each entry: introduction, goals, careers, structure highlights.
+============================================================================ */
+const PROGRAM_PROFILES = {
+  BFIN: {
+    icon:"💰", color:"#0ea5e9",
+    intro:"This programme, which debuted in 2002, was the first finance specialisation programme offered by any public university in Malaysia. It is designed to provide an integrated view of the theoretical and practical aspects of finance for those preparing for careers in finance-related fields.",
+    goals:[
+      "Cultivate a capacity for life-long and self-learning in facing financial issues.",
+      "Develop interpersonal dynamics, leadership, teamwork, problem-solving and critical-thinking / decision-making skills.",
+      "Develop an appreciation of the finance profession's role in the internal and external business environment in meeting industry demand."
+    ],
+    careers:["Consumer & Investment Banking","Financial Institution Executive","Corporate Finance","International Finance","Consultancy services to corporate & government organisations"],
+    tracks:[
+      {id:"INV", name:"Investment Management", desc:"Portfolio management, fixed income securities, derivatives, financial modelling — for careers in asset management, equity research, treasury."},
+      {id:"WLT", name:"Wealth Management", desc:"Estate planning, retirement planning, risk & insurance, property & liability risk — for careers in private banking, financial advisory, insurance."}
+    ],
+    deans:"Both INV and WLT tracks share several specialization courses; 5 D-cat courses are open to both."
+  },
+  BBANK: {
+    icon:"🏦", color:"#10b981",
+    intro:"The Bachelor of Banking with Honours programme is aimed at producing graduates with an analytical outlook and innovative bent of mind who can meet the much-needed talent requirement of the financial system of the country and contribute to its overall development, especially the banking system.",
+    goals:[
+      "Produce graduates with knowledge and expertise in the banking sector who can offer creative and innovative ideas to solve problems in the finance and banking industry.",
+      "Provide capable and well-equipped managers in the banking sector aligned with current and future needs.",
+      "Supply talented manpower for the financial sector, especially the banking industry."
+    ],
+    careers:["Bank Executive","Financial Institution Executive","Financial Analyst","Financial Advisor","Credit Officer","Share Trading Officer","Teacher / Lecturer","Government Officer","Entrepreneur"],
+    tracks:[
+      {id:"KK", name:"Contemporary Finance", desc:"Corporate finance, portfolio management, financial modelling, international finance — for general finance careers."},
+      {id:"PR", name:"Risk Management", desc:"Insurance, risk analysis, employee benefits, corporate governance — for risk and compliance roles."},
+      {id:"MP", name:"Decision Mathematics", desc:"Calculus, discrete math, data mining, visualization — for quantitative banking / analyst roles."},
+      {id:"PM", name:"Muamalat Administration", desc:"Islamic business, takaful, baitulmal & zakat — for Islamic banking sector."}
+    ],
+    deans:"Choose ONE of 4 specialization tracks. Each completes 6 field-elective courses (18 cr) within the chosen field."
+  },
+  BECONS: {
+    icon:"📊", color:"#a855f7",
+    intro:"The programme includes learning about economic theory and its application to the real economy across various sectors — service, industrial, and public. Graduates emerge equipped with analytical tools for economic decision-making.",
+    goals:[
+      "Provide graduates with good knowledge and skills in applying economic theories to analyse economic issues.",
+      "Produce graduates with positive personal characteristics, effective public communication, and ethical professional leadership skills.",
+      "Prepare graduates to demonstrate managerial skills, entrepreneurial thrust, and pursue knowledge throughout their lives."
+    ],
+    careers:["Banking","Import-Export","Education","Government","Tourism","Health Sector","Insurance"],
+    tracks:[],
+    deans:"No specialization — instead pick 4 Economics Electives (12 cr) and 1 of 6 Field-Elective tracks (18 cr / 6 courses): Bank Management, Finance, HR Management, Contemporary Marketing, Muamalat Administration, or Public Management."
+  },
+  BRMI: {
+    icon:"🛡️", color:"#ef4444",
+    intro:"Launched in 2004, this was the first risk-management & insurance programme offered by a higher-learning institution in Malaysia. It equips students with theoretical and practical mastery of risk and insurance principles, preparing them for high-demand roles globally.",
+    goals:[
+      "Produce human resources in risk management & insurance to meet workforce demand in related disciplines.",
+      "Equip students with strong fundamentals in theories and concepts of risk management & insurance.",
+      "Produce intellectual, expert, competent and courteous graduates.",
+      "Assist in developing and upgrading community understanding of risk management & insurance through research, consultancy and other appropriate measures."
+    ],
+    careers:["Insurance Executive","Underwriter","Claims Officer","Actuarial Analyst","Risk Management Officer","Corporate Compliance"],
+    tracks:[],
+    deans:"Field Electives focus on insurance & actuarial (Life & Health, General Insurance, Underwriting, Claims, Actuarial). Program Electives draw from wealth-management D-cat courses (Portfolio Management, Behavioral Finance, Real Estate)."
+  },
+  BAGRO: {
+    icon:"🌾", color:"#84cc16",
+    intro:"This multi-disciplinary programme combines agricultural science, economics, and business management. The purpose is to produce graduates who are effective managers of firms in agriculture and natural resources.",
+    goals:[
+      "Enhance knowledge and understanding of concepts, theories, and practices in agribusiness.",
+      "Plan, analyse, and identify solutions to agribusiness-related problems.",
+      "Upgrade interaction skills with society and stakeholders, emphasising social responsibility.",
+      "Develop entrepreneurial spirit and managerial skills for agriculture-related sectors."
+    ],
+    careers:["Business Owner / Entrepreneur","Investment / Financial Planner","Agribusiness Manager","Sales Executive","Agriculture Analyst","Agricultural Marketer","Research Officer"],
+    tracks:[],
+    deans:"Unique among SEFB programs — includes natural-science courses (Biology, Chemistry, Animal Science, Food Science, Soil Science, Agronomy, Aquaculture) alongside economics and management."
+  }
+};
+
+/* ============================================================================
+   HERO PILL HANDLERS
+============================================================================ */
+function showLiveStatus(){
+  const p = PROGRAMS[state.programId];
+  const totalCourses = Object.values(PROGRAMS).reduce((t,pp)=>t+pp.courses.length, 0);
+  const planCourses = Object.values(state.plan).reduce((t,arr)=>t+arr.length, 0);
+  const placed = Object.values(state.plan).reduce((t,arr)=>t+arr.filter(it=>it.grade).length, 0);
+  openModal("● Live Status", `
+    <p class="cat-desc">
+      The SEFB Degree Planner is a fully <strong>browser-based</strong> application — it runs entirely on your device with no server connection. All your data lives in <code>localStorage</code>.
+    </p>
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">Right now you have</h3>
+    <ul>
+      <li><strong>${p.short}</strong> selected as your active program${state.trackId ? ' · Track: '+state.trackId : ''}</li>
+      <li><strong>${planCourses}</strong> courses placed across <strong>${totalSems()}</strong> semesters</li>
+      <li><strong>${placed}</strong> courses with grades entered</li>
+      <li>Theme: <strong>${(THEMES[state.theme]||{}).label||state.theme}</strong></li>
+      <li>English pathway: <strong>${({L1:"Path 1",L2:"Path 2",L3:"Path 3",EX:"Exempted"})[state.pathId]||state.pathId}</strong></li>
+      <li>Foreign language: <strong>${({MAN:"Mandarin",ARA:"Arabic",JPN:"Japanese",FRA:"French",KOR:"Korean"})[state.langId]||state.langId}</strong></li>
+    </ul>
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">Dashboard capacity</h3>
+    <ul>
+      <li><strong>${Object.keys(PROGRAMS).length}</strong> SEFB programs supported</li>
+      <li><strong>${totalCourses}</strong> total unique courses across all programs</li>
+      <li><strong>10</strong> colour themes available</li>
+    </ul>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px">All changes are auto-saved instantly. To reset, use the <strong>↺ Reset</strong> button in the toolbar.</p>
+  `);
+}
+
+function showAllCourses(){
+  const p = PROGRAMS[state.programId];
+  const colors = {A:"#eab308",B:"#10b981",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
+  const placementMap = {};
+  Object.entries(state.plan).forEach(([k, items])=>{
+    items.forEach(it=>{ placementMap[it.code] = +k; });
+  });
+
+  const sectionsHtml = p.components.map(comp=>{
+    const courses = p.courses.filter(c=>c.cat===comp.l).filter(c=>{
+      if(c.cat==="D" && c.track && state.trackId && c.track!==state.trackId) return false;
+      return true;
+    });
+    if(!courses.length) return "";
+    const rows = courses.sort((a,b)=>a.code.localeCompare(b.code)).map(c=>{
+      const placedSem = placementMap[c.code];
+      const status = placedSem!=null
+        ? `<span class="cat-status ok">Sem ${placedSem}</span>`
+        : `<span class="cat-status pending">—</span>`;
+      return `<tr>
+        <td><code class="cat-code">${c.code}</code></td>
+        <td><div class="cat-name-en">${c.en}</div><div class="cat-name-ms">${c.ms}</div></td>
+        <td class="cat-cr">${c.cr}</td>
+        <td>${status}</td>
+      </tr>`;
+    }).join("");
+    return `
+      <div style="margin-top:18px">
+        <div class="cat-list-hdr" style="color:${colors[comp.l]};border-left:3px solid ${colors[comp.l]};padding-left:8px">${comp.l}. ${comp.en} · ${courses.length} courses</div>
+        <div class="cat-table-wrap">
+          <table class="cat-table"><tbody>${rows}</tbody></table>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  openModal(`📚 All Courses · ${p.short}`, `
+    <p class="cat-desc">
+      Complete course catalog for <strong>${p.short}</strong> (${p.total} cr total). Courses are grouped by category. Click any legend card on the Progress tab for category details or use the planner to add courses to a semester.
+    </p>
+    ${sectionsHtml}
+  `);
+}
+
+function showPrereqEngineInfo(){
+  openModal("🔒 Prerequisite Engine", `
+    <p class="cat-desc">
+      The planner checks four rules before letting you add a course to a semester. Each rule has its own lock icon in the dropdown so you can see WHY a course is unavailable.
+    </p>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">1. Course-code prerequisite</h3>
+    <p>If course X requires course Y, then Y must already appear in an <strong>earlier semester</strong> of your plan. If it doesn't, X shows the 🔒 icon.</p>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">2. Pass-grade enforcement (UUM rule c)</h3>
+    <p>Prerequisites must not only be <em>taken</em> — they must be <strong>passed</strong>. If you mark the prereq with a failing grade (C-, D+, D, or F), all courses that depend on it lock with ❌ Prereq failed. You must retake the prereq first.</p>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">3. Minimum credit thresholds</h3>
+    <p>Some courses unlock only after you've completed enough credits:</p>
+    <ul>
+      <li><strong>Research Methodology / Research Methods</strong> — requires <strong>70 cr</strong> before placement</li>
+      <li><strong>Strategic Management, Academic Project, Seminar</strong> — requires <strong>90 cr</strong> before placement</li>
+      <li><strong>Industrial Training</strong> — requires almost all other program courses to be placed first</li>
+    </ul>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">4. Semester offering (odd / even)</h3>
+    <p>Some courses are only offered in a specific semester rotation. For example, <strong>BEEDK2013 Development Economics</strong> is offered in odd semesters only (1st sem of each session). Placing it in an even semester triggers 🚫 ODD only.</p>
+
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">Lock icons summary</h3>
+    <ul>
+      <li>🔒 — generic missing prereq</li>
+      <li>❌ Prereq failed — prereq has fail grade (C-, D+, D, F)</li>
+      <li>🚫 ODD only — wrong-parity semester</li>
+      <li>🚫 EVEN only — wrong-parity semester</li>
+      <li>✓ Sem X — already placed (greyed out so you can't add twice)</li>
+    </ul>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px">You can still <em>force-add</em> a locked course (the lock is an indicator, not a hard block). The graduation audit will flag it.</p>
+  `);
+}
+
+function jumpToAuditTab(){
+  const tabBtn = document.querySelector('.tab[data-tab="audit"]');
+  if(tabBtn){
+    tabBtn.click();
+    /* Scroll the audit panel into view */
+    setTimeout(()=>{
+      const audit = $("tab-audit");
+      if(audit) audit.scrollIntoView({behavior:"smooth", block:"center"});
+    }, 100);
+  }
+}
+
+function showAboutDashboard(){
+  openModal("About the SEFB Degree Planner", `
+    <div class="cat-hero" style="background:linear-gradient(135deg,rgba(249,115,22,.18),transparent);border-left:4px solid #f97316">
+      <div class="cat-hero-letter" style="background:#f97316">🎓</div>
+      <div class="cat-hero-body">
+        <div class="cat-hero-title">SEFB Degree Planner</div>
+        <div class="cat-hero-ms">School of Economics, Finance & Banking · Universiti Utara Malaysia</div>
+      </div>
+    </div>
+    <p class="cat-desc">
+      A degree-planning and CGPA-simulation dashboard for SEFB students. Plan your semesters, track prerequisites, predict your CGPA in real time, and audit your graduation eligibility — all in one place.
+    </p>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">What you can do</h3>
+    <ul>
+      <li><strong>Drag-and-drop semester planning</strong> with the official UUM recommended plan pre-loaded.</li>
+      <li><strong>Smart prerequisite locking</strong> — courses grey out if (a) the prereq isn't placed yet, (b) the prereq was failed (grade C-, D+, D, F), or (c) the course is offered only in odd / even semesters.</li>
+      <li><strong>English Pathway selector</strong> driven by your MUET / IELTS / CEFR band (LAMPIRAN A) — picks the right MPB / ESP courses.</li>
+      <li><strong>5 foreign-language families</strong> — Mandarin, Arabic, Japanese, French, Korean (with the Chinese-student rule documented).</li>
+      <li><strong>Live CGPA gauge</strong> with Dean's List shimmer at GPA ≥ 3.67.</li>
+      <li><strong>Standalone GPA calculator</strong> and <strong>CGPA projection calculator</strong> for what-if scenarios.</li>
+      <li><strong>Prerequisite dependency graph</strong> — visualise course chains.</li>
+      <li><strong>Graduation audit</strong> across every credit-component requirement (A through H).</li>
+      <li><strong>Extension semesters</strong> — add Sem +1, +2, … for students extending their study.</li>
+      <li><strong>10 colour themes</strong> (VS Code style) including Dracula, Monokai, Nord, Solarized, High Contrast.</li>
+    </ul>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Data sources</h3>
+    <ul>
+      <li><strong>SEFB 251 Panduan Akademik 2025/2026</strong> — official Bahasa Melayu program book</li>
+      <li><strong>5 English Academic Guides (A252)</strong> — official English-language program handbooks for BFIN, BBANK, BECONS, BRMI, BAGRO</li>
+      <li><strong>LAMPIRAN A — Teras Bahasa Inggeris</strong> — UUM English-pathway requirement table</li>
+      <li>Grading scale per UUM Academic Regulations</li>
+    </ul>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Privacy</h3>
+    <p>Everything happens <strong>inside your browser</strong>. Your plan, grades, and personal data are saved to <code>localStorage</code> on your device. <strong>Nothing is sent to any server</strong>, no account needed, no tracking.</p>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Built by</h3>
+    <ul>
+      <li><strong>Prof. Dr. Soon Jan Jan</strong> · School of Economics, Finance & Banking · UUM</li>
+      <li><strong>Dr. Mukhriz Izraf</strong> · School of Economics, Finance & Banking · UUM</li>
+    </ul>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:12px">For feedback, bug reports, or feature requests, please contact the authors directly or open an issue on the project repository.</p>
+  `);
+}
+
+function showProgramsOverview(){
+  const cards = Object.entries(PROGRAM_PROFILES).map(([id, prof])=>{
+    const p = PROGRAMS[id];
+    return `
+      <div class="prog-card" onclick="showProgramDetail('${id}')" style="border-left:4px solid ${prof.color}">
+        <div class="prog-card-hd">
+          <span class="prog-card-icon" style="background:${prof.color}22;color:${prof.color}">${prof.icon}</span>
+          <div>
+            <div class="prog-card-title">${p.short}</div>
+            <div class="prog-card-ms">${p.nameEn}</div>
+          </div>
+        </div>
+        <div class="prog-card-stats">
+          <span><strong>${p.total}</strong> cr</span>
+          <span><strong>${p.semCount}</strong> sems</span>
+          <span><strong>${p.components.length}</strong> components</span>
+          ${p.tracks?.length ? `<span><strong>${p.tracks.length}</strong> tracks</span>` : ''}
+        </div>
+        <p class="prog-card-intro">${prof.intro.split('. ')[0]}.</p>
+        <div class="prog-card-cta">Click for full details →</div>
+      </div>
+    `;
+  }).join("");
+
+  openModal("SEFB Programs Overview", `
+    <p class="cat-desc">
+      The School of Economics, Finance & Banking (SEFB) at UUM offers <strong>5 undergraduate programmes</strong>. Click any program below for its full description, learning goals, career prospects, and specialization tracks.
+    </p>
+    <div class="prog-grid">${cards}</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:14px">Use the <strong>Program</strong> selector at the top of the dashboard to switch your active plan to any of these programs.</p>
+  `);
+}
+
+function showProgramDetail(id){
+  const p = PROGRAMS[id];
+  const prof = PROGRAM_PROFILES[id];
+  if(!p || !prof) return;
+
+  const goalsHtml = prof.goals.map(g=>`<li>${g}</li>`).join("");
+  const careersHtml = prof.careers.map(c=>`<span class="cat-tag" style="background:${prof.color}22;color:${prof.color}">${c}</span>`).join(" ");
+
+  let tracksHtml = "";
+  if(prof.tracks && prof.tracks.length){
+    tracksHtml = `
+      <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Specialization tracks</h3>
+      ${prof.tracks.map(t=>`
+        <div style="padding:10px 12px;background:rgba(15,23,42,.04);border-radius:10px;margin-bottom:8px;border-left:3px solid ${prof.color}">
+          <div style="font-weight:800;font-size:13px;color:var(--ink)">${t.id} — ${t.name}</div>
+          <div style="font-size:12px;color:var(--ink-soft);margin-top:3px">${t.desc}</div>
+        </div>
+      `).join("")}
+    `;
+  }
+
+  const componentsHtml = p.components.map(comp=>`
+    <tr>
+      <td><code class="cat-code">${comp.l}</code></td>
+      <td><strong>${comp.en}</strong><div style="font-size:11px;color:var(--muted);font-style:italic">${comp.ms}</div></td>
+      <td class="cat-cr">${comp.req} cr</td>
+    </tr>
+  `).join("");
+
+  openModal(`${prof.icon} ${p.short}`, `
+    <div class="cat-hero" style="background:linear-gradient(135deg,${prof.color}22,transparent);border-left:4px solid ${prof.color}">
+      <div class="cat-hero-letter" style="background:${prof.color}">${prof.icon}</div>
+      <div class="cat-hero-body">
+        <div class="cat-hero-title">${p.short}</div>
+        <div class="cat-hero-ms">${p.nameEn}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">${p.fullName}</div>
+      </div>
+      <div class="cat-hero-prog">
+        <div class="cat-hero-prog-num"><strong>${p.total}</strong> cr</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">${p.semCount} semesters</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px;margin:14px 0 10px;color:var(--brand)">Introduction</h3>
+    <p class="cat-desc">${prof.intro}</p>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Programme goals</h3>
+    <ol style="padding-left:20px">${goalsHtml}</ol>
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Career prospects</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">${careersHtml}</div>
+
+    ${tracksHtml}
+
+    <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Programme structure</h3>
+    <div class="cat-table-wrap">
+      <table class="cat-table">
+        <thead><tr><th>Component</th><th>Name</th><th>Required</th></tr></thead>
+        <tbody>${componentsHtml}</tbody>
+      </table>
+    </div>
+
+    <p style="font-size:11.5px;color:var(--muted);margin-top:14px">${prof.deans}</p>
+  `);
+}
 
 function showHelp(){
   openModal("How to use this dashboard", `
@@ -2855,7 +3608,9 @@ function renderAll(){
   renderSemesters();
   renderSummary();
   renderGraph();
+  renderHeroStats();
 }
+setInterval(()=>{ try{ renderHeroStats(); }catch(e){} }, 30000);
 
 /* Hiccup 5: Add Semester — extend the planner with an extra semester for students
    who don't finish in the standard sequence. */
