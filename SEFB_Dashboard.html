@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#ea580c">
+<meta name="description" content="SEFB Degree Planner — UUM. Plan every semester, track prerequisites, predict your CGPA in real time.">
+<title>SEFB Degree Planner · UUM</title>
+<style>
+/* ============================================================================
+   FONTS, RESET, ROOT
+============================================================================ */
+@import url('data:text/css,');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','SF Pro Display','-apple-system','BlinkMacSystemFont','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  font-size:14px;line-height:1.5;
+  color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  min-height:100vh;overflow-x:hidden;
+  transition:background .4s, color .4s;
+}
+:root{
+  /* Light theme (alternative) */
+  --bg:#f5f6f8;
+  --bg-grad:linear-gradient(135deg,rgba(250,251,252,.55) 0%,rgba(241,242,245,.65) 100%);
+  --panel:rgba(255,255,255,0.8);
+  --panel-solid:rgba(255,255,255,.92);
+  --panel-border:rgba(15,23,42,.06);
+  --ink:#0a0a0a;
+  --ink-soft:#1f2937;
+  --muted:#6b7280;
+  --line:rgba(15,23,42,.08);
+  --line-strong:rgba(15,23,42,.16);
+  --brand:#ea580c;
+  --brand-soft:#fb923c;
+  --brand-grad:linear-gradient(135deg,#f59e0b 0%,#ea580c 50%,#dc2626 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(245,158,11,.12) 0%,rgba(220,38,38,.08) 100%);
+  --ok:#22c55e;--ok-soft:#4ade80;
+  --warn:#f59e0b;--warn-soft:#fbbf24;
+  --bad:#ef4444;--bad-soft:#f87171;
+  --gold:#eab308;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.08);
+  --shadow:0 4px 12px rgba(15,23,42,.10),0 10px 24px rgba(15,23,42,.10);
+  --shadow-lg:0 20px 48px rgba(15,23,42,.16);
+  --shadow-glow:0 0 40px rgba(234,88,12,.25);
+
+  /* Category palette - rich vibrant colors */
+  --cat-A:#eab308;--cat-A-bg:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);
+  --cat-B:#10b981;--cat-B-bg:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%);
+  --cat-C:#3b82f6;--cat-C-bg:linear-gradient(135deg,#dbeafe 0%,#bfdbfe 100%);
+  --cat-D:#ec4899;--cat-D-bg:linear-gradient(135deg,#fce7f3 0%,#fbcfe8 100%);
+  --cat-E:#a855f7;--cat-E-bg:linear-gradient(135deg,#f3e8ff 0%,#e9d5ff 100%);
+  --cat-F:#f97316;--cat-F-bg:linear-gradient(135deg,#fed7aa 0%,#fdba74 100%);
+  --cat-G:#ef4444;--cat-G-bg:linear-gradient(135deg,#fecaca 0%,#fca5a5 100%);
+  --cat-H:#06b6d4;--cat-H-bg:linear-gradient(135deg,#cffafe 0%,#a5f3fc 100%);
+}
+body[data-theme="dark"]{
+  --bg:#0a0a0c;
+  --bg-grad:linear-gradient(180deg,rgba(10,10,12,.75) 0%,rgba(21,21,26,.85) 100%);
+  --panel:rgba(20,20,24,.85);
+  --panel-solid:rgba(24,24,29,.94);
+  --panel-border:rgba(255,255,255,.06);
+  --ink:#fafafa;--ink-soft:#e5e5e8;
+  --muted:#9ca3af;
+  --line:rgba(255,255,255,.06);
+  --line-strong:rgba(255,255,255,.14);
+  --brand:#fb923c;--brand-soft:#fdba74;
+  --brand-grad:linear-gradient(135deg,#fbbf24 0%,#f97316 50%,#dc2626 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(249,115,22,.18) 0%,rgba(220,38,38,.10) 100%);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg:0 20px 40px rgba(0,0,0,.5);
+  --shadow-glow:0 0 60px rgba(249,115,22,.30);
+  --cat-A-bg:linear-gradient(135deg,rgba(234,179,8,.15) 0%,rgba(234,179,8,.25) 100%);
+  --cat-B-bg:linear-gradient(135deg,rgba(16,185,129,.15) 0%,rgba(16,185,129,.25) 100%);
+  --cat-C-bg:linear-gradient(135deg,rgba(59,130,246,.15) 0%,rgba(59,130,246,.25) 100%);
+  --cat-D-bg:linear-gradient(135deg,rgba(236,72,153,.15) 0%,rgba(236,72,153,.25) 100%);
+  --cat-E-bg:linear-gradient(135deg,rgba(168,85,247,.15) 0%,rgba(168,85,247,.25) 100%);
+  --cat-F-bg:linear-gradient(135deg,rgba(249,115,22,.15) 0%,rgba(249,115,22,.25) 100%);
+  --cat-G-bg:linear-gradient(135deg,rgba(239,68,68,.15) 0%,rgba(239,68,68,.25) 100%);
+  --cat-H-bg:linear-gradient(135deg,rgba(6,182,212,.15) 0%,rgba(6,182,212,.25) 100%);
+}
+
+body{
+  background:var(--bg-grad);background-attachment:fixed;background-size:200% 200%;animation:bgShift 25s ease infinite;
+  position:relative;
+}
+/* UUM campus photo — subtle background layer (visible behind translucent panels) */
+body::after{
+  content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background-image:url("images/uum%20pic1.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  opacity:.22;
+  filter:saturate(.65);
+}
+body[data-theme="dark"]::after{opacity:.14;filter:saturate(.5) brightness(.55)}
+/* Dot pattern overlay */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:radial-gradient(circle at 1px 1px, rgba(249,115,22,.10) 1px, transparent 0);
+  background-size:24px 24px;mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+body[data-theme="dark"]::before{background-image:radial-gradient(circle at 1px 1px, rgba(251,146,60,.14) 1px, transparent 0)}
+@keyframes bgShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ============================================================================
+   LAYOUT — HEADER
+============================================================================ */
+.hero{
+  position:relative;color:#fff;padding:32px 32px 38px;
+  background:
+    linear-gradient(180deg,rgba(10,10,12,.18) 0%,rgba(10,10,12,.55) 70%,rgba(10,10,12,.78) 100%),
+    url("images/sefb%20building.jpg");
+  background-size:cover,cover;
+  background-position:center,center 30%;
+  background-repeat:no-repeat;
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.06), 0 24px 48px rgba(0,0,0,.5);
+  overflow:hidden;
+  border-bottom:1px solid rgba(251,146,60,.20);
+}
+.hero h1,.hero .tag,.hero .pill{text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero::before,.hero::after{
+  content:"";position:absolute;border-radius:50%;
+  filter:blur(60px);pointer-events:none;
+}
+.hero::before{width:420px;height:420px;top:-160px;right:-80px;background:radial-gradient(circle,rgba(251,146,60,.35),rgba(251,146,60,0));animation:float 20s ease-in-out infinite}
+.hero::after{width:280px;height:280px;bottom:-120px;left:15%;background:radial-gradient(circle,rgba(220,38,38,.25),rgba(220,38,38,0));animation:float 16s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-40px) scale(1.1)}}
+
+.hero-deco{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.10}
+.hero-deco svg{position:absolute;color:#fff}
+
+.hero-inner{position:relative;max-width:1500px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;z-index:2}
+.hero-brand{display:flex;align-items:center;gap:18px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.hero-brand img{height:74px;width:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,.6))}
+.hero-brand-fallback{
+  display:flex;align-items:center;gap:14px;
+}
+.hero-brand-fallback .uum-seal{
+  width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#fef3c7 0%,#fbbf24 35%,#dc2626 80%,#7c1d1d 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:#5c1a05;font-size:11px;text-align:center;line-height:1.05;
+  border:2px solid rgba(255,255,255,.25);
+  box-shadow:0 6px 18px rgba(220,38,38,.4), inset 0 1px 0 rgba(255,255,255,.4);
+  flex-shrink:0;
+}
+.hero-brand-fallback .text-block{display:flex;flex-direction:column;gap:3px}
+.hero-brand-fallback .l1{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;text-transform:uppercase;font-style:italic}
+.hero-brand-fallback .l2{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.hero-brand-fallback .l3{font-size:10.5px;color:#fdba74;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+
+.hero h1{
+  font-size:36px;font-weight:900;letter-spacing:-.035em;margin-bottom:10px;
+  line-height:1.05;
+}
+.hero h1 .title-grad{
+  background:linear-gradient(135deg,#fff 0%,#fed7aa 55%,#fb923c 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero .tag{
+  font-size:13.5px;opacity:.85;font-weight:500;letter-spacing:.01em;line-height:1.55;
+  max-width:660px;color:#d1d5db;
+}
+.hero .pills{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.hero .pill{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);letter-spacing:.04em;
+  color:#fff;
+}
+.hero .pill.accent{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.30);color:#fdba74}
+.hero-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.icon-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 15px;border-radius:10px;border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);color:#fff;cursor:pointer;
+  font-size:12.5px;font-weight:700;transition:all .2s;letter-spacing:.02em;
+}
+.icon-btn:hover{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.40);color:#fdba74;transform:translateY(-1px)}
+.icon-btn.primary{background:linear-gradient(135deg,#f97316,#dc2626);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(249,115,22,.4)}
+.icon-btn.primary:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(249,115,22,.55);filter:brightness(1.1);color:#fff}
+
+/* ============================================================================
+   LAYOUT — CONTAINER
+============================================================================ */
+.container{max-width:1500px;margin:0 auto;padding:22px 20px 60px}
+
+/* Toolbar */
+.toolbar{
+  background:var(--panel-solid);
+  border:1px solid var(--panel-border);
+  border-radius:14px;padding:14px 16px;margin-bottom:18px;
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+}
+body[data-theme="dark"] .toolbar{box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+.toolbar label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.field{display:flex;flex-direction:column;gap:3px;min-width:0}
+.field select,.field input{
+  background:var(--panel-solid);border:1px solid var(--line-strong);
+  padding:9px 14px;border-radius:10px;font-size:13px;font-weight:600;
+  transition:all .2s;cursor:pointer;min-width:200px;color:var(--ink);
+}
+body[data-theme="dark"] .field select,body[data-theme="dark"] .field input{background:#0f0f12;border-color:rgba(255,255,255,.08)}
+.field select:hover,.field input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(249,115,22,.15)}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 16px;border-radius:10px;border:1px solid transparent;
+  background:var(--brand-grad);color:#fff;cursor:pointer;
+  font-size:12.5px;font-weight:700;letter-spacing:.02em;
+  transition:all .2s;white-space:nowrap;
+  box-shadow:0 6px 20px rgba(249,115,22,.4);
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(249,115,22,.55);filter:brightness(1.08)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong);box-shadow:none}
+.btn.ghost:hover{background:rgba(251,146,60,.08);border-color:var(--brand);color:var(--brand)}
+.btn.ghost.danger{background:transparent;color:var(--bad);border-color:var(--line-strong);box-shadow:none}
+.btn.ghost.danger:hover{background:rgba(239,68,68,.08);border-color:var(--bad);color:var(--bad)}
+.btn.primary-green{background:linear-gradient(135deg,#22c55e,#10b981);box-shadow:0 6px 20px rgba(34,197,94,.35);color:#fff}
+.btn.primary-green:hover{box-shadow:0 10px 28px rgba(34,197,94,.45);filter:brightness(1.08)}
+.btn.danger{background:linear-gradient(135deg,#ef4444,#b91c1c);box-shadow:0 6px 20px rgba(220,38,38,.4)}
+.spacer{flex:1}
+.toolbar .meta{font-size:11px;color:var(--muted);font-weight:500}
+.toolbar .meta .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);margin-right:4px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ============================================================================
+   LAYOUT — MAIN GRID
+============================================================================ */
+.layout{display:grid;grid-template-columns:1fr 400px;gap:18px;align-items:start}
+@media(max-width:1100px){.layout{grid-template-columns:1fr}}
+
+.panel{
+  background:var(--panel-solid);
+  border:1px solid var(--line);border-radius:16px;
+  padding:22px;
+  position:relative;
+  transition:border-color .25s;
+}
+body[data-theme="dark"] .panel{border-color:rgba(255,255,255,.06);box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+body[data-theme="light"] .panel{box-shadow:0 1px 3px rgba(15,23,42,.04)}
+.panel h2{
+  font-size:13px;font-weight:700;color:var(--muted);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.panel h2 .badge{
+  font-size:11px;font-weight:700;padding:5px 12px;border-radius:7px;
+  background:rgba(251,146,60,.12);color:var(--brand);letter-spacing:.02em;
+  border:1px solid rgba(251,146,60,.25);text-transform:none;
+}
+
+/* ============================================================================
+   SEMESTER CARDS
+============================================================================ */
+.semesters{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:680px){.semesters{grid-template-columns:1fr}}
+
+.sem-card{
+  background:var(--panel-solid);
+  border:1px solid var(--line);border-radius:14px;
+  padding:14px 14px 12px;min-height:175px;
+  transition:all .25s;position:relative;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+body[data-theme="dark"] .sem-card{background:#0f0f12;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+.sem-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--brand-grad);
+  opacity:.5;transition:opacity .3s;
+}
+.sem-card:hover{border-color:rgba(251,146,60,.40);transform:translateY(-2px)}
+.sem-card:hover::before{opacity:1}
+body[data-theme="dark"] .sem-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.4), 0 0 0 1px rgba(251,146,60,.2)}
+.sem-card.drop-target{border:2px dashed var(--brand);background:var(--brand-grad-soft);transform:scale(1.02)}
+.sem-card.short-sem{background:repeating-linear-gradient(45deg,var(--panel-solid),var(--panel-solid) 10px,rgba(249,115,22,.03) 10px,rgba(249,115,22,.03) 20px)}
+
+.sem-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;padding-bottom:8px;
+  border-bottom:1px dashed var(--line);
+}
+.sem-title{font-size:13.5px;font-weight:800;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+.sem-title .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:9px;
+  background:var(--brand-grad);color:#fff;font-size:13px;font-weight:900;
+  box-shadow:0 4px 12px rgba(249,115,22,.35);
+}
+.sem-credits{
+  font-size:11px;font-weight:800;padding:5px 12px;border-radius:8px;
+  background:rgba(251,146,60,.12);color:var(--brand);
+  transition:all .2s;letter-spacing:.02em;
+  border:1px solid rgba(251,146,60,.20);
+}
+.sem-credits.warn{background:rgba(245,158,11,.15);color:var(--warn);border-color:rgba(245,158,11,.30)}
+.sem-credits.bad{background:rgba(239,68,68,.18);color:#f87171;border-color:rgba(239,68,68,.30);animation:shake .4s}
+.sem-credits.ok{background:rgba(34,197,94,.15);color:#4ade80;border-color:rgba(34,197,94,.30)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+
+.sem-courses{flex:1;display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+
+.course{
+  display:grid;
+  grid-template-columns:auto 1fr auto auto auto;
+  align-items:center;gap:8px;
+  padding:8px 10px;border-radius:9px;
+  background:var(--panel-solid);
+  border:1px solid var(--line);
+  border-left-width:4px;
+  font-size:12px;
+  cursor:grab;
+  transition:all .2s;
+  position:relative;
+  animation:slideIn .25s ease-out;
+}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.course:hover{transform:translateX(2px);box-shadow:var(--shadow-sm)}
+.course:active{cursor:grabbing}
+.course.dragging{opacity:.5;transform:rotate(1deg)}
+.course[data-cat="A"]{border-left-color:var(--cat-A);background:var(--cat-A-bg)}
+.course[data-cat="B"]{border-left-color:var(--cat-B);background:var(--cat-B-bg)}
+.course[data-cat="C"]{border-left-color:var(--cat-C);background:var(--cat-C-bg)}
+.course[data-cat="D"]{border-left-color:var(--cat-D);background:var(--cat-D-bg)}
+.course[data-cat="E"]{border-left-color:var(--cat-E);background:var(--cat-E-bg)}
+.course[data-cat="F"]{border-left-color:var(--cat-F);background:var(--cat-F-bg)}
+.course[data-cat="G"]{border-left-color:var(--cat-G);background:var(--cat-G-bg)}
+.course[data-cat="H"]{border-left-color:var(--cat-H);background:var(--cat-H-bg)}
+.course.locked{filter:grayscale(.6);opacity:.55}
+.course.locked::after{
+  content:"🔒";position:absolute;top:6px;right:6px;font-size:10px;
+}
+.course .code{
+  font-family:'SF Mono','Monaco','Consolas','Liberation Mono',monospace;
+  font-weight:700;font-size:11px;color:var(--ink-soft);
+  background:rgba(15,23,42,.06);padding:2px 6px;border-radius:5px;letter-spacing:.02em;
+  min-width:78px;text-align:center;
+}
+body[data-theme="dark"] .course .code{background:rgba(255,255,255,.08);color:#fff}
+.course .name{display:flex;flex-direction:column;min-width:0}
+.course .name .en{font-weight:600;color:var(--ink);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course .name .ms{font-size:10px;color:var(--muted);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course .cr{
+  font-weight:800;font-size:11.5px;color:var(--brand);
+  padding:2px 6px;border-radius:5px;background:rgba(249,115,22,.1);
+  min-width:34px;text-align:center;
+}
+.course .grade-select{
+  width:62px;font-size:10.5px;padding:3px 4px;
+  border:1px solid var(--line);border-radius:6px;
+  background:var(--panel-solid);font-weight:600;
+  cursor:pointer;
+}
+.course .grade-select.A,.course .grade-select.A\+{color:var(--ok);border-color:var(--ok)}
+.course .grade-select.B{color:var(--brand)}
+.course .grade-select.C{color:var(--warn)}
+.course .grade-select.F,.course .grade-select.D{color:var(--bad);border-color:var(--bad)}
+.course .x-btn{
+  width:22px;height:22px;border-radius:50%;border:none;
+  background:rgba(239,68,68,.1);color:var(--bad);
+  cursor:pointer;font-size:11px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.course .x-btn:hover{background:var(--bad);color:#fff;transform:rotate(90deg)}
+
+.add-row{display:flex;gap:6px;margin-top:auto;min-width:0}
+.add-row select{
+  flex:1 1 0;min-width:0;width:100%;
+  font-size:11.5px;padding:7px 9px;
+  border:1px dashed var(--line-strong);border-radius:8px;
+  background:transparent;color:var(--ink);cursor:pointer;
+  font-weight:500;transition:all .2s;
+  text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
+}
+.add-row select:hover{border-color:var(--brand);background:var(--brand-grad-soft)}
+.add-row select:focus{outline:none;border-color:var(--brand);border-style:solid}
+.add-row .add-btn{
+  flex:0 0 auto;flex-shrink:0;
+  padding:7px 14px;font-size:11px;font-weight:800;
+  background:var(--brand-grad);color:#fff;border:none;border-radius:8px;
+  cursor:pointer;letter-spacing:.06em;text-transform:uppercase;
+  transition:all .2s;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(249,115,22,.25);
+}
+.add-row .add-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(249,115,22,.4)}
+
+/* Alerts */
+.alerts{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.alert{
+  padding:9px 13px;border-radius:10px;font-size:12px;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+  border-left:3px solid;
+  animation:slideIn .3s;
+}
+.alert.warn{background:rgba(245,158,11,.1);border-left-color:var(--warn);color:var(--warn)}
+.alert.bad{background:rgba(239,68,68,.1);border-left-color:var(--bad);color:var(--bad)}
+.alert.ok{background:rgba(16,185,129,.1);border-left-color:var(--ok);color:var(--ok)}
+.alert .icon{font-size:14px}
+
+/* ============================================================================
+   CGPA GAUGE (SVG)
+============================================================================ */
+.gauge-wrap{display:flex;justify-content:center;margin:8px 0 18px;position:relative}
+.gauge-wrap::before{
+  content:"";position:absolute;width:240px;height:120px;
+  background:radial-gradient(ellipse at center,rgba(249,115,22,.25),transparent 70%);
+  top:30px;filter:blur(20px);z-index:-1;
+}
+.gauge{position:relative;width:280px;height:165px}
+.gauge svg{width:100%;height:100%;overflow:visible}
+.gauge .gauge-track{fill:none;stroke:rgba(15,23,42,.08);stroke-width:18;stroke-linecap:round}
+body[data-theme="dark"] .gauge .gauge-track{stroke:rgba(255,255,255,.10)}
+.gauge .gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 4px 12px rgba(249,115,22,.4))}
+.gauge .gauge-label{
+  position:absolute;left:0;right:0;top:52%;text-align:center;
+  font-size:54px;font-weight:900;letter-spacing:-.05em;line-height:1;
+  background:linear-gradient(135deg,#fbbf24 0%,#f97316 50%,#dc2626 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.gauge .gauge-cap{
+  position:absolute;left:0;right:0;bottom:0;text-align:center;
+  font-size:10.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;
+}
+.gauge .ticks{position:absolute;inset:0;pointer-events:none}
+.gauge .tick{position:absolute;font-size:9px;color:var(--muted);font-weight:600}
+.gauge .tick.t0{bottom:8px;left:6px}
+.gauge .tick.t1{top:6px;left:18%}
+.gauge .tick.t2{top:-4px;left:48%;transform:translateX(-50%)}
+.gauge .tick.t3{top:6px;right:18%}
+.gauge .tick.t4{bottom:8px;right:6px}
+
+/* Stat cards */
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.stat-card{
+  padding:18px 14px;border-radius:14px;
+  background:rgba(251,146,60,.06);
+  border:1px solid rgba(251,146,60,.18);
+  text-align:left;position:relative;overflow:hidden;
+  transition:all .25s;
+}
+body[data-theme="dark"] .stat-card{background:#0f0f12;border-color:rgba(255,255,255,.06)}
+.stat-card::after{
+  content:"";position:absolute;top:0;right:0;width:60px;height:60px;
+  background:radial-gradient(circle at top right,rgba(251,146,60,.25),transparent 70%);
+  pointer-events:none;
+}
+.stat-card:hover{border-color:rgba(251,146,60,.50);transform:translateY(-2px)}
+.stat-card .v{
+  font-size:30px;font-weight:900;line-height:1;letter-spacing:-.03em;position:relative;
+  background:linear-gradient(135deg,#fbbf24,#f97316);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-card .l{font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:8px;position:relative}
+.stat-card .sub{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* Tabs */
+.tabs{display:flex;gap:2px;margin-bottom:12px;background:rgba(15,23,42,.04);padding:3px;border-radius:10px}
+body[data-theme="dark"] .tabs{background:rgba(255,255,255,.05)}
+.tab{
+  flex:1;text-align:center;padding:7px 10px;border-radius:8px;
+  font-size:11.5px;font-weight:600;color:var(--muted);
+  cursor:pointer;transition:all .25s;
+}
+.tab:hover{color:var(--ink)}
+.tab.active{background:var(--panel-solid);color:var(--brand);box-shadow:var(--shadow-sm)}
+body[data-theme="dark"] .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.30) inset}
+.tab-content{display:none;animation:fadeIn .25s}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Progress bars */
+.progress-list{display:flex;flex-direction:column;gap:11px}
+.progress-item{display:grid;grid-template-columns:1fr auto;gap:4px;font-size:11.5px;align-items:center}
+.progress-item .label{font-weight:600}
+.progress-item .v{color:var(--muted);font-size:10.5px;font-weight:500;font-variant-numeric:tabular-nums}
+.progress-bar{
+  grid-column:1/-1;height:7px;background:rgba(15,23,42,.06);border-radius:4px;overflow:hidden;
+  position:relative;
+}
+body[data-theme="dark"] .progress-bar{background:rgba(255,255,255,.06)}
+.progress-bar > div{
+  height:100%;border-radius:4px;
+  background:linear-gradient(90deg,#f97316,#fbbf24);transition:width .8s cubic-bezier(.4,0,.2,1);
+  position:relative;
+  box-shadow:0 0 12px rgba(249,115,22,.4);
+}
+.progress-bar > div::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+  animation:shimmer 2s infinite;
+}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.progress-bar > div.done{background:linear-gradient(90deg,#22c55e,#4ade80);box-shadow:0 0 12px rgba(34,197,94,.4)}
+
+/* GPA table */
+.gpa-table{width:100%;border-collapse:collapse;font-size:11.5px}
+.gpa-table th,.gpa-table td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.gpa-table th{font-weight:700;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.gpa-table tbody tr{transition:background .2s}
+.gpa-table tbody tr:hover{background:var(--brand-grad-soft)}
+.gpa-table .gpa{font-weight:800;color:var(--brand);font-size:12px}
+.gpa-table .deans{background:linear-gradient(90deg,rgba(234,179,8,.15),transparent);position:relative}
+.gpa-table .deans::before{content:"⭐";position:absolute;left:4px;top:50%;transform:translateY(-50%);font-size:10px}
+
+/* Legend */
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:10px;font-size:10.5px}
+.legend-row{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;background:rgba(15,23,42,.03)}
+body[data-theme="dark"] .legend-row{background:rgba(255,255,255,.04)}
+.legend-row .sw{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.legend-row .lab{font-weight:500;color:var(--ink-soft);font-size:10px}
+
+/* Footer */
+.foot{text-align:center;padding:20px;color:var(--muted);font-size:11px;line-height:1.6}
+.foot a{font-weight:600}
+
+/* Modal */
+.modal-bg{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(15,23,42,.6);backdrop-filter:blur(6px);
+  justify-content:center;align-items:center;padding:20px;
+  animation:fadeIn .25s;
+}
+.modal-bg.active{display:flex}
+.modal{
+  background:var(--panel-solid);border-radius:18px;padding:24px;
+  max-width:620px;width:100%;max-height:85vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.modal h3{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.modal .close{
+  width:32px;height:32px;border-radius:50%;border:none;
+  background:rgba(15,23,42,.06);cursor:pointer;font-size:18px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:all .2s;
+}
+.modal .close:hover{background:var(--bad);color:#fff;transform:rotate(90deg)}
+.modal p,.modal li{font-size:13px;line-height:1.65;color:var(--ink-soft);margin-bottom:8px}
+.modal ol,.modal ul{padding-left:18px;margin-bottom:12px}
+.modal strong{color:var(--ink)}
+.modal .grade-table{width:100%;font-size:12px;border-collapse:collapse;margin:10px 0}
+.modal .grade-table th,.modal .grade-table td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.modal .grade-table th{background:var(--brand-grad-soft);font-weight:700;color:var(--ink)}
+
+/* Confetti canvas */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:99}
+
+/* Floating background particles */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+.particles .p{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(249,115,22,.3) 0%,rgba(249,115,22,0) 70%);
+  animation:floatP linear infinite;
+}
+@keyframes floatP{
+  0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0}
+  10%{opacity:1;transform:scale(1)}
+  90%{opacity:.5}
+  100%{transform:translateY(-20vh) translateX(80px) scale(0);opacity:0}
+}
+
+/* Prereq graph */
+.graph-wrap{position:relative;height:520px;background:var(--panel-solid);border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.graph-wrap svg{width:100%;height:100%;cursor:grab}
+.graph-wrap svg:active{cursor:grabbing}
+.graph-node{
+  cursor:pointer;transition:filter .2s;
+}
+.graph-node:hover{filter:drop-shadow(0 0 8px rgba(249,115,22,.6))}
+.graph-node text{
+  font-family:'SF Mono','Monaco',monospace;
+  font-size:9px;font-weight:700;pointer-events:none;
+  fill:#fff;text-anchor:middle;dominant-baseline:middle;
+}
+.graph-node circle{stroke:rgba(255,255,255,.6);stroke-width:1.5}
+.graph-edge{stroke:rgba(249,115,22,.45);stroke-width:1.5;fill:none;marker-end:url(#arrow);transition:stroke .2s}
+.graph-edge.highlight{stroke:#f59e0b;stroke-width:2.5}
+.graph-legend{
+  position:absolute;top:10px;right:10px;
+  background:var(--panel);backdrop-filter:blur(10px);
+  border-radius:10px;padding:10px;font-size:10.5px;
+  border:1px solid var(--line);
+}
+.graph-legend .row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.graph-legend .sw{width:10px;height:10px;border-radius:50%}
+.graph-info{
+  position:absolute;bottom:10px;left:10px;
+  background:var(--panel);backdrop-filter:blur(10px);
+  border-radius:10px;padding:8px 12px;font-size:11px;
+  max-width:60%;border:1px solid var(--line);
+  opacity:0;transition:opacity .2s;pointer-events:none;
+}
+.graph-info.show{opacity:1}
+
+/* Sparkline */
+.sparkline-cell{padding:0 !important;height:32px;width:80px}
+.sparkline-cell svg{width:100%;height:100%}
+
+/* Achievement badges */
+.badges-wrap{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.achievement{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:5px 10px;border-radius:20px;font-size:10.5px;font-weight:700;
+  background:linear-gradient(135deg,#fde68a,#f59e0b);color:#78350f;
+  box-shadow:0 2px 8px rgba(245,158,11,.25);
+  animation:popIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+.achievement.gold{background:linear-gradient(135deg,#fcd34d,#d97706);color:#fff;box-shadow:0 4px 12px rgba(217,119,6,.4)}
+.achievement.green{background:linear-gradient(135deg,#86efac,#10b981);color:#fff;box-shadow:0 4px 12px rgba(16,185,129,.35)}
+.achievement.purple{background:linear-gradient(135deg,#c4b5fd,#8b5cf6);color:#fff;box-shadow:0 4px 12px rgba(139,92,246,.35)}
+
+/* ============================================================================
+   STANDALONE GPA / CGPA CALCULATORS
+============================================================================ */
+.calc-card{
+  margin-top:16px;padding:16px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(251,146,60,.07),rgba(251,146,60,.02));
+  border:1px solid rgba(251,146,60,.20);
+  position:relative;overflow:hidden;
+}
+.calc-card.cgpa{
+  background:linear-gradient(135deg,rgba(34,197,94,.07),rgba(16,185,129,.02));
+  border-color:rgba(34,197,94,.22);
+}
+.calc-card::before{
+  content:"";position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(251,146,60,.20),transparent 70%);
+  pointer-events:none;
+}
+.calc-card.cgpa::before{background:radial-gradient(circle,rgba(34,197,94,.20),transparent 70%)}
+.calc-card .calc-head{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;
+  position:relative;
+}
+.calc-card h3{
+  font-size:13px;font-weight:900;margin:0;color:var(--ink);
+  text-transform:uppercase;letter-spacing:.06em;
+  display:flex;align-items:center;gap:6px;
+}
+.calc-card h3 .pill-mini{
+  font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;
+  background:rgba(251,146,60,.18);color:var(--brand);
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.calc-card.cgpa h3 .pill-mini{background:rgba(34,197,94,.18);color:#10b981}
+.calc-card .hint{font-size:10.5px;color:var(--muted);margin-bottom:10px;position:relative}
+.calc-row{display:grid;grid-template-columns:78px 1fr 28px;gap:6px;margin-bottom:5px;align-items:center;position:relative}
+.calc-row .cr-wrap{display:flex;align-items:center;gap:4px}
+.calc-row .cr-wrap input{
+  width:50px;padding:6px 6px;font-size:12px;border-radius:7px;
+  border:1px solid var(--line-strong);background:var(--panel-solid);color:var(--ink);
+  font-weight:700;text-align:center;font-variant-numeric:tabular-nums;
+}
+.calc-row .cr-wrap .cr-lbl{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.calc-row select{
+  padding:6px 8px;font-size:12px;border-radius:7px;font-weight:600;
+  border:1px solid var(--line-strong);background:var(--panel-solid);color:var(--ink);
+  cursor:pointer;width:100%;
+}
+.calc-row .x{
+  width:24px;height:24px;border-radius:50%;border:none;
+  background:rgba(239,68,68,.10);color:var(--bad);cursor:pointer;
+  font-size:13px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.calc-row .x:hover{background:var(--bad);color:#fff;transform:rotate(90deg)}
+.calc-actions{display:flex;gap:6px;margin-top:8px;position:relative}
+.calc-add{
+  flex:1;padding:7px 12px;font-size:10.5px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+  background:transparent;border:1px dashed var(--line-strong);border-radius:8px;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.calc-add:hover{border-color:var(--brand);color:var(--brand);border-style:solid}
+.calc-card.cgpa .calc-add:hover{border-color:#10b981;color:#10b981}
+.calc-reset{
+  padding:7px 12px;font-size:10.5px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+  background:transparent;border:1px solid var(--line-strong);border-radius:8px;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.calc-reset:hover{color:var(--bad);border-color:var(--bad)}
+.calc-result{
+  margin-top:12px;padding:14px;border-radius:12px;
+  background:var(--panel-solid);
+  border:1px solid rgba(251,146,60,.25);
+  display:grid;gap:8px;position:relative;
+}
+.calc-card.cgpa .calc-result{border-color:rgba(34,197,94,.25)}
+.calc-result.single{grid-template-columns:1fr auto;align-items:center}
+.calc-result.multi{grid-template-columns:repeat(3,1fr);text-align:center;gap:6px}
+.calc-result .res-block{display:flex;flex-direction:column;align-items:center;gap:2px}
+.calc-result .res-lbl{font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.calc-result .res-val{
+  font-size:26px;font-weight:900;line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums;
+  background:var(--brand-grad);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.calc-card.cgpa .res-val{
+  background:linear-gradient(135deg,#22c55e,#10b981);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.calc-result .res-val.small{font-size:18px}
+.calc-result .res-status{
+  font-size:10px;font-weight:700;padding:3px 9px;border-radius:8px;
+  background:rgba(251,146,60,.15);color:var(--brand);letter-spacing:.04em;
+}
+.calc-result .res-status.deans{background:rgba(34,197,94,.18);color:#10b981}
+.calc-result .res-status.warn{background:rgba(245,158,11,.18);color:var(--warn)}
+.calc-result .res-status.bad{background:rgba(239,68,68,.18);color:var(--bad)}
+.calc-prior{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  padding:10px;border-radius:10px;
+  background:rgba(15,23,42,.03);
+  margin-bottom:10px;position:relative;
+  border:1px dashed var(--line);
+}
+.calc-prior .pi{display:flex;flex-direction:column;gap:3px}
+.calc-prior label{font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.calc-prior input{
+  padding:7px 10px;font-size:13px;font-weight:700;border-radius:7px;
+  border:1px solid var(--line-strong);background:var(--panel-solid);color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.calc-prior input:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+body[data-theme="dark"] .calc-prior{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .calc-card{background:linear-gradient(135deg,rgba(251,146,60,.05),rgba(255,255,255,.01))}
+body[data-theme="dark"] .calc-card.cgpa{background:linear-gradient(135deg,rgba(34,197,94,.05),rgba(255,255,255,.01))}
+body[data-theme="dark"] .calc-row .cr-wrap input,
+body[data-theme="dark"] .calc-row select,
+body[data-theme="dark"] .calc-prior input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
+body[data-theme="dark"] .calc-result{background:#15151a;border-color:rgba(251,146,60,.20)}
+body[data-theme="dark"] .calc-card.cgpa .calc-result{border-color:rgba(34,197,94,.20)}
+body[data-theme="dark"] .calc-card h3{color:#fafafa}
+
+/* ============================================================================
+   DARK MODE — explicit overrides for high contrast (orange brand)
+============================================================================ */
+body[data-theme="dark"] select,
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea{
+  background:#15151a;color:#fafafa;border-color:rgba(255,255,255,.12)
+}
+body[data-theme="dark"] select option{
+  background:#18181d;color:#fafafa;padding:6px
+}
+body[data-theme="dark"] select option:hover,
+body[data-theme="dark"] select option:checked{
+  background:#ea580c;color:#fff
+}
+body[data-theme="dark"] .course{
+  background:#1a1a1f;color:#fafafa;border-color:rgba(255,255,255,.08)
+}
+body[data-theme="dark"] .course[data-cat="A"]{background:linear-gradient(135deg,rgba(234,179,8,.18) 0%,rgba(234,179,8,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="B"]{background:linear-gradient(135deg,rgba(16,185,129,.18) 0%,rgba(16,185,129,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="C"]{background:linear-gradient(135deg,rgba(59,130,246,.20) 0%,rgba(59,130,246,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="D"]{background:linear-gradient(135deg,rgba(236,72,153,.18) 0%,rgba(236,72,153,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="E"]{background:linear-gradient(135deg,rgba(168,85,247,.18) 0%,rgba(168,85,247,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="F"]{background:linear-gradient(135deg,rgba(249,115,22,.18) 0%,rgba(249,115,22,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="G"]{background:linear-gradient(135deg,rgba(239,68,68,.18) 0%,rgba(239,68,68,.10) 100%)}
+body[data-theme="dark"] .course[data-cat="H"]{background:linear-gradient(135deg,rgba(6,182,212,.18) 0%,rgba(6,182,212,.10) 100%)}
+body[data-theme="dark"] .course .name .en{color:#fafafa}
+body[data-theme="dark"] .course .name .ms{color:#a1a1aa}
+body[data-theme="dark"] .course .code{background:rgba(255,255,255,.08);color:#fafafa}
+body[data-theme="dark"] .course .cr{background:rgba(251,146,60,.18);color:#fdba74}
+body[data-theme="dark"] .course .grade-select{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.12)}
+body[data-theme="dark"] .add-row select{background:rgba(255,255,255,.03);color:#fafafa;border-color:rgba(255,255,255,.10)}
+body[data-theme="dark"] .add-row select:hover{background:rgba(249,115,22,.12)}
+body[data-theme="dark"] .sem-title{color:#fafafa}
+body[data-theme="dark"] .stat-card .v{
+  background:linear-gradient(135deg,#fbbf24,#fb923c);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+body[data-theme="dark"] .gauge-label{
+  background:linear-gradient(135deg,#fbbf24 0%,#f97316 50%,#dc2626 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+body[data-theme="dark"] .gauge .gauge-cap{color:#a1a1aa}
+body[data-theme="dark"] .gauge .tick{color:#71717a}
+body[data-theme="dark"] .panel h2{color:#a1a1aa}
+body[data-theme="dark"] .progress-item .label{color:#e5e5e8}
+body[data-theme="dark"] .progress-item .v{color:#a1a1aa}
+body[data-theme="dark"] .gpa-table th{color:#a1a1aa}
+body[data-theme="dark"] .gpa-table td{color:#e5e5e8;border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .gpa-table .gpa{color:#fdba74}
+body[data-theme="dark"] .legend-row .lab{color:#d4d4d8}
+body[data-theme="dark"] .toolbar label{color:#a1a1aa}
+body[data-theme="dark"] .toolbar .meta{color:#a1a1aa}
+body[data-theme="dark"] .field select,
+body[data-theme="dark"] .search-wrap input{background:#0f0f12;color:#fafafa;border-color:rgba(255,255,255,.10)}
+body[data-theme="dark"] .search-results{background:#18181d;border-color:rgba(255,255,255,.08)}
+body[data-theme="dark"] .search-results .item{color:#fafafa;border-bottom-color:rgba(255,255,255,.04)}
+body[data-theme="dark"] .search-results .item:hover{background:rgba(249,115,22,.18)}
+body[data-theme="dark"] .modal{background:#18181d;color:#fafafa;border:1px solid rgba(255,255,255,.06)}
+body[data-theme="dark"] .modal h3{color:#fafafa}
+body[data-theme="dark"] .modal p,body[data-theme="dark"] .modal li{color:#d4d4d8}
+body[data-theme="dark"] .modal .close{background:rgba(255,255,255,.06);color:#a1a1aa}
+body[data-theme="dark"] .modal strong{color:#fff}
+body[data-theme="dark"] .modal .grade-table th{background:rgba(249,115,22,.18);color:#fdba74}
+body[data-theme="dark"] .modal .grade-table td{color:#d4d4d8;border-bottom-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04);color:#d4d4d8}
+body[data-theme="dark"] .audit-item.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
+body[data-theme="dark"] .audit-item.bad{background:rgba(239,68,68,.14);color:#fca5a5}
+body[data-theme="dark"] .alert.warn{background:rgba(245,158,11,.14);color:#fcd34d}
+body[data-theme="dark"] .alert.bad{background:rgba(239,68,68,.14);color:#fca5a5}
+body[data-theme="dark"] .alert.ok{background:rgba(16,185,129,.14);color:#6ee7b7}
+body[data-theme="dark"] .tab{color:#a1a1aa}
+body[data-theme="dark"] .tab:hover{color:#fafafa}
+body[data-theme="dark"] .tab.active{background:rgba(251,146,60,.10);color:#fdba74;box-shadow:0 0 0 1px rgba(251,146,60,.20) inset}
+body[data-theme="dark"] .foot{color:#71717a}
+body[data-theme="dark"] .btn.ghost{color:#d4d4d8;border-color:rgba(255,255,255,.12)}
+body[data-theme="dark"] .btn.ghost:hover{background:rgba(249,115,22,.14);color:#fdba74;border-color:#f97316}
+body[data-theme="dark"] .toolbar{background:#15151a;border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .graph-wrap{background:#0f0f12;border-color:rgba(255,255,255,.06)}
+body[data-theme="dark"] .graph-legend,body[data-theme="dark"] .graph-info{background:rgba(15,15,18,.85);border-color:rgba(255,255,255,.08);color:#d4d4d8}
+
+/* Audit checklist */
+.audit-item{
+  display:flex;align-items:center;gap:10px;padding:9px 11px;
+  border-radius:9px;background:rgba(15,23,42,.04);
+  font-size:12px;font-weight:500;margin-bottom:5px;
+  transition:all .25s;
+}
+body[data-theme="dark"] .audit-item{background:rgba(255,255,255,.04)}
+.audit-item.ok{background:rgba(16,185,129,.1);color:var(--ok)}
+.audit-item.bad{background:rgba(239,68,68,.08);color:var(--bad)}
+.audit-item .ico{font-size:14px;font-weight:800}
+.audit-item .v{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:700;font-size:11px}
+
+.grad-banner{
+  padding:14px;border-radius:12px;margin-bottom:12px;text-align:center;
+  font-weight:700;font-size:13px;
+  background:linear-gradient(135deg,#10b981,#34d399);color:#fff;
+  box-shadow:0 8px 20px rgba(16,185,129,.3);
+}
+.grad-banner.notyet{background:linear-gradient(135deg,#f59e0b,#fbbf24);box-shadow:0 8px 20px rgba(245,158,11,.3)}
+
+/* Search */
+.search-wrap{position:relative;flex:1;max-width:280px}
+.search-wrap input{
+  width:100%;padding:8px 12px 8px 32px;border-radius:9px;
+  border:1px solid var(--line);background:var(--panel-solid);
+  font-size:13px;
+}
+.search-wrap input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+.search-wrap::before{
+  content:"🔍";position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  font-size:12px;pointer-events:none;
+}
+.search-results{
+  position:absolute;top:100%;left:0;right:0;margin-top:4px;
+  background:var(--panel-solid);border:1px solid var(--line);
+  border-radius:10px;max-height:280px;overflow-y:auto;
+  box-shadow:var(--shadow-lg);z-index:50;display:none;
+}
+.search-results.active{display:block}
+.search-results .item{padding:9px 12px;cursor:pointer;font-size:12px;border-bottom:1px solid var(--line)}
+.search-results .item:hover{background:var(--brand-grad-soft)}
+.search-results .item .c{font-family:monospace;font-weight:700;font-size:11px;color:var(--brand);margin-right:8px}
+
+/* Mobile */
+@media(max-width:680px){
+  .hero{padding:18px 16px}
+  .hero h1{font-size:18px}
+  .container{padding:14px 12px 40px}
+  .toolbar{padding:10px 12px}
+  .field select,.field input{min-width:140px;font-size:12.5px}
+  .icon-btn{padding:6px 10px;font-size:11px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:6px}
+  .panel{padding:14px}
+}
+
+/* Print */
+@media print{
+  body{background:#fff;color:#000}
+  .toolbar,.hero-actions,.add-row,.sem-card:hover,.x-btn,.btn{display:none !important}
+  .panel,.sem-card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  .layout{display:block}
+  .hero{background:#ea580c !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<header class="hero">
+  <div class="hero-deco">
+    <svg style="top:20px;left:5%;width:60px" viewBox="0 0 24 24" fill="currentColor"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z"/></svg>
+    <svg style="bottom:30px;right:8%;width:50px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    <svg style="top:50%;left:42%;width:30px" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+  </div>
+  <div class="hero-inner" style="flex-direction:column;align-items:stretch;gap:0">
+    <div class="hero-brand">
+      <img src="images/sefb.png" alt="SEFB UUM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="hero-brand-fallback" style="display:none">
+        <div class="uum-seal">UUM<br>Ilmu Budi Bakti</div>
+        <div class="text-block">
+          <span class="l1">Pusat Pengajian Ekonomi, Kewangan Dan Perbankan</span>
+          <span class="l2">School of Economics, Finance and Banking</span>
+          <span class="l3">Universiti Utara Malaysia</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <h1><span class="title-grad">Degree Planner</span></h1>
+        <div class="tag">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
+        <div class="pills">
+          <span class="pill accent">● Live</span>
+          <span class="pill">5 Programs</span>
+          <span class="pill">100+ Courses</span>
+          <span class="pill">Prereq Engine</span>
+          <span class="pill">Graduation Audit</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">☀️ Light Mode</button>
+        <button class="icon-btn" onclick="showHelp()">❓ Help</button>
+        <button class="icon-btn primary" onclick="window.print()">🖨️ Print Plan</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="toolbar">
+    <div class="field">
+      <label>Program</label>
+      <select id="programSelect"></select>
+    </div>
+    <div class="field" id="trackField">
+      <label>Specialization</label>
+      <select id="trackSelect"></select>
+    </div>
+    <div class="search-wrap">
+      <label style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:3px">Search Course</label>
+      <input type="text" id="searchInput" placeholder="e.g. BWFFK2043 or Finance…" oninput="onSearch()" autocomplete="off">
+      <div class="search-results" id="searchResults"></div>
+    </div>
+    <span class="spacer"></span>
+    <button class="btn primary-green" onclick="loadRecommended()">📋 Load Recommended Plan</button>
+    <button class="btn ghost" onclick="exportTxt()">📄 Export</button>
+    <button class="btn ghost danger" onclick="resetPlan()">↺ Reset</button>
+    <span class="meta"><span class="dot"></span>Auto-saved</span>
+  </div>
+
+  <div class="layout">
+    <!-- ============== LEFT: PLANNER ============== -->
+    <div>
+      <div class="panel">
+        <h2>Your Plan <span class="badge" id="totalCrBadge">0/0 cr</span></h2>
+        <div class="alerts" id="alerts"></div>
+        <div class="semesters" id="semesters"></div>
+      </div>
+    </div>
+
+    <!-- ============== RIGHT: SUMMARY / CGPA / AUDIT ============== -->
+    <div>
+      <div class="panel" style="margin-bottom:14px">
+        <h2>CGPA Simulator <span class="badge" id="cgpaBadge">—</span></h2>
+        <div class="gauge-wrap">
+          <div class="gauge">
+            <svg viewBox="0 0 200 130">
+              <defs>
+                <linearGradient id="gauge-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#dc2626"/>
+                  <stop offset=".3" stop-color="#f97316"/>
+                  <stop offset=".6" stop-color="#fbbf24"/>
+                  <stop offset="1" stop-color="#22c55e"/>
+                </linearGradient>
+              </defs>
+              <path class="gauge-track" d="M 20 110 A 80 80 0 0 1 180 110" stroke="rgba(15,23,42,.08)"/>
+              <path id="gaugeFill" class="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" stroke="url(#gauge-grad)" stroke-dasharray="251" stroke-dashoffset="251"/>
+            </svg>
+            <div class="ticks">
+              <span class="tick t0">0.00</span>
+              <span class="tick t1">1.00</span>
+              <span class="tick t2">2.00</span>
+              <span class="tick t3">3.00</span>
+              <span class="tick t4">4.00</span>
+            </div>
+            <div class="gauge-label" id="cgpaLabel">0.00</div>
+            <div class="gauge-cap">Projected CGPA</div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="v" id="statCredits">0</div><div class="l">Credits Planned</div></div>
+          <div class="stat-card"><div class="v" id="statGraded">0</div><div class="l">Graded Courses</div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="tabs">
+          <div class="tab active" data-tab="components">📊 Progress</div>
+          <div class="tab" data-tab="gpa">📈 GPA</div>
+          <div class="tab" data-tab="graph">🔗 Prereqs</div>
+          <div class="tab" data-tab="audit">🎓 Audit</div>
+        </div>
+        <div class="tab-content active" id="tab-components">
+          <div class="progress-list" id="componentProgress"></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="tab-content" id="tab-gpa">
+          <table class="gpa-table">
+            <thead><tr><th>Sem</th><th>Cr</th><th>GPA</th><th>CGPA</th></tr></thead>
+            <tbody id="gpaTable"></tbody>
+          </table>
+          <p style="font-size:10.5px;color:var(--muted);margin-top:10px;line-height:1.5">⭐ Dean's List = semester GPA ≥ 3.50 · Per UUM rule (c), grades below C require retake.</p>
+
+          <!-- GPA Calculator (single semester) -->
+          <div class="calc-card">
+            <div class="calc-head">
+              <h3>🧮 GPA Calculator <span class="pill-mini">Per Semester</span></h3>
+            </div>
+            <p class="hint">Quick standalone calculator — pick credits + grade for each course in one semester.</p>
+            <div id="gpaCalcRows"></div>
+            <div class="calc-actions">
+              <button class="calc-add" onclick="gpaCalcAdd()">＋ Add Course</button>
+              <button class="calc-reset" onclick="gpaCalcReset()">↺ Reset</button>
+            </div>
+            <div class="calc-result single">
+              <div>
+                <div class="res-lbl">Semester GPA</div>
+                <div style="font-size:10.5px;color:var(--muted);margin-top:2px"><span id="gpaCalcCr">0</span> credits · <span id="gpaCalcCount">0</span> courses graded</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span class="res-status" id="gpaCalcStatus">—</span>
+                <span class="res-val" id="gpaCalcResult">0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CGPA Projection Calculator -->
+          <div class="calc-card cgpa">
+            <div class="calc-head">
+              <h3>🎯 CGPA Projection <span class="pill-mini">Entire Degree</span></h3>
+            </div>
+            <p class="hint">Enter your current CGPA and credits earned. Add this semester's courses to project your new CGPA.</p>
+            <div class="calc-prior">
+              <div class="pi">
+                <label>Current CGPA</label>
+                <input type="number" step="0.01" min="0" max="4" id="cgpaPriorVal" placeholder="e.g. 3.45" oninput="cgpaCalcRender()">
+              </div>
+              <div class="pi">
+                <label>Credits Earned</label>
+                <input type="number" min="0" max="200" id="cgpaPriorCr" placeholder="e.g. 60" oninput="cgpaCalcRender()">
+              </div>
+            </div>
+            <div id="cgpaCalcRows"></div>
+            <div class="calc-actions">
+              <button class="calc-add" onclick="cgpaCalcAdd()">＋ Add Course</button>
+              <button class="calc-reset" onclick="cgpaCalcReset()">↺ Reset</button>
+            </div>
+            <div class="calc-result multi">
+              <div class="res-block">
+                <div class="res-val small" id="cgpaCalcSem">0.00</div>
+                <div class="res-lbl">This Sem GPA</div>
+              </div>
+              <div class="res-block">
+                <div class="res-val" id="cgpaCalcNew">0.00</div>
+                <div class="res-lbl">New CGPA</div>
+              </div>
+              <div class="res-block">
+                <div class="res-val small" id="cgpaCalcTotal">0</div>
+                <div class="res-lbl">Total Credits</div>
+              </div>
+            </div>
+            <div style="margin-top:8px;text-align:center"><span class="res-status" id="cgpaCalcStatus">—</span></div>
+          </div>
+        </div>
+        <div class="tab-content" id="tab-graph">
+          <div class="graph-wrap" id="graphWrap">
+            <svg id="prereqGraph" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(249,115,22,.7)"/>
+                </marker>
+              </defs>
+              <g id="graphEdges"></g>
+              <g id="graphNodes"></g>
+            </svg>
+            <div class="graph-legend">
+              <div class="row"><span class="sw" style="background:#3b82f6"></span>Program Core</div>
+              <div class="row"><span class="sw" style="background:#ec4899"></span>Specialization</div>
+              <div class="row"><span class="sw" style="background:#a855f7"></span>Elective</div>
+              <div class="row" style="margin-top:4px;font-size:9px;color:var(--muted)">→ Arrow = prereq for</div>
+            </div>
+            <div class="graph-info" id="graphInfo"></div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center">Hover any course to highlight its prereq chain. Showing courses with prerequisites only.</p>
+        </div>
+        <div class="tab-content" id="tab-audit">
+          <div id="badges" class="badges-wrap"></div>
+          <div id="audit"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Source · SEFB 251 Panduan Akademik Sesi Kemasukan 2025/2026 · UUM Grading System ·
+    <a href="#" onclick="event.preventDefault();showAbout()">About</a>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+<div class="particles" id="particles"></div>
+
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h3 id="modalTitle">Title<button class="close" onclick="closeModal()">&times;</button></h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================================
+   GRADING SCALE (from UUM Grading System)
+============================================================================ */
+const GRADES = [
+  {g:"A+",p:4.00,s:"Excellent"},{g:"A",p:4.00,s:"Excellent"},
+  {g:"A-",p:3.67,s:"Credit"},{g:"B+",p:3.33,s:"Credit"},{g:"B",p:3.00,s:"Credit"},
+  {g:"B-",p:2.67,s:"Good"},{g:"C+",p:2.33,s:"Good"},{g:"C",p:2.00,s:"Pass"},
+  {g:"C-",p:1.67,s:"Fail-Retake"},{g:"D+",p:1.33,s:"Fail-Retake"},
+  {g:"D",p:1.00,s:"Fail-Retake"},{g:"F",p:0.00,s:"Fail-Retake"}
+];
+const RETAKE_GRADES = new Set(["C-","D+","D","F"]);
+
+/* ============================================================================
+   PROGRAMS DATA — all 5 SEFB programs with correct credits/components
+   BFin has 8 semesters; the others have 7 (6 regular + 1 short for industrial)
+============================================================================ */
+const PROGRAMS = {};
+
+/* ─────────── BFIN — 122 cr, 8 semesters, 7 components ─────────── */
+PROGRAMS.BFIN = {
+  id:"BFIN", short:"BFin (Hons)",
+  fullName:"SARJANA MUDA KEWANGAN DENGAN KEPUJIAN [BFIN (HONS)]",
+  nameEn:"Bachelor of Finance with Honours",
+  total:122, semCount:8,
+  components:[
+    {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
+    {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
+    {l:"C",ms:"Teras Program",en:"Program Core",req:48},
+    {l:"D",ms:"Pengkhususan",en:"Specialization",req:30},
+    {l:"E",ms:"Elektif Program",en:"Program Elective",req:15},
+    {l:"F",ms:"Elektif Bebas",en:"Free Elective",req:3},
+    {l:"G",ms:"Latihan Industri",en:"Industrial Training",req:8}
+  ],
+  tracks:[
+    {id:"INV",en:"Investment Management",ms:"Pengurusan Pelaburan"},
+    {id:"WLT",en:"Wealth Management",ms:"Pengurusan Kekayaan"}
+  ],
+  shortSems:[],
+  courses:[
+    /* A */
+    {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
+    {code:"MPU1022",ms:"Penghayatan Etika dan Peradaban",en:"Ethics & Civilizations",cr:2,cat:"A",pre:[]},
+    {code:"MPU1042",ms:"Kenegaraan Malaysia",en:"Malaysian Studies",cr:2,cat:"A",pre:[]},
+    {code:"MPU1052",ms:"Prinsip Keusahawanan",en:"Entrepreneurship Principles",cr:2,cat:"A",pre:[]},
+    {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
+    {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
+    {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
+    /* B */
+    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
+    {code:"MPB3123",ms:"Malaysia English",en:"Malaysia English",cr:3,cat:"B",pre:[]},
+    /* C */
+    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
+    {code:"BKAFK1023",ms:"Pengantar Perakaunan Kewangan",en:"Introduction to Financial Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"C",pre:["BKAFK1023"]},
+    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advanced Financial Management",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"BWFFK2053",ms:"Analisis Penyata Kewangan & Penilaian",en:"Financial Statement Analysis & Valuation",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWFFK3013",ms:"Kewangan Korporat",en:"Corporate Finance",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWFFK3033",ms:"Institusi dan Pasaran Kewangan",en:"Financial Markets & Institutions",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"BWFFK3043",ms:"Kewangan Antarabangsa",en:"International Finance",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWFFK3073",ms:"Kewangan Peribadi",en:"Personal Finance",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWFNK3013",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK3113",ms:"Etika dan Urus Tadbir",en:"Ethics & Governance",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
+    {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
+    {code:"GLULK2013",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
+    /* D — Investment Mgmt */
+    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Financial Services Marketing",cr:3,cat:"D",track:"INV",pre:[]},
+    {code:"BWFNK3033",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    {code:"BWFNK3043",ms:"Gelagat Kewangan",en:"Behavioral Finance",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    {code:"BWFNK3053",ms:"Sekuriti Pendapatan Tetap",en:"Fixed Income Securities",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    {code:"BWFNK3063",ms:"Derivatif & Pengurusan Risiko",en:"Derivatives & Risk Mgmt",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    {code:"BWFFK3053",ms:"Pemodelan Kewangan",en:"Financial Modelling",cr:3,cat:"D",track:"INV",pre:["BWFFK3013"]},
+    {code:"BWFFK3103",ms:"Kewangan Perniagaan Kecil",en:"Small Business Finance",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    {code:"BWFFK3193",ms:"Seminar Kewangan",en:"Seminar in Finance",cr:3,cat:"D",track:"INV",pre:[],minCr:90},
+    {code:"BKATK2013",ms:"Pengantar Pecukaian",en:"Introduction to Taxation",cr:3,cat:"D",track:"INV",pre:["BKAFK1023"]},
+    {code:"BWFFK3083",ms:"Modal Teroka",en:"Venture Capital",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
+    /* D — Wealth Mgmt */
+    {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"D",track:"WLT",pre:[]},
+    {code:"BWRRK3103",ms:"Perancangan Estet",en:"Estate Planning",cr:3,cat:"D",track:"WLT",pre:["BWFFK2033"]},
+    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"D",track:"WLT",pre:["BWFFK2043","BWRRK1013"]},
+    {code:"BWRRK3113",ms:"Perancangan Persaraan",en:"Retirement Planning",cr:3,cat:"D",track:"WLT",pre:["BWFFK2033"]},
+    {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"D",track:"WLT",pre:["BWRRK1013"]},
+    /* E */
+    {code:"BWFEK3013",ms:"Pengurusan Hartanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
+    {code:"BWFFK3023",ms:"Pengurusan Kredit",en:"Credit Management",cr:3,cat:"E",pre:["BWFFK2033"]},
+    {code:"BWFFK3063",ms:"Teori Kewangan",en:"Financial Theory",cr:3,cat:"E",pre:["BWFFK3013"]},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"E",pre:[]},
+    {code:"BWBBK3033",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BKAMK2013",ms:"Perakaunan Pengurusan 1",en:"Management Accounting 1",cr:3,cat:"E",pre:["BKAFK1023"]},
+    {code:"GLULK2023",ms:"Undang-Undang Syarikat",en:"Company Law",cr:3,cat:"E",pre:[]},
+    {code:"SQQSK2013",ms:"Statistik Gunaan",en:"Applied Statistics",cr:3,cat:"E",pre:["SQQSK1013"]},
+    /* F */
+    {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective (any non-equiv. course)",cr:3,cat:"F",pre:[],ph:true},
+    /* G */
+    {code:"BWFXK4968",ms:"Latihan Industri",en:"Industrial Training",cr:8,cat:"G",pre:[],all:true}
+  ],
+  recommended:{
+    INV:{
+      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2113","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","BWBBK3053","MPU1022","MPU1042","MPB3123","VKKK1021"],
+      3:["BWFFK2043","BWFFK3033","BWFNK3033","BWFNK3043","BWBBK2013","MPU1052"],
+      4:["BWFFK2053","BWFFK3013","BWFFK3043","BWFNK3053","BWFFK3023","MPU1062"],
+      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWFNK3063","BWFFK3063"],
+      6:["BPMNK3143","BWFFK3053","BWFFK3103","BKATK2013","BWBBK3033"],
+      7:["BPMNK3023","BWFFK3083","BWFFK3193","FREE3013"],
+      8:["BWFXK4968"]
+    },
+    WLT:{
+      1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2113","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","BWRRK1013","MPU1022","MPU1042","MPB3123","VKKK1021"],
+      3:["BWFFK2043","BWFFK3033","BWRRK3103","BWBBK2013","MPU1052"],
+      4:["BWFFK2053","BWFFK3013","BWFFK3043","BWRRK3113","BWFFK3023","MPU1062"],
+      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWRRK3143","BWFFK3063"],
+      6:["BPMNK3143","BWRRK3133","BWFFK3103","BKATK2013"],
+      7:["BPMNK3023","BWFFK3193","BWBBK3033","BWFFK3053","FREE3013"],
+      8:["BWFXK4968"]
+    }
+  }
+};
+
+/* ─────────── BBANK — 120 cr, 7 semesters (6+1 short), 7 components ─────────── */
+PROGRAMS.BBANK = {
+  id:"BBANK", short:"BBank (Hons)",
+  fullName:"SARJANA MUDA PERBANKAN DENGAN KEPUJIAN [BBANK (HONS)]",
+  nameEn:"Bachelor of Banking with Honours",
+  total:120, semCount:7,
+  components:[
+    {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
+    {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
+    {l:"C",ms:"Teras Program",en:"Program Core",req:66},
+    {l:"D",ms:"Elektif Bidang",en:"Field Elective",req:18},
+    {l:"E",ms:"Elektif Program",en:"Program Elective",req:9},
+    {l:"F",ms:"Elektif Bebas",en:"Free Elective",req:3},
+    {l:"G",ms:"Latihan Industri",en:"Industrial Training",req:6}
+  ],
+  tracks:[
+    {id:"KK",en:"Contemporary Finance",ms:"Kewangan Kontemporari"},
+    {id:"PR",en:"Risk Management",ms:"Pengurusan Risiko"},
+    {id:"MP",en:"Decision Mathematics",ms:"Matematik Pemutusan"},
+    {id:"PM",en:"Muamalat Administration",ms:"Pentadbiran Muamalat"}
+  ],
+  shortSems:[7],
+  courses:[
+    /* A — University Core */
+    {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
+    {code:"MPU1022",ms:"Penghayatan Etika dan Peradaban",en:"Ethics & Civilizations",cr:2,cat:"A",pre:[]},
+    {code:"MPU1042",ms:"Kenegaraan Malaysia",en:"Malaysian Studies",cr:2,cat:"A",pre:[]},
+    {code:"MPU1052",ms:"Prinsip Keusahawanan",en:"Entrepreneurship Principles",cr:2,cat:"A",pre:[]},
+    {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
+    {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
+    {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
+    /* B */
+    {code:"MPB2013",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
+    {code:"MPB3013",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* C — Program Core (66 cr) */
+    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
+    {code:"BKAFK1023",ms:"Pengantar Perakaunan Kewangan",en:"Introduction to Financial Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"C",pre:["BKAFK1023"]},
+    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advanced Financial Management",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"BWFNK3013",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWFFK3033",ms:"Institusi dan Pasaran Kewangan",en:"Financial Markets & Institutions",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"BWFFK3113",ms:"Etika dan Urus Tadbir",en:"Ethics & Governance",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK3073",ms:"Kewangan Peribadi",en:"Personal Finance",cr:3,cat:"C",pre:["BWFFK2043"]},
+    {code:"BWBBK1013",ms:"Asas Perbankan",en:"Fundamentals of Banking",cr:3,cat:"C",pre:[]},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"C",pre:[]},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"C",pre:["BWBBK2013"]},
+    {code:"BWBBK3023",ms:"Pengurusan Pinjaman",en:"Loan Management",cr:3,cat:"C",pre:["BWBBK2013"]},
+    {code:"BIBMK3043",ms:"Pengurusan Perbankan Islam",en:"Islamic Banking Management",cr:3,cat:"C",pre:[]},
+    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Financial Services Marketing",cr:3,cat:"C",pre:[]},
+    {code:"BWBBK3063",ms:"Pembiayaan & Perdagangan Antarabangsa",en:"International Trade & Finance",cr:3,cat:"C",pre:["BWBBK2013"]},
+    {code:"BWBBK3193",ms:"Seminar Perbankan",en:"Banking Seminar",cr:3,cat:"C",pre:[],minCr:90},
+    {code:"BMPNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"BMPNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
+    {code:"BMPNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
+    {code:"GLULK2013",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
+    {code:"GLULK3023",ms:"Undang-Undang Perbankan",en:"Banking Law",cr:3,cat:"C",pre:[]},
+    /* D — Field Elective 1: Contemporary Finance (KK) */
+    {code:"BWFFK2053",ms:"Analisis & Penilaian Penyataan Kewangan",en:"Financial Statement Analysis & Valuation",cr:3,cat:"D",track:"KK",pre:["BWFFK2043"]},
+    {code:"BWFFK3013",ms:"Kewangan Korporat",en:"Corporate Finance",cr:3,cat:"D",track:"KK",pre:["BWFFK2043"]},
+    {code:"BWFFK3043",ms:"Kewangan Antarabangsa",en:"International Finance",cr:3,cat:"D",track:"KK",pre:["BWFFK2043"]},
+    {code:"BWFNK3033",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"D",track:"KK",pre:["BWFFK2043"]},
+    {code:"BWFFK3053",ms:"Pemodelan Kewangan",en:"Financial Modelling",cr:3,cat:"D",track:"KK",pre:["BWFFK3013"]},
+    {code:"BWFNK3103",ms:"Pembiayaan Perniagaan Kecil",en:"Small Business Financing",cr:3,cat:"D",track:"KK",pre:["BWFFK2043"]},
+    {code:"BWFFK3023",ms:"Pengurusan Kredit",en:"Credit Management",cr:3,cat:"D",track:"KK",pre:["BWFFK2033"]},
+    /* D — Field Elective 2: Risk Management (PR) */
+    {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"D",track:"PR",pre:[]},
+    {code:"BWRRK3033",ms:"Pengurusan Risiko",en:"Risk Management",cr:3,cat:"D",track:"PR",pre:["BWFFK2033"]},
+    {code:"BWRRK3043",ms:"Pengurusan Manfaat Pekerja",en:"Employee Benefits Management",cr:3,cat:"D",track:"PR",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3123",ms:"Urus Tadbir Korporat",en:"Corporate Governance",cr:3,cat:"D",track:"PR",pre:[]},
+    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"D",track:"PR",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"D",track:"PR",pre:["BWRRK1013"]},
+    {code:"BWRRK3063",ms:"Pengurusan Risiko Kewangan",en:"Financial Risk Management",cr:3,cat:"D",track:"PR",pre:["BWFFK2043"]},
+    /* D — Field Elective 3: Decision Mathematics (MP) */
+    {code:"SQQMK1034",ms:"Kalkulus I",en:"Calculus I",cr:4,cat:"D",track:"MP",pre:[]},
+    {code:"SQQMK1063",ms:"Matematik Diskret",en:"Discrete Mathematics",cr:3,cat:"D",track:"MP",pre:[]},
+    {code:"SQQMK1073",ms:"Matematik Perniagaan",en:"Business Mathematics",cr:3,cat:"D",track:"MP",pre:["SQQMK1034"]},
+    {code:"SQITK1013",ms:"Pengaturcaraan dlm Aplikasi Perniagaan",en:"Programming in Business Applications",cr:3,cat:"D",track:"MP",pre:[]},
+    {code:"SQITK3053",ms:"Pembuatan Keputusan Berbantu Komputer",en:"Computer-Aided Decision Making",cr:3,cat:"D",track:"MP",pre:["SQITK1013"]},
+    {code:"SQITK3063",ms:"Perlombongan Data",en:"Data Mining",cr:3,cat:"D",track:"MP",pre:[]},
+    {code:"SQITK3083",ms:"Visualisasi Data",en:"Data Visualization",cr:3,cat:"D",track:"MP",pre:[]},
+    /* D — Field Elective 4: Muamalat Administration (PM) */
+    {code:"BIMEK1013",ms:"Teori dan Amalan Perniagaan Islam",en:"Theory & Practice of Islamic Business",cr:3,cat:"D",track:"PM",pre:[]},
+    {code:"BIMCK2033",ms:"Etika Perniagaan Islam",en:"Islamic Business Ethics",cr:3,cat:"D",track:"PM",pre:[]},
+    {code:"BIMCK1043",ms:"Prinsip Pengurusan dalam Islam",en:"Principles of Management in Islam",cr:3,cat:"D",track:"PM",pre:[]},
+    {code:"BIMCK2083",ms:"Pengurusan Baitulmal, Wakaf & Zakat",en:"Baitulmal, Waqf & Zakat Management",cr:3,cat:"D",track:"PM",pre:[]},
+    {code:"BIMCK3063",ms:"Pengurusan Sumber Manusia utk Perniagaan Islam",en:"HR Management for Islamic Business",cr:3,cat:"D",track:"PM",pre:["BIMCK1043"]},
+    {code:"BIMEK3023",ms:"Pengurusan Takaful",en:"Takaful Management",cr:3,cat:"D",track:"PM",pre:[]},
+    {code:"BIMEK3123",ms:"Kepimpinan dalam Islam",en:"Leadership in Islam",cr:3,cat:"D",track:"PM",pre:[]},
+    /* E — Program Electives */
+    {code:"BWBBK3033E",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3043",ms:"Sekuriti Perbankan",en:"Banking Securities",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3073",ms:"Pengurusan Perbendaharaan",en:"Treasury Management",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3083",ms:"Perbankan Korporat",en:"Corporate Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBZK3993",ms:"Projek Akademik",en:"Academic Project",cr:3,cat:"E",pre:["BMPNK3143"],minCr:90},
+    /* F */
+    {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"F",pre:[],ph:true},
+    /* G */
+    {code:"BWBXK4956",ms:"Latihan Industri",en:"Industrial Training",cr:6,cat:"G",pre:[],all:true}
+  ],
+  recommended:{
+    KK:{
+      1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWFFK2053","BWFFK3013","BWFFK3043"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWFNK3033","BWFFK3053","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWFNK3103","FREE3013"],
+      7:["BWBXK4956"]
+    },
+    PR:{
+      1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BWRRK1013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWRRK3033","BWRRK3043","BWRRK3123"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWRRK3133","BWRRK3143","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWRRK3063","FREE3013"],
+      7:["BWBXK4956"]
+    },
+    MP:{
+      1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","SQQMK1034"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","SQQMK1063","VKKK1011"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","SQQMK1073","SQITK1013"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","SQITK3053","SQITK3063","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","SQITK3083","FREE3013"],
+      7:["BWBXK4956"]
+    },
+    PM:{
+      1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BIMEK1013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BIMCK1043","VKKK1011"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BIMCK2033","BIMCK2083","BIMEK3023"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BIMCK3063","BIMEK3123","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","FREE3013"],
+      7:["BWBXK4956"]
+    }
+  }
+};
+
+/* ─────────── BSc. Economics — 125 cr, 7 semesters, 8 components ─────────── */
+PROGRAMS.BECONS = {
+  id:"BECONS", short:"BSc. Economics (Hons)",
+  fullName:"SARJANA MUDA SAINS EKONOMI DENGAN KEPUJIAN [BSc. Economics (Hons)]",
+  nameEn:"Bachelor of Economics Science with Honours",
+  total:125, semCount:7,
+  components:[
+    {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
+    {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
+    {l:"C",ms:"Teras Program",en:"Program Core",req:57},
+    {l:"D",ms:"Keperluan Bahasa",en:"Language Requirement (Mandarin)",req:9},
+    {l:"E",ms:"Elektif Ekonomi",en:"Economics Elective",req:12},
+    {l:"F",ms:"Elektif Bidang",en:"Field Elective",req:18},
+    {l:"G",ms:"Elektif Bebas",en:"Free Elective",req:3},
+    {l:"H",ms:"Latihan Industri",en:"Industrial Training",req:8}
+  ],
+  tracks:[],
+  shortSems:[],
+  courses:[
+    /* A */
+    {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
+    {code:"MPU1022",ms:"Penghayatan Etika dan Peradaban",en:"Ethics & Civilizations",cr:2,cat:"A",pre:[]},
+    {code:"MPU1042",ms:"Kenegaraan Malaysia",en:"Malaysian Studies",cr:2,cat:"A",pre:[]},
+    {code:"MPU1052",ms:"Prinsip Keusahawanan",en:"Entrepreneurship Principles",cr:2,cat:"A",pre:[]},
+    {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
+    {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
+    {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
+    /* B */
+    {code:"MPB_ENG1",ms:"Teras Bahasa Inggeris I",en:"English Core I",cr:3,cat:"B",pre:[]},
+    {code:"MPB_ENG2",ms:"Teras Bahasa Inggeris II",en:"English Core II",cr:3,cat:"B",pre:[]},
+    /* C */
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
+    {code:"BEEBK2023",ms:"Makroekonomi",en:"Macroeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
+    {code:"BEEBK3013",ms:"Mikroekonomi Pertengahan",en:"Intermediate Microeconomics",cr:3,cat:"C",pre:["BEEBK2013"]},
+    {code:"BEEBK3023",ms:"Makroekonomi Pertengahan",en:"Intermediate Macroeconomics",cr:3,cat:"C",pre:["BEEBK2023"]},
+    {code:"BEEDK1013",ms:"Ekonomi Malaysia",en:"Malaysian Economy",cr:3,cat:"C",pre:[]},
+    {code:"BEEQK1013",ms:"Pengantar Matematik Ekonomi",en:"Intro to Mathematical Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEQK1023",ms:"Pengantar Statistik Ekonomi",en:"Intro to Statistics for Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEQK2013",ms:"Ekonomi Matematik",en:"Mathematical Economics",cr:3,cat:"C",pre:["BEEQK1013"]},
+    {code:"BEEQK2023",ms:"Ekonometrik Asas",en:"Basic Econometrics",cr:3,cat:"C",pre:["BEEQK1023"]},
+    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEESK3033",ms:"Sejarah Pemikiran Ekonomi",en:"History of Economic Thought",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEESK3053",ms:"Isu-Isu Ekonomi Semasa",en:"Current Economic Issues",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BKANK1013",ms:"Asas Perakaunan",en:"Foundations of Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[],minCr:70},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:["MPB_ENG2"]},
+    {code:"BEEZK3996",ms:"Projek Ilmiah",en:"Academic Project",cr:6,cat:"C",pre:["BEERK3043"],minCr:90},
+    /* D — Mandarin */
+    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin I",cr:3,cat:"D",pre:[]},
+    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin II",cr:3,cat:"D",pre:["SBLFK1053"]},
+    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin III",cr:3,cat:"D",pre:["SBLFK2053"]},
+    /* E — Economics Electives (pick 4) */
+    {code:"BEEDK2013",ms:"Ekonomi Pembangunan",en:"Development Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEEDK3023",ms:"Perancangan Ekonomi",en:"Economic Planning",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEDK3043",ms:"Penilaian Projek",en:"Project Appraisal",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEEK3073",ms:"Ekonomi Alam Sekitar",en:"Environmental Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEEEK3103",ms:"Analisis Ekonomi Pelancongan",en:"Tourism Economics Analysis",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEEIK2053",ms:"Ekonomi Buruh",en:"Labor Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEEIK3053",ms:"Organisasi Industri",en:"Industrial Organization",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEMK2033",ms:"Teori & Institusi Wang",en:"Theory & Monetary Institutions",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEEMK3043",ms:"Ekonomi Kewangan",en:"Financial Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEMK3053",ms:"Teori Pelaburan",en:"Investment Theory",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEPK3013",ms:"Pembiayaan Awam",en:"Public Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEPK3083",ms:"Ekonomi Kesihatan",en:"Health Economics",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEQK3013",ms:"Ekonometrik",en:"Econometrics",cr:3,cat:"E",pre:["BEEQK2023"]},
+    {code:"BEESK3093",ms:"Pemikiran & Sistem Ekonomi Islam",en:"Islamic Economic Thought & Systems",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEETK2013",ms:"Ekonomi Antarabangsa",en:"International Economics",cr:3,cat:"E",pre:["BEEBK1013"]},
+    {code:"BEETK3013",ms:"Perdagangan Antarabangsa",en:"International Trade",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEETK3023",ms:"Pembiayaan Antarabangsa",en:"International Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEETK3033",ms:"Pelaburan Antarabangsa",en:"International Investment",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"]},
+    /* F — Field Electives (Sample from major tracks) */
+    {code:"BWBBK1013",ms:"Asas Perbankan",en:"Fundamentals of Banking",cr:3,cat:"F",pre:[]},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"F",pre:[]},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"F",pre:["BWBBK2013"]},
+    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"F",pre:["BKANK1013"]},
+    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advanced Financial Management",cr:3,cat:"F",pre:["BWFFK2033"]},
+    {code:"BWFNK3013F",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"F",pre:["BWFFK2043"]},
+    {code:"BPMHK2013",ms:"Pengurusan Sumber Manusia",en:"Human Resource Management",cr:3,cat:"F",pre:["BPMNK1013"]},
+    {code:"BPMMK1013",ms:"Pengantar Pemasaran",en:"Introduction to Marketing",cr:3,cat:"F",pre:[]},
+    {code:"BPMMK2023",ms:"Pengurusan Pemasaran",en:"Marketing Management",cr:3,cat:"F",pre:["BPMMK1013"]},
+    {code:"BPMMK3353",ms:"Pemasaran Digital",en:"Digital Marketing",cr:3,cat:"F",pre:["BPMMK1013"]},
+    {code:"BIMEK1013",ms:"Teori & Amalan Perniagaan Islam",en:"Theory & Practice of Islamic Business",cr:3,cat:"F",pre:[]},
+    {code:"GMGAK2013",ms:"Perlembagaan Malaysia",en:"Malaysian Constitution",cr:3,cat:"F",pre:[]},
+    {code:"GMGAK2023",ms:"Dasar Awam",en:"Public Policy",cr:3,cat:"F",pre:[]},
+    /* G — Free Elective */
+    {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"G",pre:[],ph:true},
+    /* H — Industrial Training */
+    {code:"BEEXK4948",ms:"Latihan Industri",en:"Industrial Training",cr:8,cat:"H",pre:[],all:true}
+  ],
+  recommended:{
+    "":{
+      1:["BEEBK1013","BEEQK1013","BEEDK1013","MPB_ENG1","BPMNK1013","BKANK1013","VKKK1011"],
+      2:["BEEQK1023","BEEBK2013","BEEQK2013","MPB_ENG2","SBLFK1053","MPU1012","MPU1022","VKKK1021"],
+      3:["BEEBK2023","BEEQK2023","SBLEK3063","SBLFK2053","MPU1042"],
+      4:["BEEBK3013","BEESK3033","SBLFK3053","MPU1052"],
+      5:["BEEBK3023","BEERK3043","BPMNK3123","MPU1062"],
+      6:["BEESK3053","BEEZK3996","FREE3013"],
+      7:["BEEXK4948"]
+    }
+  }
+};
+
+/* ─────────── BRMI — 120 cr, 7 semesters, 7 components ─────────── */
+PROGRAMS.BRMI = {
+  id:"BRMI", short:"BRMI (Hons)",
+  fullName:"SARJANA MUDA PENGURUSAN RISIKO DAN INSURANS DENGAN KEPUJIAN [BRMI (HONS)]",
+  nameEn:"Bachelor of Risk Management & Insurance with Honours",
+  total:120, semCount:7,
+  components:[
+    {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
+    {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
+    {l:"C",ms:"Teras Program",en:"Program Core",req:63},
+    {l:"D",ms:"Elektif Bidang",en:"Field Elective",req:18},
+    {l:"E",ms:"Elektif Program",en:"Program Elective",req:12},
+    {l:"F",ms:"Elektif Bebas",en:"Free Elective",req:3},
+    {l:"G",ms:"Latihan Industri",en:"Industrial Training",req:6}
+  ],
+  tracks:[],
+  shortSems:[7],
+  courses:[
+    /* A */
+    {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
+    {code:"MPU1022",ms:"Penghayatan Etika dan Peradaban",en:"Ethics & Civilizations",cr:2,cat:"A",pre:[]},
+    {code:"MPU1042",ms:"Kenegaraan Malaysia",en:"Malaysian Studies",cr:2,cat:"A",pre:[]},
+    {code:"MPU1052",ms:"Prinsip Keusahawanan",en:"Entrepreneurship Principles",cr:2,cat:"A",pre:[]},
+    {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
+    {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
+    {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
+    /* B */
+    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
+    {code:"MPB3113",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* C — Program Core (63 cr) */
+    {code:"BKAFK1023",ms:"Pengantar Perakaunan Kewangan",en:"Introduction to Financial Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"C",pre:["BKAFK1023"]},
+    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advanced Financial Management",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"GLULK2013",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
+    {code:"SQQSK2013",ms:"Statistik Gunaan",en:"Applied Statistics",cr:3,cat:"C",pre:["SQQSK1013"]},
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
+    {code:"BWRRK3033",ms:"Pengurusan Risiko",en:"Risk Management",cr:3,cat:"C",pre:["BWFFK2033"]},
+    {code:"BWRRK3123",ms:"Urus Tadbir Korporat",en:"Corporate Governance",cr:3,cat:"C",pre:[]},
+    {code:"BWRRK3043",ms:"Pengurusan Manfaat Pekerja",en:"Employee Benefits Mgmt",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"C",pre:["BWRRK1013"]},
+    {code:"BWRRK3153",ms:"Pembiayaan Risiko",en:"Risk Financing",cr:3,cat:"C",pre:["BWRRK1013"]},
+    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Financial Services Marketing",cr:3,cat:"C",pre:[]},
+    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3163",ms:"Pengurusan Kesinambungan Perniagaan",en:"Business Continuity Management",cr:3,cat:"C",pre:["BWRRK1013"]},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
+    {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
+    {code:"BWRRK3093",ms:"Seminar Pengurusan Risiko & Insurans",en:"Risk Mgmt & Insurance Seminar",cr:3,cat:"C",pre:[],minCr:90},
+    /* D — Field Electives (Insurance & Actuarial focus) */
+    {code:"BWRRK2033",ms:"Insurans Hayat & Kesihatan",en:"Life & Health Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK2043",ms:"Insurans Am",en:"General Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK3013",ms:"Pengunderaitan Insurans",en:"Insurance Underwriting",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK3023",ms:"Tuntutan Insurans",en:"Insurance Claims",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK3053",ms:"Pengurusan Aktuari",en:"Actuarial Management",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK3073",ms:"Insurans Korporat",en:"Corporate Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
+    {code:"BWRRK3103R",ms:"Perancangan Estet",en:"Estate Planning",cr:3,cat:"D",pre:["BWFFK2033"]},
+    /* E — Program Electives */
+    {code:"BWFNK3033R",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"E",pre:["BWFFK2043"]},
+    {code:"BWFNK3043R",ms:"Gelagat Kewangan",en:"Behavioral Finance",cr:3,cat:"E",pre:["BWFFK2043"]},
+    {code:"BWFEK3013R",ms:"Pengurusan Hartanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
+    {code:"GLULK2023",ms:"Undang-Undang Syarikat",en:"Company Law",cr:3,cat:"E",pre:[]},
+    /* F */
+    {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"F",pre:[],ph:true},
+    /* G */
+    {code:"BWRXK4976",ms:"Latihan Industri",en:"Industrial Training",cr:6,cat:"G",pre:[],all:true}
+  ],
+  recommended:{
+    "":{
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2113","VKKK1011"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3113","VKKK1021"],
+      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BWRRK2033"],
+      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRRK2043","BWRRK3013","GLULK2023"],
+      5:["BWRRK3133","BWRRK3163","BWRRK3023","BWRRK3053","BWRRK3073","BWRRK3103R"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWFNK3033R","FREE3013"],
+      7:["BWRXK4976"]
+    }
+  }
+};
+
+/* ─────────── BSc. Agribus. Mgmt. — 125 cr, 7 semesters, 6 components ─────────── */
+PROGRAMS.BAGRO = {
+  id:"BAGRO", short:"BSc. Agribus. (Hons)",
+  fullName:"SARJANA MUDA SAINS PENGURUSAN PERNIAGAANTANI DENGAN KEPUJIAN [BSc. Agribus. Mgmt. (Hons)]",
+  nameEn:"Bachelor of Agribusiness Management Science with Honours",
+  total:125, semCount:7,
+  components:[
+    {l:"A",ms:"Teras Universiti",en:"University Core",req:12},
+    {l:"B",ms:"Teras Bahasa Inggeris",en:"English Core",req:6},
+    {l:"C",ms:"Teras Program",en:"Program Core",req:87},
+    {l:"D",ms:"Keperluan Bahasa",en:"Language Requirement (Mandarin)",req:9},
+    {l:"E",ms:"Elektif Bebas",en:"Free Elective",req:3},
+    {l:"F",ms:"Latihan Industri",en:"Industrial Training",req:8}
+  ],
+  tracks:[],
+  shortSems:[],
+  courses:[
+    /* A */
+    {code:"MPU1012",ms:"Falsafah dan Isu Semasa",en:"Philosophy & Current Issues",cr:2,cat:"A",pre:[]},
+    {code:"MPU1022",ms:"Penghayatan Etika dan Peradaban",en:"Ethics & Civilizations",cr:2,cat:"A",pre:[]},
+    {code:"MPU1042",ms:"Kenegaraan Malaysia",en:"Malaysian Studies",cr:2,cat:"A",pre:[]},
+    {code:"MPU1052",ms:"Prinsip Keusahawanan",en:"Entrepreneurship Principles",cr:2,cat:"A",pre:[]},
+    {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
+    {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
+    {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
+    /* B */
+    {code:"MPB2113",ms:"English Language Enrichment I",en:"English Language Enrichment I",cr:3,cat:"B",pre:[]},
+    {code:"MPB3123",ms:"English Language Enrichment II",en:"English Language Enrichment II",cr:3,cat:"B",pre:[]},
+    /* C — Program Core (selected) */
+    {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
+    {code:"BEEBK2023",ms:"Makroekonomi",en:"Macroeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
+    {code:"BKANK1013",ms:"Asas Perakaunan",en:"Foundations of Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[]},
+    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
+    {code:"SQQMK1023",ms:"Matematik Untuk Pengurusan",en:"Mathematics for Management",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK1013",ms:"Asas Kewangan",en:"Foundations of Finance",cr:3,cat:"C",pre:[]},
+    {code:"BETAK1013",ms:"Biologi",en:"Biology",cr:3,cat:"C",pre:[]},
+    {code:"BETAK1023",ms:"Kimia",en:"Chemistry",cr:3,cat:"C",pre:[]},
+    {code:"BETAK2013",ms:"Sains Perternakan",en:"Animal Science",cr:3,cat:"C",pre:[]},
+    {code:"BETAK2023",ms:"Sains Makanan",en:"Food Science",cr:3,cat:"C",pre:[]},
+    {code:"BETAK2033",ms:"Sains Tanah",en:"Soil Science",cr:3,cat:"C",pre:[]},
+    {code:"BETAK2043",ms:"Agronomi",en:"Agronomy",cr:3,cat:"C",pre:[]},
+    {code:"BETAK2053",ms:"Akuakultur",en:"Aquaculture",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3033",ms:"Kewangan Perniagaantani",en:"Agribusiness Finance",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3113",ms:"Ekonomi Pengeluaran Pertanian",en:"Agricultural Production Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3123",ms:"Pengurusan Perniagaan-tani",en:"Agribusiness Management",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3133",ms:"Ekonomi Pembangunan Pertanian",en:"Agricultural Development Economics",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3153",ms:"Pemasaran Pertanian",en:"Agricultural Marketing",cr:3,cat:"C",pre:[]},
+    {code:"BEEAK3163",ms:"Perdagangan Pertanian Antarabangsa",en:"International Agricultural Trade",cr:3,cat:"C",pre:[]},
+    {code:"BJTNK2033",ms:"Pengurusan Pengeluaran & Operasi",en:"Production & Operations Mgmt",cr:3,cat:"C",pre:[]},
+    {code:"BJTNK3073",ms:"Pengurusan Pembelian & Rangkaian Pembekal",en:"Procurement & Supply Chain Mgmt",cr:3,cat:"C",pre:[]},
+    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:[],minCr:70},
+    {code:"GLULK3043",ms:"Undang-Undang Perniagaan Tani",en:"Agribusiness Law",cr:3,cat:"C",pre:[]},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"C",pre:[]},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:[]},
+    /* D */
+    {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin I",cr:3,cat:"D",pre:[]},
+    {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin II",cr:3,cat:"D",pre:["SBLFK1053"]},
+    {code:"SBLFK3053",ms:"Bahasa Mandarin III",en:"Mandarin III",cr:3,cat:"D",pre:["SBLFK2053"]},
+    /* E */
+    {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"E",pre:[],ph:true},
+    /* F */
+    {code:"BETXK4988",ms:"Latihan Industri",en:"Industrial Training",cr:8,cat:"F",pre:[],all:true}
+  ],
+  recommended:{
+    "":{
+      1:["MPU1042","MPB2113","BETAK1013","BEEBK1013","BKANK1013","BPMNK1013","SQQSK1013"],
+      2:["MPU1012","MPB3123","BETAK1023","BEEBK2013","BWFFK1013","SQQMK1023","SBLFK1053"],
+      3:["MPU1062","BETAK2023","BETAK2053","BEEBK2023","SBLFK2053","FREE3013","VKKK1011"],
+      4:["BETAK2013","BETAK2043","BEEAK3033","BEEAK3153","BEEAK3133","SBLFK3053","VKKK1021"],
+      5:["MPU1052","BETAK2033","BEEAK3163","BEEAK3123","BJTNK2033","BPMNK3123","SBLEK3033"],
+      6:["MPU1022","BEEAK3113","BEERK3043","GLULK3043","BJTNK3073","SBLEK3063","BPMNK3023"],
+      7:["BETXK4988"]
+    }
+  }
+};
+
+/* ============================================================================
+   STATE & PERSISTENCE
+============================================================================ */
+const STORAGE_KEY = "sefb_planner_v2";
+const MIN_CR = 12, MAX_CR = 18;
+const DEANS_LIST = 3.50;
+
+let state = {
+  programId:"BFIN", trackId:"INV",
+  plan:{}, theme:"dark"
+};
+
+function emptyPlan(){ const p={}; const n=PROGRAMS[state.programId]?.semCount||8; for(let i=1;i<=n;i++) p[i]=[]; return p; }
+function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function loadState(){
+  try{
+    const r=localStorage.getItem(STORAGE_KEY);
+    if(r){ const s=JSON.parse(r); if(s&&s.programId&&s.plan){ state=s; }}
+  }catch(e){}
+  if(!state.plan||!Object.keys(state.plan).length) state.plan=emptyPlan();
+  if(!state.theme) state.theme="dark";
+  document.body.dataset.theme = state.theme;
+}
+
+/* ============================================================================
+   HELPERS
+============================================================================ */
+const $=id=>document.getElementById(id);
+function getCourse(code){ return PROGRAMS[state.programId].courses.find(c=>c.code===code); }
+function creditsBefore(s){ let t=0; for(let i=1;i<s;i++) for(const it of (state.plan[i]||[])){const c=getCourse(it.code); if(c) t+=c.cr;} return t; }
+
+function isPrereqsMet(code, semester){
+  const c=getCourse(code); if(!c) return {ok:true,missing:[]};
+  const missing=[];
+  for(const pre of (c.pre||[])){
+    let found=false;
+    for(let s=1;s<semester;s++){ if((state.plan[s]||[]).some(it=>it.code===pre)){ found=true; break; }}
+    if(!found) missing.push(pre);
+  }
+  if(c.minCr){ const have=creditsBefore(semester); if(have<c.minCr) missing.push(`${c.minCr}cr min (have ${have})`); }
+  if(c.all){ const have=creditsBefore(semester); const p=PROGRAMS[state.programId]; if(have<p.total-c.cr) missing.push(`finish other courses first`);}
+  return {ok:missing.length===0, missing};
+}
+
+function availableFor(s){
+  const p=PROGRAMS[state.programId];
+  const placed=new Set(); Object.values(state.plan).forEach(a=>a.forEach(it=>placed.add(it.code)));
+  return p.courses.filter(c=>{
+    if(placed.has(c.code)) return false;
+    if(c.cat==="D" && c.track && state.trackId && c.track!==state.trackId) return false;
+    return true;
+  });
+}
+
+/* ============================================================================
+   GPA / CGPA
+============================================================================ */
+function gp(g){ const x=GRADES.find(y=>y.g===g); return x?x.p:null; }
+function computeGPA(){
+  let cumP=0, cumC=0;
+  const per=[];
+  const n=PROGRAMS[state.programId].semCount;
+  for(let s=1;s<=n;s++){
+    let sp=0, sc=0;
+    for(const it of (state.plan[s]||[])){
+      const c=getCourse(it.code); if(!c||!it.grade) continue;
+      const p=gp(it.grade); if(p===null) continue;
+      sp+=p*c.cr; sc+=c.cr;
+    }
+    cumP+=sp; cumC+=sc;
+    per.push({s,cr:sc, gpa:sc?sp/sc:null, cgpa:cumC?cumP/cumC:null});
+  }
+  return {per, cgpa:cumC?cumP/cumC:0};
+}
+
+/* ============================================================================
+   RENDER
+============================================================================ */
+function renderProgramSelect(){
+  const sel=$("programSelect"); sel.innerHTML="";
+  Object.values(PROGRAMS).forEach(p=>{
+    const o=document.createElement("option");
+    o.value=p.id; o.textContent=p.fullName;
+    sel.appendChild(o);
+  });
+  sel.value=state.programId;
+  sel.onchange=()=>{
+    state.programId=sel.value;
+    const p=PROGRAMS[sel.value];
+    state.trackId = (p.tracks&&p.tracks[0]?.id)||"";
+    state.plan=emptyPlan();
+    saveState(); renderAll();
+  };
+}
+
+function renderTrackSelect(){
+  const sel=$("trackSelect"); const wrap=$("trackField");
+  const p=PROGRAMS[state.programId];
+  if(!p.tracks||!p.tracks.length){ wrap.style.display="none"; return; }
+  wrap.style.display="";
+  sel.innerHTML="";
+  p.tracks.forEach(t=>{ const o=document.createElement("option"); o.value=t.id; o.textContent=t.en; sel.appendChild(o); });
+  sel.value=state.trackId||p.tracks[0].id;
+  if(!state.trackId) state.trackId=p.tracks[0].id;
+  sel.onchange=()=>{ state.trackId=sel.value; saveState(); renderAll(); };
+}
+
+function renderSemesters(){
+  const p=PROGRAMS[state.programId];
+  const c=$("semesters"); c.innerHTML="";
+  for(let s=1;s<=p.semCount;s++){
+    const items=state.plan[s]||[];
+    const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
+    let cls=""; if(cr===0) cls=""; else if(cr<MIN_CR) cls="warn"; else if(cr>MAX_CR) cls="bad"; else cls="ok";
+    const isShort=p.shortSems&&p.shortSems.includes(s);
+    const card=document.createElement("div");
+    card.className="sem-card"+(isShort?" short-sem":"");
+    card.dataset.sem=s;
+    card.innerHTML=`
+      <div class="sem-head">
+        <div class="sem-title"><span class="num">${s}</span>${isShort?"Short Sem":"Semester "+s}</div>
+        <div class="sem-credits ${cls}">${cr} cr</div>
+      </div>
+      <div class="sem-courses"></div>
+      <div class="add-row">
+        <select id="addSel-${s}"><option value="">+ Add course…</option></select>
+        <button class="add-btn" onclick="addCourse(${s})">Add</button>
+      </div>
+    `;
+    const list=card.querySelector(".sem-courses");
+    items.forEach((it,idx)=>{
+      const cc=getCourse(it.code); if(!cc) return;
+      const pr=isPrereqsMet(it.code,s);
+      const div=document.createElement("div");
+      div.className="course"+(pr.ok?"":" locked");
+      div.dataset.cat=cc.cat; div.draggable=true;
+      div.dataset.code=cc.code; div.dataset.sem=s; div.dataset.idx=idx;
+      div.title = pr.ok ? `${cc.en} — Prereq: ${cc.pre.length?cc.pre.join(", "):"None"}` : "Locked: missing "+pr.missing.join(", ");
+      div.innerHTML=`
+        <span class="code">${cc.code}</span>
+        <span class="name">
+          <span class="en">${cc.en}</span>
+          <span class="ms">${cc.ms}</span>
+        </span>
+        <span class="cr">${cc.cr} cr</span>
+        <select class="grade-select" onchange="setGrade(${s},${idx},this.value)" onclick="event.stopPropagation()">
+          <option value="">—</option>
+          ${GRADES.map(g=>`<option value="${g.g}" ${it.grade===g.g?'selected':''}>${g.g}</option>`).join("")}
+        </select>
+        <button class="x-btn" onclick="removeCourse(${s},${idx})" onclick="event.stopPropagation()" title="Remove">×</button>
+      `;
+      list.appendChild(div);
+    });
+    c.appendChild(card);
+    const addSel=card.querySelector(`#addSel-${s}`);
+    availableFor(s).sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>{
+      const pr=isPrereqsMet(cc.code,s);
+      const o=document.createElement("option");
+      o.value=cc.code;
+      o.textContent=`${pr.ok?"":"🔒 "}${cc.code} · ${cc.en} (${cc.cr}cr)`;
+      addSel.appendChild(o);
+    });
+  }
+  attachDragHandlers();
+}
+
+function attachDragHandlers(){
+  document.querySelectorAll(".course").forEach(el=>{
+    el.addEventListener("dragstart",e=>{
+      el.classList.add("dragging");
+      e.dataTransfer.setData("text/plain",JSON.stringify({sem:el.dataset.sem,idx:el.dataset.idx,code:el.dataset.code}));
+      e.dataTransfer.effectAllowed="move";
+    });
+    el.addEventListener("dragend",()=>el.classList.remove("dragging"));
+  });
+  document.querySelectorAll(".sem-card").forEach(card=>{
+    card.addEventListener("dragover",e=>{ e.preventDefault(); card.classList.add("drop-target"); });
+    card.addEventListener("dragleave",()=>card.classList.remove("drop-target"));
+    card.addEventListener("drop",e=>{
+      e.preventDefault(); card.classList.remove("drop-target");
+      const data=JSON.parse(e.dataTransfer.getData("text/plain"));
+      const fromSem=+data.sem, fromIdx=+data.idx, toSem=+card.dataset.sem;
+      if(fromSem===toSem) return;
+      const item=state.plan[fromSem][fromIdx];
+      state.plan[fromSem].splice(fromIdx,1);
+      state.plan[toSem].push(item);
+      saveState(); renderAll();
+    });
+  });
+}
+
+function addCourse(s){
+  const sel=$(`addSel-${s}`);
+  if(!sel.value) return;
+  state.plan[s].push({code:sel.value,grade:""});
+  saveState(); renderAll();
+}
+function removeCourse(s,i){ state.plan[s].splice(i,1); saveState(); renderAll(); }
+function setGrade(s,i,g){ state.plan[s][i].grade=g; saveState(); renderAll();
+  if(g && !["","M","TM","TD","TL"].includes(g)) flashUpdate();
+}
+
+function flashUpdate(){
+  const gauge=$("cgpaLabel");
+  gauge.style.transform="scale(1.15)";
+  setTimeout(()=>gauge.style.transform="scale(1)",250);
+}
+
+/* ============================================================================
+   SUMMARY (gauge, stats, components, GPA, audit, alerts)
+============================================================================ */
+function renderSummary(){
+  const p=PROGRAMS[state.programId];
+  const {per,cgpa}=computeGPA();
+  /* totals */
+  let totalCr=0, gradedCr=0;
+  for(const arr of Object.values(state.plan)) for(const it of arr){
+    const c=getCourse(it.code); if(!c) continue; totalCr+=c.cr;
+    if(it.grade && gp(it.grade)!==null) gradedCr++;
+  }
+  animateNumber($("statCredits"), totalCr, 0, 500);
+  animateNumber($("statGraded"), gradedCr, 0, 500);
+  $("totalCrBadge").textContent=`${totalCr}/${p.total} cr`;
+
+  /* CGPA gauge */
+  const ratio=Math.min(1,Math.max(0,cgpa/4));
+  const dash=251;
+  $("gaugeFill").setAttribute("stroke-dashoffset", String(dash*(1-ratio)));
+  animateNumber($("cgpaLabel"), cgpa, 2, 700);
+  $("cgpaBadge").textContent = cgpa >= DEANS_LIST ? "Dean's List ⭐" : cgpa >= 2.00 ? "On track" : cgpa>0 ? "Below 2.00" : "—";
+
+  /* Badges */
+  renderBadges(totalCr, p.total, cgpa, per);
+
+  /* Components */
+  const byCat={};
+  p.components.forEach(comp=>byCat[comp.l]={req:comp.req,done:0,en:comp.en,ms:comp.ms});
+  Object.values(state.plan).forEach(a=>a.forEach(it=>{
+    const c=getCourse(it.code); if(!c) return;
+    if(byCat[c.cat]) byCat[c.cat].done+=c.cr;
+  }));
+  const cont=$("componentProgress"); cont.innerHTML="";
+  Object.entries(byCat).forEach(([l,info])=>{
+    const pct=Math.min(100,(info.done/info.req)*100);
+    const done=info.done>=info.req;
+    cont.innerHTML+=`
+      <div class="progress-item">
+        <span class="label">${l}. ${info.en}</span>
+        <span class="v">${info.done}/${info.req} cr</span>
+        <div class="progress-bar"><div class="${done?'done':''}" style="width:${pct}%"></div></div>
+      </div>`;
+  });
+
+  /* Legend */
+  const colors={A:"#eab308",B:"#10b981",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
+  const leg=$("legend"); leg.innerHTML="";
+  p.components.forEach(comp=>{
+    leg.innerHTML+=`<div class="legend-row"><div class="sw" style="background:${colors[comp.l]}"></div><span class="lab">${comp.l}. ${comp.en}</span></div>`;
+  });
+
+  /* GPA per semester with sparkline header */
+  const tb=$("gpaTable"); tb.innerHTML="";
+  let any=false;
+  const trendValues=[];
+  per.forEach(r=>{
+    if(r.cr===0) return; any=true;
+    if(r.cgpa!==null) trendValues.push(r.cgpa);
+    const deans=r.gpa!==null && r.gpa>=DEANS_LIST;
+    tb.innerHTML+=`<tr class="${deans?'deans':''}">
+      <td>${r.s}</td><td>${r.cr}</td>
+      <td class="gpa">${r.gpa!==null?r.gpa.toFixed(2):'—'}</td>
+      <td class="gpa">${r.cgpa!==null?r.cgpa.toFixed(2):'—'}</td>
+    </tr>`;
+  });
+  if(trendValues.length>=2){
+    tb.innerHTML += `<tr><td colspan="2" style="text-align:right;padding-top:10px;font-size:10px;color:var(--muted)">CGPA trend →</td><td colspan="2" class="sparkline-cell" style="padding-top:10px">${buildSparkline(trendValues)}</td></tr>`;
+  }
+  if(!any) tb.innerHTML=`<tr><td colspan="4" style="color:var(--muted);padding:18px">Add grades to see GPA per semester</td></tr>`;
+
+  /* Audit */
+  renderAudit(byCat,totalCr,p.total,cgpa);
+
+  /* Alerts */
+  renderAlerts();
+}
+
+function renderAudit(byCat,total,target,cgpa){
+  const div=$("audit");
+  const items=[];
+  Object.entries(byCat).forEach(([l,info])=>{
+    items.push({ok:info.done>=info.req, label:`${l}. ${info.en}`, v:`${info.done}/${info.req} cr`});
+  });
+  items.push({ok:total>=target,label:"Total credits",v:`${total}/${target}`});
+  items.push({ok:cgpa>=2.00,label:"Minimum CGPA 2.00",v:cgpa.toFixed(2)});
+  const allOk=items.every(i=>i.ok);
+  const banner = allOk
+    ? `<div class="grad-banner">🎓 Eligible to Graduate · Projected CGPA ${cgpa.toFixed(2)}${cgpa>=DEANS_LIST?' · Dean\'s List ⭐':''}</div>`
+    : `<div class="grad-banner notyet">⚠️ Not Yet Eligible — ${items.filter(i=>!i.ok).length} requirement(s) remaining</div>`;
+  div.innerHTML = banner + items.map(i=>`
+    <div class="audit-item ${i.ok?'ok':'bad'}">
+      <span class="ico">${i.ok?'✓':'✗'}</span>
+      <span>${i.label}</span>
+      <span class="v">${i.v}</span>
+    </div>
+  `).join("");
+  if(allOk && !window._celebrated){ window._celebrated=true; setTimeout(celebrate,400); }
+  if(!allOk) window._celebrated=false;
+}
+
+function renderAlerts(){
+  const a=$("alerts");
+  const issues=[];
+  const p=PROGRAMS[state.programId];
+  for(let s=1;s<=p.semCount;s++){
+    const items=state.plan[s]||[];
+    const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
+    if(cr>0 && cr<MIN_CR && !(p.shortSems||[]).includes(s))
+      issues.push({lvl:"warn",msg:`Semester ${s}: ${cr} cr — below recommended minimum (${MIN_CR})`});
+    if(cr>MAX_CR)
+      issues.push({lvl:"bad",msg:`Semester ${s}: ${cr} cr — over maximum (${MAX_CR})`});
+    for(const it of items){
+      const pr=isPrereqsMet(it.code,s);
+      if(!pr.ok) issues.push({lvl:"bad",msg:`${it.code} (Sem ${s}): missing ${pr.missing.join(", ")}`});
+      if(it.grade && RETAKE_GRADES.has(it.grade)) issues.push({lvl:"warn",msg:`${it.code} (Sem ${s}): ${it.grade} — retake required (UUM rule c)`});
+    }
+  }
+  a.innerHTML = issues.slice(0,5).map(i=>`<div class="alert ${i.lvl==='bad'?'bad':'warn'}"><span class="icon">${i.lvl==='bad'?'⛔':'⚠️'}</span>${i.msg}</div>`).join("");
+}
+
+/* ============================================================================
+   ACTIONS
+============================================================================ */
+function loadRecommended(){
+  const p=PROGRAMS[state.programId];
+  const rec=p.recommended && p.recommended[state.trackId||""];
+  if(!rec){ alert("No recommended plan available for this program/track."); return; }
+  if(!confirm("Replace your current plan with the official recommended plan?")) return;
+  state.plan=emptyPlan();
+  Object.entries(rec).forEach(([s,codes])=>{ state.plan[s]=codes.map(c=>({code:c,grade:""})); });
+  saveState(); renderAll();
+}
+
+function resetPlan(){
+  if(!confirm("Reset your plan? This cannot be undone.")) return;
+  state.plan=emptyPlan(); saveState(); renderAll();
+}
+
+function exportTxt(){
+  const p=PROGRAMS[state.programId];
+  const {cgpa,per}=computeGPA();
+  let total=0; Object.values(state.plan).forEach(a=>a.forEach(it=>{const c=getCourse(it.code);if(c)total+=c.cr;}));
+  let txt = `SEFB DEGREE PLAN\n=================\n${p.fullName}\n`;
+  if(p.tracks && p.tracks.length){
+    const t=p.tracks.find(t=>t.id===state.trackId);
+    if(t) txt += `Specialization: ${t.en} (${t.ms})\n`;
+  }
+  txt += `Credits planned: ${total} / ${p.total}\nProjected CGPA: ${cgpa.toFixed(2)}\n\n`;
+  for(let s=1;s<=p.semCount;s++){
+    const items=state.plan[s]||[]; if(!items.length) continue;
+    const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
+    const isShort=p.shortSems&&p.shortSems.includes(s);
+    txt += `── ${isShort?'SHORT SEMESTER':'SEMESTER '+s} (${cr} credits) ──\n`;
+    items.forEach(it=>{
+      const c=getCourse(it.code); if(!c) return;
+      txt += `  ${c.code.padEnd(11)} ${c.en.padEnd(45)} ${c.cr}cr  Grade: ${it.grade||'—'}\n`;
+    });
+    txt += "\n";
+  }
+  txt += "Data source: SEFB 251 Panduan Akademik 2025/2026 · Grading per UUM rules\n";
+  const blob=new Blob([txt],{type:"text/plain"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a"); a.href=url; a.download=`SEFB_Plan_${p.id}.txt`; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function toggleTheme(){
+  state.theme = state.theme==="light"?"dark":"light";
+  document.body.dataset.theme=state.theme;
+  $("themeBtn").innerHTML = state.theme==="light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+  saveState();
+}
+
+/* ============================================================================
+   SEARCH
+============================================================================ */
+function onSearch(){
+  const q=$("searchInput").value.trim().toLowerCase();
+  const box=$("searchResults");
+  if(!q){ box.classList.remove("active"); return; }
+  const p=PROGRAMS[state.programId];
+  const placed=new Set(); Object.values(state.plan).forEach(a=>a.forEach(it=>placed.add(it.code)));
+  const results=p.courses.filter(c=>
+    !placed.has(c.code) &&
+    (c.code.toLowerCase().includes(q) || c.en.toLowerCase().includes(q) || c.ms.toLowerCase().includes(q))
+  ).slice(0,8);
+  if(!results.length){ box.innerHTML='<div class="item" style="color:var(--muted)">No matches</div>'; box.classList.add("active"); return; }
+  box.innerHTML=results.map(c=>`
+    <div class="item" onclick="quickAdd('${c.code}')">
+      <span class="c">${c.code}</span>
+      <span>${c.en}</span>
+      <span style="float:right;color:var(--muted);font-size:10px">${c.cr}cr · Cat ${c.cat}</span>
+    </div>
+  `).join("");
+  box.classList.add("active");
+}
+function quickAdd(code){
+  /* add to first semester where prereqs are met & under max credits */
+  const p=PROGRAMS[state.programId];
+  const c=getCourse(code); if(!c) return;
+  for(let s=1;s<=p.semCount;s++){
+    const items=state.plan[s]||[];
+    const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
+    if(cr+c.cr>MAX_CR) continue;
+    const pr=isPrereqsMet(code,s);
+    if(pr.ok){
+      state.plan[s].push({code,grade:""});
+      saveState(); renderAll();
+      $("searchInput").value="";
+      $("searchResults").classList.remove("active");
+      return;
+    }
+  }
+  alert(`Cannot place ${code} — no semester satisfies its prereqs with credits available.`);
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".search-wrap")) $("searchResults").classList.remove("active");
+});
+
+/* ============================================================================
+   TABS
+============================================================================ */
+document.querySelectorAll(".tab").forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    $("tab-"+t.dataset.tab).classList.add("active");
+  };
+});
+
+/* ============================================================================
+   MODAL & HELP
+============================================================================ */
+function openModal(title,html){ $("modalTitle").innerHTML=title+'<button class="close" onclick="closeModal()">&times;</button>'; $("modalBody").innerHTML=html; $("modal").classList.add("active"); }
+function closeModal(){ $("modal").classList.remove("active"); }
+
+function showHelp(){
+  openModal("How to use this dashboard", `
+    <p><strong>1. Pick your program</strong> — choose from 5 SEFB programs. If your program has specialization tracks (e.g. BFin), pick one too.</p>
+    <p><strong>2. Load Recommended Plan</strong> — pre-fills the official UUM semester sequence. You can rearrange after.</p>
+    <p><strong>3. Drag courses between semesters</strong> — just grab and drop. The system locks courses whose prerequisites aren't met (🔒).</p>
+    <p><strong>4. Set target grades</strong> — choose A+, A, A-, etc. from each course's dropdown. Your projected CGPA updates instantly on the gauge.</p>
+    <p><strong>5. Credit limits per semester:</strong> 12 minimum, 18 maximum. Cards turn yellow (under), green (OK), or red (over).</p>
+    <p><strong>6. Search</strong> — find any course by code or name. Click to add it to the earliest valid semester.</p>
+    <p><strong>7. Graduation Audit</strong> — checks every component requirement. When all green, you'll see a celebration!</p>
+    <h3 style="font-size:14px;margin-top:14px">📊 Grading Scale (UUM)</h3>
+    <table class="grade-table">
+      <thead><tr><th>Grade</th><th>Points</th><th>Status</th></tr></thead>
+      <tbody>${GRADES.map(g=>`<tr><td><strong>${g.g}</strong></td><td>${g.p.toFixed(2)}</td><td>${g.s}</td></tr>`).join("")}</tbody>
+    </table>
+    <p style="font-size:11.5px;color:var(--muted)">Rule (c): grades C-, D+, D, F → must retake. M/TM (audit), TD (withdraw) → not counted in CGPA. X (barred) → cannot be redeemed.</p>
+    <h3 style="font-size:14px;margin-top:14px">⭐ Dean's List</h3>
+    <p>Achieving a semester GPA of 3.50 or higher places you on the Dean's List.</p>
+  `);
+}
+
+function showAbout(){
+  openModal("About this dashboard", `
+    <p>The <strong>SEFB Degree Planner</strong> is a student-facing academic-planning and CGPA-simulation tool for the School of Economics, Finance & Banking at Universiti Utara Malaysia.</p>
+    <p><strong>Supports all 5 SEFB programs:</strong></p>
+    <ul>
+      <li>BFin (Hons) — Finance · 122 cr · 8 semesters</li>
+      <li>BBank (Hons) — Banking · 120 cr · 7 semesters</li>
+      <li>BSc. Economics (Hons) · 125 cr · 7 semesters</li>
+      <li>BRMI (Hons) — Risk Management & Insurance · 120 cr · 7 semesters</li>
+      <li>BSc. Agribus. Mgmt. (Hons) · 125 cr · 7 semesters</li>
+    </ul>
+    <p><strong>Data sources:</strong> SEFB 251 Panduan Akademik Sesi Kemasukan 2025/2026 · UUM Grading System.</p>
+    <p><strong>Privacy:</strong> All data stays in your browser. Nothing is sent to any server. Use the Export button to save a backup of your plan.</p>
+    <p style="font-size:12px;color:var(--muted)">v2.0 · Built with care · Single HTML file, no dependencies, works offline.</p>
+  `);
+}
+
+/* ============================================================================
+   CONFETTI
+============================================================================ */
+function celebrate(){
+  const canvas=$("confetti"); canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  const ctx=canvas.getContext("2d");
+  const pieces=[];
+  const colors=["#fbbf24","#f97316","#ea580c","#dc2626","#fde047","#fb923c","#22c55e","#06b6d4"];
+  for(let i=0;i<160;i++){
+    pieces.push({
+      x:Math.random()*canvas.width, y:-20-Math.random()*200,
+      vx:(Math.random()-.5)*4, vy:3+Math.random()*5,
+      r:4+Math.random()*6, c:colors[(Math.random()*colors.length)|0],
+      rot:Math.random()*Math.PI, vr:(Math.random()-.5)*.2
+    });
+  }
+  let t=0;
+  function frame(){
+    t++; ctx.clearRect(0,0,canvas.width,canvas.height);
+    let alive=false;
+    for(const p of pieces){
+      p.x+=p.vx; p.y+=p.vy; p.vy+=.05; p.rot+=p.vr;
+      if(p.y<canvas.height+50) alive=true;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      ctx.fillStyle=p.c; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
+      ctx.restore();
+    }
+    if(alive && t<240) requestAnimationFrame(frame);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  frame();
+}
+
+/* ============================================================================
+   FLOATING PARTICLES
+============================================================================ */
+function initParticles(){
+  const c=$("particles"); c.innerHTML="";
+  for(let i=0;i<14;i++){
+    const p=document.createElement("div"); p.className="p";
+    const size=20+Math.random()*70;
+    p.style.width=p.style.height=size+"px";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(18+Math.random()*22)+"s";
+    p.style.animationDelay=(-Math.random()*30)+"s";
+    p.style.background=`radial-gradient(circle,rgba(${[
+      '251,191,36','249,115,22','234,88,12','220,38,38','253,224,71'
+    ][i%5]},.35) 0%,rgba(249,115,22,0) 70%)`;
+    c.appendChild(p);
+  }
+}
+
+/* ============================================================================
+   PREREQ GRAPH (force-directed-ish layout, deterministic)
+============================================================================ */
+function renderGraph(){
+  const p=PROGRAMS[state.programId];
+  const ns=$("graphNodes"); const es=$("graphEdges");
+  ns.innerHTML=""; es.innerHTML="";
+  /* Pick courses involved in prereq chains */
+  const involved=new Set();
+  p.courses.forEach(c=>{
+    if(c.pre && c.pre.length){
+      involved.add(c.code);
+      c.pre.forEach(pp=>involved.add(pp));
+    }
+  });
+  const nodes=p.courses.filter(c=>involved.has(c.code));
+  if(!nodes.length){ ns.innerHTML='<text x="400" y="250" text-anchor="middle" fill="var(--muted)" font-size="14">No prerequisite chains in this program</text>'; return; }
+  /* Layer assignment by depth */
+  const depth={};
+  const compute=(code,visited)=>{
+    if(code in depth) return depth[code];
+    if(visited.has(code)) return 0;
+    visited.add(code);
+    const c=p.courses.find(x=>x.code===code);
+    if(!c||!c.pre.length){ depth[code]=0; return 0; }
+    let d=0; for(const pp of c.pre){ d=Math.max(d,compute(pp,visited)+1); }
+    depth[code]=d; return d;
+  };
+  nodes.forEach(n=>compute(n.code,new Set()));
+  /* Group by depth */
+  const layers={};
+  nodes.forEach(n=>{ (layers[depth[n.code]]=layers[depth[n.code]]||[]).push(n); });
+  const maxDepth=Math.max(...Object.keys(layers).map(Number));
+  const W=800, H=Math.max(420, 80+Object.values(layers).reduce((m,a)=>Math.max(m,a.length),0)*45);
+  $("prereqGraph").setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const pos={};
+  Object.entries(layers).forEach(([d,arr])=>{
+    const x = 60 + (W-120) * (Number(d) / Math.max(1,maxDepth));
+    arr.forEach((n,i)=>{
+      const y = 40 + (H-80) * ((i+0.5)/arr.length);
+      pos[n.code]={x,y};
+    });
+  });
+  const catColors={A:"#eab308",B:"#10b981",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
+  /* Edges */
+  nodes.forEach(n=>{
+    (n.pre||[]).forEach(pp=>{
+      if(!pos[pp]||!pos[n.code]) return;
+      const a=pos[pp], b=pos[n.code];
+      const dx=(b.x-a.x)*.4;
+      const path=`M ${a.x+18} ${a.y} C ${a.x+dx} ${a.y}, ${b.x-dx} ${b.y}, ${b.x-18} ${b.y}`;
+      es.innerHTML += `<path class="graph-edge" data-from="${pp}" data-to="${n.code}" d="${path}"/>`;
+    });
+  });
+  /* Nodes */
+  nodes.forEach(n=>{
+    const c=catColors[n.cat]||"#f97316";
+    const {x,y}=pos[n.code];
+    ns.innerHTML += `
+      <g class="graph-node" data-code="${n.code}" transform="translate(${x},${y})">
+        <circle r="18" fill="${c}" opacity=".95"/>
+        <text>${n.code.slice(-4)}</text>
+      </g>`;
+  });
+  /* Hover */
+  setTimeout(()=>{
+    document.querySelectorAll(".graph-node").forEach(node=>{
+      node.addEventListener("mouseenter",()=>{
+        const code=node.dataset.code;
+        const c=p.courses.find(x=>x.code===code);
+        $("graphInfo").classList.add("show");
+        $("graphInfo").innerHTML=`<strong>${code}</strong> · ${c.en}<br><span style="font-size:10px;color:var(--muted)">${c.cr}cr · Prereq: ${c.pre.length?c.pre.join(", "):"None"}</span>`;
+        document.querySelectorAll(".graph-edge").forEach(e=>{
+          if(e.dataset.from===code||e.dataset.to===code) e.classList.add("highlight");
+        });
+      });
+      node.addEventListener("mouseleave",()=>{
+        $("graphInfo").classList.remove("show");
+        document.querySelectorAll(".graph-edge").forEach(e=>e.classList.remove("highlight"));
+      });
+    });
+  },20);
+}
+
+/* ============================================================================
+   ANIMATED COUNT-UP
+============================================================================ */
+function animateNumber(el, target, decimals=0, duration=600){
+  const startVal = parseFloat(el.textContent) || 0;
+  const start = performance.now();
+  function frame(t){
+    const p = Math.min(1, (t-start)/duration);
+    const eased = 1 - Math.pow(1-p, 3);
+    el.textContent = (startVal + (target-startVal)*eased).toFixed(decimals);
+    if(p<1) requestAnimationFrame(frame);
+    else el.textContent = target.toFixed(decimals);
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ============================================================================
+   SPARKLINE
+============================================================================ */
+function buildSparkline(values){
+  if(!values.length) return "";
+  const w=80,h=30,pad=2;
+  const min=0, max=4;
+  const points=values.map((v,i)=>{
+    const x = pad + (w-2*pad)*(i/Math.max(1,values.length-1));
+    const y = h-pad - (h-2*pad)*((v-min)/(max-min));
+    return `${x},${y}`;
+  }).join(" ");
+  const last=values[values.length-1];
+  const lastX = pad + (w-2*pad)*((values.length-1)/Math.max(1,values.length-1));
+  const lastY = h-pad - (h-2*pad)*((last-min)/(max-min));
+  const color = last>=3.5?"#22c55e":last>=2?"#f97316":"#dc2626";
+  return `<svg viewBox="0 0 ${w} ${h}">
+    <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="${lastX}" cy="${lastY}" r="2.5" fill="${color}"/>
+  </svg>`;
+}
+
+/* ============================================================================
+   ACHIEVEMENT BADGES
+============================================================================ */
+function renderBadges(totalCr, target, cgpa, perSem){
+  const wrap=$("badges"); if(!wrap) return;
+  const badges=[];
+  if(totalCr>=25) badges.push({c:"",t:"🚀 First Year Done"});
+  if(totalCr>=60) badges.push({c:"green",t:"⛰️ Halfway There"});
+  if(totalCr>=target*0.9) badges.push({c:"purple",t:"🎯 Nearly There"});
+  if(totalCr>=target) badges.push({c:"gold",t:"🏆 Full Credits"});
+  if(cgpa>=3.5) badges.push({c:"gold",t:"⭐ Dean's List"});
+  if(cgpa>=3.0 && cgpa<3.5) badges.push({c:"purple",t:"💎 Strong Standing"});
+  const deansCount = perSem.filter(r=>r.gpa!==null && r.gpa>=3.5).length;
+  if(deansCount>=2) badges.push({c:"gold",t:`✨ ${deansCount}× Dean's List`});
+  if(perSem.filter(r=>r.cr>0).length>=4) badges.push({c:"",t:"📚 Steady Planner"});
+  wrap.innerHTML = badges.map(b=>`<span class="achievement ${b.c}">${b.t}</span>`).join("");
+}
+
+/* ============================================================================
+   STANDALONE GPA CALCULATOR (single semester)
+============================================================================ */
+let gpaCalc = [{cr:3,grade:""},{cr:3,grade:""},{cr:3,grade:""}];
+
+function gpaCalcRender(){
+  const wrap=$("gpaCalcRows"); if(!wrap) return;
+  wrap.innerHTML = gpaCalc.map((row,i)=>`
+    <div class="calc-row">
+      <div class="cr-wrap">
+        <input type="number" min="1" max="8" value="${row.cr}" onchange="gpaCalcSet(${i},'cr',this.value)" oninput="gpaCalcSet(${i},'cr',this.value)">
+        <span class="cr-lbl">cr</span>
+      </div>
+      <select onchange="gpaCalcSet(${i},'grade',this.value)">
+        <option value="">— select grade —</option>
+        ${GRADES.map(g=>`<option value="${g.g}" ${row.grade===g.g?'selected':''}>${g.g}  ·  ${g.p.toFixed(2)}  ·  ${g.s}</option>`).join("")}
+      </select>
+      <button class="x" onclick="gpaCalcRemove(${i})" title="Remove">×</button>
+    </div>
+  `).join("");
+
+  let totCr=0, totP=0, count=0;
+  gpaCalc.forEach(r=>{
+    const p=gp(r.grade); const cr=Number(r.cr)||0;
+    if(p===null||!cr) return;
+    totCr+=cr; totP+=p*cr; count++;
+  });
+  const gpa = totCr ? totP/totCr : 0;
+  $("gpaCalcResult").textContent = gpa.toFixed(2);
+  $("gpaCalcCr").textContent = totCr;
+  $("gpaCalcCount").textContent = count;
+  const s=$("gpaCalcStatus");
+  if(!count){ s.textContent="—"; s.className="res-status"; }
+  else if(gpa>=DEANS_LIST){ s.textContent="Dean's List ⭐"; s.className="res-status deans"; }
+  else if(gpa>=3.00){ s.textContent="Distinction"; s.className="res-status deans"; }
+  else if(gpa>=2.00){ s.textContent="Pass"; s.className="res-status"; }
+  else if(gpa>0){ s.textContent="Below 2.00"; s.className="res-status bad"; }
+  else{ s.textContent="—"; s.className="res-status"; }
+}
+function gpaCalcSet(i,k,v){ if(gpaCalc[i]){ gpaCalc[i][k]=v; gpaCalcRender(); }}
+function gpaCalcAdd(){ gpaCalc.push({cr:3,grade:""}); gpaCalcRender(); }
+function gpaCalcRemove(i){
+  gpaCalc.splice(i,1);
+  if(!gpaCalc.length) gpaCalc=[{cr:3,grade:""}];
+  gpaCalcRender();
+}
+function gpaCalcReset(){ gpaCalc=[{cr:3,grade:""},{cr:3,grade:""},{cr:3,grade:""}]; gpaCalcRender(); }
+
+/* ============================================================================
+   CGPA PROJECTION CALCULATOR (entire degree)
+============================================================================ */
+let cgpaCalcRows = [{cr:3,grade:""},{cr:3,grade:""},{cr:3,grade:""}];
+
+function cgpaCalcRender(){
+  const wrap=$("cgpaCalcRows"); if(!wrap) return;
+  wrap.innerHTML = cgpaCalcRows.map((row,i)=>`
+    <div class="calc-row">
+      <div class="cr-wrap">
+        <input type="number" min="1" max="8" value="${row.cr}" onchange="cgpaCalcSetRow(${i},'cr',this.value)" oninput="cgpaCalcSetRow(${i},'cr',this.value)">
+        <span class="cr-lbl">cr</span>
+      </div>
+      <select onchange="cgpaCalcSetRow(${i},'grade',this.value)">
+        <option value="">— select grade —</option>
+        ${GRADES.map(g=>`<option value="${g.g}" ${row.grade===g.g?'selected':''}>${g.g}  ·  ${g.p.toFixed(2)}  ·  ${g.s}</option>`).join("")}
+      </select>
+      <button class="x" onclick="cgpaCalcRemoveRow(${i})" title="Remove">×</button>
+    </div>
+  `).join("");
+
+  let semCr=0, semP=0;
+  cgpaCalcRows.forEach(r=>{
+    const p=gp(r.grade); const cr=Number(r.cr)||0;
+    if(p===null||!cr) return;
+    semCr+=cr; semP+=p*cr;
+  });
+  const semGPA = semCr ? semP/semCr : 0;
+  const prior = Math.max(0, Math.min(4, parseFloat($("cgpaPriorVal").value)||0));
+  const priorCr = Math.max(0, parseFloat($("cgpaPriorCr").value)||0);
+  const totalCr = priorCr + semCr;
+  const newCGPA = totalCr ? (prior*priorCr + semP) / totalCr : 0;
+
+  $("cgpaCalcSem").textContent = semGPA.toFixed(2);
+  $("cgpaCalcNew").textContent = newCGPA.toFixed(2);
+  $("cgpaCalcTotal").textContent = totalCr;
+
+  const s=$("cgpaCalcStatus");
+  if(!semCr && !priorCr){ s.textContent="Enter values to project"; s.className="res-status"; }
+  else if(newCGPA>=DEANS_LIST){ s.textContent="🌟 Dean's List Standing"; s.className="res-status deans"; }
+  else if(newCGPA>=3.00){ s.textContent="✓ Strong Standing"; s.className="res-status deans"; }
+  else if(newCGPA>=2.00){ s.textContent="✓ Good Standing"; s.className="res-status"; }
+  else if(newCGPA>0){ s.textContent="⚠ Probation Risk (< 2.00)"; s.className="res-status bad"; }
+  else{ s.textContent="—"; s.className="res-status"; }
+}
+function cgpaCalcSetRow(i,k,v){ if(cgpaCalcRows[i]){ cgpaCalcRows[i][k]=v; cgpaCalcRender(); }}
+function cgpaCalcAdd(){ cgpaCalcRows.push({cr:3,grade:""}); cgpaCalcRender(); }
+function cgpaCalcRemoveRow(i){
+  cgpaCalcRows.splice(i,1);
+  if(!cgpaCalcRows.length) cgpaCalcRows=[{cr:3,grade:""}];
+  cgpaCalcRender();
+}
+function cgpaCalcReset(){
+  cgpaCalcRows=[{cr:3,grade:""},{cr:3,grade:""},{cr:3,grade:""}];
+  $("cgpaPriorVal").value="";
+  $("cgpaPriorCr").value="";
+  cgpaCalcRender();
+}
+
+/* ============================================================================
+   INIT
+============================================================================ */
+function renderAll(){
+  renderProgramSelect();
+  renderTrackSelect();
+  renderSemesters();
+  renderSummary();
+  renderGraph();
+}
+
+loadState();
+$("themeBtn").innerHTML = state.theme==="light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+initParticles();
+renderAll();
+gpaCalcRender();
+cgpaCalcRender();
+</script>
+</body>
+</html>
