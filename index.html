@@ -191,6 +191,152 @@ body[data-theme="high-contrast"]{
   --brand-grad-soft:linear-gradient(135deg,rgba(255,255,0,.20),rgba(255,140,0,.10));
 }
 
+/* ============================================================================
+   FUN CARTOON & ANIME-INSPIRED THEMES (Session 4)
+   Each theme overrides:
+     1. The full color palette (--bg, --ink, --brand, etc.)
+     2. The hero h1 font-family — for distinctive personality at the top
+     3. Border-radius on .icon-btn / .btn / .pill — buttons take on the
+        theme's silhouette (rounded pills vs sharp comic panels)
+     4. .panel border-radius / box-shadow on themes where it sells the vibe
+   Names chosen to evoke the aesthetic without using any trademarked IP.
+============================================================================ */
+
+/* Theme: Sunny Yellow · suburban cartoon vibe (yellow + deep blue, chunky Impact font) */
+body[data-theme="sunny-yellow"]{
+  --bg:#fef3c7;
+  --bg-grad:linear-gradient(180deg,#fef3c7 0%,#fde68a 100%);
+  --ink:#1e3a8a;--ink-soft:#1e40af;--muted:#475569;
+  --panel:#fffbeb;--panel-solid:rgba(255,251,235,.96);
+  --panel-border:#fcd34d;--line:#fde68a;--line-strong:#fbbf24;
+  --brand:#1e40af;--brand-soft:#3b82f6;
+  --brand-grad:linear-gradient(135deg,#1e40af 0%,#f59e0b 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(30,64,175,.12),rgba(245,158,11,.08));
+}
+body[data-theme="sunny-yellow"] .hero h1{
+  font-family:'Impact','Haettenschweiler','Arial Narrow Bold','Arial Black',sans-serif;
+  font-style:normal;letter-spacing:.01em;
+}
+body[data-theme="sunny-yellow"] .icon-btn,
+body[data-theme="sunny-yellow"] .btn,
+body[data-theme="sunny-yellow"] .pill{border-radius:12px}
+
+/* Theme: Banana Buddy · cheerful sidekick vibe (banana yellow + denim, playful Comic Sans) */
+body[data-theme="banana-buddy"]{
+  --bg:#fde047;
+  --bg-grad:linear-gradient(180deg,#fef08a 0%,#fde047 100%);
+  --ink:#1e3a8a;--ink-soft:#1e40af;--muted:#475569;
+  --panel:#fef9c3;--panel-solid:rgba(254,249,195,.96);
+  --panel-border:#facc15;--line:#fde047;--line-strong:#eab308;
+  --brand:#1d4ed8;--brand-soft:#3b82f6;
+  --brand-grad:linear-gradient(135deg,#1d4ed8 0%,#eab308 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(29,78,216,.12),rgba(234,179,8,.08));
+}
+body[data-theme="banana-buddy"] .hero h1{
+  font-family:'Comic Sans MS','Chalkboard SE','Comic Neue','Marker Felt',cursive;
+  font-style:normal;letter-spacing:0;font-weight:700;
+}
+body[data-theme="banana-buddy"] .icon-btn,
+body[data-theme="banana-buddy"] .btn,
+body[data-theme="banana-buddy"] .pill{border-radius:999px}
+body[data-theme="banana-buddy"] .panel,
+body[data-theme="banana-buddy"] .sem-card{border-radius:20px}
+
+/* Theme: Pop Art · comic-book BAM!-POW! vibe (cream + bold red + black borders, Impact uppercase) */
+body[data-theme="pop-art"]{
+  --bg:#fef3c7;
+  --bg-grad:linear-gradient(180deg,#fef3c7 0%,#fef9c3 100%);
+  --ink:#0f172a;--ink-soft:#1e293b;--muted:#475569;
+  --panel:#ffffff;--panel-solid:rgba(255,255,255,.98);
+  --panel-border:#0f172a;--line:#cbd5e1;--line-strong:#0f172a;
+  --brand:#dc2626;--brand-soft:#ef4444;
+  --brand-grad:linear-gradient(135deg,#dc2626 0%,#facc15 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(220,38,38,.14),rgba(250,204,21,.08));
+}
+body[data-theme="pop-art"] .hero h1{
+  font-family:'Impact','Haettenschweiler','Arial Black',sans-serif;
+  font-style:normal;text-transform:uppercase;letter-spacing:.02em;
+}
+body[data-theme="pop-art"] .icon-btn,
+body[data-theme="pop-art"] .btn,
+body[data-theme="pop-art"] .pill,
+body[data-theme="pop-art"] .panel,
+body[data-theme="pop-art"] .sem-card{
+  border-radius:4px;border-width:2px;
+}
+
+/* Theme: Pastel Dream · kawaii / shoujo anime (soft pinks + lavender, handwritten script) */
+body[data-theme="pastel-dream"]{
+  --bg:#fce7f3;
+  --bg-grad:linear-gradient(180deg,#fce7f3 0%,#fae8ff 50%,#dbeafe 100%);
+  --ink:#831843;--ink-soft:#9d174d;--muted:#9ca3af;
+  --panel:#ffffff;--panel-solid:rgba(255,255,255,.94);
+  --panel-border:#fbcfe8;--line:#fce7f3;--line-strong:#f9a8d4;
+  --brand:#ec4899;--brand-soft:#f472b6;
+  --brand-grad:linear-gradient(135deg,#ec4899 0%,#a78bfa 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(236,72,153,.14),rgba(167,139,250,.08));
+}
+body[data-theme="pastel-dream"] .hero h1{
+  font-family:'Lucida Handwriting','Segoe Script','Bradley Hand','Marker Felt',cursive;
+  font-style:normal;letter-spacing:.01em;
+}
+body[data-theme="pastel-dream"] .icon-btn,
+body[data-theme="pastel-dream"] .btn,
+body[data-theme="pastel-dream"] .pill{border-radius:18px}
+body[data-theme="pastel-dream"] .panel,
+body[data-theme="pastel-dream"] .sem-card{
+  border-radius:24px;
+  box-shadow:0 8px 32px rgba(236,72,153,.12);
+}
+
+/* Theme: Neon Cyber · cyberpunk anime (deep purple + neon pink/cyan, monospace + glow) */
+body[data-theme="neon-cyber"]{
+  --bg:#0c0a1f;
+  --bg-grad:linear-gradient(180deg,#0c0a1f 0%,#1a0a2e 100%);
+  --ink:#f5d0fe;--ink-soft:#e9d5ff;--muted:#a78bfa;
+  --panel:rgba(26,10,46,.85);--panel-solid:rgba(26,10,46,.96);
+  --panel-border:rgba(217,70,239,.35);--line:rgba(217,70,239,.20);
+  --line-strong:rgba(217,70,239,.50);
+  --brand:#ec4899;--brand-soft:#f472b6;
+  --brand-grad:linear-gradient(135deg,#ec4899 0%,#22d3ee 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(236,72,153,.22),rgba(34,211,238,.12));
+}
+body[data-theme="neon-cyber"] .hero h1{
+  font-family:'Consolas','Monaco','Courier New','SF Mono',monospace;
+  font-style:normal;letter-spacing:.04em;
+  text-shadow:0 0 8px rgba(236,72,153,.6),0 0 18px rgba(34,211,238,.35);
+}
+body[data-theme="neon-cyber"] .icon-btn,
+body[data-theme="neon-cyber"] .btn,
+body[data-theme="neon-cyber"] .pill{border-radius:3px}
+body[data-theme="neon-cyber"] .panel{
+  box-shadow:0 0 24px rgba(217,70,239,.10),0 0 1px rgba(34,211,238,.40) inset;
+}
+
+/* Theme: Forest Spirit · cozy storybook vibe (sage + cream + earth brown, italic serif) */
+body[data-theme="forest-spirit"]{
+  --bg:#f0fdf4;
+  --bg-grad:linear-gradient(180deg,#f0fdf4 0%,#dcfce7 50%,#fef3c7 100%);
+  --ink:#14532d;--ink-soft:#166534;--muted:#65a30d;
+  --panel:#fffef0;--panel-solid:rgba(255,254,240,.95);
+  --panel-border:#86efac;--line:#bbf7d0;--line-strong:#4ade80;
+  --brand:#16a34a;--brand-soft:#22c55e;
+  --brand-grad:linear-gradient(135deg,#15803d 0%,#92400e 100%);
+  --brand-grad-soft:linear-gradient(135deg,rgba(22,163,74,.12),rgba(146,64,14,.08));
+}
+body[data-theme="forest-spirit"] .hero h1{
+  font-family:'Georgia','Iowan Old Style','Hoefler Text','Palatino',serif;
+  font-style:italic;letter-spacing:.005em;font-weight:700;
+}
+body[data-theme="forest-spirit"] .icon-btn,
+body[data-theme="forest-spirit"] .btn,
+body[data-theme="forest-spirit"] .pill{border-radius:10px}
+body[data-theme="forest-spirit"] .panel,
+body[data-theme="forest-spirit"] .sem-card{
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(20,83,45,.08);
+}
+
 body{
   background:var(--bg-grad);background-attachment:fixed;background-size:200% 200%;animation:bgShift 25s ease infinite;
   position:relative;
@@ -1289,6 +1435,13 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
             <button class="theme-opt" data-theme-set="monokai"><span class="sw" style="background:#272822;border:1px solid #a6e22e"></span>Monokai</button>
             <button class="theme-opt" data-theme-set="abyss"><span class="sw" style="background:#000c18;border:1px solid #00bfff"></span>Abyss</button>
             <button class="theme-opt" data-theme-set="nord"><span class="sw" style="background:#2e3440;border:1px solid #88c0d0"></span>Nord</button>
+            <div class="theme-menu-section">Cartoon &amp; Fun</div>
+            <button class="theme-opt" data-theme-set="sunny-yellow"><span class="sw" style="background:#fef3c7;border:1px solid #1e40af"></span>Sunny Yellow</button>
+            <button class="theme-opt" data-theme-set="banana-buddy"><span class="sw" style="background:#fde047;border:1px solid #1d4ed8"></span>Banana Buddy</button>
+            <button class="theme-opt" data-theme-set="pop-art"><span class="sw" style="background:#fef3c7;border:2px solid #dc2626"></span>Pop Art</button>
+            <button class="theme-opt" data-theme-set="pastel-dream"><span class="sw" style="background:linear-gradient(135deg,#fce7f3,#dbeafe);border:1px solid #ec4899"></span>Pastel Dream</button>
+            <button class="theme-opt" data-theme-set="neon-cyber"><span class="sw" style="background:#0c0a1f;border:1px solid #ec4899"></span>Neon Cyber</button>
+            <button class="theme-opt" data-theme-set="forest-spirit"><span class="sw" style="background:linear-gradient(135deg,#dcfce7,#fef3c7);border:1px solid #16a34a"></span>Forest Spirit</button>
             <div class="theme-menu-section">Accessibility</div>
             <button class="theme-opt" data-theme-set="high-contrast"><span class="sw" style="background:#000;border:2px solid #ffff00"></span>High Contrast</button>
           </div>
@@ -2200,6 +2353,12 @@ const THEMES = {
   "abyss":          {label:"Abyss",           mode:"dark"},
   "nord":           {label:"Nord",            mode:"dark"},
   "github-light":   {label:"GitHub Light",    mode:"light"},
+  "sunny-yellow":   {label:"Sunny Yellow",    mode:"light"},
+  "banana-buddy":   {label:"Banana Buddy",    mode:"light"},
+  "pop-art":        {label:"Pop Art",         mode:"light"},
+  "pastel-dream":   {label:"Pastel Dream",    mode:"light"},
+  "neon-cyber":     {label:"Neon Cyber",      mode:"dark"},
+  "forest-spirit":  {label:"Forest Spirit",   mode:"light"},
   "high-contrast":  {label:"High Contrast",   mode:"dark"}
 };
 function applyTheme(name){
