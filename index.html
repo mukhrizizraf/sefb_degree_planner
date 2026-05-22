@@ -303,12 +303,11 @@ a:hover{text-decoration:underline}
 
 .hero h1{
   font-family:'Trebuchet MS','Lucida Sans Unicode','Verdana','Tahoma',system-ui,sans-serif;
-  font-size:clamp(28px,3.4vw,44px);font-weight:900;font-style:italic;
+  font-size:clamp(36px,4.5vw,60px);font-weight:900;font-style:italic;
   letter-spacing:-.015em;margin-bottom:10px;line-height:1.05;
 }
 .hero h1 .title-grad{
-  background:linear-gradient(135deg,#fff 0%,#fed7aa 55%,#fb923c 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:#fff;-webkit-text-fill-color:#fff;
 }
 .hero .tag{
   font-size:13.5px;opacity:.85;font-weight:500;letter-spacing:.01em;line-height:1.55;
@@ -787,8 +786,8 @@ body.dark-mode .stat-card{background:#0f0f12;border-color:rgba(255,255,255,.06)}
 .tabs{display:flex;gap:2px;margin-bottom:12px;background:rgba(15,23,42,.04);padding:3px;border-radius:10px}
 body.dark-mode .tabs{background:rgba(255,255,255,.05)}
 .tab{
-  flex:1;text-align:center;padding:7px 10px;border-radius:8px;
-  font-size:11.5px;font-weight:600;color:var(--muted);
+  flex:1;text-align:center;padding:8px 10px;border-radius:8px;
+  font-size:13px;font-weight:700;color:var(--muted);
   cursor:pointer;transition:all .25s;
 }
 .tab:hover{color:var(--ink)}
@@ -1309,7 +1308,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
 /* Mobile */
 @media(max-width:680px){
   .hero{padding:18px 16px}
-  .hero h1{font-size:22px}
+  .hero h1{font-size:28px}
   .container{padding:14px 12px 40px}
   .toolbar{padding:10px 12px}
   .field select,.field input{min-width:140px;font-size:12.5px}
@@ -1338,17 +1337,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
   </div>
   <div class="watermark-hide"></div>
   <div class="hero-inner" style="flex-direction:column;align-items:stretch;gap:0">
-    <div class="hero-brand">
-      <img src="images/sefb.png" alt="SEFB UUM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="hero-brand-fallback" style="display:none">
-        <div class="uum-seal">UUM<br>Ilmu Budi Bakti</div>
-        <div class="text-block">
-          <span class="l1">Pusat Pengajian Ekonomi, Kewangan Dan Perbankan</span>
-          <span class="l2">School of Economics, Finance and Banking</span>
-          <span class="l3">Universiti Utara Malaysia</span>
-        </div>
-      </div>
-    </div>
     <div style="text-align:center;padding:8px 0 4px">
       <h1 style="margin-bottom:8px"><span class="title-grad">Undergraduate Academic Planner and CGPA Simulator</span></h1>
       <div class="tag" style="text-align:center">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
@@ -1468,60 +1456,36 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     <div>
       <div class="panel" style="margin-bottom:14px">
         <h2>CGPA Simulator <span class="badge" id="cgpaBadge">—</span></h2>
-        <div class="gauge-wrap">
-          <div class="gauge">
-            <svg viewBox="0 0 200 130">
-              <defs>
-                <linearGradient id="gauge-grad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#dc2626"/>
-                  <stop offset=".3" stop-color="#f97316"/>
-                  <stop offset=".6" stop-color="#fbbf24"/>
-                  <stop offset="1" stop-color="#22c55e"/>
-                </linearGradient>
-              </defs>
-              <defs>
-                <filter id="gauge-glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur"/>
-                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <path class="gauge-track" d="M 20 110 A 80 80 0 0 1 180 110" stroke="rgba(15,23,42,.08)"/>
-              <path id="gaugeFill" class="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" stroke="url(#gauge-grad)" stroke-dasharray="251" stroke-dashoffset="251" filter="url(#gauge-glow)"/>
-              <g id="gaugeNeedle" style="transform-origin:100px 110px;transition:transform 1.2s cubic-bezier(.4,1.6,.5,1)">
-                <line x1="100" y1="110" x2="100" y2="40" stroke="url(#gauge-grad)" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="100" cy="110" r="7" fill="var(--panel-solid)" stroke="url(#gauge-grad)" stroke-width="3"/>
-                <circle cx="100" cy="110" r="2.5" fill="url(#gauge-grad)"/>
-              </g>
-              <g id="gaugeSparkles" class="gauge-sparkles">
-                <text x="30"  y="50" class="sparkle s1">✦</text>
-                <text x="170" y="50" class="sparkle s2">✧</text>
-                <text x="60"  y="25" class="sparkle s3">✦</text>
-                <text x="140" y="25" class="sparkle s4">✧</text>
-                <text x="100" y="15" class="sparkle s5">⭐</text>
-              </g>
-            </svg>
-            <div class="ticks">
-              <span class="tick t0">0.00</span>
-              <span class="tick t1">1.00</span>
-              <span class="tick t2">2.00</span>
-              <span class="tick t3">3.00</span>
-              <span class="tick t4">4.00</span>
-            </div>
-            <div class="gauge-label" id="cgpaLabel">0.00</div>
-            <div class="gauge-cap">Projected CGPA</div>
-          </div>
+        <div class="gauge-wrap" style="display:flex;flex-direction:column;align-items:center;padding:8px 0 4px">
+          <canvas id="cgpaRingCanvas" width="440" height="440" style="width:100%;max-width:340px;height:auto;aspect-ratio:1/1;display:block"></canvas>
+          <div id="cgpaRingClass" style="font-size:18px;font-weight:900;text-transform:uppercase;margin-top:10px;text-align:center;letter-spacing:.04em">—</div>
+          <div id="cgpaRingMotiv" style="font-size:13px;font-weight:700;color:var(--muted);margin-top:6px;text-align:center">—</div>
         </div>
-        <div class="stats-row">
-          <div class="stat-card"><div class="v" id="statCredits">0</div><div class="l">Credits Planned</div></div>
-          <div class="stat-card"><div class="v" id="statGraded">0</div><div class="l">Graded Courses</div></div>
+      </div>
+
+      <div class="panel" style="margin-bottom:14px" id="semBarWrap">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;flex-wrap:wrap">
+          <div style="font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:800">Semester GPA</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;background:rgba(245,158,11,.18);color:#b45309;font-size:10.5px;font-weight:900;letter-spacing:.04em" id="deansListBadge">⭐ Dean's List ≥ 3.67</div>
         </div>
+        <canvas id="semBarCanvas" style="display:block;width:100%"></canvas>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-top:14px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);font-weight:800"><div style="width:16px;height:16px;border-radius:4px;background:#ef4444;flex-shrink:0;box-shadow:0 1px 3px rgba(239,68,68,.4)"></div>Fail (&lt;2.0)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);font-weight:800"><div style="width:16px;height:16px;border-radius:4px;background:#22c55e;flex-shrink:0;box-shadow:0 1px 3px rgba(34,197,94,.4)"></div>Lower 2nd (2.0–2.99)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);font-weight:800"><div style="width:16px;height:16px;border-radius:4px;background:#3b82f6;flex-shrink:0;box-shadow:0 1px 3px rgba(59,130,246,.4)"></div>Upper 2nd (3.0–3.66)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);font-weight:800"><div style="width:16px;height:16px;border-radius:4px;background:#f59e0b;flex-shrink:0;box-shadow:0 1px 3px rgba(245,158,11,.4)"></div>First Class (≥3.67)</div>
+        </div>
+      </div>
+
+      <div class="stats-row" style="margin-bottom:14px">
+        <div class="stat-card"><div class="v" id="statCredits">0</div><div class="l">Credits Planned</div></div>
+        <div class="stat-card"><div class="v" id="statGraded">0</div><div class="l">Graded Courses</div></div>
       </div>
 
       <div class="panel">
         <div class="tabs">
           <div class="tab active" data-tab="components">📊 Progress</div>
-          <div class="tab" data-tab="gpa">📈 GPA</div>
-          <div class="tab" data-tab="graph">🔗 Prereqs</div>
+          <div class="tab" data-tab="gpa">📈 GPA Calculator</div>
           <div class="tab" data-tab="audit">📋 Graduation Checklist</div>
         </div>
         <div class="tab-content active" id="tab-components">
@@ -1595,27 +1559,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
             </div>
             <div style="margin-top:8px;text-align:center"><span class="res-status" id="cgpaCalcStatus">—</span></div>
           </div>
-        </div>
-        <div class="tab-content" id="tab-graph">
-          <div class="graph-wrap" id="graphWrap">
-            <svg id="prereqGraph" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(249,115,22,.7)"/>
-                </marker>
-              </defs>
-              <g id="graphEdges"></g>
-              <g id="graphNodes"></g>
-            </svg>
-            <div class="graph-legend">
-              <div class="row"><span class="sw" style="background:#3b82f6"></span>Program Core</div>
-              <div class="row"><span class="sw" style="background:#ec4899"></span>Specialization</div>
-              <div class="row"><span class="sw" style="background:#a855f7"></span>Elective</div>
-              <div class="row" style="margin-top:4px;font-size:9px;color:var(--muted)">→ Arrow = prereq for</div>
-            </div>
-            <div class="graph-info" id="graphInfo"></div>
-          </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:8px;text-align:center">Hover any course to highlight its prereq chain. Showing courses with prerequisites only.</p>
         </div>
         <div class="tab-content" id="tab-audit">
           <div id="badges" class="badges-wrap"></div>
@@ -2679,10 +2622,292 @@ function setGrade(s,i,g){ state.plan[s][i].grade=g; saveState(); renderAll();
   if(g && !["","M","TM","TD","TL"].includes(g)) flashUpdate();
 }
 
-function flashUpdate(){
-  const gauge=$("cgpaLabel");
-  gauge.style.transform="scale(1.15)";
-  setTimeout(()=>gauge.style.transform="scale(1)",250);
+function flashUpdate(){ /* ring gauge animation handles visual feedback */ }
+
+/* ============================================================================
+   UUM 4-TIER CLASSIFICATION
+============================================================================ */
+function classOf4(g){
+  if(g>=3.67) return {label:'First Class',    color:'#f59e0b'};
+  if(g>=3.00) return {label:'Upper 2nd Class',color:'#3b82f6'};
+  if(g>=2.00) return {label:'Lower 2nd Class',color:'#22c55e'};
+  return          {label:'Fail',          color:'#ef4444'};
+}
+const _RING_ZONES=[
+  {from:0,   to:2.0, color:'#ef4444'},
+  {from:2.0, to:3.0, color:'#22c55e'},
+  {from:3.0, to:3.67,color:'#3b82f6'},
+  {from:3.67,to:4.0, color:'#f59e0b'},
+];
+const _RING_MEDALS={'First Class':'🏆','Upper 2nd Class':'🥈','Lower 2nd Class':'🥉','Fail':'⛔'};
+
+/* color helpers for 3D shading */
+function _hex2rgb(hex){const h=hex.replace('#','');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function _shadeHex(hex,f){const[r,g,b]=_hex2rgb(hex);const c=x=>Math.max(0,Math.min(255,Math.round(x*f)));return`rgb(${c(r)},${c(g)},${c(b)})`;}
+function _shadeRGBA(hex,f,a){const[r,g,b]=_hex2rgb(hex);const c=x=>Math.max(0,Math.min(255,Math.round(x*f)));return`rgba(${c(r)},${c(g)},${c(b)},${a})`;}
+
+/* ── CGPA Ring Gauge (circular, tube-style 3D shading) ── */
+let _ringAnimVal=0,_ringAnimTarget=0,_ringAnimRAF=null;
+
+function _drawRingGauge(cgpa){
+  const canvas=$('cgpaRingCanvas'); if(!canvas) return;
+  const dpr=window.devicePixelRatio||1;
+  if(canvas._dpr!==dpr){canvas.width=440*dpr;canvas.height=440*dpr;canvas._dpr=dpr;}
+  const ctx=canvas.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.imageSmoothingQuality='high';
+  const S=440,CX=S/2,CY=210,R=146,SW=34;
+  const RSTART=Math.PI*0.75,RSWEEP=Math.PI*1.5;
+  function vToA(v){return RSTART+(v/4)*RSWEEP;}
+  /* theme palette */
+  const dark=document.body.classList.contains('dark-mode');
+  const INK=dark?'#ffffff':'#0f172a';
+  const SUB=dark?'rgba(255,255,255,.72)':'rgba(15,23,42,.72)';
+  const GLOW=dark?28:8;
+  ctx.clearRect(0,0,S,S);
+
+  /* ───── 1. Soft drop shadow below the ring (gives lift) ───── */
+  ctx.save();
+  const shCY=CY+R+18;
+  const shGrad=ctx.createRadialGradient(CX,shCY,4,CX,shCY,R*0.95);
+  shGrad.addColorStop(0,dark?'rgba(0,0,0,.55)':'rgba(15,23,42,.30)');
+  shGrad.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=shGrad;
+  ctx.beginPath();ctx.ellipse(CX,shCY,R*0.92,15,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+
+  /* ───── 2. Dim track (background zone colors at low alpha) ───── */
+  _RING_ZONES.forEach(z=>{
+    ctx.globalAlpha=dark?0.22:0.30;
+    ctx.beginPath();ctx.arc(CX,CY,R,vToA(z.from),vToA(z.to));
+    ctx.strokeStyle=z.color;ctx.lineWidth=SW;ctx.lineCap='butt';ctx.stroke();
+    ctx.globalAlpha=1;
+  });
+
+  /* ───── 3. Filled portion — clean 2D ring with soft glow ───── */
+  if(cgpa>0.02){
+    _RING_ZONES.forEach(z=>{
+      if(cgpa<=z.from+0.02) return;
+      const a1=vToA(z.from),a2=vToA(Math.min(cgpa,z.to));
+      /* soft outer halo */
+      ctx.save();ctx.shadowColor=z.color;ctx.shadowBlur=28;ctx.globalAlpha=0.40;
+      ctx.beginPath();ctx.arc(CX,CY,R,a1,a2);
+      ctx.strokeStyle=z.color;ctx.lineWidth=SW+8;ctx.stroke();ctx.restore();
+      /* main full-color stroke */
+      ctx.beginPath();ctx.arc(CX,CY,R,a1,a2);
+      ctx.strokeStyle=z.color;ctx.lineWidth=SW;ctx.stroke();
+    });
+    /* start cap — rounded dome at angle RSTART */
+    const sx=CX+Math.cos(RSTART)*R,sy=CY+Math.sin(RSTART)*R;
+    ctx.save();ctx.shadowColor='#ef4444';ctx.shadowBlur=12;
+    ctx.beginPath();ctx.arc(sx,sy,SW/2,0,Math.PI*2);
+    ctx.fillStyle='#ef4444';ctx.fill();ctx.restore();
+    /* tip dot at current value */
+    const ta=vToA(cgpa),tx=CX+Math.cos(ta)*R,ty=CY+Math.sin(ta)*R;
+    ctx.save();ctx.shadowColor='#fff';ctx.shadowBlur=28;
+    ctx.beginPath();ctx.arc(tx,ty,SW/2+4,0,Math.PI*2);
+    ctx.fillStyle='#fff';ctx.fill();ctx.restore();
+    ctx.beginPath();ctx.arc(tx,ty,SW/2-2,0,Math.PI*2);
+    ctx.fillStyle=classOf4(cgpa).color;ctx.fill();
+  }
+
+  /* ───── 4. Major integer ticks 0–4 — OUTSIDE the ring on a clean circle ───── */
+  [0,1,2,3,4].forEach(v=>{
+    const a=vToA(v);
+    const tipIn=R+SW/2-2,tipOut=R+SW/2+8;
+    ctx.beginPath();
+    ctx.moveTo(Math.round(CX+Math.cos(a)*tipIn),Math.round(CY+Math.sin(a)*tipIn));
+    ctx.lineTo(Math.round(CX+Math.cos(a)*tipOut),Math.round(CY+Math.sin(a)*tipOut));
+    ctx.strokeStyle=SUB;ctx.lineWidth=2.5;ctx.lineCap='butt';ctx.stroke();
+    const lr=R+SW/2+26;
+    const lx=Math.round(CX+Math.cos(a)*lr),ly=Math.round(CY+Math.sin(a)*lr);
+    ctx.fillStyle=INK;ctx.font=`900 22px system-ui,-apple-system,sans-serif`;
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(v.toFixed(0),lx,ly);
+  });
+
+  /* ───── 5. Dean's List ★ marker — small gold tick OUTSIDE the ring at 3.67 angle ───── */
+  {
+    const a=vToA(3.67);
+    /* gold tick line */
+    const tIn=R+SW/2-2,tOut=R+SW/2+8;
+    ctx.beginPath();
+    ctx.moveTo(Math.round(CX+Math.cos(a)*tIn),Math.round(CY+Math.sin(a)*tIn));
+    ctx.lineTo(Math.round(CX+Math.cos(a)*tOut),Math.round(CY+Math.sin(a)*tOut));
+    ctx.strokeStyle='#f59e0b';ctx.lineWidth=3;ctx.stroke();
+    /* tiny gold star + 3.67 label at slightly closer radius than integer labels */
+    const sr=R+SW/2+12;
+    const sx=CX+Math.cos(a)*sr,sy=CY+Math.sin(a)*sr;
+    ctx.fillStyle='#f59e0b';ctx.font='900 13px system-ui,-apple-system,sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('★',sx,sy);
+  }
+
+  /* ───── 6. Center CGPA number + caption ───── */
+  const cl=classOf4(cgpa);
+  ctx.save();ctx.shadowColor=cl.color;ctx.shadowBlur=GLOW;ctx.fillStyle=INK;
+  ctx.font=`900 86px system-ui,-apple-system,sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(cgpa.toFixed(2),CX,CY-6);ctx.restore();
+  ctx.fillStyle=SUB;ctx.font=`800 14px system-ui,-apple-system,sans-serif`;
+  ctx.textAlign='center';ctx.textBaseline='alphabetic';
+  ctx.fillText('CGPA',CX,CY+38);
+  /* DOM labels */
+  const fcl=classOf4(_ringAnimTarget||cgpa);
+  const rcEl=$('cgpaRingClass'),rmEl=$('cgpaRingMotiv');
+  if(rcEl){rcEl.textContent=(_RING_MEDALS[fcl.label]||'')+' '+fcl.label;rcEl.style.color=fcl.color;}
+  if(rmEl){
+    const t=_ringAnimTarget||cgpa;
+    if(t>=3.67){rmEl.textContent="🎉 First Class Honours!";rmEl.style.color='#f59e0b';}
+    else{
+      const nxt=[{v:3.67,n:'First Class'},{v:3.0,n:'Upper 2nd'},{v:2.0,n:'Lower 2nd'}].find(x=>x.v>t);
+      if(nxt){rmEl.textContent=`↑ +${(nxt.v-t).toFixed(2)} to ${nxt.n}`;rmEl.style.color=classOf4(nxt.v).color;}
+    }
+  }
+}
+
+function animateRingGauge(target){
+  _ringAnimTarget=target;
+  if(_ringAnimRAF) cancelAnimationFrame(_ringAnimRAF);
+  if(target===0){_ringAnimVal=0;_drawRingGauge(0);return;}
+  (function tick(){
+    _ringAnimVal+=(_ringAnimTarget-_ringAnimVal)*0.07;
+    if(Math.abs(_ringAnimTarget-_ringAnimVal)<0.004) _ringAnimVal=_ringAnimTarget;
+    _drawRingGauge(_ringAnimVal);
+    if(_ringAnimVal<_ringAnimTarget) _ringAnimRAF=requestAnimationFrame(tick);
+    else _ringAnimRAF=null;
+  })();
+}
+
+/* ── Semester GPA Bar Chart ── */
+let _lastPerData=[];
+
+function drawSemBarChart(perSemData){
+  _lastPerData=perSemData||[];
+  const canvas=$('semBarCanvas'); if(!canvas) return;
+  const data=_lastPerData.filter(r=>r.cr>0);
+  if(!data.length){canvas.style.height='0';return;}
+  const CW=Math.round(canvas.offsetWidth||canvas.parentElement?.clientWidth||0);
+  if(CW<30){setTimeout(()=>drawSemBarChart(_lastPerData),40);return;}
+  const CH=260,dpr=window.devicePixelRatio||1;
+  canvas.style.width=CW+'px';canvas.style.height=CH+'px';
+  if(canvas.width!==CW*dpr||canvas.height!==CH*dpr){canvas.width=CW*dpr;canvas.height=CH*dpr;}
+  const ctx=canvas.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.imageSmoothingQuality='high';
+  const MT=34,MB=56,ML=54,MR=18,PW=CW-ML-MR,PH=CH-MT-MB;
+  const dark=document.body.classList.contains('dark-mode');
+  const GRID=dark?'rgba(255,255,255,.10)':'rgba(15,23,42,.12)';
+  const AXIS=dark?'rgba(255,255,255,.35)':'rgba(15,23,42,.50)';
+  const YLBL=dark?'rgba(255,255,255,.88)':'#0f172a';
+  const VLBL=dark?'#ffffff':'#0f172a';
+  const XLBL=dark?'#ffffff':'#0f172a';
+  const DLST=dark?'#fbbf24':'#b45309';
+  const DLN =dark?'rgba(245,158,11,.65)':'rgba(180,83,9,.65)';
+  function yPx(v){return Math.round(MT+PH-(v/4)*PH)+0.5;}
+  function xPx(i){return Math.round(ML+(PW/data.length)*(i+0.5));}
+  const BW=Math.min(54,(PW/data.length)*0.56);
+  ctx.clearRect(0,0,CW,CH);
+
+  /* ───── Zone bands — flat horizontal stripes ───── */
+  [[3.67,4.0,dark?'rgba(245,158,11,.10)':'rgba(245,158,11,.13)'],
+   [3.0,3.67,dark?'rgba(59,130,246,.09)':'rgba(59,130,246,.11)'],
+   [2.0,3.0, dark?'rgba(34,197,94,.08)':'rgba(34,197,94,.10)'],
+   [0,  2.0, dark?'rgba(239,68,68,.06)':'rgba(239,68,68,.08)']].forEach(([lo,hi,c])=>{
+    ctx.fillStyle=c;ctx.fillRect(ML,yPx(hi)-0.5,PW,yPx(lo)-yPx(hi));
+  });
+
+  /* ───── Grid lines + Y-axis labels ───── */
+  [0,1,2,3,4].forEach(v=>{
+    const y=yPx(v);
+    ctx.strokeStyle=GRID;ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(ML,y);ctx.lineTo(ML+PW,y);ctx.stroke();
+    ctx.fillStyle=YLBL;ctx.font="900 14px system-ui,-apple-system,sans-serif";
+    ctx.textAlign='right';ctx.textBaseline='middle';
+    ctx.fillText(v.toFixed(0),ML-10,y);
+  });
+
+  /* ───── Dean's List dashed reference at 3.67 ───── */
+  const dlY=yPx(3.67);
+  ctx.save();ctx.strokeStyle=DLN;ctx.lineWidth=2;ctx.setLineDash([6,5]);
+  ctx.beginPath();ctx.moveTo(ML,dlY);ctx.lineTo(ML+PW,dlY);ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle=DLST;ctx.font="900 12px system-ui,-apple-system,sans-serif";
+  ctx.textAlign='left';ctx.textBaseline='middle';
+  ctx.fillText('3.67',ML+4,dlY-10);
+
+  /* ───── 2D Bars — flat rectangles with vertical gradient + rounded top + soft shadow ───── */
+  data.forEach((r,i)=>{
+    const cx=xPx(i),bx=Math.round(cx-BW/2);
+    const yBaseline=MT+PH;
+    if(r.gpa===null){
+      const by=Math.round(yBaseline-PH*0.08),bh=Math.round(PH*0.08);
+      ctx.fillStyle=dark?'rgba(255,255,255,.10)':'rgba(15,23,42,.08)';
+      ctx.fillRect(bx,by,BW,bh);
+    } else {
+      const cl=classOf4(r.gpa);
+      const by=yPx(r.gpa)-0.5;
+      const bh=Math.round(yBaseline-by);
+      const rr=Math.min(8,BW/3);
+
+      /* soft drop shadow under the bar */
+      ctx.save();
+      ctx.shadowColor=cl.color+'55';
+      ctx.shadowBlur=14;
+      ctx.shadowOffsetY=4;
+      ctx.fillStyle=cl.color;
+      /* draw the bar shape with rounded top corners */
+      ctx.beginPath();
+      ctx.moveTo(bx,by+bh);
+      ctx.lineTo(bx,by+rr);
+      ctx.arcTo(bx,by,bx+rr,by,rr);
+      ctx.lineTo(bx+BW-rr,by);
+      ctx.arcTo(bx+BW,by,bx+BW,by+rr,rr);
+      ctx.lineTo(bx+BW,by+bh);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      /* vertical gradient overlay (subtle 2D shading: lighter top, darker bottom) */
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(bx,by+bh);
+      ctx.lineTo(bx,by+rr);
+      ctx.arcTo(bx,by,bx+rr,by,rr);
+      ctx.lineTo(bx+BW-rr,by);
+      ctx.arcTo(bx+BW,by,bx+BW,by+rr,rr);
+      ctx.lineTo(bx+BW,by+bh);
+      ctx.closePath();
+      ctx.clip();
+      const g=ctx.createLinearGradient(bx,by,bx,by+bh);
+      g.addColorStop(0,'rgba(255,255,255,.30)');
+      g.addColorStop(0.45,'rgba(255,255,255,0)');
+      g.addColorStop(1,'rgba(0,0,0,.18)');
+      ctx.fillStyle=g;
+      ctx.fillRect(bx,by,BW,bh);
+      ctx.restore();
+
+      /* bar value label above the bar */
+      const lbl=r.gpa.toFixed(2),lblY=by-9;
+      ctx.font="900 15px system-ui,-apple-system,sans-serif";
+      ctx.textAlign='center';ctx.textBaseline='alphabetic';
+      ctx.save();
+      ctx.shadowColor=dark?'rgba(0,0,0,.80)':'rgba(255,255,255,.95)';
+      ctx.shadowBlur=8;
+      ctx.fillStyle=VLBL;
+      ctx.fillText(lbl,cx,lblY);
+      ctx.restore();
+    }
+    /* x-axis semester labels */
+    ctx.fillStyle=XLBL;ctx.font="900 15px system-ui,-apple-system,sans-serif";
+    ctx.textAlign='center';ctx.textBaseline='alphabetic';
+    ctx.fillText('Sem '+r.s,cx,CH-MB+24);
+  });
+
+  /* 2D L-axes */
+  ctx.strokeStyle=AXIS;ctx.lineWidth=1.8;
+  ctx.beginPath();
+  ctx.moveTo(ML,MT);ctx.lineTo(ML,MT+PH);ctx.lineTo(ML+PW,MT+PH);
+  ctx.stroke();
 }
 
 /* ============================================================================
@@ -2701,18 +2926,9 @@ function renderSummary(){
   animateNumber($("statGraded"), gradedCr, 0, 500);
   $("totalCrBadge").textContent=`${totalCr}/${p.total} cr`;
 
-  /* CGPA gauge */
-  const ratio=Math.min(1,Math.max(0,cgpa/4));
-  const dash=251;
-  $("gaugeFill").setAttribute("stroke-dashoffset", String(dash*(1-ratio)));
-  const needle = $("gaugeNeedle");
-  if(needle){
-    const angle = -90 + (ratio * 180);
-    needle.style.transform = `rotate(${angle}deg)`;
-  }
-  const gaugeEl = document.querySelector(".gauge");
-  if(gaugeEl) gaugeEl.classList.toggle("deans", cgpa >= DEANS_LIST);
-  animateNumber($("cgpaLabel"), cgpa, 2, 700);
+  /* Ring gauge + bar chart */
+  animateRingGauge(cgpa);
+  drawSemBarChart(per);
   $("cgpaBadge").textContent = cgpa >= DEANS_LIST ? "Dean's List ⭐" : cgpa >= 2.00 ? "On track" : cgpa>0 ? "Below 2.00" : "—";
 
   /* Badges */
@@ -3032,6 +3248,7 @@ document.querySelectorAll(".tab").forEach(t=>{
     document.querySelectorAll(".tab-content").forEach(x=>x.classList.remove("active"));
     t.classList.add("active");
     $("tab-"+t.dataset.tab).classList.add("active");
+    if(t.dataset.tab==="gpa") setTimeout(()=>drawSemBarChart(_lastPerData),30);
   };
 });
 
