@@ -114,19 +114,6 @@ body[data-theme="solarized-dark"]{
   --brand-grad-soft:linear-gradient(135deg,rgba(181,137,0,.18),rgba(203,75,22,.10));
 }
 
-/* Theme: Dracula · base #282a36 */
-body[data-theme="dracula"]{
-  --bg:#282a36;
-  --bg-grad:linear-gradient(180deg,#282a36 0%,#1e1f29 100%);
-  --ink:#f8f8f2;--ink-soft:#e5e5ec;--muted:#6272a4;
-  --panel:rgba(40,42,54,.85);--panel-solid:rgba(40,42,54,.96);
-  --panel-border:rgba(98,114,164,.30);--line:rgba(98,114,164,.20);
-  --line-strong:rgba(98,114,164,.40);
-  --brand:#bd93f9;--brand-soft:#d6bcfa;
-  --brand-grad:linear-gradient(135deg,#bd93f9 0%,#ff79c6 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(189,147,249,.18),rgba(255,121,198,.10));
-}
-
 /* Theme: Monokai · base #272822 */
 body[data-theme="monokai"]{
   --bg:#272822;
@@ -138,32 +125,6 @@ body[data-theme="monokai"]{
   --brand:#a6e22e;--brand-soft:#c4f038;
   --brand-grad:linear-gradient(135deg,#a6e22e 0%,#fd971f 100%);
   --brand-grad-soft:linear-gradient(135deg,rgba(166,226,46,.16),rgba(253,151,31,.08));
-}
-
-/* Theme: Abyss · base #000c18 (deep blue) */
-body[data-theme="abyss"]{
-  --bg:#000c18;
-  --bg-grad:linear-gradient(180deg,#000c18 0%,#011627 100%);
-  --ink:#cfd8dc;--ink-soft:#b0bec5;--muted:#637777;
-  --panel:rgba(1,22,39,.85);--panel-solid:rgba(1,22,39,.96);
-  --panel-border:rgba(99,119,119,.25);--line:rgba(99,119,119,.18);
-  --line-strong:rgba(99,119,119,.40);
-  --brand:#00bfff;--brand-soft:#33ccff;
-  --brand-grad:linear-gradient(135deg,#00bfff 0%,#0e7490 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(0,191,255,.18),rgba(14,116,144,.10));
-}
-
-/* Theme: Nord · base #2e3440 (cool slate) */
-body[data-theme="nord"]{
-  --bg:#2e3440;
-  --bg-grad:linear-gradient(180deg,#2e3440 0%,#3b4252 100%);
-  --ink:#eceff4;--ink-soft:#d8dee9;--muted:#81a1c1;
-  --panel:rgba(46,52,64,.85);--panel-solid:rgba(46,52,64,.96);
-  --panel-border:rgba(129,161,193,.25);--line:rgba(129,161,193,.18);
-  --line-strong:rgba(129,161,193,.40);
-  --brand:#88c0d0;--brand-soft:#8fbcbb;
-  --brand-grad:linear-gradient(135deg,#88c0d0 0%,#5e81ac 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(136,192,208,.18),rgba(94,129,172,.10));
 }
 
 /* Theme: GitHub Light · base #ffffff (clean tech) */
@@ -263,78 +224,6 @@ body[data-theme="pop-art"] .pill,
 body[data-theme="pop-art"] .panel,
 body[data-theme="pop-art"] .sem-card{
   border-radius:4px;border-width:2px;
-}
-
-/* Theme: Pastel Dream · kawaii / shoujo anime (soft pinks + lavender, handwritten script) */
-body[data-theme="pastel-dream"]{
-  --bg:#fce7f3;
-  --bg-grad:linear-gradient(180deg,#fce7f3 0%,#fae8ff 50%,#dbeafe 100%);
-  --ink:#831843;--ink-soft:#9d174d;--muted:#9ca3af;
-  --panel:#ffffff;--panel-solid:rgba(255,255,255,.94);
-  --panel-border:#fbcfe8;--line:#fce7f3;--line-strong:#f9a8d4;
-  --brand:#ec4899;--brand-soft:#f472b6;
-  --brand-grad:linear-gradient(135deg,#ec4899 0%,#a78bfa 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(236,72,153,.14),rgba(167,139,250,.08));
-}
-body[data-theme="pastel-dream"] .hero h1{
-  font-family:'Lucida Handwriting','Segoe Script','Bradley Hand','Marker Felt',cursive;
-  font-style:normal;letter-spacing:.01em;
-}
-body[data-theme="pastel-dream"] .icon-btn,
-body[data-theme="pastel-dream"] .btn,
-body[data-theme="pastel-dream"] .pill{border-radius:18px}
-body[data-theme="pastel-dream"] .panel,
-body[data-theme="pastel-dream"] .sem-card{
-  border-radius:24px;
-  box-shadow:0 8px 32px rgba(236,72,153,.12);
-}
-
-/* Theme: Neon Cyber · cyberpunk anime (deep purple + neon pink/cyan, monospace + glow) */
-body[data-theme="neon-cyber"]{
-  --bg:#0c0a1f;
-  --bg-grad:linear-gradient(180deg,#0c0a1f 0%,#1a0a2e 100%);
-  --ink:#f5d0fe;--ink-soft:#e9d5ff;--muted:#a78bfa;
-  --panel:rgba(26,10,46,.85);--panel-solid:rgba(26,10,46,.96);
-  --panel-border:rgba(217,70,239,.35);--line:rgba(217,70,239,.20);
-  --line-strong:rgba(217,70,239,.50);
-  --brand:#ec4899;--brand-soft:#f472b6;
-  --brand-grad:linear-gradient(135deg,#ec4899 0%,#22d3ee 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(236,72,153,.22),rgba(34,211,238,.12));
-}
-body[data-theme="neon-cyber"] .hero h1{
-  font-family:'Consolas','Monaco','Courier New','SF Mono',monospace;
-  font-style:normal;letter-spacing:.04em;
-  text-shadow:0 0 8px rgba(236,72,153,.6),0 0 18px rgba(34,211,238,.35);
-}
-body[data-theme="neon-cyber"] .icon-btn,
-body[data-theme="neon-cyber"] .btn,
-body[data-theme="neon-cyber"] .pill{border-radius:3px}
-body[data-theme="neon-cyber"] .panel{
-  box-shadow:0 0 24px rgba(217,70,239,.10),0 0 1px rgba(34,211,238,.40) inset;
-}
-
-/* Theme: Forest Spirit · cozy storybook vibe (sage + cream + earth brown, italic serif) */
-body[data-theme="forest-spirit"]{
-  --bg:#f0fdf4;
-  --bg-grad:linear-gradient(180deg,#f0fdf4 0%,#dcfce7 50%,#fef3c7 100%);
-  --ink:#14532d;--ink-soft:#166534;--muted:#65a30d;
-  --panel:#fffef0;--panel-solid:rgba(255,254,240,.95);
-  --panel-border:#86efac;--line:#bbf7d0;--line-strong:#4ade80;
-  --brand:#16a34a;--brand-soft:#22c55e;
-  --brand-grad:linear-gradient(135deg,#15803d 0%,#92400e 100%);
-  --brand-grad-soft:linear-gradient(135deg,rgba(22,163,74,.12),rgba(146,64,14,.08));
-}
-body[data-theme="forest-spirit"] .hero h1{
-  font-family:'Georgia','Iowan Old Style','Hoefler Text','Palatino',serif;
-  font-style:italic;letter-spacing:.005em;font-weight:700;
-}
-body[data-theme="forest-spirit"] .icon-btn,
-body[data-theme="forest-spirit"] .btn,
-body[data-theme="forest-spirit"] .pill{border-radius:10px}
-body[data-theme="forest-spirit"] .panel,
-body[data-theme="forest-spirit"] .sem-card{
-  border-radius:14px;
-  box-shadow:0 4px 16px rgba(20,83,45,.08);
 }
 
 body{
@@ -609,7 +498,6 @@ body.dark-mode .sem-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.4), 0 0 0 1px 
 .sem-card.extra-sem{border-color:rgba(59,130,246,.45);background:repeating-linear-gradient(135deg,var(--panel-solid),var(--panel-solid) 8px,rgba(59,130,246,.04) 8px,rgba(59,130,246,.04) 16px)}
 .sem-card.extra-sem .num{background:linear-gradient(135deg,#3b82f6,#06b6d4);box-shadow:0 4px 12px rgba(59,130,246,.35)}
 body.dark-mode .sem-card.extra-sem{background:repeating-linear-gradient(135deg,#0f0f12,#0f0f12 8px,rgba(59,130,246,.07) 8px,rgba(59,130,246,.07) 16px)}
-.sem-parity{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .sem-extra-ctrl{grid-column:1/-1;display:flex;justify-content:center;gap:10px;padding:10px;margin-top:6px}
 .sem-extra-ctrl .btn{font-size:11.5px;padding:6px 14px}
 
@@ -729,8 +617,44 @@ body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fff}
 }
 .add-row .add-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(249,115,22,.4)}
 
-/* Alerts */
-.alerts{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+/* Alerts — "Take Note" panel (Hiccup v2-5) */
+.take-note-panel{
+  background:linear-gradient(135deg,rgba(251,146,60,.10),rgba(220,38,38,.06));
+  border:1px solid rgba(251,146,60,.30);border-radius:12px;
+  padding:12px 14px;margin-bottom:16px;display:none;
+  box-shadow:0 4px 14px rgba(251,146,60,.08);
+}
+.take-note-panel.has-alerts{display:block}
+.take-note-panel.muted{display:block;opacity:.55}
+.take-note-panel.muted .alerts{display:none}
+.take-note-header{
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;font-size:13px;color:var(--brand);
+  text-transform:uppercase;letter-spacing:.06em;
+  border-bottom:1px solid rgba(251,146,60,.22);padding-bottom:8px;margin-bottom:10px;
+}
+.take-note-panel.muted .take-note-header{border-bottom:0;padding-bottom:0;margin-bottom:0}
+.take-note-icon{font-size:20px;animation:takeNoteBlink 1.3s ease-in-out infinite;display:inline-block}
+.take-note-panel.muted .take-note-icon{animation:none;opacity:.5}
+@keyframes takeNoteBlink{
+  0%,50%,100%{opacity:1;transform:scale(1)}
+  25%,75%{opacity:.30;transform:scale(.90)}
+}
+.take-note-count{
+  background:var(--brand);color:#fff;
+  padding:2px 9px;border-radius:999px;
+  font-size:11px;font-weight:700;letter-spacing:.02em;
+}
+.take-note-mute{
+  margin-left:auto;background:transparent;
+  border:1px solid rgba(251,146,60,.35);color:var(--brand);
+  padding:5px 11px;border-radius:8px;cursor:pointer;
+  font-size:11.5px;font-weight:700;letter-spacing:.04em;
+  transition:all .15s;
+}
+.take-note-mute:hover{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.55)}
+.take-note-panel.muted .take-note-mute{color:var(--muted);border-color:rgba(255,255,255,.10)}
+.alerts{display:flex;flex-direction:column;gap:6px}
 .alert{
   padding:9px 13px;border-radius:10px;font-size:12px;font-weight:500;
   display:flex;align-items:center;gap:8px;
@@ -741,6 +665,14 @@ body.dark-mode .course .code{background:rgba(255,255,255,.08);color:#fff}
 .alert.bad{background:rgba(239,68,68,.1);border-left-color:var(--bad);color:var(--bad)}
 .alert.ok{background:rgba(16,185,129,.1);border-left-color:var(--ok);color:var(--ok)}
 .alert .icon{font-size:14px}
+.alert .msg{flex:1;min-width:0}
+.alert .dismiss{
+  background:transparent;border:none;color:currentColor;
+  font-size:16px;line-height:1;font-weight:700;
+  cursor:pointer;padding:0 4px;opacity:.55;
+  transition:opacity .15s;
+}
+.alert .dismiss:hover{opacity:1}
 
 /* ============================================================================
    CGPA GAUGE (SVG)
@@ -1385,7 +1317,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
 }
 </style>
 </head>
-<body class="dark-mode" data-theme="dark">
+<body class="dark-mode" data-theme="solarized-dark">
 
 <header class="hero">
   <div class="hero-deco">
@@ -1407,14 +1339,14 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     </div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
       <div>
-        <h1><span class="title-grad">Undergraduate Degree Planning Simulator</span></h1>
+        <h1><span class="title-grad">Undergraduate Degree &amp; CGPA Simulator</span></h1>
         <div class="tag">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
         <div class="pills">
           <button class="pill accent" onclick="showLiveStatus()" title="See live status & last-saved time">● Live</button>
           <button class="pill" onclick="showProgramsOverview()" title="Open Programs Overview">5 Programs</button>
           <button class="pill" onclick="showAllCourses()" title="Browse all courses in this program">100+ Courses</button>
           <button class="pill" onclick="showPrereqEngineInfo()" title="How prerequisite locking works">Prereq Engine</button>
-          <button class="pill" onclick="jumpToAuditTab()" title="Jump to Graduation Audit tab">Graduation Audit</button>
+          <button class="pill" onclick="jumpToAuditTab()" title="Jump to Graduation Checklist tab">Graduation Checklist</button>
         </div>
       </div>
       <div class="hero-actions">
@@ -1425,23 +1357,15 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
           <div class="theme-menu" id="themeMenu" role="menu">
             <div class="theme-menu-hdr">Color Theme</div>
             <div class="theme-menu-section">Light</div>
-            <button class="theme-opt" data-theme-set="light"><span class="sw" style="background:#fff;border:1px solid #ddd"></span>Light Default</button>
             <button class="theme-opt" data-theme-set="solarized-light"><span class="sw" style="background:#fdf6e3;border:1px solid #b58900"></span>Solarized Light</button>
             <button class="theme-opt" data-theme-set="github-light"><span class="sw" style="background:#fff;border:1px solid #0969da"></span>GitHub Light</button>
             <div class="theme-menu-section">Dark</div>
-            <button class="theme-opt" data-theme-set="dark"><span class="sw" style="background:#0a0a0c;border:1px solid #fb923c"></span>Dark Default</button>
             <button class="theme-opt" data-theme-set="solarized-dark"><span class="sw" style="background:#002b36;border:1px solid #b58900"></span>Solarized Dark</button>
-            <button class="theme-opt" data-theme-set="dracula"><span class="sw" style="background:#282a36;border:1px solid #bd93f9"></span>Dracula</button>
             <button class="theme-opt" data-theme-set="monokai"><span class="sw" style="background:#272822;border:1px solid #a6e22e"></span>Monokai</button>
-            <button class="theme-opt" data-theme-set="abyss"><span class="sw" style="background:#000c18;border:1px solid #00bfff"></span>Abyss</button>
-            <button class="theme-opt" data-theme-set="nord"><span class="sw" style="background:#2e3440;border:1px solid #88c0d0"></span>Nord</button>
             <div class="theme-menu-section">Cartoon &amp; Fun</div>
             <button class="theme-opt" data-theme-set="sunny-yellow"><span class="sw" style="background:#fef3c7;border:1px solid #1e40af"></span>Sunny Yellow</button>
             <button class="theme-opt" data-theme-set="banana-buddy"><span class="sw" style="background:#fde047;border:1px solid #1d4ed8"></span>Banana Buddy</button>
             <button class="theme-opt" data-theme-set="pop-art"><span class="sw" style="background:#fef3c7;border:2px solid #dc2626"></span>Pop Art</button>
-            <button class="theme-opt" data-theme-set="pastel-dream"><span class="sw" style="background:linear-gradient(135deg,#fce7f3,#dbeafe);border:1px solid #ec4899"></span>Pastel Dream</button>
-            <button class="theme-opt" data-theme-set="neon-cyber"><span class="sw" style="background:#0c0a1f;border:1px solid #ec4899"></span>Neon Cyber</button>
-            <button class="theme-opt" data-theme-set="forest-spirit"><span class="sw" style="background:linear-gradient(135deg,#dcfce7,#fef3c7);border:1px solid #16a34a"></span>Forest Spirit</button>
             <div class="theme-menu-section">Accessibility</div>
             <button class="theme-opt" data-theme-set="high-contrast"><span class="sw" style="background:#000;border:2px solid #ffff00"></span>High Contrast</button>
           </div>
@@ -1485,10 +1409,16 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
         <option value="EX">Exempted (MUET 5.0+)</option>
       </select>
     </div>
-    <div class="field" id="langField" title="Foreign language sequence — pick ONE language family. Chinese students and Chinese-medium school students must choose a non-Mandarin language. International students must choose a non-native language.">
+    <div class="field" id="langField" title="Foreign language sequence. Chinese students and Chinese-medium school students must choose Non-Mandarin.">
       <label>Foreign Language</label>
       <select id="langSelect">
-        <option value="MAN">Mandarin (Bahasa Mandarin)</option>
+        <option value="MAN">Mandarin</option>
+        <option value="NONMAN">Non-Mandarin</option>
+      </select>
+    </div>
+    <div class="field" id="langField2" style="display:none" title="Pick which non-Mandarin language family to use.">
+      <label>Non-Mandarin Choice</label>
+      <select id="langSelectSpecific">
         <option value="ARA">Arabic (Bahasa Arab)</option>
         <option value="JPN">Japanese (Bahasa Jepun)</option>
         <option value="FRA">French (Bahasa Perancis)</option>
@@ -1511,7 +1441,15 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     <div>
       <div class="panel">
         <h2>Your Plan <span class="badge" id="totalCrBadge">0/0 cr</span></h2>
-        <div class="alerts" id="alerts"></div>
+        <div class="take-note-panel" id="takeNotePanel">
+          <div class="take-note-header">
+            <span class="take-note-icon" id="takeNoteIcon">⚠️</span>
+            <span>Take Note</span>
+            <span class="take-note-count" id="takeNoteCount">0</span>
+            <button class="take-note-mute" id="takeNoteMute" onclick="toggleAlertsMute()" title="Mute or unmute these notifications (like an iPhone DND toggle)">🔔 Mute</button>
+          </div>
+          <div class="alerts" id="alerts"></div>
+        </div>
         <div class="semesters" id="semesters"></div>
       </div>
     </div>
@@ -1577,7 +1515,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
           <div class="tab active" data-tab="components">📊 Progress</div>
           <div class="tab" data-tab="gpa">📈 GPA</div>
           <div class="tab" data-tab="graph">🔗 Prereqs</div>
-          <div class="tab" data-tab="audit">🎓 Audit</div>
+          <div class="tab" data-tab="audit">📋 Graduation Checklist</div>
         </div>
         <div class="tab-content active" id="tab-components">
           <div class="progress-list" id="componentProgress"></div>
@@ -2285,7 +2223,7 @@ const FAIL_GRADES = new Set(["C-","D+","D","F"]);
 
 let state = {
   programId:"BFIN", trackId:"INV",
-  plan:{}, theme:"dark",
+  plan:{}, theme:"solarized-dark",
   pathId:"L2",         /* English pathway: L1 / L2 / L3 / EX */
   langId:"MAN",        /* Foreign language family: MAN / ARA / JPN / FRA / KOR */
   extraSems:0          /* Extra semesters added by student (Hiccup 5) */
@@ -2330,11 +2268,13 @@ function loadState(){
     if(r){ const s=JSON.parse(r); if(s&&s.programId&&s.plan){ state=Object.assign(state,s); }}
   }catch(e){}
   if(!state.plan||!Object.keys(state.plan).length) state.plan=emptyPlan();
-  if(!state.theme) state.theme="dark";
+  if(!state.theme || !THEMES[state.theme]) state.theme=DEFAULT_THEME;
   if(!state.pathId) state.pathId="L2";
   if(!state.langId) state.langId="MAN";
   if(typeof state.extraSems!=="number") state.extraSems=0;
   if(!state.lastSaved) state.lastSaved=Date.now();
+  if(!Array.isArray(state.dismissedAlerts)) state.dismissedAlerts=[];
+  if(typeof state.alertsMuted!=="boolean") state.alertsMuted=false;
   applyTheme(state.theme);
 }
 
@@ -2343,26 +2283,20 @@ function loadState(){
    Each entry: {label, mode} where mode = "dark" | "light"
    `mode` decides which base text/panel styles apply (.dark-mode vs .light-mode)
 ============================================================================ */
+const DEFAULT_THEME = "solarized-dark";
 const THEMES = {
-  "light":          {label:"Light Default",   mode:"light"},
-  "dark":           {label:"Dark Default",    mode:"dark"},
   "solarized-light":{label:"Solarized Light", mode:"light"},
-  "solarized-dark": {label:"Solarized Dark",  mode:"dark"},
-  "dracula":        {label:"Dracula",         mode:"dark"},
-  "monokai":        {label:"Monokai",         mode:"dark"},
-  "abyss":          {label:"Abyss",           mode:"dark"},
-  "nord":           {label:"Nord",            mode:"dark"},
   "github-light":   {label:"GitHub Light",    mode:"light"},
+  "solarized-dark": {label:"Solarized Dark",  mode:"dark"},
+  "monokai":        {label:"Monokai",         mode:"dark"},
   "sunny-yellow":   {label:"Sunny Yellow",    mode:"light"},
   "banana-buddy":   {label:"Banana Buddy",    mode:"light"},
   "pop-art":        {label:"Pop Art",         mode:"light"},
-  "pastel-dream":   {label:"Pastel Dream",    mode:"light"},
-  "neon-cyber":     {label:"Neon Cyber",      mode:"dark"},
-  "forest-spirit":  {label:"Forest Spirit",   mode:"light"},
   "high-contrast":  {label:"High Contrast",   mode:"dark"}
 };
 function applyTheme(name){
-  const t = THEMES[name] || THEMES["dark"];
+  const t = THEMES[name] || THEMES[DEFAULT_THEME];
+  if(!THEMES[name]) name = DEFAULT_THEME;
   document.body.dataset.theme = name;
   document.body.classList.toggle("dark-mode",  t.mode==="dark");
   document.body.classList.toggle("light-mode", t.mode==="light");
@@ -2512,18 +2446,66 @@ function renderPathSelect(){
   };
 }
 
+/* Hiccup v2-1: two-step foreign-language picker.
+   Primary = Mandarin / Non-Mandarin. If Non-Mandarin, a secondary
+   dropdown picks the specific family (ARA / JPN / FRA / KOR).
+   state.langId stays as the concrete language code internally. */
 function renderLangSelect(){
   const sel=$("langSelect"); const wrap=$("langField");
+  const sel2=$("langSelectSpecific"); const wrap2=$("langField2");
   const p=PROGRAMS[state.programId];
   const hasLangCourses = p.courses.some(c=>c.lang);
-  if(!hasLangCourses){ wrap.style.display="none"; return; }
+  if(!hasLangCourses){ wrap.style.display="none"; wrap2.style.display="none"; return; }
   wrap.style.display="";
-  sel.value = state.langId || "MAN";
+
+  const isMan = (state.langId || "MAN") === "MAN";
+  sel.value = isMan ? "MAN" : "NONMAN";
+  wrap2.style.display = isMan ? "none" : "";
+  if(!isMan) sel2.value = state.langId;
+
   sel.onchange = ()=>{
-    state.langId = sel.value;
-    /* No longer strips placed courses — student keeps full control. */
+    if(sel.value === "MAN"){
+      substituteLangCourses(state.langId, "MAN");
+      state.langId = "MAN";
+    } else {
+      /* Default to current non-MAN selection or first non-MAN (ARA) */
+      const target = (state.langId && state.langId !== "MAN") ? state.langId : (sel2.value || "ARA");
+      substituteLangCourses(state.langId, target);
+      state.langId = target;
+    }
     saveState(); renderAll();
   };
+  sel2.onchange = ()=>{
+    substituteLangCourses(state.langId, sel2.value);
+    state.langId = sel2.value;
+    saveState(); renderAll();
+  };
+}
+
+/* Hiccup v2-2: when the student switches language family, any placed
+   foreign-language D-cat course gets remapped to the equivalent course
+   in the new family. Mandarin courses (SBLFK?053) translate to ARA
+   (?023), JPN (?033), FRA (?043), or KOR (?063) by digit-swap. */
+const LANG_FAMILY_DIGIT = {MAN:"5", ARA:"2", JPN:"3", FRA:"4", KOR:"6"};
+function substituteLangCourses(fromLang, toLang){
+  if(!fromLang || !toLang || fromLang === toLang) return;
+  const fromD = LANG_FAMILY_DIGIT[fromLang];
+  const toD = LANG_FAMILY_DIGIT[toLang];
+  if(!fromD || !toD) return;
+  const re = new RegExp(`^SBLFK([123])${fromD}3$`);
+  Object.keys(state.plan).forEach(s=>{
+    state.plan[s] = (state.plan[s]||[]).map(it=>{
+      const m = it.code.match(re);
+      if(m){
+        const newCode = `SBLFK${m[1]}${toD}3`;
+        const p = PROGRAMS[state.programId];
+        if(p.courses.find(c=>c.code === newCode)){
+          return {...it, code:newCode};
+        }
+      }
+      return it;
+    });
+  });
 }
 
 function renderSemesters(){
@@ -2539,10 +2521,9 @@ function renderSemesters(){
     const card=document.createElement("div");
     card.className="sem-card"+(isShort?" short-sem":"")+(isExtra?" extra-sem":"");
     card.dataset.sem=s;
-    const parity = s%2===1 ? "Odd" : "Even";
     card.innerHTML=`
       <div class="sem-head">
-        <div class="sem-title"><span class="num">${s}</span>${isExtra?"Extension "+s:(isShort?"Short Sem":"Semester "+s)} <span class="sem-parity">· ${parity}</span></div>
+        <div class="sem-title"><span class="num">${s}</span>${isExtra?"Extension "+s:"Semester "+s}</div>
         <div class="sem-credits ${cls}">${cr} cr</div>
       </div>
       <div class="sem-courses"></div>
@@ -2613,8 +2594,8 @@ function renderSemesters(){
             o.value = cc.code;
             let lockHint = "";
             if(!pr.ok){
-              if(pr.missing.some(m=>m.includes("offered odd")))      lockHint = "🚫 ODD only · ";
-              else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 EVEN only · ";
+              if(pr.missing.some(m=>m.includes("offered odd")))      lockHint = "🚫 Sem 1, 3, 5, 7 only · ";
+              else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 Sem 2, 4, 6 only · ";
               else if(pr.missing.some(m=>m.includes("failed")))       lockHint = "❌ Prereq failed · ";
               else                                                     lockHint = "🔒 ";
             }
@@ -2798,8 +2779,37 @@ function renderAudit(byCat,total,target,cgpa){
   if(!allOk) window._celebrated=false;
 }
 
+/* Hiccup v2-5: alerts use a "Take Note" panel with a blinking icon,
+   a Mute toggle (DND-style), and per-alert dismiss. Dismissed alerts
+   stay dismissed (stored as hash list in localStorage) until the
+   underlying issue changes its message text. */
+function alertHash(msg){
+  let h = 0;
+  for(let i=0;i<msg.length;i++) h = ((h<<5) - h + msg.charCodeAt(i)) | 0;
+  return h.toString(36);
+}
+function dismissAlert(hash){
+  state.dismissedAlerts = state.dismissedAlerts || [];
+  if(!state.dismissedAlerts.includes(hash)) state.dismissedAlerts.push(hash);
+  saveState(); renderAlerts();
+}
+function toggleAlertsMute(){
+  state.alertsMuted = !state.alertsMuted;
+  /* Un-muting also clears any individually-dismissed alerts so the
+     student sees the current full picture again. */
+  if(!state.alertsMuted) state.dismissedAlerts = [];
+  saveState(); renderAlerts();
+}
 function renderAlerts(){
-  const a=$("alerts");
+  const a       = $("alerts");
+  const panel   = $("takeNotePanel");
+  const countEl = $("takeNoteCount");
+  const muteBtn = $("takeNoteMute");
+  if(!panel) return;
+
+  state.dismissedAlerts = state.dismissedAlerts || [];
+
+  /* Gather all issues */
   const issues=[];
   const p=PROGRAMS[state.programId];
   for(let s=1;s<=totalSems();s++){
@@ -2815,7 +2825,42 @@ function renderAlerts(){
       if(it.grade && FAIL_GRADES.has(it.grade)) issues.push({lvl:"warn",msg:`${it.code} (Sem ${s}): ${it.grade} — retake required (UUM rule c)`});
     }
   }
-  a.innerHTML = issues.slice(0,5).map(i=>`<div class="alert ${i.lvl==='bad'?'bad':'warn'}"><span class="icon">${i.lvl==='bad'?'⛔':'⚠️'}</span>${i.msg}</div>`).join("");
+
+  /* Filter out individually-dismissed */
+  const visible = issues.filter(i => !state.dismissedAlerts.includes(alertHash(i.msg)));
+
+  /* Mute state — like iOS/Android DND: panel shrinks to just the muted indicator */
+  if(state.alertsMuted){
+    panel.classList.remove("has-alerts");
+    panel.classList.add("muted");
+    a.innerHTML = "";
+    countEl.textContent = visible.length;
+    muteBtn.textContent = "🔕 Muted — click to enable";
+    /* Still show the panel so the user knows alerts are suppressed */
+    panel.style.display = visible.length || issues.length ? "block" : "none";
+    return;
+  }
+  panel.classList.remove("muted");
+  muteBtn.textContent = "🔔 Mute";
+
+  if(visible.length === 0){
+    panel.classList.remove("has-alerts");
+    panel.style.display = "none";
+    a.innerHTML = "";
+    return;
+  }
+  panel.classList.add("has-alerts");
+  panel.style.display = "";
+  countEl.textContent = visible.length;
+
+  a.innerHTML = visible.slice(0,8).map(i=>{
+    const h = alertHash(i.msg);
+    return `<div class="alert ${i.lvl==='bad'?'bad':'warn'}">
+      <span class="icon">${i.lvl==='bad'?'⛔':'⚠️'}</span>
+      <span class="msg">${i.msg}</span>
+      <button class="dismiss" onclick="dismissAlert('${h}')" title="Dismiss this alert">×</button>
+    </div>`;
+  }).join("");
 }
 
 /* ============================================================================
@@ -2828,6 +2873,12 @@ function loadRecommended(){
   if(!confirm("Replace your current plan with the official recommended plan?")) return;
   state.plan=emptyPlan();
   Object.entries(rec).forEach(([s,codes])=>{ state.plan[s]=codes.map(c=>({code:c,grade:""})); });
+  /* Hiccup v2-2: the embedded recommended plans are Mandarin-default.
+     If the student already picked a Non-Mandarin family in state.langId,
+     swap the placed Mandarin language courses to the equivalent family. */
+  if(state.langId && state.langId !== "MAN"){
+    substituteLangCourses("MAN", state.langId);
+  }
   saveState(); renderAll();
 }
 
@@ -2849,8 +2900,7 @@ function exportTxt(){
   for(let s=1;s<=totalSems();s++){
     const items=state.plan[s]||[]; if(!items.length) continue;
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
-    const isShort=p.shortSems&&p.shortSems.includes(s);
-    txt += `── ${isShort?'SHORT SEMESTER':'SEMESTER '+s} (${cr} credits) ──\n`;
+    txt += `── SEMESTER ${s} (${cr} credits) ──\n`;
     items.forEach(it=>{
       const c=getCourse(it.code); if(!c) return;
       txt += `  ${c.code.padEnd(11)} ${c.en.padEnd(45)} ${c.cr}cr  Grade: ${it.grade||'—'}\n`;
@@ -2981,7 +3031,7 @@ const CATEGORY_DESCRIPTIONS = {
   "Specialization": "Your chosen specialization track. Pick one specialization (e.g. Investment Management vs Wealth Management for BFin) and complete all its required courses to graduate within that focus.",
   "Field Elective": "Choose ONE field and complete 6 courses within it. Available fields vary by program (Bank Management, Finance, HR, Marketing, Muamalat Administration, Public Management).",
   "Foreign Language Requirement": "Three sequential courses in one foreign language: Mandarin, Arabic, Japanese, French, or Korean. NOTE: Chinese students and Chinese-medium school students MUST choose a non-Mandarin language. International students must choose a non-native language.",
-  "Economics Elective": "Choose 4 courses (12 cr) from the Economics Programme's elective pool. Each course is offered in a specific semester — odd (1st sem) or even (2nd sem) — check the offer badge before placement.",
+  "Economics Elective": "Choose 4 courses (12 cr) from the Economics Programme's elective pool. Each course is offered in specific semesters of the academic year — check the lock hint in the add-course dropdown before placement.",
   "Program Elective": "Optional courses within the program. Choose enough to fulfil the credit requirement; selections give you flexibility to specialize beyond the core.",
   "Free Elective": "ONE course (3 cr) from any other UUM school. Constraints: (i) you must meet its prerequisites, (ii) University/English/Foreign-Language Core cannot count as Free Elective, (iii) equivalent courses (e.g. GMGFK1013 ≡ BEEBK1013) are blocked.",
   "Industrial Training": "Final-semester practical placement (~4 months). Unlocks only after you've completed nearly all other program courses. Treated as a single block taking the entire semester."
@@ -3247,18 +3297,18 @@ function showPrereqEngineInfo(){
       <li><strong>Industrial Training</strong> — requires almost all other program courses to be placed first</li>
     </ul>
 
-    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">4. Semester offering (odd / even)</h3>
-    <p>Some courses are only offered in a specific semester rotation. For example, <strong>BEEDK2013 Development Economics</strong> is offered in odd semesters only (1st sem of each session). Placing it in an even semester triggers 🚫 ODD only.</p>
+    <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">4. Semester-specific offering</h3>
+    <p>Some courses are only offered in specific semesters of the academic year. For example, <strong>BEEDK2013 Development Economics</strong> is offered only in Semesters 1, 3, 5, 7. Placing it in Semester 2, 4, or 6 triggers a lock hint indicating where it CAN be placed.</p>
 
     <h3 style="font-size:14px;margin:14px 0 8px;color:var(--brand)">Lock icons summary</h3>
     <ul>
       <li>🔒 — generic missing prereq</li>
       <li>❌ Prereq failed — prereq has fail grade (C-, D+, D, F)</li>
-      <li>🚫 ODD only — wrong-parity semester</li>
-      <li>🚫 EVEN only — wrong-parity semester</li>
+      <li>🚫 Sem 1, 3, 5, 7 only — course is only offered in those semesters</li>
+      <li>🚫 Sem 2, 4, 6 only — course is only offered in those semesters</li>
       <li>✓ Sem X — already placed (greyed out so you can't add twice)</li>
     </ul>
-    <p style="font-size:11.5px;color:var(--muted);margin-top:10px">You can still <em>force-add</em> a locked course (the lock is an indicator, not a hard block). The graduation audit will flag it.</p>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:10px">You can still <em>force-add</em> a locked course (the lock is an indicator, not a hard block). The graduation checklist will flag it.</p>
   `);
 }
 
@@ -3284,19 +3334,19 @@ function showAboutDashboard(){
       </div>
     </div>
     <p class="cat-desc">
-      A degree-planning and CGPA-simulation dashboard for SEFB students. Plan your semesters, track prerequisites, predict your CGPA in real time, and audit your graduation eligibility — all in one place.
+      A degree-planning and CGPA-simulation dashboard for SEFB students. Plan your semesters, track prerequisites, predict your CGPA in real time, and check your graduation eligibility — all in one place.
     </p>
 
     <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">What you can do</h3>
     <ul>
       <li><strong>Drag-and-drop semester planning</strong> with the official UUM recommended plan pre-loaded.</li>
-      <li><strong>Smart prerequisite locking</strong> — courses grey out if (a) the prereq isn't placed yet, (b) the prereq was failed (grade C-, D+, D, F), or (c) the course is offered only in odd / even semesters.</li>
+      <li><strong>Smart prerequisite locking</strong> — courses grey out if (a) the prereq isn't placed yet, (b) the prereq was failed (grade C-, D+, D, F), or (c) the course is only offered in specific semesters of the academic year.</li>
       <li><strong>English Pathway selector</strong> driven by your MUET / IELTS / CEFR band (LAMPIRAN A) — picks the right MPB / ESP courses.</li>
       <li><strong>5 foreign-language families</strong> — Mandarin, Arabic, Japanese, French, Korean (with the Chinese-student rule documented).</li>
       <li><strong>Live CGPA gauge</strong> with Dean's List shimmer at GPA ≥ 3.67.</li>
       <li><strong>Standalone GPA calculator</strong> and <strong>CGPA projection calculator</strong> for what-if scenarios.</li>
       <li><strong>Prerequisite dependency graph</strong> — visualise course chains.</li>
-      <li><strong>Graduation audit</strong> across every credit-component requirement (A through H).</li>
+      <li><strong>Graduation checklist</strong> across every credit-component requirement (A through H).</li>
       <li><strong>Extension semesters</strong> — add Sem +1, +2, … for students extending their study.</li>
       <li><strong>10 colour themes</strong> (VS Code style) including Dracula, Monokai, Nord, Solarized, High Contrast.</li>
     </ul>
@@ -3315,7 +3365,7 @@ function showAboutDashboard(){
     <h3 style="font-size:14px;margin:18px 0 10px;color:var(--brand)">Built by</h3>
     <ul>
       <li><strong>Prof. Dr. Soon Jan Jan</strong> · School of Economics, Finance & Banking · UUM</li>
-      <li><strong>Dr. Mukhriz Izraf</strong> · School of Economics, Finance & Banking · UUM</li>
+      <li><strong>Assoc. Prof. Dr. Mukhriz Izraf Azman Aziz</strong> · School of Economics, Finance &amp; Banking · UUM</li>
     </ul>
     <p style="font-size:11.5px;color:var(--muted);margin-top:12px">For feedback, bug reports, or feature requests, please contact the authors directly or open an issue on the project repository.</p>
   `);
@@ -3428,7 +3478,7 @@ function showHelp(){
     <p><strong>4. Set target grades</strong> — choose A+, A, A-, etc. from each course's dropdown. Your projected CGPA updates instantly on the gauge.</p>
     <p><strong>5. Credit limits per semester:</strong> 12 minimum, 18 maximum. Cards turn yellow (under), green (OK), or red (over).</p>
     <p><strong>6. Search</strong> — find any course by code or name. Click to add it to the earliest valid semester.</p>
-    <p><strong>7. Graduation Audit</strong> — checks every component requirement. When all green, you'll see a celebration!</p>
+    <p><strong>7. Graduation Checklist</strong> — checks every component requirement. When all green, you'll see a celebration!</p>
     <h3 style="font-size:14px;margin-top:14px">📊 Grading Scale (UUM)</h3>
     <table class="grade-table">
       <thead><tr><th>Grade</th><th>Points</th><th>Status</th></tr></thead>
