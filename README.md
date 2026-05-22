@@ -16,12 +16,12 @@ A degree-planning and CGPA-simulation dashboard for the **School of Economics, F
 - 🇬🇧 **English Pathway selector** (LAMPIRAN A) — picks the right MPB courses by MUET / IELTS / CEFR band
 - 🌏 **5 foreign-language options** — Mandarin, Arabic, Japanese, French, Korean (per UUM rule: Chinese students must pick non-Mandarin)
 - ➕ **Add Semester** — extension semesters for students who need more time
-- 📊 **Live CGPA gauge** that updates as you set target grades
+- 📊 **Animated CGPA ring gauge** — colour-coded by classification tier, sweeps to your projected CGPA as you enter grades
+- 📈 **Semester GPA bar chart** — per-semester bars colour-coded by tier (Fail / Lower 2nd / Upper 2nd / First Class) with Dean's List line
 - 🧮 **Standalone GPA calculator** — quick per-semester math
 - 🎯 **CGPA projection calculator** — project your new CGPA from current standing
-- 🔗 **Prerequisite dependency graph** — visualize course chains
 - 🎓 **Graduation audit** — checks every credit-component requirement (A through H)
-- 🎨 **10 color themes** (VS Code-style picker) — Light, Dark, Solarized Light/Dark, Dracula, Monokai, Abyss, Nord, GitHub Light, High Contrast
+- 🎨 **8 colour themes** (VS Code-style picker) — Solarized Light/Dark, GitHub Light, Monokai, Sunny Yellow, Banana Buddy, Pop Art, High Contrast
 - 📱 **Mobile responsive** — works on phones, tablets, laptops
 - 💾 **Auto-save** to your browser (nothing leaves your device)
 - 📄 **Export to .txt** for backup or sharing
@@ -48,10 +48,9 @@ A degree-planning and CGPA-simulation dashboard for the **School of Economics, F
 4. Click **📋 Load Recommended Plan** to start from the official UUM sequence
 5. **Drag courses** between semesters to customize your plan
 6. Set **target grades** to see your projected CGPA on the gauge
-7. Use the **📈 GPA tab** for the standalone GPA & CGPA calculators
-8. Use the **🔗 Prereqs tab** to visualize course dependency chains
-9. Use the **🎓 Audit tab** to check graduation eligibility
-10. Click **🎨 Theme Selector** to pick your favourite colour theme
+7. Use the **📈 GPA Calculator tab** for per-semester GPA bars, the CGPA ring gauge, and standalone calculators
+8. Use the **🎓 Audit tab** to check graduation eligibility
+9. Click **🎨 Theme Selector** to pick your favourite colour theme
 
 No login. No install. Just open the link.
 
@@ -97,9 +96,10 @@ Everything happens **inside your browser**. Your plan, grades, and personal data
 
 ## 🛠 Tech
 
-- Single self-contained HTML file (~2900 lines)
+- Single self-contained HTML file (~3900 lines)
 - Vanilla JavaScript — zero dependencies, zero install
-- CSS custom properties for theming (10 palettes)
+- Canvas API for animated CGPA ring gauge and semester GPA bar chart
+- CSS custom properties for theming (8 palettes)
 - Hosted free on GitHub Pages
 - Works offline once loaded
 
