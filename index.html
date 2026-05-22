@@ -259,7 +259,7 @@ a:hover{text-decoration:underline}
 .hero{
   position:relative;color:#fff;padding:32px 32px 38px;
   background:
-    linear-gradient(180deg,rgba(10,10,12,.82) 0%,rgba(10,10,12,.72) 45%,rgba(10,10,12,.60) 100%),
+    linear-gradient(180deg,rgba(10,10,12,.58) 0%,rgba(10,10,12,.45) 45%,rgba(10,10,12,.30) 100%),
     url("images/ilovesefb2.png");
   background-size:cover,cover;
   background-position:center,center bottom;
@@ -276,6 +276,7 @@ a:hover{text-decoration:underline}
 .hero::before{width:420px;height:420px;top:-160px;right:-80px;background:radial-gradient(circle,rgba(251,146,60,.35),rgba(251,146,60,0));animation:float 20s ease-in-out infinite}
 .hero::after{width:280px;height:280px;bottom:-120px;left:15%;background:radial-gradient(circle,rgba(220,38,38,.25),rgba(220,38,38,0));animation:float 16s ease-in-out infinite reverse}
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-40px) scale(1.1)}}
+.watermark-hide{position:absolute;bottom:0;right:0;width:24%;height:22%;background:linear-gradient(135deg,transparent 0%,rgba(10,10,12,.70) 65%,rgba(10,10,12,.88) 100%);pointer-events:none;z-index:7}
 
 .hero-deco{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.10}
 .hero-deco svg{position:absolute;color:#fff}
@@ -302,7 +303,7 @@ a:hover{text-decoration:underline}
 
 .hero h1{
   font-family:'Trebuchet MS','Lucida Sans Unicode','Verdana','Tahoma',system-ui,sans-serif;
-  font-size:clamp(22px,2.8vw,34px);font-weight:900;font-style:italic;
+  font-size:clamp(28px,3.4vw,44px);font-weight:900;font-style:italic;
   letter-spacing:-.015em;margin-bottom:10px;line-height:1.05;
 }
 .hero h1 .title-grad{
@@ -523,6 +524,16 @@ body.dark-mode .sem-card.extra-sem{background:repeating-linear-gradient(135deg,#
 .sem-credits.bad{background:rgba(239,68,68,.18);color:#f87171;border-color:rgba(239,68,68,.30);animation:shake .4s}
 .sem-credits.ok{background:rgba(34,197,94,.15);color:#4ade80;border-color:rgba(34,197,94,.30)}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.sem-session-sel{
+  font-size:10.5px;font-weight:700;padding:3px 7px;border-radius:7px;
+  background:rgba(99,102,241,.13);color:var(--text);
+  border:1px solid rgba(99,102,241,.30);cursor:pointer;
+  transition:background .2s,border-color .2s;outline:none;
+  max-width:80px;
+}
+.sem-session-sel:hover,.sem-session-sel:focus{background:rgba(99,102,241,.25);border-color:rgba(99,102,241,.55)}
+body.dark-mode .sem-session-sel{background:rgba(99,102,241,.18);border-color:rgba(99,102,241,.38)}
+body.dark-mode .sem-session-sel:hover,body.dark-mode .sem-session-sel:focus{background:rgba(99,102,241,.32)}
 
 .sem-courses{flex:1;display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
 
@@ -1298,7 +1309,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
 /* Mobile */
 @media(max-width:680px){
   .hero{padding:18px 16px}
-  .hero h1{font-size:18px}
+  .hero h1{font-size:22px}
   .container{padding:14px 12px 40px}
   .toolbar{padding:10px 12px}
   .field select,.field input{min-width:140px;font-size:12.5px}
@@ -1325,6 +1336,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     <svg style="bottom:30px;right:8%;width:50px" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
     <svg style="top:50%;left:42%;width:30px" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
   </div>
+  <div class="watermark-hide"></div>
   <div class="hero-inner" style="flex-direction:column;align-items:stretch;gap:0">
     <div class="hero-brand">
       <img src="images/sefb.png" alt="SEFB UUM" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -1337,17 +1349,17 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
         </div>
       </div>
     </div>
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <div>
-        <h1><span class="title-grad">Undergraduate Degree &amp; CGPA Simulator</span></h1>
-        <div class="tag">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
-        <div class="pills">
-          <button class="pill accent" onclick="showLiveStatus()" title="See live status & last-saved time">● Live</button>
-          <button class="pill" onclick="showProgramsOverview()" title="Open Programs Overview">5 Programs</button>
-          <button class="pill" onclick="showAllCourses()" title="Browse all courses in this program">100+ Courses</button>
-          <button class="pill" onclick="showPrereqEngineInfo()" title="How prerequisite locking works">Prereq Engine</button>
-          <button class="pill" onclick="jumpToAuditTab()" title="Jump to Graduation Checklist tab">Graduation Checklist</button>
-        </div>
+    <div style="text-align:center;padding:8px 0 4px">
+      <h1 style="margin-bottom:8px"><span class="title-grad">Undergraduate Academic Planner and CGPA Simulator</span></h1>
+      <div class="tag" style="text-align:center">Plan every semester · Track prerequisites · Predict your CGPA in real time · Graduate with confidence.</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:10px">
+      <div class="pills">
+        <button class="pill accent" onclick="showLiveStatus()" title="See live status & last-saved time">● Live</button>
+        <button class="pill" onclick="showProgramsOverview()" title="Open Programs Overview">5 Programs</button>
+        <button class="pill" onclick="showAllCourses()" title="Browse all courses in this program">100+ Courses</button>
+        <button class="pill" onclick="showPrereqEngineInfo()" title="How prerequisite locking works">Prerequisite Rules</button>
+        <button class="pill" onclick="jumpToAuditTab()" title="Jump to Graduation Checklist tab">Graduation Checklist</button>
       </div>
       <div class="hero-actions">
         <div class="theme-picker">
@@ -1381,8 +1393,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
       <span class="hs-item"><strong id="hsCredits">0 / 0</strong>&nbsp;credits planned</span>
       <span class="hs-sep">·</span>
       <span class="hs-item"><strong id="hsSems">0</strong>&nbsp;semesters</span>
-      <span class="hs-sep">·</span>
-      <span class="hs-item">Session&nbsp;<strong>A252</strong></span>
       <span class="hs-sep">·</span>
       <span class="hs-item">Last edit&nbsp;<strong id="hsLastEdit">just now</strong></span>
     </div>
@@ -1477,13 +1487,11 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
               </defs>
               <path class="gauge-track" d="M 20 110 A 80 80 0 0 1 180 110" stroke="rgba(15,23,42,.08)"/>
               <path id="gaugeFill" class="gauge-fill" d="M 20 110 A 80 80 0 0 1 180 110" stroke="url(#gauge-grad)" stroke-dasharray="251" stroke-dashoffset="251" filter="url(#gauge-glow)"/>
-              <!-- Animated needle -->
               <g id="gaugeNeedle" style="transform-origin:100px 110px;transition:transform 1.2s cubic-bezier(.4,1.6,.5,1)">
                 <line x1="100" y1="110" x2="100" y2="40" stroke="url(#gauge-grad)" stroke-width="3" stroke-linecap="round"/>
                 <circle cx="100" cy="110" r="7" fill="var(--panel-solid)" stroke="url(#gauge-grad)" stroke-width="3"/>
                 <circle cx="100" cy="110" r="2.5" fill="url(#gauge-grad)"/>
               </g>
-              <!-- Sparkles (visible only for Dean's List) -->
               <g id="gaugeSparkles" class="gauge-sparkles">
                 <text x="30"  y="50" class="sparkle s1">✦</text>
                 <text x="170" y="50" class="sparkle s2">✧</text>
@@ -1501,7 +1509,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
             </div>
             <div class="gauge-label" id="cgpaLabel">0.00</div>
             <div class="gauge-cap">Projected CGPA</div>
-            <!-- Pulsing background orbs -->
           </div>
         </div>
         <div class="stats-row">
@@ -2216,6 +2223,7 @@ PROGRAMS.BAGRO = {
    STATE & PERSISTENCE
 ============================================================================ */
 const STORAGE_KEY = "sefb_planner_v2";
+const UUM_SESSIONS = ["A231","A232","A241","A242","A251","A252","A261","A262","A271","A272","A281","A282"];
 const MIN_CR = 12, MAX_CR = 20;
 const DEANS_LIST = 3.67;
 const PASS_THRESHOLD = 2.00;
@@ -2275,6 +2283,7 @@ function loadState(){
   if(!state.lastSaved) state.lastSaved=Date.now();
   if(!Array.isArray(state.dismissedAlerts)) state.dismissedAlerts=[];
   if(typeof state.alertsMuted!=="boolean") state.alertsMuted=false;
+  if(!state.semSession||typeof state.semSession!=="object"||Array.isArray(state.semSession)) state.semSession={};
   applyTheme(state.theme);
 }
 
@@ -2521,9 +2530,13 @@ function renderSemesters(){
     const card=document.createElement("div");
     card.className="sem-card"+(isShort?" short-sem":"")+(isExtra?" extra-sem":"");
     card.dataset.sem=s;
+    const sessOpts = UUM_SESSIONS.map(c=>`<option value="${c}"${(state.semSession[s]||"")==c?" selected":""}>${c}</option>`).join("");
     card.innerHTML=`
       <div class="sem-head">
-        <div class="sem-title"><span class="num">${s}</span>${isExtra?"Extension "+s:"Semester "+s}</div>
+        <div class="sem-title">${isExtra?"Extension "+s:"Semester "+s}</div>
+        <select class="sem-session-sel" title="Academic session" onchange="setSemSession(${s},this.value)">
+          <option value="">Session…</option>${sessOpts}
+        </select>
         <div class="sem-credits ${cls}">${cr} cr</div>
       </div>
       <div class="sem-courses"></div>
@@ -2563,13 +2576,17 @@ function renderSemesters(){
         - locked (prereq / sem-offering / failed prereq) → 🔒 / 🚫 / ❌ prefix
         - eligible → plain text, selectable
        Specialization-track filter still applies (a BFIN-INV student can't see WLT-only D-cat courses). */
+    /* Build placement map: code → {sem, grade} using the last (highest) semester found */
     const placementMap = {};
     Object.entries(state.plan).forEach(([k, items])=>{
-      items.forEach(it=>{ placementMap[it.code] = +k; });
+      items.forEach(it=>{ placementMap[it.code] = { sem: +k, grade: it.grade||"" }; });
     });
     const byCat = {};
     p.courses.forEach(cc=>{
+      /* Track filter — D-cat specialization courses are still strict */
       if(cc.cat==="D" && cc.track && state.trackId && cc.track!==state.trackId) return;
+      /* Language filter — only show the selected foreign-language family; hide all others */
+      if(cc.cat==="D" && cc.lang && cc.lang!==state.langId) return;
       (byCat[cc.cat] = byCat[cc.cat] || []).push(cc);
     });
     p.components.forEach(comp=>{
@@ -2583,12 +2600,19 @@ function renderSemesters(){
         grp.appendChild(o);
       } else {
         list.sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>{
-          const placedSem = placementMap[cc.code];
+          const placedInfo = placementMap[cc.code];
           const o = document.createElement("option");
-          if(placedSem != null){
-            /* Already in the plan — disabled so it can't be added twice */
-            o.disabled = true;
-            o.textContent = `✓ Sem ${placedSem} · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+          if(placedInfo != null){
+            const isFailed = placedInfo.grade && FAIL_GRADES.has(placedInfo.grade);
+            if(isFailed){
+              /* Failed in a previous semester — show as retake option (selectable) */
+              o.value = cc.code;
+              o.textContent = `🔄 Retake (failed Sem ${placedInfo.sem}) · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+            } else {
+              /* Passed or in-progress — disabled, already in the plan */
+              o.disabled = true;
+              o.textContent = `✓ Sem ${placedInfo.sem} · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+            }
           } else {
             const pr = isPrereqsMet(cc.code, s);
             o.value = cc.code;
@@ -2650,6 +2674,7 @@ function addCourse(s){
   saveState(); renderAll();
 }
 function removeCourse(s,i){ state.plan[s].splice(i,1); saveState(); renderAll(); }
+function setSemSession(s,val){ state.semSession[s]=val; saveState(); }
 function setGrade(s,i,g){ state.plan[s][i].grade=g; saveState(); renderAll();
   if(g && !["","M","TM","TD","TL"].includes(g)) flashUpdate();
 }
@@ -2680,14 +2705,11 @@ function renderSummary(){
   const ratio=Math.min(1,Math.max(0,cgpa/4));
   const dash=251;
   $("gaugeFill").setAttribute("stroke-dashoffset", String(dash*(1-ratio)));
-  /* Rotate the needle: arc spans -90° (CGPA 0) to +90° (CGPA 4).
-     Each unit of CGPA = 45° of rotation. */
   const needle = $("gaugeNeedle");
   if(needle){
     const angle = -90 + (ratio * 180);
     needle.style.transform = `rotate(${angle}deg)`;
   }
-  /* Toggle .deans class on the gauge container for Dean's List flair (shimmer + sparkles + green halo) */
   const gaugeEl = document.querySelector(".gauge");
   if(gaugeEl) gaugeEl.classList.toggle("deans", cgpa >= DEANS_LIST);
   animateNumber($("cgpaLabel"), cgpa, 2, 700);
@@ -3278,7 +3300,7 @@ function showAllCourses(){
 }
 
 function showPrereqEngineInfo(){
-  openModal("🔒 Prerequisite Engine", `
+  openModal("🔒 Prerequisite Rules", `
     <p class="cat-desc">
       The planner checks four rules before letting you add a course to a semester. Each rule has its own lock icon in the dropdown so you can see WHY a course is unavailable.
     </p>
