@@ -121,10 +121,10 @@ Curriculum data extracted from the official program books:
 Built by:
 
 - **Prof. Dr. Soon Jan Jan** · School of Economics, Finance & Banking · Universiti Utara Malaysia
-- **Dr. Mukhriz Izraf** · School of Economics, Finance & Banking · Universiti Utara Malaysia
+- **Assoc. Prof. Dr. Mukhriz Izraf Azman Aziz** · School of Economics, Finance & Banking · Universiti Utara Malaysia
 
 For feedback, bug reports, or feature requests, please open an issue on this repository.
 
 ---
 
-*Last updated: May 2026*
+Last updated: May 2026
