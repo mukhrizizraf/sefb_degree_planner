@@ -1639,6 +1639,7 @@ PROGRAMS.BFIN = {
     {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C */
     {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
@@ -1655,7 +1656,7 @@ PROGRAMS.BFIN = {
     {code:"BWFFK3113",ms:"Etika dan Urus Tadbir",en:"Ethics & Governance",cr:3,cat:"C",pre:[]},
     {code:"BPMNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
     {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
-    {code:"GLULK2013",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
+    {code:"GLULK2023",ms:"Undang-Undang Perniagaan",en:"Business Law",cr:3,cat:"C",pre:[]},
     /* D — Specialization (per handbook: INV-only, WLT-only, and SHARED courses) */
     /* D · Investment Management-only */
     {code:"BWFNK3033",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"D",track:"INV",pre:["BWFFK2043"]},
@@ -1678,38 +1679,38 @@ PROGRAMS.BFIN = {
     /* E */
     {code:"BWFEK3013",ms:"Pengurusan Hartanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
     {code:"BWFFK3023",ms:"Pengurusan Kredit",en:"Credit Management",cr:3,cat:"E",pre:["BWFFK2033"]},
-    {code:"BWFFK3063",ms:"Teori Kewangan",en:"Financial Theory",cr:3,cat:"E",pre:["BWFFK3013"]},
-    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"E",pre:[]},
-    {code:"BWBBK3033",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
-    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BEEQK2023",ms:"Ekonometrik Asas",en:"Basic Econometrics",cr:3,cat:"E",pre:["SQQSK2013"]},
     {code:"BKAMK2013",ms:"Perakaunan Pengurusan 1",en:"Management Accounting 1",cr:3,cat:"E",pre:["BKAFK1023"]},
-    {code:"GLULK2023",ms:"Undang-Undang Syarikat",en:"Company Law",cr:3,cat:"E",pre:[]},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"E",pre:[]},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3033",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"GLULK3033",ms:"Undang-Undang Syarikat",en:"Company Law",cr:3,cat:"E",pre:[]},
     {code:"SQQSK2013",ms:"Statistik Gunaan",en:"Applied Statistics",cr:3,cat:"E",pre:["SQQSK1013"]},
     /* F */
     {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective (any non-equiv. course)",cr:3,cat:"F",pre:[],ph:true},
     /* G */
-    {code:"BWFXK4968",ms:"Latihan Industri",en:"Industrial Training",cr:8,cat:"G",pre:[],all:true}
+    {code:"BWFXK4908",ms:"Latihan Industri",en:"Industrial Training",cr:8,cat:"G",pre:[],all:true}
   ],
   recommended:{
     INV:{
       1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2013","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","BWBBK3053","MPU1022","MPU1042","MPB3013","VKKK1021"],
+      2:["BWFFK2033","GLULK2023","BWBBK3053","MPU1022","MPU1042","MPB3013","VKKK1021"],
       3:["BWFFK2043","BWFFK3033","BWFNK3033","BWFNK3043","BWBBK2013","MPU1052"],
       4:["BWFFK2053","BWFFK3013","BWFFK3043","BWFNK3053","BWFFK3023","MPU1062"],
-      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWFNK3063","BWFFK3063"],
+      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWFNK3063","BKAMK2013"],
       6:["BPMNK3143","BWFFK3053","BWFFK3103","BKATK2013","BWBBK3033"],
       7:["BPMNK3023","BWFFK3083","BWFFK3193","FREE3013","SQQSK2013"],
-      8:["BWFXK4968"]
+      8:["BWFXK4908"]
     },
     WLT:{
       1:["BPMNK1013","BKAFK1023","SQQSK1013","BEEBK1013","MPU1012","MPB2013","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","BWRRK1013","MPU1022","MPU1042","MPB3013","VKKK1021"],
+      2:["BWFFK2033","GLULK2023","BWRRK1013","MPU1022","MPU1042","MPB3013","VKKK1021"],
       3:["BWFFK2043","BWFFK3033","BWRRK3103","BWBBK3053","BWBBK2013","MPU1052"],
       4:["BWFFK2053","BWFFK3013","BWFFK3043","BWRRK3113","BWFFK3023","MPU1062"],
-      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWRRK3143","BWFFK3063"],
+      5:["BWFFK3073","BWFFK3113","BWFNK3013","BWRRK3143","BKAMK2013"],
       6:["BPMNK3143","BWRRK3133","BWFFK3103","BKATK2013","BWBBK3033"],
       7:["BPMNK3023","BWFFK3193","BWFFK3053","SQQSK2013","FREE3013"],
-      8:["BWFXK4968"]
+      8:["BWFXK4908"]
     }
   }
 };
@@ -1753,6 +1754,7 @@ PROGRAMS.BBANK = {
     {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3063",ms:"Bahasa Inggeris untuk Komunikasi Profesional",en:"English for Professional Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C — Program Core (66 cr) */
     {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
@@ -1789,7 +1791,7 @@ PROGRAMS.BBANK = {
     {code:"BWRRK3033",ms:"Pengurusan Risiko",en:"Risk Management",cr:3,cat:"D",track:"PR",pre:["BWFFK2033"]},
     {code:"BWRRK3043",ms:"Pengurusan Manfaat Pekerja",en:"Employee Benefits Management",cr:3,cat:"D",track:"PR",pre:["BWRRK1013","BWFFK2033"]},
     {code:"BWRRK3123",ms:"Urus Tadbir Korporat",en:"Corporate Governance",cr:3,cat:"D",track:"PR",pre:[]},
-    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"D",track:"PR",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"D",track:"PR",pre:["BWRRK1013","BWFFK2043"]},
     {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"D",track:"PR",pre:["BWRRK1013"]},
     {code:"BWRRK3063",ms:"Pengurusan Risiko Kewangan",en:"Financial Risk Management",cr:3,cat:"D",track:"PR",pre:["BWFFK2043"]},
     /* D — Field Elective 3: Decision Mathematics (MP) */
@@ -1809,10 +1811,12 @@ PROGRAMS.BBANK = {
     {code:"BIMEK3023",ms:"Pengurusan Takaful",en:"Takaful Management",cr:3,cat:"D",track:"PM",pre:[]},
     {code:"BIMEK3123",ms:"Kepimpinan dalam Islam",en:"Leadership in Islam",cr:3,cat:"D",track:"PM",pre:[]},
     /* E — Program Electives */
-    {code:"BWBBK3033E",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3033",ms:"Perbankan Antarabangsa",en:"International Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
     {code:"BWBBK3043",ms:"Sekuriti Perbankan",en:"Banking Securities",cr:3,cat:"E",pre:["BWBBK2013"]},
     {code:"BWBBK3073",ms:"Pengurusan Perbendaharaan",en:"Treasury Management",cr:3,cat:"E",pre:["BWBBK2013"]},
     {code:"BWBBK3083",ms:"Perbankan Korporat",en:"Corporate Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWBBK3093",ms:"Perbankan Luar Pesisir",en:"Offshore Banking",cr:3,cat:"E",pre:["BWBBK2013"]},
+    {code:"BWFEK3013",ms:"Pengurusan Harta Tanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
     {code:"BWBZK3993",ms:"Projek Akademik",en:"Academic Project",cr:3,cat:"E",pre:["BMPNK3143"],minCr:90},
     /* F */
     {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"F",pre:[],ph:true},
@@ -1823,38 +1827,38 @@ PROGRAMS.BBANK = {
     KK:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
       2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
-      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
-      4:["BWFNK3013","BWFFK3033","GLULK3023","BWFFK2053","BWFFK3013","BWFFK3043"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWFNK3033","BWFFK3053","BWBBK3033E"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWFNK3103","BWBBK3043","BWBBK3073"],
-      7:["BWBXK4956","FREE3013","VKKK1021"]
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BWFFK2053"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWBBK3033","BWFFK3013","BWFFK3043","VKKK1011"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWBBK3043","BWFNK3033","BWFFK3053","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3073","BWFNK3103","FREE3013"],
+      7:["BWBXK4956"]
     },
     PR:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
-      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BWRRK1013"],
-      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","VKKK1011"],
-      4:["BWFNK3013","BWFFK3033","GLULK3023","BWRRK3033","BWRRK3043","BWRRK3123"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWRRK3133","BWRRK3143","BWBBK3033E"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
-      7:["BWBXK4956","FREE3013","VKKK1021"]
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BWRRK1013"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWBBK3033","BWRRK3033","BWRRK3123","VKKK1011"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWBBK3043","BWRRK3043","BWRRK3133","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3073","BWRRK3143","FREE3013"],
+      7:["BWBXK4956"]
     },
     MP:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
-      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","SQQMK1063"],
-      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","SQITK1013","VKKK1011"],
-      4:["BWFNK3013","BWFFK3033","GLULK3023","SQQMK1073","SQITK3053"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","SQITK3063","SQITK3083","BWBBK3033E"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
-      7:["BWBXK4956","FREE3013","VKKK1021"]
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","SQQMK1063"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWBBK3033","SQQMK1034","SQITK1013","VKKK1011"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWBBK3043","SQQMK1073","SQITK3053","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3073","SQITK3063","FREE3013"],
+      7:["BWBXK4956"]
     },
     PM:{
       1:["MPB2013","MPU1042","MPU1022","SQQSK1013","BKAFK1023","BEEBK1013","BWBBK1013"],
-      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013","BIMEK1013"],
-      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BIMCK1043","VKKK1011"],
-      4:["BWFNK3013","BWFFK3033","GLULK3023","BIMCK2033","BIMCK2083","BIMEK3023"],
-      5:["BWFFK3073","BWFFK3113","BWBBK3063","BIMCK3063","BIMEK3123","BWBBK3033E"],
-      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3043","BWBBK3073"],
-      7:["BWBXK4956","FREE3013","VKKK1021"]
+      2:["MPB3013","MPU1012","MPU1052","BMPNK1013","BWFFK2033","BIBMK3043","BWBBK2013"],
+      3:["MPU1062","BWFFK2043","BWBBK3013","BWBBK3023","GLULK2013","BWBBK3053","BIMEK1013"],
+      4:["BWFNK3013","BWFFK3033","GLULK3023","BWBBK3033","BIMCK1043","BIMCK2033","VKKK1011"],
+      5:["BWFFK3073","BWFFK3113","BWBBK3063","BWBBK3043","BIMCK3063","BIMCK2083","VKKK1021"],
+      6:["BMPNK3143","BWBBK3193","BMPNK3023","BWBBK3073","BIMEK3023","FREE3013"],
+      7:["BWBXK4956"]
     }
   }
 };
@@ -1876,6 +1880,14 @@ PROGRAMS.BECONS = {
     {l:"H",ms:"Latihan Industri",en:"Industrial Training",req:8}
   ],
   tracks:[],
+  fFields:[
+    {id:"BM", ms:"Pengurusan Bank",                  en:"Bank Management"},
+    {id:"FIN",ms:"Kewangan",                          en:"Finance"},
+    {id:"HRM",ms:"Pengurusan Sumber Manusia",         en:"Human Resource Management"},
+    {id:"MKT",ms:"Pemasaran Kontemporari",            en:"Contemporary Marketing"},
+    {id:"MUA",ms:"Pentadbiran Muamalat",              en:"Muamalat Administration"},
+    {id:"PM", ms:"Pengurusan Awam",                   en:"Public Management"}
+  ],
   shortSems:[7],
   courses:[
     /* A */
@@ -1950,20 +1962,55 @@ PROGRAMS.BECONS = {
     {code:"BEETK3013",ms:"Perdagangan Antarabangsa",en:"International Trade",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"odd"},
     {code:"BEETK3023",ms:"Kewangan Antarabangsa",en:"International Finance",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
     {code:"BEETK3033",ms:"Pelaburan Antarabangsa",en:"International Investments",cr:3,cat:"E",pre:["BEEBK2013","BEEBK2023"],offer:"even"},
-    /* F — Field Electives (Sample from major tracks) */
-    {code:"BWBBK1013",ms:"Asas Perbankan",en:"Fundamentals of Banking",cr:3,cat:"F",pre:[]},
-    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"F",pre:[]},
-    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"F",pre:["BWBBK2013"]},
-    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"F",pre:["BKANK1013"]},
-    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advanced Financial Management",cr:3,cat:"F",pre:["BWFFK2033"]},
-    {code:"BWFNK3013F",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"F",pre:["BWFFK2043"]},
-    {code:"BPMHK2013",ms:"Pengurusan Sumber Manusia",en:"Human Resource Management",cr:3,cat:"F",pre:["BPMNK1013"]},
-    {code:"BPMMK1013",ms:"Pengantar Pemasaran",en:"Introduction to Marketing",cr:3,cat:"F",pre:[]},
-    {code:"BPMMK2023",ms:"Pengurusan Pemasaran",en:"Marketing Management",cr:3,cat:"F",pre:["BPMMK1013"]},
-    {code:"BPMMK3353",ms:"Pemasaran Digital",en:"Digital Marketing",cr:3,cat:"F",pre:["BPMMK1013"]},
-    {code:"BIMEK1013",ms:"Teori & Amalan Perniagaan Islam",en:"Theory & Practice of Islamic Business",cr:3,cat:"F",pre:[]},
-    {code:"GMGAK2013",ms:"Perlembagaan Malaysia",en:"Malaysian Constitution",cr:3,cat:"F",pre:[]},
-    {code:"GMGAK2023",ms:"Dasar Awam",en:"Public Policy",cr:3,cat:"F",pre:[]},
+    /* F — Field Electives: 6 fields, choose ONE field and complete SIX courses (18 cr) */
+    /* 1. Bank Management */
+    {code:"BWBBK1013",ms:"Asas Perbankan",en:"Foundation of Banking",cr:3,cat:"F",field:"BM",pre:[]},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"F",field:"BM",pre:[]},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"F",field:"BM",pre:["BWBBK2013"]},
+    {code:"BWBBK3023",ms:"Pengurusan Pinjaman",en:"Lending Management",cr:3,cat:"F",field:"BM",pre:["BWBBK2013"]},
+    {code:"BWBBK3043",ms:"Sekuriti Perbankan",en:"Banking Securities",cr:3,cat:"F",field:"BM",pre:["BWBBK2013"]},
+    {code:"BWBBK3063",ms:"Pembiayaan & Perdagangan Antarabangsa",en:"International Trade and Finance",cr:3,cat:"F",field:"BM",pre:["BWBBK2013"]},
+    {code:"BWBBK3083",ms:"Perbankan Korporat",en:"Corporate Banking",cr:3,cat:"F",field:"BM",pre:["BWBBK2013"]},
+    /* 2. Finance */
+    {code:"BWFFK2033",ms:"Pengurusan Kewangan",en:"Financial Management",cr:3,cat:"F",field:"FIN",pre:["BKANK1013"]},
+    {code:"BWFFK2043",ms:"Pengurusan Kewangan Lanjutan",en:"Advance Financial Management",cr:3,cat:"F",field:"FIN",pre:["BWFFK2033"]},
+    {code:"BWFFK2053",ms:"Analisis Penyata Kewangan & Penilaian",en:"Financial Statement Analysis and Valuation",cr:3,cat:"F",field:"FIN",pre:["BWFFK2043"]},
+    {code:"BWFFK3013",ms:"Kewangan Korporat",en:"Corporate Finance",cr:3,cat:"F",field:"FIN",pre:["BWFFK2043"]},
+    {code:"BWFFK3033",ms:"Institusi dan Pasaran Kewangan",en:"Financial Market and Institutions",cr:3,cat:"F",field:"FIN",pre:["BWFFK2033"]},
+    {code:"BWFFK3073",ms:"Kewangan Peribadi",en:"Personal Finance",cr:3,cat:"F",field:"FIN",pre:["BWFFK2043"]},
+    {code:"BWFNK3013",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"F",field:"FIN",pre:["BWFFK2043"]},
+    /* 3. Human Resource Management */
+    {code:"BPMHK2013",ms:"Pengurusan Sumber Manusia",en:"Human Resource Management",cr:3,cat:"F",field:"HRM",pre:["BPMNK1013"]},
+    {code:"BPMHK3023",ms:"Penstafan",en:"Staffing",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    {code:"BPMHK3033",ms:"Latihan dan Pembangunan",en:"Training and Development",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    {code:"BPMHK3053",ms:"Pengurusan Prestasi Pekerja",en:"Employee Performance Management",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    {code:"BPMHK3063",ms:"Pengurusan Perubahan",en:"Change Management",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    {code:"BPMHK3083",ms:"Pengenalan Keselamatan dan Kesihatan Pekerjaan",en:"Introduction to Occupational Safety and Health",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    {code:"BPMHK3113",ms:"Pengurusan Sumber Manusia Antarabangsa",en:"International Human Resource Management",cr:3,cat:"F",field:"HRM",pre:["BPMHK2013"]},
+    /* 4. Contemporary Marketing */
+    {code:"BPMMK1013",ms:"Pengantar Pemasaran",en:"Introduction to Marketing",cr:3,cat:"F",field:"MKT",pre:[]},
+    {code:"BPMMK2023",ms:"Pengurusan Pemasaran",en:"Marketing Management",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    {code:"BPMMK3023",ms:"Pengurusan Jualan",en:"Sales Management",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    {code:"BPMMK3083",ms:"Pemasaran Perkhidmatan",en:"Service Marketing",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    {code:"BPMMK3313",ms:"Gelagat Pengguna & Analitik",en:"Consumer Behavior and Analytic",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    {code:"BPMMK3333",ms:"Pemasaran Global",en:"Global Marketing",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    {code:"BPMMK3353",ms:"Pemasaran Digital",en:"Digital Marketing",cr:3,cat:"F",field:"MKT",pre:["BPMMK1013"]},
+    /* 5. Muamalat Administration */
+    {code:"BIMEK1013",ms:"Teori dan Amalan Perniagaan Islam",en:"Theory and Practice of Islamic Business",cr:3,cat:"F",field:"MUA",pre:[]},
+    {code:"BIMCK2033",ms:"Etika Perniagaan Islam",en:"Islamic Business Ethics",cr:3,cat:"F",field:"MUA",pre:[]},
+    {code:"BIMCK2083",ms:"Pengurusan Baitulmal, Wakaf & Zakat",en:"Baitul Mal, Waqf and Zakat Management",cr:3,cat:"F",field:"MUA",pre:[]},
+    {code:"BIMCK1043",ms:"Prinsip Pengurusan dalam Islam",en:"Principles of Management in Islam",cr:3,cat:"F",field:"MUA",pre:[]},
+    {code:"BIMCK3063",ms:"Pengurusan Sumber Manusia utk Perniagaan Islam",en:"Human Resource Management for Islamic Business",cr:3,cat:"F",field:"MUA",pre:["BIMCK1043"]},
+    {code:"BIMEK3023",ms:"Pengurusan Takaful",en:"Takaful Management",cr:3,cat:"F",field:"MUA",pre:[]},
+    {code:"BIMEK3123",ms:"Kepimpinan dalam Islam",en:"Leadership in Islam",cr:3,cat:"F",field:"MUA",pre:[]},
+    /* 6. Public Management */
+    {code:"GMGAK2013",ms:"Perlembagaan Malaysia",en:"Malaysian Constitution",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGAK2023",ms:"Dasar Awam",en:"Public Policy",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGAK2033",ms:"Etika untuk Pentadbir Awam",en:"Ethics for Public Administrator",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGAK2053",ms:"Kerajaan Tempatan",en:"Local Government",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGFK2023",ms:"Pentadbiran Kewangan",en:"Financial Administration",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGMK3023",ms:"Kepimpinan dalam Pengurusan Awam",en:"Leadership in Public Management",cr:3,cat:"F",field:"PM",pre:[]},
+    {code:"GMGMK3123",ms:"Pengurusan Sumber Manusia dalam Perkhidmatan Awam",en:"Human Resource Management in the Public Service",cr:3,cat:"F",field:"PM",pre:[]},
     /* G — Free Elective */
     {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"G",pre:[],ph:true},
     /* H — Industrial Training */
@@ -1973,10 +2020,10 @@ PROGRAMS.BECONS = {
     "":{
       1:["BEEBK1013","BEEQK1013","BEEDK1013","MPB2013","BPMNK1013","BKANK1013","VKKK1011"],
       2:["BEEQK1023","BEEBK2013","BEEQK2013","MPB3013","SBLFK1053","MPU1012","MPU1022","VKKK1021"],
-      3:["BEEBK2023","BEEQK2023","SBLEK3063","SBLFK2053","MPU1042","BWFFK2033","BEEDK2013"],
-      4:["BEEBK3013","BEESK3033","SBLFK3053","MPU1052","BEEMK2033","BPMHK2013","GMGAK2013"],
-      5:["BEEBK3023","BEERK3043","BPMNK3123","MPU1062","BEEEK3073","GMGAK2023","BWBBK1013"],
-      6:["BEESK3053","BEEZK3996","FREE3013","BEEPK3013","BPMMK1013"],
+      3:["BEEBK2023","BEEQK2023","SBLEK3063","SBLFK2053","MPU1042","GMGAK2013","GMGAK2023"],
+      4:["BEEBK3013","BEESK3033","SBLFK3053","MPU1052","BEEMK2033","BEEMK3043","GMGAK2033"],
+      5:["BEEBK3023","BEERK3043","BPMNK3123","MPU1062","BEEEK3073","BEEPK3083","GMGAK2053"],
+      6:["BEESK3053","BEEZK3996","FREE3013","GMGFK2023","GMGMK3023"],
       7:["BEEXK4948"]
     }
   }
@@ -1997,7 +2044,12 @@ PROGRAMS.BRMI = {
     {l:"F",ms:"Elektif Bebas",en:"Free Elective",req:3},
     {l:"G",ms:"Latihan Industri",en:"Industrial Training",req:6}
   ],
-  tracks:[],
+  tracks:[
+    {id:"PK",ms:"Perancangan Kewangan",en:"Financial Planning"},
+    {id:"PB",ms:"Pengurusan Bank",en:"Bank Management"},
+    {id:"DM",ms:"Matematik Pemutusan",en:"Decision Mathematics"},
+    {id:"HRM",ms:"Pengurusan Sumber Manusia",en:"Human Resource Management"}
+  ],
   shortSems:[7],
   courses:[
     /* A */
@@ -2016,6 +2068,7 @@ PROGRAMS.BRMI = {
     {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
     /* C — Program Core (63 cr) */
     {code:"BKAFK1023",ms:"Pengantar Perakaunan Kewangan",en:"Introduction to Financial Accounting",cr:3,cat:"C",pre:[]},
     {code:"BWRRK1013",ms:"Risiko dan Insurans",en:"Risk & Insurance",cr:3,cat:"C",pre:[]},
@@ -2028,42 +2081,107 @@ PROGRAMS.BRMI = {
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
     {code:"BWRRK3033",ms:"Pengurusan Risiko",en:"Risk Management",cr:3,cat:"C",pre:["BWFFK2033"]},
     {code:"BWRRK3123",ms:"Urus Tadbir Korporat",en:"Corporate Governance",cr:3,cat:"C",pre:[]},
-    {code:"BWRRK3043",ms:"Pengurusan Manfaat Pekerja",en:"Employee Benefits Mgmt",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2033"]},
-    {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Mgmt",cr:3,cat:"C",pre:["BWRRK1013"]},
-    {code:"BWRRK3153",ms:"Pembiayaan Risiko",en:"Risk Financing",cr:3,cat:"C",pre:["BWRRK1013"]},
-    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Financial Services Marketing",cr:3,cat:"C",pre:[]},
-    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3043",ms:"Pengurusan Manfaat Pekerja",en:"Employee Benefits Management",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK3143",ms:"Pengurusan Risiko Harta & Liabiliti",en:"Property & Liability Risk Management",cr:3,cat:"C",pre:["BWRRK1013"]},
+    {code:"BWRRK3153",ms:"Pembiayaan Risiko",en:"Risk Financing",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2043"]},
+    {code:"BWBBK3053",ms:"Pemasaran Servis Kewangan",en:"Marketing of Financial Services",cr:3,cat:"C",pre:[]},
+    {code:"BWRRK3133",ms:"Analisis Risiko & Pembuatan Keputusan",en:"Risk Analysis & Decision Making",cr:3,cat:"C",pre:["BWRRK1013","BWFFK2043"]},
     {code:"BWRRK3163",ms:"Pengurusan Kesinambungan Perniagaan",en:"Business Continuity Management",cr:3,cat:"C",pre:["BWRRK1013"]},
-    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[],minCr:70},
     {code:"BPMNK3143",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:["SQQSK1013"],minCr:70},
     {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
-    {code:"BWRRK3093",ms:"Seminar Pengurusan Risiko & Insurans",en:"Risk Mgmt & Insurance Seminar",cr:3,cat:"C",pre:[],minCr:90},
-    /* D — Field Electives (Insurance & Actuarial focus) */
-    {code:"BWRRK2033",ms:"Insurans Hayat & Kesihatan",en:"Life & Health Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK2043",ms:"Insurans Am",en:"General Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK3013",ms:"Pengunderaitan Insurans",en:"Insurance Underwriting",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK3023",ms:"Tuntutan Insurans",en:"Insurance Claims",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK3053",ms:"Pengurusan Aktuari",en:"Actuarial Management",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK3073",ms:"Insurans Korporat",en:"Corporate Insurance",cr:3,cat:"D",pre:["BWRRK1013"]},
-    {code:"BWRRK3103R",ms:"Perancangan Estet",en:"Estate Planning",cr:3,cat:"D",pre:["BWFFK2033"]},
-    /* E — Program Electives */
-    {code:"BWFNK3033R",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"E",pre:["BWFFK2043"]},
-    {code:"BWFNK3043R",ms:"Gelagat Kewangan",en:"Behavioral Finance",cr:3,cat:"E",pre:["BWFFK2043"]},
-    {code:"BWFEK3013R",ms:"Pengurusan Hartanah",en:"Real Estate Management",cr:3,cat:"E",pre:["BWFFK2033"]},
-    {code:"GLULK2023",ms:"Undang-Undang Syarikat",en:"Company Law",cr:3,cat:"E",pre:[]},
+    {code:"BWRRK3093",ms:"Seminar Pengurusan Risiko & Insurans",en:"Risk Management & Insurance Seminar",cr:3,cat:"C",pre:[],minCr:90},
+    /* D — Field Electives: choose ONE specialization (18 cr), take ALL courses in that track */
+    /* Track 1: Perancangan Kewangan (Financial Planning) — 6 courses × 3 cr = 18 cr */
+    {code:"BWRRK3103",ms:"Perancangan Estet",en:"Estate Planning",cr:3,cat:"D",pre:["BWFFK2033"],track:"PK"},
+    {code:"BWRRK3113",ms:"Perancangan Persaraan",en:"Retirement Planning",cr:3,cat:"D",pre:["BWFFK2033"],track:"PK"},
+    {code:"BKATK2013",ms:"Pengantar Percukaian",en:"Principle of Taxation",cr:3,cat:"D",pre:["BKAFK1023"],track:"PK"},
+    {code:"BWFNK3013",ms:"Analisis Pelaburan",en:"Investment Analysis",cr:3,cat:"D",pre:["BWFFK2043"],track:"PK"},
+    {code:"BWFNK3033",ms:"Pengurusan Portfolio",en:"Portfolio Management",cr:3,cat:"D",pre:["BWFFK2043"],track:"PK"},
+    {code:"BWFFK3073",ms:"Kewangan Peribadi",en:"Personal Finance",cr:3,cat:"D",pre:["BWFFK2043"],track:"PK"},
+    /* Track 2: Pengurusan Bank (Bank Management) — 7 courses; choose 6 = 18 cr */
+    {code:"BWBBK1013",ms:"Asas Perbankan",en:"Foundations of Banking",cr:3,cat:"D",pre:[],track:"PB"},
+    {code:"BWBBK2013",ms:"Pengurusan Bank",en:"Bank Management",cr:3,cat:"D",pre:[],track:"PB"},
+    {code:"BWBBK3013",ms:"Operasi Bank Perdagangan",en:"Commercial Bank Operations",cr:3,cat:"D",pre:["BWBBK2013"],track:"PB"},
+    {code:"BWBBK3023",ms:"Pengurusan Pinjaman",en:"Lending Management",cr:3,cat:"D",pre:["BWBBK2013"],track:"PB"},
+    {code:"BWBBK3043",ms:"Sekuriti Perbankan",en:"Banking Securities",cr:3,cat:"D",pre:["BWBBK2013"],track:"PB"},
+    {code:"BWBBK3063",ms:"Pembiayaan dan Perdagangan Antarabangsa",en:"International Trade and Finance",cr:3,cat:"D",pre:["BWBBK2013"],track:"PB"},
+    {code:"BWBBK3083",ms:"Perbankan Korporat",en:"Corporate Banking",cr:3,cat:"D",pre:["BWBBK2013"],track:"PB"},
+    /* Track 3: Matematik Pemutusan (Decision Mathematics) — 7 courses */
+    {code:"SQQMK1034",ms:"Kalkulus I",en:"Calculus I",cr:4,cat:"D",pre:[],track:"DM"},
+    {code:"SQQMK1063",ms:"Matematik Diskret",en:"Discrete Mathematics",cr:3,cat:"D",pre:[],track:"DM"},
+    {code:"SQQMK1073",ms:"Matematik Perniagaan",en:"Business Mathematics",cr:3,cat:"D",pre:["SQQMK1034"],track:"DM"},
+    {code:"SQITK1013",ms:"Pengaturcaraan dalam Aplikasi Perniagaan",en:"Programming in Business Applications",cr:3,cat:"D",pre:[],track:"DM"},
+    {code:"SQITK3053",ms:"Pembuatan Keputusan Berbantu Komputer",en:"Computer Aided Decision Making",cr:3,cat:"D",pre:["SQITK1013"],track:"DM"},
+    {code:"SQITK3063",ms:"Perlombongan Data",en:"Data Mining",cr:3,cat:"D",pre:[],track:"DM"},
+    {code:"SQITK3083",ms:"Visualisasi Data",en:"Data Visualization",cr:3,cat:"D",pre:[],track:"DM"},
+    /* Track 4: Pengurusan Sumber Manusia (Human Resource Management) — 6 courses × 3 cr = 18 cr */
+    {code:"BPMHK2013",ms:"Pengurusan Sumber Manusia",en:"Human Resources Management",cr:3,cat:"D",pre:["BPMNK1013"],track:"HRM"},
+    {code:"BPMHK3033",ms:"Latihan dan Pembangunan",en:"Training and Development",cr:3,cat:"D",pre:["BPMHK2013"],track:"HRM"},
+    {code:"BPMHK3053",ms:"Pengurusan Prestasi Pekerja",en:"Employee Performance Management",cr:3,cat:"D",pre:["BPMHK2013"],track:"HRM"},
+    {code:"BPMHK3023",ms:"Penstafan",en:"Staffing",cr:3,cat:"D",pre:["BPMHK2013"],track:"HRM"},
+    {code:"BPMHK3063",ms:"Pengurusan Perubahan",en:"Change Management",cr:3,cat:"D",pre:["BPMHK2013"],track:"HRM"},
+    {code:"BPMHK3083",ms:"Pengenalan Keselamatan dan Kesihatan Pekerjaan",en:"Introduction to Occupational Safety and Health",cr:3,cat:"D",pre:["BPMHK2013"],track:"HRM"},
+    /* E — Program Electives (12 cr): choose any 4 of 12 courses */
+    {code:"BWFFK3013",ms:"Kewangan Korporat",en:"Corporate Finance",cr:3,cat:"E",pre:["BWFFK2043"]},
+    {code:"BWRRK2033",ms:"Insurans Hayat dan Kesihatan",en:"Life and Health Insurance",cr:3,cat:"E",pre:["BWRRK1013","BWFFK2033"]},
+    {code:"BWRRK2043",ms:"Operasi Syarikat Insurans",en:"Insurance Company Operations",cr:3,cat:"E",pre:["BWRRK1013"]},
+    {code:"BWRRK3023",ms:"Sains Aktuari",en:"Actuarial Science",cr:3,cat:"E",pre:["BWFFK2033"]},
+    {code:"BWRRK3053",ms:"Reinsurans",en:"Reinsurance",cr:3,cat:"E",pre:["BWRRK1013"]},
+    {code:"BWRRK3063",ms:"Pengurusan Risiko Kewangan",en:"Financial Risk Management",cr:3,cat:"E",pre:["BWFFK2043"]},
+    {code:"BWRRK3073",ms:"Pengurusan Risiko Kredit",en:"Credit Risk Management",cr:3,cat:"E",pre:["BWFFK2033"]},
+    {code:"BWRRK3083",ms:"Insurans Marin dan Penerbangan",en:"Marine and Aviation Insurance",cr:3,cat:"E",pre:["BWRRK1013"]},
+    {code:"BWRRK3173",ms:"Insurans Peribadi",en:"Personal Insurance",cr:3,cat:"E",pre:["BWRRK1013"]},
+    {code:"BWRSK2013",ms:"Takaful",en:"Takaful",cr:3,cat:"E",pre:[]},
+    {code:"BWRZK3993",ms:"Projek Ilmiah",en:"Project Paper",cr:3,cat:"E",pre:["BPMNK3143"],minCr:100},
+    {code:"GLUEK3013",ms:"Undang-undang Insurans",en:"Insurance Law",cr:3,cat:"E",pre:[]},
+    {code:"SBLEK3163",ms:"Kemahiran Berucap di Hadapan Awam",en:"Public Speaking Skills",cr:3,cat:"E",pre:["MPB3013"]},
     /* F */
     {code:"FREE3013",ms:"Elektif Bebas",en:"Free Elective",cr:3,cat:"F",pre:[],ph:true},
     /* G */
     {code:"BWRXK4976",ms:"Latihan Industri",en:"Industrial Training",cr:6,cat:"G",pre:[],all:true}
   ],
   recommended:{
-    "":{
-      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013","VKKK1011"],
-      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013","VKKK1021"],
-      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BWRRK2033"],
-      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRRK2043","BWRRK3013","GLULK2023"],
-      5:["BWRRK3133","BWRRK3163","BWRRK3023","BWRRK3053","BWRRK3073","BWFNK3043R"],
-      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWFNK3033R","BWFEK3013R","FREE3013"],
+    /* Sem 1–2: core courses same for all tracks (19 cr each)
+       Sem 3: core + FE1 + PE1 = 20 cr
+       Sem 4: core + FE2 + FE3 + Ko-Kur I = 19 cr
+       Sem 5: core + FE4 + FE5 + Free Elec + Ko-Kur II = 19 cr
+       Sem 6: core + PE4 + FE6 = 18 cr
+       Sem 7: Industrial Training = 6 cr  →  Total = 120 cr */
+    "PK":{
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013"],
+      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BWRRK3103","BWRRK2043"],
+      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRSK2013","BWRRK3113","BKATK2013","VKKK1011"],
+      5:["BWRRK3133","BWRRK3163","GLUEK3013","BWFNK3013","BWFNK3033","FREE3013","VKKK1021"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWRRK2033","BWFFK3073"],
+      7:["BWRXK4976"]
+    },
+    "PB":{
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013"],
+      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BWBBK2013","BWRRK2043"],
+      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRSK2013","BWBBK1013","BWBBK3013","VKKK1011"],
+      5:["BWRRK3133","BWRRK3163","GLUEK3013","BWBBK3023","BWBBK3043","FREE3013","VKKK1021"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWRRK2033","BWBBK3063"],
+      7:["BWRXK4976"]
+    },
+    "DM":{
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013"],
+      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","SQQMK1063","BWRRK2043"],
+      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRSK2013","SQQMK1034","SQITK1013","VKKK1011"],
+      5:["BWRRK3133","BWRRK3163","GLUEK3013","SQITK3053","SQITK3063","FREE3013","VKKK1021"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWRRK2033","SQITK3083"],
+      7:["BWRXK4976"]
+    },
+    "HRM":{
+      1:["BKAFK1023","BWRRK1013","BPMNK1013","SQQSK1013","MPU1042","MPU1052","MPB2013"],
+      2:["BWFFK2033","GLULK2013","SQQSK2013","BEEBK1013","MPU1022","MPU1012","MPB3013"],
+      3:["BWFFK2043","BWRRK3033","BWRRK3123","BWRRK3043","MPU1062","BPMHK2013","BWRRK2043"],
+      4:["BWRRK3153","BWRRK3143","BWBBK3053","BWRSK2013","BPMHK3033","BPMHK3023","VKKK1011"],
+      5:["BWRRK3133","BWRRK3163","GLUEK3013","BPMHK3053","BPMHK3063","FREE3013","VKKK1021"],
+      6:["BPMNK3123","BPMNK3143","BPMNK3023","BWRRK3093","BWRRK2033","BPMHK3083"],
       7:["BWRXK4976"]
     }
   }
@@ -2094,40 +2212,43 @@ PROGRAMS.BAGRO = {
     {code:"MPU1062",ms:"Integriti dan Antirasuah",en:"Integrity & Anti-Corruption",cr:2,cat:"A",pre:[]},
     {code:"VKKK1011",ms:"Ko-Kurikulum I",en:"Co-Curriculum I",cr:1,cat:"A",pre:[]},
     {code:"VKKK1021",ms:"Ko-Kurikulum II",en:"Co-Curriculum II",cr:1,cat:"A",pre:[]},
-    /* B — English Core: pathway-aware (BAGRO's ESP options live in Program Core C: SBLEK3033, SBLEK3063) */
+    /* B — English Core: pathway-aware. SBLEK3033/3063 are mandatory C-cat courses in BAGRO; Path 3 ESP picks from 3023/3043/3053 */
     {code:"MPB1013",ms:"Penguasaan Asas Bahasa Inggeris",en:"Basic English Proficiency",cr:3,cat:"B",pre:[],pathway:"L1"},
     {code:"MPB2013",ms:"Pengayaan Bahasa Inggeris I",en:"English Language Enrichment I",cr:3,cat:"B",pre:["MPB1013"],pathway:"L1L2"},
     {code:"MPB3013",ms:"Pengayaan Bahasa Inggeris II",en:"English Language Enrichment II",cr:3,cat:"B",pre:["MPB2013"],pathway:"L1L2L3"},
-    /* C — Program Core (selected) */
+    {code:"SBLEK3023",ms:"English for Small Group Communication",en:"English for Small Group Communication",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3043",ms:"Hospitality English",en:"Hospitality English",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    {code:"SBLEK3053",ms:"Public Speaking Skills",en:"Public Speaking Skills",cr:3,cat:"B",pre:["MPB3013"],pathway:"ESP"},
+    /* C — Program Core (29 courses, 87 cr) */
     {code:"BEEBK1013",ms:"Prinsip Ekonomi",en:"Principles of Economics",cr:3,cat:"C",pre:[]},
     {code:"BEEBK2013",ms:"Mikroekonomi",en:"Microeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
     {code:"BEEBK2023",ms:"Makroekonomi",en:"Macroeconomics",cr:3,cat:"C",pre:["BEEBK1013"]},
-    {code:"BKANK1013",ms:"Asas Perakaunan",en:"Foundations of Accounting",cr:3,cat:"C",pre:[]},
-    {code:"BPMNK1013",ms:"Pengantar Pengurusan",en:"Introduction to Management",cr:3,cat:"C",pre:[]},
+    {code:"BKANK1013",ms:"Perakaunan Asas",en:"Basic Accounting",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK1013",ms:"Prinsip Pengurusan",en:"Principles of Management",cr:3,cat:"C",pre:[]},
     {code:"BPMNK3023",ms:"Pengurusan Strategik",en:"Strategic Management",cr:3,cat:"C",pre:[],minCr:90},
-    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[]},
-    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Introduction to Statistics",cr:3,cat:"C",pre:[]},
-    {code:"SQQMK1023",ms:"Matematik Untuk Pengurusan",en:"Mathematics for Management",cr:3,cat:"C",pre:[]},
-    {code:"BWFFK1013",ms:"Asas Kewangan",en:"Foundations of Finance",cr:3,cat:"C",pre:[]},
+    {code:"BPMNK3123",ms:"Etika Pengurusan",en:"Management Ethics",cr:3,cat:"C",pre:[],minCr:70},
+    {code:"SQQSK1013",ms:"Pengantar Statistik",en:"Elementary Statistics",cr:3,cat:"C",pre:[]},
+    {code:"SQQMK1023",ms:"Matematik Untuk Pengurusan",en:"Managerial Mathematics",cr:3,cat:"C",pre:[]},
+    {code:"BWFFK1013",ms:"Asas Kewangan",en:"Basic Finance",cr:3,cat:"C",pre:[]},
     {code:"BETAK1013",ms:"Biologi",en:"Biology",cr:3,cat:"C",pre:[]},
     {code:"BETAK1023",ms:"Kimia",en:"Chemistry",cr:3,cat:"C",pre:[]},
-    {code:"BETAK2013",ms:"Sains Perternakan",en:"Animal Science",cr:3,cat:"C",pre:[]},
-    {code:"BETAK2023",ms:"Sains Makanan",en:"Food Science",cr:3,cat:"C",pre:[]},
-    {code:"BETAK2033",ms:"Sains Tanah",en:"Soil Science",cr:3,cat:"C",pre:[]},
-    {code:"BETAK2043",ms:"Agronomi",en:"Agronomy",cr:3,cat:"C",pre:[]},
-    {code:"BETAK2053",ms:"Akuakultur",en:"Aquaculture",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3033",ms:"Kewangan Perniagaantani",en:"Agribusiness Finance",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3113",ms:"Ekonomi Pengeluaran Pertanian",en:"Agricultural Production Economics",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3123",ms:"Pengurusan Perniagaan-tani",en:"Agribusiness Management",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3133",ms:"Ekonomi Pembangunan Pertanian",en:"Agricultural Development Economics",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3153",ms:"Pemasaran Pertanian",en:"Agricultural Marketing",cr:3,cat:"C",pre:[]},
-    {code:"BEEAK3163",ms:"Perdagangan Pertanian Antarabangsa",en:"International Agricultural Trade",cr:3,cat:"C",pre:[]},
-    {code:"BJTNK2033",ms:"Pengurusan Pengeluaran & Operasi",en:"Production & Operations Mgmt",cr:3,cat:"C",pre:[]},
-    {code:"BJTNK3073",ms:"Pengurusan Pembelian & Rangkaian Pembekal",en:"Procurement & Supply Chain Mgmt",cr:3,cat:"C",pre:[]},
-    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methodology",cr:3,cat:"C",pre:[],minCr:70},
+    {code:"BETAK2013",ms:"Sains Ternakan",en:"Animal Husbandry",cr:3,cat:"C",pre:["BETAK1013","BETAK1023"]},
+    {code:"BETAK2023",ms:"Sains Makanan",en:"Food Science",cr:3,cat:"C",pre:["BETAK1013","BETAK1023"]},
+    {code:"BETAK2033",ms:"Sains Tanah",en:"Soil Science",cr:3,cat:"C",pre:["BETAK1013","BETAK1023"]},
+    {code:"BETAK2043",ms:"Agronomi",en:"Agronomy",cr:3,cat:"C",pre:["BETAK1013","BETAK1023"]},
+    {code:"BETAK2053",ms:"Akuakultur",en:"Aquaculture Management",cr:3,cat:"C",pre:["BETAK1013","BETAK1023"]},
+    {code:"BEEAK3033",ms:"Kewangan Perniagaantani",en:"Agribusiness Finance",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEAK3113",ms:"Ekonomi Pengeluaran Pertanian",en:"Agricultural Production Economics",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEAK3123",ms:"Pengurusan Perniagaan-tani",en:"Agribusiness Management",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEAK3133",ms:"Ekonomi Pembangunan Pertanian",en:"Agricultural Development Economics",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEAK3153",ms:"Pemasaran Pertanian",en:"Agricultural Marketing",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BEEAK3163",ms:"Perdagangan Pertanian Antarabangsa",en:"International Agricultural Trade",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
+    {code:"BJTNK2033",ms:"Pengurusan Pengeluaran & Operasi",en:"Production & Operations Mgmt",cr:3,cat:"C",pre:["SQQSK1013"]},
+    {code:"BJTNK3073",ms:"Pengurusan Pembelian & Rangkaian Pembekal",en:"Procurement & Supply Chain Mgmt",cr:3,cat:"C",pre:["BJTNK2033"]},
+    {code:"BEERK3043",ms:"Kaedah Penyelidikan",en:"Research Methods",cr:3,cat:"C",pre:["BEEBK2013","BEEBK2023"]},
     {code:"GLULK3043",ms:"Undang-Undang Perniagaan Tani",en:"Agribusiness Law",cr:3,cat:"C",pre:[]},
-    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"C",pre:[]},
-    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:[]},
+    {code:"SBLEK3033",ms:"Report Writing",en:"Report Writing",cr:3,cat:"C",pre:["MPB3013"]},
+    {code:"SBLEK3063",ms:"English for Professional Communication",en:"English for Professional Communication",cr:3,cat:"C",pre:["MPB3013"]},
     /* D — Foreign Language: 3 sequential courses, pick ONE language */
     {code:"SBLFK1053",ms:"Bahasa Mandarin I",en:"Mandarin Language I",cr:3,cat:"D",pre:[],lang:"MAN"},
     {code:"SBLFK2053",ms:"Bahasa Mandarin II",en:"Mandarin Language II",cr:3,cat:"D",pre:["SBLFK1053"],lang:"MAN"},
@@ -2526,50 +2647,135 @@ function renderSemesters(){
     });
     const byCat = {};
     p.courses.forEach(cc=>{
-      /* Track filter — D-cat specialization courses are still strict */
-      if(cc.cat==="D" && cc.track && state.trackId && cc.track!==state.trackId) return;
       /* Language filter — only show the selected foreign-language family; hide all others */
       if(cc.cat==="D" && cc.lang && cc.lang!==state.langId) return;
+      /* Track-based D courses: include ALL specializations so each sub-section is visible */
       (byCat[cc.cat] = byCat[cc.cat] || []).push(cc);
     });
+    /* Helper: build one <option> for a course */
+    const mkOpt = (cc) => {
+      const placedInfo = placementMap[cc.code];
+      const o = document.createElement("option");
+      if(placedInfo != null){
+        const isFailed = placedInfo.grade && FAIL_GRADES.has(placedInfo.grade);
+        if(isFailed){
+          o.value = cc.code;
+          o.textContent = `🔄 Retake (failed Sem ${placedInfo.sem}) · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+        } else {
+          o.disabled = true;
+          o.textContent = `✓ Sem ${placedInfo.sem} · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+        }
+      } else {
+        const pr = isPrereqsMet(cc.code, s);
+        o.value = cc.code;
+        let lockHint = "";
+        if(!pr.ok){
+          if(pr.missing.some(m=>m.includes("offered odd")))      lockHint = "🚫 Sem 1, 3, 5, 7 only · ";
+          else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 Sem 2, 4, 6 only · ";
+          else if(pr.missing.some(m=>m.includes("failed")))       lockHint = "❌ Prereq failed · ";
+          else                                                     lockHint = "🔒 ";
+        }
+        o.textContent = `${lockHint}${cc.code} · ${cc.en} (${cc.cr}cr)`;
+      }
+      return o;
+    };
     p.components.forEach(comp=>{
+      const list = byCat[comp.l] || [];
+      /* D component with track-based sub-sections: render each specialization as its own optgroup */
+      if(comp.l==="D" && p.tracks && p.tracks.length && list.some(c=>c.track)){
+        /* Detect which sub-field the student has already committed to (first D-track course placed) */
+        let committedTrack = null;
+        for(const [, semItems] of Object.entries(state.plan)){
+          for(const it of semItems){
+            const cc = p.courses.find(c=>c.code===it.code);
+            if(cc && cc.cat==="D" && cc.track){ committedTrack = cc.track; break; }
+          }
+          if(committedTrack) break;
+        }
+        /* Parent header for the whole D section */
+        const dHdr = document.createElement("optgroup");
+        dHdr.label = `── D. ${comp.en.toUpperCase()} — Choose ONE specialization (${comp.req} cr) ──`;
+        const dHdrO = document.createElement("option"); dHdrO.disabled=true;
+        dHdrO.textContent = committedTrack
+          ? `  Committed to: ${p.tracks.find(t=>t.id===committedTrack)?.en||committedTrack} · Other fields locked`
+          : `  Pick one field below and follow through to graduation`;
+        dHdr.appendChild(dHdrO);
+        addSel.appendChild(dHdr);
+        p.tracks.forEach((t, idx)=>{
+          const isLocked = committedTrack && committedTrack !== t.id;
+          const tList = list.filter(c=>c.track===t.id).sort((a,b)=>a.code.localeCompare(b.code));
+          const grp = document.createElement("optgroup");
+          grp.label = isLocked
+            ? `D${idx+1}. ${t.en} — ${t.ms} ⛔ (locked)`
+            : `D${idx+1}. ${t.en} — ${t.ms} (${tList.length} courses)`;
+          if(!tList.length){
+            const o=document.createElement("option"); o.disabled=true;
+            o.textContent=`   (no courses available)`; grp.appendChild(o);
+          } else if(isLocked){
+            /* Other sub-fields are locked once a choice is committed */
+            tList.forEach(cc=>{
+              const o=document.createElement("option"); o.disabled=true;
+              o.textContent=`⛔ ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+              grp.appendChild(o);
+            });
+          } else {
+            tList.forEach(cc=>grp.appendChild(mkOpt(cc)));
+          }
+          addSel.appendChild(grp);
+        });
+        return;
+      }
+      /* F component with field-based sub-sections (e.g. BECONS — 6 elective fields) */
+      if(comp.l==="F" && p.fFields && p.fFields.length && list.some(c=>c.field)){
+        let committedField = null;
+        for(const [, semItems] of Object.entries(state.plan)){
+          for(const it of semItems){
+            const cc = p.courses.find(c=>c.code===it.code);
+            if(cc && cc.cat==="F" && cc.field){ committedField = cc.field; break; }
+          }
+          if(committedField) break;
+        }
+        const fHdr = document.createElement("optgroup");
+        fHdr.label = `── F. ${comp.en.toUpperCase()} — Choose ONE field (${comp.req} cr) ──`;
+        const fHdrO = document.createElement("option"); fHdrO.disabled=true;
+        fHdrO.textContent = committedField
+          ? `  Committed to: ${p.fFields.find(f=>f.id===committedField)?.en||committedField} · Other fields locked`
+          : `  Pick one field and complete SIX courses to graduation`;
+        fHdr.appendChild(fHdrO);
+        addSel.appendChild(fHdr);
+        p.fFields.forEach((f, idx)=>{
+          const isLocked = committedField && committedField !== f.id;
+          const fList = list.filter(c=>c.field===f.id).sort((a,b)=>a.code.localeCompare(b.code));
+          const grp = document.createElement("optgroup");
+          grp.label = isLocked
+            ? `F${idx+1}. ${f.en} — ${f.ms} ⛔ (locked)`
+            : `F${idx+1}. ${f.en} — ${f.ms} (${fList.length} courses, choose 6)`;
+          if(!fList.length){
+            const o=document.createElement("option"); o.disabled=true;
+            o.textContent=`   (no courses available)`; grp.appendChild(o);
+          } else if(isLocked){
+            fList.forEach(cc=>{
+              const o=document.createElement("option"); o.disabled=true;
+              o.textContent=`⛔ ${cc.code} · ${cc.en} (${cc.cr}cr)`;
+              grp.appendChild(o);
+            });
+          } else {
+            fList.forEach(cc=>grp.appendChild(mkOpt(cc)));
+          }
+          addSel.appendChild(grp);
+        });
+        return;
+      }
+      /* Normal rendering for all other components (A, B, C, E, F, G, H) */
       const grp = document.createElement("optgroup");
       grp.label = `${comp.l}. ${comp.en}`;
-      const list = byCat[comp.l] || [];
       if(!list.length){
         const o = document.createElement("option");
         o.disabled = true;
         o.textContent = `   (no courses available)`;
         grp.appendChild(o);
       } else {
-        list.sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>{
-          const placedInfo = placementMap[cc.code];
-          const o = document.createElement("option");
-          if(placedInfo != null){
-            const isFailed = placedInfo.grade && FAIL_GRADES.has(placedInfo.grade);
-            if(isFailed){
-              /* Failed in a previous semester — show as retake option (selectable) */
-              o.value = cc.code;
-              o.textContent = `🔄 Retake (failed Sem ${placedInfo.sem}) · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
-            } else {
-              /* Passed or in-progress — disabled, already in the plan */
-              o.disabled = true;
-              o.textContent = `✓ Sem ${placedInfo.sem} · ${cc.code} · ${cc.en} (${cc.cr}cr)`;
-            }
-          } else {
-            const pr = isPrereqsMet(cc.code, s);
-            o.value = cc.code;
-            let lockHint = "";
-            if(!pr.ok){
-              if(pr.missing.some(m=>m.includes("offered odd")))      lockHint = "🚫 Sem 1, 3, 5, 7 only · ";
-              else if(pr.missing.some(m=>m.includes("offered even"))) lockHint = "🚫 Sem 2, 4, 6 only · ";
-              else if(pr.missing.some(m=>m.includes("failed")))       lockHint = "❌ Prereq failed · ";
-              else                                                     lockHint = "🔒 ";
-            }
-            o.textContent = `${lockHint}${cc.code} · ${cc.en} (${cc.cr}cr)`;
-          }
-          grp.appendChild(o);
-        });
+        list.sort((a,b)=>a.code.localeCompare(b.code)).forEach(cc=>grp.appendChild(mkOpt(cc)));
       }
       addSel.appendChild(grp);
     });
