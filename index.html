@@ -1398,7 +1398,6 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
         </div>
         <button class="icon-btn" onclick="showAboutDashboard()">ℹ️ About</button>
         <button class="icon-btn" onclick="showHelp()">❓ Help</button>
-        <button class="icon-btn primary" onclick="window.print()">🖨️ Print Plan</button>
       </div>
     </div>
     <div class="hero-stats" id="heroStats">
@@ -1457,7 +1456,7 @@ body.dark-mode .audit-item{background:rgba(255,255,255,.04)}
     </div>
     <span class="spacer"></span>
     <button class="btn primary-green" onclick="loadRecommended()">📋 Load Recommended Plan</button>
-    <button class="btn ghost" onclick="exportTxt()">📄 Export</button>
+    <button class="btn ghost" onclick="exportPDF()">📄 Export PDF</button>
     <button class="btn ghost danger" onclick="resetPlan()">↺ Reset</button>
   </div>
 
@@ -3413,31 +3412,101 @@ function resetPlan(){
   });
 }
 
-function exportTxt(){
+function exportPDF(){
+  try{ _exportPDF(); } catch(e){ alert("Export error:\n"+e.message+"\n"+e.stack); }
+}
+function _exportPDF(){
   const p=PROGRAMS[state.programId];
   const {cgpa,per}=computeGPA();
-  let total=0; Object.values(state.plan).forEach(a=>a.forEach(it=>{const c=getCourse(it.code);if(c)total+=c.cr;}));
-  let txt = `SEFB DEGREE PLAN\n=================\n${p.fullName}\n`;
-  if(p.tracks && p.tracks.length){
-    const t=p.tracks.find(t=>t.id===state.trackId);
-    if(t) txt += `Specialization: ${t.en} (${t.ms})\n`;
-  }
-  txt += `Credits planned: ${total} / ${p.total}\nProjected CGPA: ${cgpa.toFixed(2)}\n\n`;
+  let total=0;
+  Object.values(state.plan).forEach(a=>a.forEach(it=>{const c=getCourse(it.code);if(c)total+=c.cr;}));
+
+  const CAT_COLOR={A:"#eab308",B:"#22c55e",C:"#3b82f6",D:"#ec4899",E:"#a855f7",F:"#f97316",G:"#ef4444",H:"#06b6d4"};
+  let track="";
+  if(p.tracks&&p.tracks.length){const t=p.tracks.find(t=>t.id===state.trackId);if(t)track=`${t.en} (${t.ms})`;}
+  const pathLabel={L1:"Path 1 · 9 cr (MUET 1.0–2.5)",L2:"Path 2 · 6 cr (MUET 3.0–3.5)",L3:"Path 3 · 6 cr (MUET 4.0–4.5)",EX:"Exempted (MUET 5.0+)"}[state.pathId]||"";
+  const cgpaTier=(g)=>{
+    if(g>=3.67)return{label:"First Class",color:"#f59e0b"};
+    if(g>=3.0) return{label:"Upper 2nd Class",color:"#3b82f6"};
+    if(g>=2.0) return{label:"Lower 2nd Class",color:"#22c55e"};
+    return{label:"Fail",color:"#ef4444"};
+  };
+  const tier=cgpaTier(cgpa);
+
+  let semsHtml="";
   for(let s=1;s<=totalSems();s++){
     const items=state.plan[s]||[]; if(!items.length) continue;
     const cr=items.reduce((t,it)=>t+(getCourse(it.code)?.cr||0),0);
-    txt += `── SEMESTER ${s} (${cr} credits) ──\n`;
-    items.forEach(it=>{
+    const semGpa=(per[s]!=null && !isNaN(per[s]))?per[s].toFixed(2):"—";
+    let rows="";
+    items.forEach((it,i)=>{
       const c=getCourse(it.code); if(!c) return;
-      txt += `  ${c.code.padEnd(11)} ${c.en.padEnd(45)} ${c.cr}cr  Grade: ${it.grade||'—'}\n`;
+      const col=CAT_COLOR[c.cat]||"#94a3b8";
+      const grade=it.grade||"—";
+      rows+=`<tr style="background:${i%2===0?'#f8fafc':'#fff'}">
+        <td style="padding:5px 8px;font-size:11px;color:#64748b">${c.code}</td>
+        <td style="padding:5px 8px;font-size:11.5px">${c.en}<br><span style="font-size:10px;color:#94a3b8">${c.ms}</span></td>
+        <td style="padding:5px 8px;text-align:center"><span style="background:${col}22;color:${col};font-weight:700;padding:2px 7px;border-radius:5px;font-size:10.5px">${c.cat}</span></td>
+        <td style="padding:5px 8px;text-align:center;font-size:11.5px">${c.cr}</td>
+        <td style="padding:5px 8px;text-align:center;font-size:12px;font-weight:700;color:${grade==='—'?'#cbd5e1':'#0f172a'}">${grade}</td>
+      </tr>`;
     });
-    txt += "\n";
+    semsHtml+=`<div style="margin-bottom:20px;page-break-inside:avoid">
+      <div style="background:#0f172a;color:#fff;padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-weight:800;font-size:13px;letter-spacing:.04em">SEMESTER ${s}</span>
+        <span style="font-size:11.5px;opacity:.8">${cr} credits · GPA: ${semGpa}</span>
+      </div>
+      <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;border-top:none">
+        <thead><tr style="background:#f1f5f9">
+          <th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:left;font-weight:700;text-transform:uppercase">CODE</th>
+          <th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:left;font-weight:700;text-transform:uppercase">COURSE</th>
+          <th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:center;font-weight:700;text-transform:uppercase">CAT</th>
+          <th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:center;font-weight:700;text-transform:uppercase">CR</th>
+          <th style="padding:6px 8px;font-size:10px;color:#64748b;text-align:center;font-weight:700;text-transform:uppercase">GRADE</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>`;
   }
-  txt += "Data source: SEFB 251 Panduan Akademik 2025/2026 · Grading per UUM rules\n";
-  const blob=new Blob([txt],{type:"text/plain"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a"); a.href=url; a.download=`SEFB_Plan_${p.id}.txt`; a.click();
-  URL.revokeObjectURL(url);
+
+  const inner=`
+    <div style="border-bottom:3px solid #0f172a;padding-bottom:16px;margin-bottom:22px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:4px">Universiti Utara Malaysia · SEFB</div>
+          <div style="font-size:18px;font-weight:900;line-height:1.2">${p.fullName}</div>
+          ${track?`<div style="font-size:12px;color:#64748b;margin-top:4px">Specialization: ${track}</div>`:""}
+          ${pathLabel?`<div style="font-size:12px;color:#64748b">English Pathway: ${pathLabel}</div>`:""}
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:24px">
+          <div style="font-size:28px;font-weight:900;color:${tier.color}">${cgpa.toFixed(2)}</div>
+          <div style="font-size:10px;font-weight:700;color:${tier.color};letter-spacing:.06em;text-transform:uppercase">${tier.label}</div>
+          <div style="font-size:11px;color:#64748b;margin-top:4px">${total} / ${p.total} credits</div>
+        </div>
+      </div>
+    </div>
+    ${semsHtml}
+    <div style="border-top:1px solid #e2e8f0;padding-top:12px;margin-top:8px;font-size:10px;color:#94a3b8;display:flex;justify-content:space-between">
+      <span>Data source: SEFB 251 Panduan Akademik 2025/2026 · Grading per UUM rules</span>
+      <span>Generated ${new Date().toLocaleDateString('en-MY',{day:'2-digit',month:'short',year:'numeric'})}</span>
+    </div>`;
+
+  /* Inject print container + @media print style into current page, call window.print() */
+  const old=document.getElementById("_printWrap"); if(old) old.remove();
+  const oldSt=document.getElementById("_printSt"); if(oldSt) oldSt.remove();
+
+  const st=document.createElement("style"); st.id="_printSt";
+  st.textContent=`@media print{body>*:not(#_printWrap){display:none!important}#_printWrap{display:block!important;font-family:'Segoe UI',Arial,sans-serif;color:#0f172a;background:#fff;padding:20px}@page{margin:12mm 14mm;size:A4}}`;
+  document.head.appendChild(st);
+
+  const wrap=document.createElement("div"); wrap.id="_printWrap";
+  wrap.style.display="none";
+  wrap.innerHTML=inner;
+  document.body.appendChild(wrap);
+
+  window.print();
+
+  /* Cleanup after dialog closes */
+  setTimeout(()=>{ wrap.remove(); st.remove(); }, 1000);
 }
 
 function toggleThemeMenu(){
